@@ -28,9 +28,11 @@ int main(int ac, char *av[], char *env[])
 {
   char  **vars;
 
-  (void) ac;
-  (void) av;
+  // (void)ac;
+  // (void)av;
   vars = NULL;
+  if (ac > 1 || av[1])
+    ft_errors_buster(1);
   if (!ft_env_setter(vars, env))
     return (0);
 }

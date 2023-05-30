@@ -6,4 +6,7 @@
 # include <unistd.h>
 # include "mylib.h"
 
+/*::: janitor :::*/
+void  ft_errors_buster(int id);
+
 #endif
