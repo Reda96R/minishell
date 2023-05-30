@@ -28,6 +28,9 @@ int main(int ac, char *av[], char *env[])
 {
   char  **vars;
 
+  (void) ac;
+  (void) av;
+  vars = NULL;
   if (!ft_env_setter(vars, env))
     return (0);
 }
