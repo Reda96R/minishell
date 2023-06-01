@@ -1,13 +1,22 @@
 OS = $(shell uname -s)
 NAME = minishell
 SRC_DIR = src/
+PAR_DIR = src/parsing/
+EXEC_DIR = src/execution/
 OBJ_DIR = obj/
-SRC = $(addprefix $(SRC_DIR), $(addsuffix .c, $(FILES)))
-OBJS = $(addprefix $(OBJ_DIR), $(addsuffix .o, $(FILES)))
+# SRC = $(addprefix $(SRC_DIR), $(addsuffix .c, $(FILES)))
+# SRC_P = $(addprefix $(PAR_DIR), $(addsuffix .c, $(FILES_P)))
+# SRC_E = $(addprefix $(EXEC_DIR), $(addsuffix .c, $(FILES_E)))
+OBJS = $(addprefix $(OBJ_DIR), $(addsuffix .o, $(FILES)))\
+			 $(addprefix $(OBJ_DIR), $(addsuffix .o, $(FILES_P)))\
+			 $(addprefix $(OBJ_DIR), $(addsuffix .o, $(FILES_E)))
+
 FILES = minishell ft_janitor
+FILES_P = ft_env_var
+FILES_E = 
 MYLIB = mylib/mylib.a
 MYPRINT = mylib/ft_printf/ft_printf.a
-CFLAGS = -Wall -Wextra -Werror #g -fsanitize=address 
+CFLAGS = -Wall -Wextra -Werror #-g -fsanitize=address 
 
 all: os $(NAME)
 
@@ -23,10 +32,19 @@ $(OBJ_DIR)%.o: $(SRC_DIR)%.c
 	@make -s -C mylib/
 	@cc $(CFLAGS) -c $< -o $@
 
+$(OBJ_DIR)%.o: $(PAR_DIR)%.c
+	@mkdir -p $(OBJ_DIR)
+	@make -s -C mylib/
+	@cc $(CFLAGS) -c $< -o $@
+
+$(OBJ_DIR)%.o: $(EXEC_DIR)%.c
+	@mkdir -p $(OBJ_DIR)
+	@make -s -C mylib/
+	@cc $(CFLAGS) -c $< -o $@
+
 clean:
 	@echo $(CURSIVE)$(GRAY) ":::Deleting object files:::" $(NONE)
 	@rm -rf $(OBJ_DIR)	
-	@rm -f $(OBJS) 
 	@make -s clean -C mylib/
 	@echo $(RED)":::Deleted:::"$(NONE)
 

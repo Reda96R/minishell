@@ -3,6 +3,6 @@
 void  ft_errors_buster(int id)
 {
   if (id == 1)
-    printf("run without argument\n");
+    printf("ERROR: run without argument\n");
   exit (0);
 }
