@@ -8,12 +8,15 @@
 
 typedef struct s_data
 {
-  char **vars;
+  char  **vars;
+  char  **paths;
   char  *pwd;
   char  *old_pwd;
+
 } t_data;
 
 /*::: env_vars :::*/
+int	ft_env_setter(t_data *data, char **env);
 int ft_pwd_finder(t_data *data);
 
 /*::: janitor :::*/

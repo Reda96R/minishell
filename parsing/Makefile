@@ -4,9 +4,6 @@ SRC_DIR = src/
 PAR_DIR = src/parsing/
 EXEC_DIR = src/execution/
 OBJ_DIR = obj/
-# SRC = $(addprefix $(SRC_DIR), $(addsuffix .c, $(FILES)))
-# SRC_P = $(addprefix $(PAR_DIR), $(addsuffix .c, $(FILES_P)))
-# SRC_E = $(addprefix $(EXEC_DIR), $(addsuffix .c, $(FILES_E)))
 OBJS = $(addprefix $(OBJ_DIR), $(addsuffix .o, $(FILES)))\
 			 $(addprefix $(OBJ_DIR), $(addsuffix .o, $(FILES_P)))\
 			 $(addprefix $(OBJ_DIR), $(addsuffix .o, $(FILES_E)))
