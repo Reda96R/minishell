@@ -16,13 +16,12 @@ char	*ft_path_finder(char **vars)
 		}
 		i++;
 	}
-
 	if (!path)
 		path = ft_strdup("");
 	return (path);
 }
 
-void	ft_envp_parser(t_data *data)
+void	ft_paths_parser(t_data *data)
 {
 	char	*path;
 	char	*str;
@@ -33,21 +32,20 @@ void	ft_envp_parser(t_data *data)
 	path = ft_path_finder(data->vars);
 	data->paths = ft_split(path, ':');
 	free(path);
-
 	while (data->paths[i])
 	{
     last_char = &data->paths[i][ft_strlen(data->paths[i]) - 1];
-		if (!ft_strncmp(last_char, "/", 1))
+		if (ft_strncmp(last_char, "/", 1))
 		{
 			str = ft_strjoin(data->paths[i], "/");
-			// free(data->paths[i]);
+      // free(data->paths[i]);
 			data->paths[i] = str;
 		}
 		i++;
 	}
 }
 
-int	ft_pwd_finder(t_data *data)
+void  ft_pwd_finder(t_data *data)
 {
 	int	i;
 
@@ -60,8 +58,6 @@ int	ft_pwd_finder(t_data *data)
 			data->old_pwd = ft_substr(data->vars[i], 7, ft_strlen(data->vars[i]) - 7);
 		i++;
 	}
-	ft_envp_parser(data);
-	return (1);
 }
 
 int	ft_env_setter(t_data *data, char **env)
@@ -76,7 +72,6 @@ int	ft_env_setter(t_data *data, char **env)
 	data->vars = (char **)malloc(sizeof(char *) * (i + 1));
 	if (!data->vars)
 		return (0);
-
 	j = 0;
 	while (j < i)
 	{
@@ -92,6 +87,7 @@ int	ft_env_setter(t_data *data, char **env)
 	}
 	data->vars[i] = NULL;
 	ft_pwd_finder(data);
+	ft_paths_parser(data);
 	return (1);
 }
 

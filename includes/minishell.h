@@ -16,8 +16,10 @@ typedef struct s_data
 } t_data;
 
 /*::: env_vars :::*/
-int	ft_env_setter(t_data *data, char **env);
-int ft_pwd_finder(t_data *data);
+int   ft_env_setter(t_data *data, char **env);
+void  ft_pwd_finder(t_data *data);
+void	ft_paths_parser(t_data *data);
+char	*ft_path_finder(char **vars);
 
 /*::: janitor :::*/
 void  ft_errors_buster(int id);
