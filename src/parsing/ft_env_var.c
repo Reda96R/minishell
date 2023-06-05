@@ -88,6 +88,7 @@ int	ft_env_setter(t_data *data, char **env)
 	data->vars[i] = NULL;
 	ft_pwd_finder(data);
 	ft_paths_parser(data);
+  data->input = readline(READLINE_MSG);
 	return (1);
 }
 

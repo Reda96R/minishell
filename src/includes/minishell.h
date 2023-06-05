@@ -3,8 +3,12 @@
 
 # include <stdlib.h>
 # include <stdio.h>
+# include <readline/readline.h>
+# include <readline/history.h>
 # include <unistd.h>
 # include "mylib.h"
+
+# define READLINE_MSG	"\033[1;36mfuck u\033[34m$ \033[0m"
 
 typedef struct s_data
 {
@@ -12,6 +16,7 @@ typedef struct s_data
   char  **paths;
   char  *pwd;
   char  *old_pwd;
+  char  *input;
 
 } t_data;
 

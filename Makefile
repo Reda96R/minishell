@@ -14,6 +14,8 @@ FILES_E =
 MYLIB = src/mylib/mylib.a
 MYPRINT = src/mylib/ft_printf/ft_printf.a
 CFLAGS = -Wall -Wextra -Werror #-g -fsanitize=address 
+RDLIB = /Users/rerayyad/goinfre/homebrew/Cellar/readline/8.2.1/lib
+RDINCLUDE = /Users/rerayyad/goinfre/homebrew/Cellar/readline/8.2.1/include/
 
 all: os $(NAME)
 
@@ -21,7 +23,7 @@ $(NAME): $(OBJS)
 	@echo $(CURSIVE)$(GRAY)":::Making object files:::" $(NONE)
 	@echo $(GREEN)":::Done:::\n"$(NONE)
 	@echo $(CURSIVE)$(GRAY)":::Compiling $(NAME):::" $(NONE)
-	@cc $(CFLAGS) $(OBJS) $(MYLIB) $(MYPRINT) -o $(NAME)
+	@cc -lreadline $(CFLAGS) $(OBJS) $(MYLIB) $(MYPRINT) -o $(NAME)
 	@echo $(GREEN)":::✅ $(NAME) is ready ✅:::"$(NONE)
 
 $(OBJ_DIR)%.o: $(SRC_DIR)%.c
@@ -32,7 +34,7 @@ $(OBJ_DIR)%.o: $(SRC_DIR)%.c
 $(OBJ_DIR)%.o: $(PAR_DIR)%.c
 	@mkdir -p $(OBJ_DIR)
 	@make -s -C src/mylib/
-	@cc $(CFLAGS) -c $< -o $@
+	@cc -lreadline $(CFLAGS) $(RDLIB) $(RDINCLUDE) -c $< -o $@
 
 $(OBJ_DIR)%.o: $(EXEC_DIR)%.c
 	@mkdir -p $(OBJ_DIR)
