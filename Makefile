@@ -11,8 +11,8 @@ OBJS = $(addprefix $(OBJ_DIR), $(addsuffix .o, $(FILES)))\
 FILES = minishell ft_janitor
 FILES_P = ft_env_var
 FILES_E = 
-MYLIB = mylib/mylib.a
-MYPRINT = mylib/ft_printf/ft_printf.a
+MYLIB = src/mylib/mylib.a
+MYPRINT = src/mylib/ft_printf/ft_printf.a
 CFLAGS = -Wall -Wextra -Werror #-g -fsanitize=address 
 
 all: os $(NAME)
@@ -26,29 +26,29 @@ $(NAME): $(OBJS)
 
 $(OBJ_DIR)%.o: $(SRC_DIR)%.c
 	@mkdir -p $(OBJ_DIR)
-	@make -s -C mylib/
+	@make -s -C src/mylib/
 	@cc $(CFLAGS) -c $< -o $@
 
 $(OBJ_DIR)%.o: $(PAR_DIR)%.c
 	@mkdir -p $(OBJ_DIR)
-	@make -s -C mylib/
+	@make -s -C src/mylib/
 	@cc $(CFLAGS) -c $< -o $@
 
 $(OBJ_DIR)%.o: $(EXEC_DIR)%.c
 	@mkdir -p $(OBJ_DIR)
-	@make -s -C mylib/
+	@make -s -C src/mylib/
 	@cc $(CFLAGS) -c $< -o $@
 
 clean:
 	@echo $(CURSIVE)$(GRAY) ":::Deleting object files:::" $(NONE)
 	@rm -rf $(OBJ_DIR)	
-	@make -s clean -C mylib/
+	@make -s clean -C src/mylib/
 	@echo $(RED)":::Deleted:::"$(NONE)
 
 fclean: clean
 	@echo $(CURSIVE)$(GRAY) ":::Deleting executables:::" $(NONE)
 	@rm -f $(NAME) 
-	@make -s fclean -C mylib/
+	@make -s fclean -C src/mylib/
 	@echo $(RED)":::All deleted:::"$(NONE)
 
 re: fclean all
