@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_env_var.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rerayyad <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/06/06 15:58:19 by rerayyad          #+#    #+#             */
+/*   Updated: 2023/06/06 15:58:21 by rerayyad         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/minishell.h"
 
 char	*ft_path_finder(char **vars)
@@ -89,6 +101,6 @@ int	ft_env_setter(t_data *data, char **env)
 	ft_pwd_finder(data);
 	ft_paths_parser(data);
   data->input = readline(READLINE_MSG);
-	return (1);
+  return (1);
 }
 

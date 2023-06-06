@@ -8,7 +8,7 @@
 # include <unistd.h>
 # include "mylib.h"
 
-# define READLINE_MSG	"\033[1;36mfuck u\033[34m$ \033[0m"
+# define READLINE_MSG	"\033[1;36mminshell\033[34m$ \033[0m"
 
 typedef struct s_data
 {
@@ -20,6 +20,7 @@ typedef struct s_data
 
 } t_data;
 
+/* -------------------Parsing-----------------------*/
 /*::: env_vars :::*/
 int   ft_env_setter(t_data *data, char **env);
 void  ft_pwd_finder(t_data *data);
@@ -28,5 +29,12 @@ char	*ft_path_finder(char **vars);
 
 /*::: janitor :::*/
 void  ft_errors_buster(int id);
+
+
+
+
+
+
+/* -------------------Execution-----------------------*/
 
 #endif

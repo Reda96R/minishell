@@ -14,16 +14,22 @@ FILES_E =
 MYLIB = src/mylib/mylib.a
 MYPRINT = src/mylib/ft_printf/ft_printf.a
 CFLAGS = -Wall -Wextra -Werror #-g -fsanitize=address 
-RDLIB = /Users/rerayyad/goinfre/homebrew/Cellar/readline/8.2.1/lib
-RDINCLUDE = /Users/rerayyad/goinfre/homebrew/Cellar/readline/8.2.1/include/
 
 all: os $(NAME)
+
+ifeq ($(OS), Darwin)
+RDLIB = -L/Users/rerayyad/goinfre/homebrew/Cellar/readline/8.2.1/lib
+RDINCLUDE = -I/Users/rerayyad/goinfre/homebrew/Cellar/readline/8.2.1/include
+LIBS = -lreadline
+else
+LIBS = -lreadline -lncurses
+endif
 
 $(NAME): $(OBJS)
 	@echo $(CURSIVE)$(GRAY)":::Making object files:::" $(NONE)
 	@echo $(GREEN)":::Done:::\n"$(NONE)
 	@echo $(CURSIVE)$(GRAY)":::Compiling $(NAME):::" $(NONE)
-	@cc -lreadline $(CFLAGS) $(OBJS) $(MYLIB) $(MYPRINT) -o $(NAME)
+	@cc $(RDINCLUDE) $(RDLIB) $(LIBS) $(CFLAGS) $(OBJS) $(MYLIB) $(MYPRINT) -o $(NAME) 
 	@echo $(GREEN)":::✅ $(NAME) is ready ✅:::"$(NONE)
 
 $(OBJ_DIR)%.o: $(SRC_DIR)%.c
@@ -34,7 +40,7 @@ $(OBJ_DIR)%.o: $(SRC_DIR)%.c
 $(OBJ_DIR)%.o: $(PAR_DIR)%.c
 	@mkdir -p $(OBJ_DIR)
 	@make -s -C src/mylib/
-	@cc -lreadline $(CFLAGS) $(RDLIB) $(RDINCLUDE) -c $< -o $@
+	@cc $(CFLAGS) -c $< -o $@
 
 $(OBJ_DIR)%.o: $(EXEC_DIR)%.c
 	@mkdir -p $(OBJ_DIR)
@@ -45,7 +51,7 @@ clean:
 	@echo $(CURSIVE)$(GRAY) ":::Deleting object files:::" $(NONE)
 	@rm -rf $(OBJ_DIR)	
 	@make -s clean -C src/mylib/
-	@echo $(RED)":::Deleted:::"$(NONE)
+	@echo $(R ED)":::Deleted:::"$(NONE)
 
 fclean: clean
 	@echo $(CURSIVE)$(GRAY) ":::Deleting executables:::" $(NONE)
