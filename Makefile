@@ -9,7 +9,7 @@ OBJS = $(addprefix $(OBJ_DIR), $(addsuffix .o, $(FILES)))\
 			 $(addprefix $(OBJ_DIR), $(addsuffix .o, $(FILES_E)))
 
 FILES = minishell ft_janitor
-FILES_P = ft_env_var
+FILES_P = ft_env_var ft_minishell_starter
 FILES_E = 
 MYLIB = src/mylib/mylib.a
 MYPRINT = src/mylib/ft_printf/ft_printf.a
@@ -69,7 +69,6 @@ GRAY='\033[2;37m'
 RED = '\033[1;31m'
 YELLOW = '\033[1;33m'
 CURSIVE='\033[3m'
-
 
 os : 
 	@echo $(YELLOW) "            _____         _____         ______        ____________" $(NONE)

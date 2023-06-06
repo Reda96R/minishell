@@ -1,27 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minishell.c                                        :+:      :+:    :+:   */
+/*   ft_minishell_starter.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rerayyad <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/06 15:58:02 by rerayyad          #+#    #+#             */
-/*   Updated: 2023/06/06 15:58:05 by rerayyad         ###   ########.fr       */
+/*   Created: 2023/06/06 17:09:50 by rerayyad          #+#    #+#             */
+/*   Updated: 2023/06/06 17:09:52 by rerayyad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/minishell.h"
+#include "../includes/minishell.h"
 
-int main(int ac, char *av[], char *env[])
+void  ft_shell_starter(t_data *data)
 {
-  t_data  data;
+  char  *str;
 
-  // (void)ac;
-  // (void)av;
-  if (ac > 1 || av[1])
-    ft_errors_buster(1);
-  if (!ft_env_setter(&data, env))
-    return (0);
-  ft_shell_starter(&data);
-  return (0);
+  data->input = readline(READLINE_MSG);
+  str = ft_strtrim(data->input, " ");
+  free(data->input);
+  data->input = str;
+  add_history(data->input);
 }

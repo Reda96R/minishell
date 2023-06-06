@@ -1,27 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minishell.c                                        :+:      :+:    :+:   */
+/*   macros.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rerayyad <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/06 15:58:02 by rerayyad          #+#    #+#             */
-/*   Updated: 2023/06/06 15:58:05 by rerayyad         ###   ########.fr       */
+/*   Created: 2023/06/06 16:34:40 by rerayyad          #+#    #+#             */
+/*   Updated: 2023/06/06 16:34:42 by rerayyad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/minishell.h"
+#ifndef MACROS_H
+# define MACROS_H
 
-int main(int ac, char *av[], char *env[])
-{
-  t_data  data;
+# define READLINE_MSG "\033[32mminishell\033[0m$ "
 
-  // (void)ac;
-  // (void)av;
-  if (ac > 1 || av[1])
-    ft_errors_buster(1);
-  if (!ft_env_setter(&data, env))
-    return (0);
-  ft_shell_starter(&data);
-  return (0);
-}
+
+#endif
