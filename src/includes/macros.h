@@ -13,7 +13,8 @@
 #ifndef MACROS_H
 # define MACROS_H
 
-# define READLINE_MSG "\033[32mminishell\033[0m$ "
+# define READLINE_MSG_G "\033[32mminishell\033[0m$ "
+# define READLINE_MSG_R "\033[0;31mminishell\033[0m$ "
 
 
 #endif

@@ -14,11 +14,51 @@
 
 void  ft_shell_starter(t_data *data)
 {
-  char  *str;
+  // char  *str;
 
-  data->input = readline(READLINE_MSG);
-  str = ft_strtrim(data->input, " ");
+  while (1)
+  {
+    if (data->color)
+      data->input = ft_strtrim(readline(READLINE_MSG_G), " ");
+    else
+      data->input = ft_strtrim(readline(READLINE_MSG_R), " ");
+    if (!data->input)
+      break;
+    add_history(data->input);
+    if (ft_quotes_counter(data->input))
+    {
+      printf("success\n");
+    }
+    else
+    {
+      printf("call an ambulance\n");
+      exit (0);
+    }
+  }
   free(data->input);
-  data->input = str;
-  add_history(data->input);
 }
+//
+//     if (tools->args[0] == '\0')
+//     {
+//       free(tools->args);
+//       return (ft_reset(tools));
+//     }
+//       if (ft_quotes_counter(tools->args))
+//       {
+//         if (ft_token_reader(tools))
+//           {
+//             ft_parser(tools);
+//             ft_exec_prep(tools);
+//             ft_reset(tools);
+//           }
+//         else
+//           ft_error_busters(3, tools);
+//       }
+//       else 
+//         ft_error_busters(4, tools);
+//       free(tools->args);
+//     }
+//     return (ft_reset(tools));
+// }
+//
+

@@ -22,6 +22,7 @@ int main(int ac, char *av[], char *env[])
     ft_errors_buster(1);
   if (!ft_env_setter(&data, env))
     return (0);
+  data.color = 1;
   ft_shell_starter(&data);
   return (0);
 }

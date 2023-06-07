@@ -9,8 +9,6 @@
 # include "mylib.h"
 # include "macros.h"
 
-// # define READLINE_MSG	"\033[1;36mminshell\033[34m$ \033[0m"
-
 typedef struct s_data
 {
   char  **vars;
@@ -18,9 +16,9 @@ typedef struct s_data
   char  *pwd;
   char  *old_pwd;
   char  *input;
+  int   color;
 
 } t_data;
-
 
 /*::: janitor :::*/
 void  ft_errors_buster(int id);
@@ -35,6 +33,8 @@ char	*ft_path_finder(char **vars);
 
 /*::: shell_starter :::*/
 void   ft_shell_starter(t_data *data);
+int   ft_quotes_counter(char *input);
+int   ft_quotes_matcher(char *input, int i, int quote);
 
 
 
