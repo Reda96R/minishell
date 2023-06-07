@@ -23,17 +23,22 @@ void  ft_shell_starter(t_data *data)
     else
       data->input = ft_strtrim(readline(READLINE_MSG_R), " ");
     if (!data->input)
-      break;
+    {
+      printf("exit\n");
+      exit(0);
+    }
     add_history(data->input);
     if (ft_quotes_counter(data->input))
     {
-      printf("success\n");
+        // if (ft_token_reader(data))
+        // {
+        // }
+        // else
+          // ft_error_busters(3);
+        data->color = 1;
     }
     else
-    {
-      printf("call an ambulance\n");
-      exit (0);
-    }
+      ft_errors_buster(2, data);
   }
   free(data->input);
 }

@@ -21,7 +21,7 @@ typedef struct s_data
 } t_data;
 
 /*::: janitor :::*/
-void  ft_errors_buster(int id);
+void  ft_errors_buster(int id, t_data *data);
 
 
 /* -------------------Parsing-----------------------*/

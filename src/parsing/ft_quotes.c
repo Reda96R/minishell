@@ -10,25 +10,19 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-int ft_quotes_matcher(char *input, int i, int quote)
+int ft_quotes_matcher(char *input, int i, int quote, int *quote_count)
 {
   int j;
-  int quote_count;
 
-  // (void)i;
-  j = ++i;
-  quote_count = 1;
-  while (input[j] /*&& input[j] != quote*/)
-  {
-    if (input[j] == quote)
-      quote_count++;
+  j = i + 1;
+  *quote_count += 1;
+  while (input[j] && input[j] != quote)
     j++;
-  }
   if (input[j] == quote)
-    quote_count++;
-  return (quote_count);
+    *quote_count += 1;
+  return (j - i);
 }
-
+#include <stdio.h>
 int ft_quotes_counter(char *input)
 {
   int single_quotes;
@@ -41,11 +35,11 @@ int ft_quotes_counter(char *input)
   while (input[i])
   {
     if (input[i] == '\'')
-      single_quotes += ft_quotes_matcher(input, i, '\'');
-    else if (input[i] == '\"')
-      double_quotes += ft_quotes_matcher(input, i, '\"');
+      i += ft_quotes_matcher(input, i, '\'', &single_quotes);
+    if (input[i] == '\"')
+      i += ft_quotes_matcher(input, i, '\"', &double_quotes);
     i++;
   }
-  return (single_quotes % 2 == 0) && (double_quotes % 2 == 0);
+  return ((single_quotes % 2 == 0) && (double_quotes % 2 == 0));
 }
 
