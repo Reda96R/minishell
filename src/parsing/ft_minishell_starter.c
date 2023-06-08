@@ -11,11 +11,11 @@
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
+# include <readline/readline.h>
+# include <readline/history.h>
 
 void  ft_shell_starter(t_data *data)
 {
-  // char  *str;
-
   while (1)
   {
     if (data->color)
@@ -27,20 +27,23 @@ void  ft_shell_starter(t_data *data)
       printf("exit\n");
       exit(0);
     }
-    add_history(data->input);
+    if (data->input[0])
+      add_history(data->input);
     if (ft_quotes_counter(data->input))
     {
-        // if (ft_token_reader(data))
-        // {
-        // }
-        // else
-          // ft_error_busters(3);
-        data->color = 1;
+      data->color = 1;
+      if (ft_token_scanner(data))
+        {
+          data->color = 1;
+          // ft_parser(data);
+        }
+      // else
+        // ft_errors_buster(4, data);
     }
     else
       ft_errors_buster(2, data);
+    free(data->input);
   }
-  free(data->input);
 }
 //
 //     if (tools->args[0] == '\0')

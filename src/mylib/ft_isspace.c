@@ -1,24 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_janitor.c                                       :+:      :+:    :+:   */
+/*   ft_isspace.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rerayyad <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/06 15:58:10 by rerayyad          #+#    #+#             */
-/*   Updated: 2023/06/06 15:58:11 by rerayyad         ###   ########.fr       */
+/*   Created: 2023/06/08 13:57:19 by rerayyad          #+#    #+#             */
+/*   Updated: 2023/06/08 13:57:31 by rerayyad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/minishell.h"
+#include "../includes/mylib.h"
 
-void  ft_errors_buster(int id, t_data *data)
+int ft_isspace(int c)
 {
-  if (id == 1)
-    printf("ERROR: run without argument\n");
-  else if (id == 2)
-      printf("ERROR: unmatched quotes\n");
-  else if (id == 3)
-    printf("<?>: syntax error near unexpected token\n");
-  data->color *= 0;
+  if (c == 32 || (c >= 9 && c <= 13))
+    return (1);
+  return (0);
 }

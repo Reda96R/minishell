@@ -9,7 +9,8 @@ OBJS = $(addprefix $(OBJ_DIR), $(addsuffix .o, $(FILES)))\
 			 $(addprefix $(OBJ_DIR), $(addsuffix .o, $(FILES_E)))
 
 FILES = minishell ft_janitor
-FILES_P = ft_env_var ft_minishell_starter ft_quotes
+FILES_P = ft_env_var ft_minishell_starter ft_quotes ft_tokens_scanner \
+					ft_lxr_utils
 FILES_E = 
 MYLIB = src/mylib/mylib.a
 MYPRINT = src/mylib/ft_printf/ft_printf.a

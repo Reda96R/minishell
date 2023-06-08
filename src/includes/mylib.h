@@ -50,5 +50,5 @@ char	*ft_substr(char const *s, unsigned int start, size_t len);
 int		ft_toupper(int c);
 int		ft_tolower(int c);
 char	*ft_itoa(int n);
-
+int   ft_isspace(int c);
 #endif
