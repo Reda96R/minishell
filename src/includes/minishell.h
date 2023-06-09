@@ -44,8 +44,8 @@ int     ft_quotes_matcher(char *input, int i, int quote);
 
 /*::: tokens :::*/
 int     ft_token_scanner(t_data *data);
-int     ft_token_parser(char *str, t_mylxr mylexer, int *node_id, int id);
-int     ft_token_detector(t_data *data, int i);
+int     ft_token_parser(char *str, t_mylxr *mylexer, int *node_id, int id);
+int     ft_token_identifier(t_data *data, int i);
 void    ft_add_node(t_mylxr *mylxr, t_mylxr new);
 int     ft_new_node(t_mylxr *new, int id, char *str);
 
