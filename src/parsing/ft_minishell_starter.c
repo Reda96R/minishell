@@ -38,7 +38,7 @@ void  ft_shell_starter(t_data *data)
           // ft_parser(data);
         }
       // else
-        // ft_errors_buster(4, data);
+        // ft_errors_buster(3, data);
     }
     else
       ft_errors_buster(2, data);

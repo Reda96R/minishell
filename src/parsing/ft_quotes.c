@@ -10,6 +10,21 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+int ft_quote_skiper(char *str, int quote, int i)
+{
+  int j;
+
+  j = 0;
+  if (str[i + j] == quote)
+  {
+    j++;
+    while (str[i + j] && str[i + j] != quote)
+      j++;
+    j++;
+  }
+  return (j);
+}
+
 int ft_quotes_matcher(char *input, int i, int quote, int *quote_count)
 {
   int j;
@@ -22,7 +37,7 @@ int ft_quotes_matcher(char *input, int i, int quote, int *quote_count)
     *quote_count += 1;
   return (j - i);
 }
-#include <stdio.h>
+
 int ft_quotes_counter(char *input)
 {
   int single_quotes;

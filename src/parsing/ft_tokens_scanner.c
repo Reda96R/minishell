@@ -7,7 +7,10 @@ int ft_token_identifier(t_data *data, int i)
       if (!ft_token_identifier(data, i + 1))
         return (PIPE);
       else
-        ft_errors_buster(3, data);
+      {
+        // ft_errors_buster(3, data);
+        return (-1);
+      }
     }
   else if (data->input[i] == '>')
   {
@@ -30,37 +33,41 @@ int ft_token_identifier(t_data *data, int i)
   return (0);
 }
 
-int ft_token_parser(char *str, t_mylxr *mylexer, int *node_id, int id)
+int ft_token_parser(t_data *data, int *node_id, int id)
 {
   t_mylxr *new;
 
-  (void)str;
   new = NULL;
-  // ft_new_node(mylexer, new, id, NULL);
-  if (!ft_new_node(new, id, NULL) || !new)
+  if (!ft_new_node(&new, id, NULL) || !new)
     return (-1);
-  new->id = *node_id++;
-  ft_add_node(mylexer, *new);
+  new->node_id = (*node_id)++;
+  ft_add_node(&data->mylexer, new);
   if (id == 3 || id == 5)
     return (2);
   return (1);
 }
 
-// int ft_words_parser(char *str, t_mylxr mylexer, int *node_id, int i)
-// {
-//   t_mylxr *new;
-//   int     j;
-//
-//   j = 0;
-//   new = NULL;
-//   if (!ft_new_node(new, 0, NULL) || !new)
-//     return (-1);
-//   while (str[i + j] && !ft_token_identifier())
-//
-//
-//   i = 0;
-//   while ()
-// }
+int ft_words_parser(t_data *data, int *node_id, int i)
+{
+  t_mylxr *new;
+  int     j;
+
+  new = NULL;
+  j = 0;
+  while (data->input[i + j] && !ft_token_identifier(data, i + j))
+  {
+    j += ft_quote_skiper(data->input, '\"', i + j);   
+    j += ft_quote_skiper(data->input, '\'', i + j);
+    if (ft_isspace(data->input[i + j]))
+      break ;
+    j++;
+  }
+  if (!ft_new_node(&new, 0, ft_substr(data->input, i, j)) || !new)
+    return (-1);
+  new->node_id = (*node_id)++;
+  ft_add_node(&data->mylexer, new);
+  return (j);
+}
 
 int ft_token_scanner(t_data *data)
 {
@@ -77,12 +84,15 @@ int ft_token_scanner(t_data *data)
     while (data->input[i] && ft_isspace(data->input[i]))
       i++;
     id = ft_token_identifier(data, i);
-    if (id)
-      j += ft_token_parser(data->input, &data->mylexer, &node_id, id);
-    // else
-      // j += ft_words_parser(data->input, data->mylexer, &node_id, i);
-    else
+    if (id < 0)
+    {
+      ft_errors_buster(3, data);
       return (0);
+    }
+    if (id)
+      j = ft_token_parser(data, &node_id, id);
+    else
+      j = ft_words_parser(data, &node_id, i);
     if (j < 0)
       return (0);
     i += j;

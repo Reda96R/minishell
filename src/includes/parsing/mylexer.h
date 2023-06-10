@@ -15,7 +15,8 @@
 
 typedef struct s_mylxr
 {
-  int               id;
+  int               token_id;
+  int               node_id;
   char              *str;
   struct s_mylxr  *next;  
   struct s_mylxr  *prev;  
