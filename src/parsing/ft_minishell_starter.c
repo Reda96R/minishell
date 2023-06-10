@@ -14,31 +14,31 @@
 # include <readline/readline.h>
 # include <readline/history.h>
 
+void  ft_prompt(t_data *data)
+{
+  if (!data->color)
+    data->input = ft_strtrim(readline(READLINE_MSG_R), " ");
+  data->input = ft_strtrim(readline(READLINE_MSG_G), " ");
+  if (!data->input)
+    exit(0);
+  if (data->input[0])
+    add_history(data->input);
+}
+
 void  ft_shell_starter(t_data *data)
 {
   while (1)
   {
-    if (data->color)
-      data->input = ft_strtrim(readline(READLINE_MSG_G), " ");
-    else
-      data->input = ft_strtrim(readline(READLINE_MSG_R), " ");
-    if (!data->input)
-    {
-      printf("exit\n");
-      exit(0);
-    }
-    if (data->input[0])
-      add_history(data->input);
+    ft_prompt(data);
     if (ft_quotes_counter(data->input))
     {
       data->color = 1;
-      if (ft_token_scanner(data))
+      if (ft_token_scanner(data) > 1)
         {
           data->color = 1;
-          // ft_parser(data);
         }
-      // else
-        // ft_errors_buster(3, data);
+      else if (ft_token_scanner(data) == -1)
+         ft_errors_buster(3, data);
     }
     else
       ft_errors_buster(2, data);

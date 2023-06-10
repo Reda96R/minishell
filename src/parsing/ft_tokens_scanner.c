@@ -6,11 +6,7 @@ int ft_token_identifier(t_data *data, int i)
     {
       if (!ft_token_identifier(data, i + 1))
         return (PIPE);
-      else
-      {
-        // ft_errors_buster(3, data);
-        return (-1);
-      }
+      return (-1);
     }
   else if (data->input[i] == '>')
   {
@@ -18,8 +14,7 @@ int ft_token_identifier(t_data *data, int i)
       return (D_GREATER);
     else if (!ft_token_identifier(data, i + 1))
       return (GREATER);
-    else
-      ft_errors_buster(3, data);
+    return (-1);
   }
   else if (data->input[i] == '<')
   {
@@ -27,8 +22,7 @@ int ft_token_identifier(t_data *data, int i)
       return (D_LESS);
     else if (! ft_token_identifier(data , i + 1))
       return (LESS);
-    else
-      ft_errors_buster(3, data);
+    return (-1);
   }
   return (0);
 }
@@ -85,10 +79,7 @@ int ft_token_scanner(t_data *data)
       i++;
     id = ft_token_identifier(data, i);
     if (id < 0)
-    {
-      ft_errors_buster(3, data);
-      return (0);
-    }
+      return (-1);
     if (id)
       j = ft_token_parser(data, &node_id, id);
     else

@@ -80,9 +80,7 @@ int	ft_env_setter(t_data *data, char **env)
 	i = 0;
 	while (env[i])
 		i++;
-
-	data->vars = (char **)malloc(sizeof(char *) * (i + 1));
-	if (!data->vars)
+	if (!(data->vars = (char **)malloc(sizeof(char *) * (i + 1))))
 		return (0);
 	j = 0;
 	while (j < i)
@@ -100,7 +98,6 @@ int	ft_env_setter(t_data *data, char **env)
 	data->vars[i] = NULL;
 	ft_pwd_finder(data);
 	ft_paths_parser(data);
-  // data->input = readline(READLINE_MSG);
   return (1);
 }
 

@@ -19,6 +19,6 @@ void  ft_errors_buster(int id, t_data *data)
   else if (id == 2)
       printf("ERROR: unmatched quotes\n");
   else if (id == 3)
-    printf("<?>: syntax error near unexpected token\n");
+    printf("syntax error near unexpected token\n");
   data->color *= 0;
 }
