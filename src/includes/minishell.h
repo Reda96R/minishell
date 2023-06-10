@@ -9,6 +9,7 @@
 # include "mylib.h"
 # include "parsing/macros.h"
 # include "parsing/mylexer.h"
+# include "parsing/parser.h"
 
 
 typedef struct s_data
@@ -18,9 +19,10 @@ typedef struct s_data
   char    *pwd;
   char    *old_pwd;
   char    *input;
-  t_mylxr mylexer;
   int     color;
-
+  int     pipes;
+  t_mylxr mylexer;
+  t_cmds  cmds;
 } t_data;
 
 

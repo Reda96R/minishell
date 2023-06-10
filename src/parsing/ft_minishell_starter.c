@@ -18,7 +18,8 @@ void  ft_prompt(t_data *data)
 {
   if (!data->color)
     data->input = ft_strtrim(readline(READLINE_MSG_R), " ");
-  data->input = ft_strtrim(readline(READLINE_MSG_G), " ");
+  else
+    data->input = ft_strtrim(readline(READLINE_MSG_G), " ");
   if (!data->input)
     exit(0);
   if (data->input[0])
@@ -33,9 +34,10 @@ void  ft_shell_starter(t_data *data)
     if (ft_quotes_counter(data->input))
     {
       data->color = 1;
-      if (ft_token_scanner(data) > 1)
+      if (ft_token_scanner(data) > 0)
         {
           data->color = 1;
+          // ft_parser(data);
         }
       else if (ft_token_scanner(data) == -1)
          ft_errors_buster(3, data);

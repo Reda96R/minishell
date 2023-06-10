@@ -5,13 +5,16 @@ int ft_token_identifier(t_data *data, int i)
   if (data->input[i] == '|')
     {
       if (!ft_token_identifier(data, i + 1))
+      {
+        data->pipes++;
         return (PIPE);
+      }
       return (-1);
     }
   else if (data->input[i] == '>')
   {
     if (data->input[i + 1] == '>' && !ft_token_identifier(data, i + 2))
-      return (D_GREATER);
+  return (D_GREATER);
     else if (!ft_token_identifier(data, i + 1))
       return (GREATER);
     return (-1);
@@ -50,7 +53,7 @@ int ft_words_parser(t_data *data, int *node_id, int i)
   j = 0;
   while (data->input[i + j] && !ft_token_identifier(data, i + j))
   {
-    j += ft_quote_skiper(data->input, '\"', i + j);   
+    j += ft_quote_skiper(data->input, '\"', i + j);
     j += ft_quote_skiper(data->input, '\'', i + j);
     if (ft_isspace(data->input[i + j]))
       break ;
@@ -73,12 +76,13 @@ int ft_token_scanner(t_data *data)
   i = 0;
   j = 0;
   node_id = 0;
+  data->pipes = 0;
   while (data->input[i])
   {
     while (data->input[i] && ft_isspace(data->input[i]))
       i++;
     id = ft_token_identifier(data, i);
-    if (id < 0)
+    if (id < 0 || (id && !node_id))
       return (-1);
     if (id)
       j = ft_token_parser(data, &node_id, id);
