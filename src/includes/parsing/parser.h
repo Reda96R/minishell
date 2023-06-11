@@ -17,6 +17,7 @@
 
 typedef struct s_parser
 {
+  int     redirections_count;
   t_mylxr *mylexer;
   t_mylxr *redirections;
   t_data data;
@@ -25,6 +26,10 @@ typedef struct s_parser
 typedef struct s_cmds
 {
   char          *str;
+  char          *herdoc;
+  t_mylxr       *redirections;
+  int           redirections_count;
+  // builtins
   struct s_cmds *next;
   struct s_cmds *prev;
 } t_cmd;

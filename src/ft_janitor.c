@@ -21,4 +21,19 @@ void  ft_errors_buster(int id, t_data *data)
   else if (id == 3)
     printf("syntax error near unexpected token\n");
   data->color *= 0;
+  else if (id == 4)
+    printf("memory error: unable to allocate memory\n");
+  data->color = 0;
+}
+
+t_mylxr	*ft_node_clear(t_mylxr **node)
+{
+	if ((*node)->str)
+	{
+		free((*node)->str);
+		(*node)->str = NULL;
+	}
+	free(*node);
+	*node = NULL;
+	return (NULL);
 }

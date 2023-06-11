@@ -28,6 +28,7 @@ typedef struct s_data
 
 /*::: janitor :::*/
 void    ft_errors_buster(int id, t_data *data);
+t_mylxr	*ft_node_clear(t_mylxr **node);
 
 
 /* -------------------Parsing-----------------------*/
@@ -52,6 +53,9 @@ int     ft_token_identifier(t_data *data, int i);
 int     ft_words_parser(t_data *data, int *node_id, int i);
 void    ft_add_node(t_mylxr *mylxr, t_mylxr *new);
 int     ft_new_node(t_mylxr **new, int id, char *str);
+
+/*::: parser :::*/
+
 
 
 /* -------------------Execution-----------------------*/

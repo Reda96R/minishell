@@ -27,3 +27,29 @@ void  ft_add_node(t_mylxr *mylxr, t_mylxr *new)
   tmp->next = new;
   new->prev = tmp;
 }
+
+void  ft_rm_node(t_mylxr *mylexer, int token)
+{
+	t_mylxr *node;
+	t_mylxr *prev;
+
+	node = mylexer;
+  prev = NULL;
+  while (node)
+	{
+		if (node->token_id == token)
+		{
+			if (prev)
+				prev->next = node->next;
+			else
+				(*data)->mylxr = node->next;
+			if (node->next)
+				node->next->prev = prev;
+			ft_node_clear(&node);
+			return;
+		}
+		prev = node;
+		node = node->next;
+	}
+}
+
