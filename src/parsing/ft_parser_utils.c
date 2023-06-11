@@ -12,9 +12,9 @@
 
 # include"../includes/minishell.h"
 
-int ft_args_counter(t_mylxr mylexer)
+int ft_args_counter(t_mylxr *mylexer)
 {
-  t_mylxr tmp;
+  t_mylxr *tmp;
   int     i;
 
   i = 0;
@@ -23,15 +23,15 @@ int ft_args_counter(t_mylxr mylexer)
   {
     if (tmp->node_id >= 0)
       i++;
-    tmp = tmp->next;
+   tmp = tmp->next;
   }
   return (i);
 }
 
 
-t_cmds  ft_new_cmd(t_parser *parser, char *str, t_cmds **cmd, t_data *data)
+void  ft_new_cmd(t_parser *parser, char **str, t_cmds **cmd, t_data *data)
 {
-  cmd = (t_cmds *)malloc (sizeof (t_cmds));
+  *cmd = (t_cmds *)malloc (sizeof (t_cmds));
   if (!cmd)
     ft_errors_buster(4, data);
   // (*cmd)->herdoc
@@ -48,7 +48,7 @@ void  ft_add_cmd(t_cmds **cmds, t_cmds *cmd)
   t_cmds *tmp;
   
   tmp = *cmds;
-  if (&cmds)
+  if (!cmds)
   {
     *cmds = cmd;
     return ;

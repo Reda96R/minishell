@@ -20,7 +20,6 @@ void  ft_errors_buster(int id, t_data *data)
       printf("ERROR: unmatched quotes\n");
   else if (id == 3)
     printf("syntax error near unexpected token\n");
-  data->color *= 0;
   else if (id == 4)
     printf("memory error: unable to allocate memory\n");
   data->color = 0;

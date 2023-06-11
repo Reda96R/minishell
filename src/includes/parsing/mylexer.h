@@ -13,11 +13,13 @@
 #ifndef MYLEXER_H
 # define MYLEXER_H
 
+#include "../minishell.h"
+
 typedef struct s_mylxr
 {
-  int               token_id;
-  int               node_id;
-  char              *str;
+  char            *str;
+  int             token_id;
+  int             node_id;
   struct s_mylxr  *next;  
   struct s_mylxr  *prev;  
 } t_mylxr;

@@ -10,11 +10,12 @@ OBJS = $(addprefix $(OBJ_DIR), $(addsuffix .o, $(FILES)))\
 
 FILES = minishell ft_janitor
 FILES_P = ft_env_var ft_minishell_starter ft_quotes ft_tokens_scanner \
-					ft_lxr_utils
+					ft_lxr_utils ft_parser ft_parser_utils ft_redirections \
+
 FILES_E = 
 MYLIB = src/mylib/mylib.a
 MYPRINT = src/mylib/ft_printf/ft_printf.a
-CFLAGS = -Wall -Wextra -Werror #-g -fsanitize=address 
+CFLAGS = -Wall -Wextra -Werror -g -fsanitize=address 
 
 all: os $(NAME)
 

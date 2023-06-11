@@ -12,14 +12,14 @@ int ft_new_node(t_mylxr **new ,int id, char *str)
   return (1);
 }
 
-void  ft_add_node(t_mylxr *mylxr, t_mylxr *new)
+void  ft_add_node(t_mylxr **mylxr, t_mylxr *new)
 {
   t_mylxr *tmp;
 
-  tmp = mylxr;
-  if (!mylxr)
+  tmp = *mylxr;
+  if (!(*mylxr))
   {
-    mylxr = new;
+    *mylxr = new;
     return ;
   }
   while (tmp->next)
@@ -28,12 +28,12 @@ void  ft_add_node(t_mylxr *mylxr, t_mylxr *new)
   new->prev = tmp;
 }
 
-void  ft_rm_node(t_mylxr *mylexer, int token)
+void  ft_rm_node(t_mylxr **mylexer, int token)
 {
 	t_mylxr *node;
 	t_mylxr *prev;
 
-	node = mylexer;
+	node = *mylexer;
   prev = NULL;
   while (node)
 	{
@@ -42,7 +42,7 @@ void  ft_rm_node(t_mylxr *mylexer, int token)
 			if (prev)
 				prev->next = node->next;
 			else
-				(*data)->mylxr = node->next;
+				*mylexer = node->next;
 			if (node->next)
 				node->next->prev = prev;
 			ft_node_clear(&node);

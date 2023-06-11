@@ -37,7 +37,7 @@ void  ft_shell_starter(t_data *data)
       if (ft_token_scanner(data) > 0)
         {
           data->color = 1;
-          // ft_parser(data);
+          ft_parser(data);
         }
       else if (ft_token_scanner(data) == -1)
          ft_errors_buster(3, data);
