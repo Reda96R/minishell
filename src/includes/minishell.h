@@ -38,6 +38,7 @@ typedef struct s_parser
 /*::: janitor :::*/
 void    ft_errors_buster(int id, t_data *data);
 t_mylxr	*ft_node_clear(t_mylxr **node);
+void  ft_cleaner(t_data *data);
 
 
 /* -------------------Parsing-----------------------*/
@@ -46,14 +47,14 @@ void    ft_shell_starter(t_data *data);
 int     ft_token_scanner(t_data *data);
 
 /*::: env_vars :::*/
-int     ft_env_setter(t_data *data, char **env);
+int     ft_env_setter(t_data *data, char **env, int n);
 void    ft_pwd_finder(t_data *data);
 void	  ft_paths_parser(t_data *data);
 char	  *ft_path_finder(char **vars);
 
 /*::: quotes :::*/
 int     ft_quotes_counter(char *input);
-int     ft_quotes_matcher(char *input, int i, int quote);
+int     ft_quotes_matcher(char *input, int i, int quote, int *quote_count);
 int     ft_quote_skiper(char *str, int quote, int i);
 
 /*::: tokens :::*/

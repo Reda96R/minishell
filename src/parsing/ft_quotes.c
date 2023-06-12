@@ -10,6 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+# include "../includes/minishell.h"
+
 int ft_quote_skiper(char *str, int quote, int i)
 {
   int j;
@@ -17,7 +19,6 @@ int ft_quote_skiper(char *str, int quote, int i)
   j = 0;
   if (str[i + j] == quote)
   {
-    j++;
     while (str[i + j] && str[i + j] != quote)
       j++;
     j++;

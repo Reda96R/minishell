@@ -16,14 +16,12 @@ int main(int ac, char *av[], char *env[])
 {
   t_data  data;
 
-  // (void)ac;
-  // (void)av;
   if (ac > 1 || av[1])
   {
     ft_errors_buster(1, &data);
     exit (0);
   }
-  if (!ft_env_setter(&data, env))
+  if (!ft_env_setter(&data, env, 1))
     return (0);
   data.color = 1;
   ft_shell_starter(&data);

@@ -42,6 +42,8 @@ void	ft_paths_parser(t_data *data)
 
 	i = 0;
 	path = ft_path_finder(data->vars);
+  if (!path)
+    ft_errors_buster(4, data);
 	data->paths = ft_split(path, ':');
 	free(path);
 	while (data->paths[i])
@@ -72,31 +74,34 @@ void  ft_pwd_finder(t_data *data)
 	}
 }
 
-int	ft_env_setter(t_data *data, char **env)
+int	ft_env_setter(t_data *data, char **env, int n)
 {
 	int		i;
 	int		j;
 
-	i = 0;
-	while (env[i])
-		i++;
-	if (!(data->vars = (char **)malloc(sizeof(char *) * (i + 1))))
-		return (0);
-	j = 0;
-	while (j < i)
-	{
-		data->vars[j] = ft_strdup(env[j]);
-		if (!data->vars[j])
-		{
-			while (j > 0)
-				free(data->vars[--j]);
-			free(data->vars);
-			return (0);
-		}
-		j++;
-	}
-	data->vars[i] = NULL;
-	ft_pwd_finder(data);
+  if (n)
+  {
+    i = 0;
+	  while (env[i])
+		  i++;
+	  if (!(data->vars = (char **)malloc(sizeof(char *) * (i + 1))))
+		  return (0);
+	  j = 0;
+	  while (j < i)
+	  {
+		  data->vars[j] = ft_strdup(env[j]);
+		  if (!data->vars[j])
+		  {
+			  while (j > 0)
+				  free(data->vars[--j]);
+			  free(data->vars);
+			  return (0);
+		  }
+		  j++;
+	  }
+	  data->vars[i] = NULL;
+    ft_pwd_finder(data);
+    }
 	ft_paths_parser(data);
   return (1);
 }
