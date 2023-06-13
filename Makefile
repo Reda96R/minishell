@@ -30,7 +30,7 @@ endif
 $(NAME): $(OBJS)
 	@echo $(GREEN)":::Done:::\n"$(NONE)
 	@echo $(CURSIVE)$(GRAY)":::Compiling $(NAME):::" $(NONE)
-	@cc $(READLINE) $(RDINCLUDE) $(RDLIB) $(CFLAGS) $(OBJS) $(MYLIB) $(MYPRINT) -o $(NAME)
+	@cc $(CFLAGS) $(OBJS) $(MYLIB) $(MYPRINT) -o $(NAME) $(READLINE)
 	@echo $(GREEN)":::✅ $(NAME) is ready ✅:::"$(NONE)
 
 $(OBJ_DIR)%.o: $(SRC_DIR)%.c
