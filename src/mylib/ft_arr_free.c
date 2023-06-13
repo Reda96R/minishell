@@ -1,27 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parser.h                                           :+:      :+:    :+:   */
+/*   ft_arr_free.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rerayyad <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/10 18:51:22 by rerayyad          #+#    #+#             */
-/*   Updated: 2023/06/10 18:51:24 by rerayyad         ###   ########.fr       */
+/*   Created: 2023/06/13 12:29:26 by rerayyad          #+#    #+#             */
+/*   Updated: 2023/06/13 12:29:28 by rerayyad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PARSER_H
-# define PARSER_H
+# include "../includes/mylib.h"
 
-typedef struct s_cmds
+void  ft_arr_free(char **arr)
 {
-  char          **str;
-  char          *herdoc;
-  t_mylxr       *redirections;
-  int           redirections_count;
-  // builtins
-  struct s_cmds *next;
-  struct s_cmds *prev;
-} t_cmds;
+  int i;
 
-#endif
+  i = 0;
+  while (arr[i])
+    free(arr[i++]);
+  free(arr);
+}

@@ -24,7 +24,6 @@ void  ft_add_redirection(t_parser *parser, t_mylxr *tmp, int *node_id, t_data* d
   ft_rm_node(&parser->mylexer, tmp->token_id);
   ft_rm_node(&parser->mylexer, tmp->next->token_id);
   parser->redirections_count++;
-  printf("test\n");
 }
 
 void  ft_redirections(t_parser *parser, t_data *data)
@@ -42,8 +41,6 @@ void  ft_redirections(t_parser *parser, t_data *data)
     ft_errors_buster(3, data);
     // exit (0);
   }
-  printf("%s\n", tmp->next->str);
-  exit (0);
   if (tmp->token_id >= 2 && tmp->token_id <= 5)
     ft_add_redirection(parser, tmp, &node_id, data);
   ft_redirections(parser, data);

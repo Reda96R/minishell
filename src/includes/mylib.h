@@ -51,4 +51,5 @@ int		ft_toupper(int c);
 int		ft_tolower(int c);
 char	*ft_itoa(int n);
 int   ft_isspace(int c);
+void   ft_arr_free(char **arr);
 #endif

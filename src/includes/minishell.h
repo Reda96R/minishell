@@ -38,13 +38,13 @@ typedef struct s_parser
 /*::: janitor :::*/
 void    ft_errors_buster(int id, t_data *data);
 t_mylxr	*ft_node_clear(t_mylxr **node);
-void  ft_cleaner(t_data *data);
-
-
+void  ft_lxr_cleaner(t_mylxr **mylexer);
+void  ft_cmd_cleaner(t_cmds **cmds);
 /* -------------------Parsing-----------------------*/
 /*::: core functions :::*/
 void    ft_shell_starter(t_data *data);
 int     ft_token_scanner(t_data *data);
+void  ft_shell_reset(t_data *data);
 
 /*::: env_vars :::*/
 int     ft_env_setter(t_data *data, char **env, int n);

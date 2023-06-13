@@ -12,13 +12,13 @@
 
 #include "includes/minishell.h"
 
-void  ft_data_prep(t_data *data)
-{
-  data->mylexer = NULL;
-  data->cmds = NULL;
-  data->mylexer = NULL;
-  ft_env_setter(data, data->vars, 0);
-}
+// void  ft_data_prep(t_data *data)
+// {
+//   data->mylexer = NULL;
+//   data->cmds = NULL;
+//   data->mylexer = NULL;
+//   ft_env_setter(data, data->vars, 0);
+// }
 
 void  ft_errors_buster(int id, t_data *data)
 {
@@ -30,16 +30,47 @@ void  ft_errors_buster(int id, t_data *data)
     printf("syntax error near unexpected token\n");
   else if (id == 4)
     printf("memory error: unable to allocate memory\n");
-  // ft_cleaner(data);
+  // ft_lxr_cleaner(&data->mylexer);
   data->color = 0;
-  // ft_shell_starter(data);
+  // ft_shell_reset(data);
+  ft_shell_starter(data);
 }
 
-void  ft_cleaner(t_data *data)
+void  ft_lxr_cleaner(t_mylxr **mylexer)
 {
-  free(data->input);
-  // ft_free_arr(data->paths);
-  // ft_data_prep(&data)
+  t_mylxr *tmp;
+
+  if (!mylexer)
+    return ;
+  while (*mylexer)
+  {
+    tmp = (*mylexer)->next;
+    if ((*mylexer)->str)
+      free((*mylexer)->str);
+    free(*mylexer);
+    *mylexer = tmp;
+  }
+  *mylexer = NULL;
+}
+
+void  ft_cmd_cleaner(t_cmds **cmds)
+{
+  t_mylxr *redirections;
+  t_cmds  *tmp;
+
+  if (!cmds)
+    return ;
+  while (*cmds)
+  {
+    tmp = (*cmds)->next;
+    redirections = (*cmds)->redirections;
+    ft_lxr_cleaner(&redirections);
+    if ((*cmds)->str)
+      ft_arr_free((*cmds)->str);
+    free(*cmds);
+    *cmds = tmp;
+  }
+  *cmds = NULL;
 }
 
 t_mylxr	*ft_node_clear(t_mylxr **node)
