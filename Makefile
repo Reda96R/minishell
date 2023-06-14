@@ -4,13 +4,20 @@ SRC_DIR = src/
 PAR_DIR = src/parsing/
 EXEC_DIR = src/execution/
 OBJ_DIR = obj/
-OBJS = $(addprefix $(OBJ_DIR), $(addsuffix .o, $(FILES)))\
-			 $(addprefix $(OBJ_DIR), $(addsuffix .o, $(FILES_P)))\
-			 $(addprefix $(OBJ_DIR), $(addsuffix .o, $(FILES_E)))
 
+#=============================PARSING FILES====================================#
 FILES = minishell ft_janitor
 FILES_P = ft_env_var ft_minishell_starter ft_quotes ft_tokens_scanner \
-					ft_lxr_utils ft_parser ft_parser_utils ft_redirections \
+		  ft_lxr_utils ft_parser ft_parser_utils ft_redirections \
+#=============================EXECUTION FILES==================================#
+EXEC_HELPERS = signals
+EXEC_BUILDIN = ft_cd ft_echo ft_env ft_exit ft_export ft_pwd ft_unset
+SRCS_E = 
+#=============================OBJs FILES=======================================#
+OBJS = 	$(addprefix $(OBJ_DIR), $(addsuffix .o, $(FILES)))\
+		$(addprefix $(OBJ_DIR), $(addsuffix .o, $(FILES_P)))\
+		$(addprefix $(OBJ_DIR), $(addsuffix .o, $(SRCS_E)))
+#==============================================================================#
 
 FILES_E = 
 MYLIB = src/mylib/mylib.a
@@ -28,9 +35,9 @@ READLINE = -lreadline -lncurses
 endif
 
 $(NAME): $(OBJS)
-	@echo $(GREEN)":::Done:::\n"$(NONE)
-	@echo $(CURSIVE)$(GRAY)":::Compiling $(NAME):::" $(NONE)
+	@echo $(CURSIVE)$(GRAY)":::ompiling $(NAME):::" $(NONE)
 	@cc $(CFLAGS) $(OBJS) $(MYLIB) $(MYPRINT) -o $(NAME) $(READLINE)
+	@echo $(GREEN)":::Done:::\n"$(NONE)
 	@echo $(GREEN)":::✅ $(NAME) is ready ✅:::"$(NONE)
 
 $(OBJ_DIR)%.o: $(SRC_DIR)%.c
@@ -51,7 +58,7 @@ $(OBJ_DIR)%.o: $(EXEC_DIR)%.c
 
 clean:
 	@echo $(CURSIVE)$(GRAY) ":::Deleting object files:::" $(NONE)
-	@rm -rf $(OBJ_DIR)	
+	@rm -rf $(OBJ_DIR)
 	@make -s clean -C src/mylib/
 	@echo $(RED)":::Deleted:::"$(NONE)
 
