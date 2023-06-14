@@ -22,10 +22,12 @@ FILES_P = ft_env_var ft_minishell_starter ft_quotes ft_tokens_scanner \
 #=============================EXECUTION FILES==================================#
 EXEC_HELPERS = signals
 EXEC_BUILDIN = ft_cd ft_echo ft_env ft_exit ft_export ft_pwd ft_unset
+FILES_E= $(addprefix $(EXEC_DIR), $(EXEC_HELPERS))\
+		 $(addprefix $(EXEC_DIR),$(EXEC_BUILDIN))
 #=============================OBJs FILES=======================================#
 OBJS = 	$(addprefix $(OBJ_DIR), $(addsuffix .o, $(FILES)))\
 		$(addprefix $(OBJ_DIR), $(addsuffix .o, $(FILES_P)))\
-		$(addprefix $(OBJ_DIR), $(addsuffix .o, $(SRCS_E)))
+		$(addprefix $(OBJ_DIR), $(addsuffix .o, $(FILES_E)))
 #=============================RULES============================================#
 all: os $(NAME)
 
