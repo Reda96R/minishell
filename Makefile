@@ -1,31 +1,13 @@
+#=============================VARIABLES========================================#
 OS = $(shell uname -s)
 NAME = minishell
+CFLAGS = -Wall -Wextra -Werror -g -fsanitize=address 
 SRC_DIR = src/
 PAR_DIR = src/parsing/
 EXEC_DIR = src/execution/
 OBJ_DIR = obj/
-
-#=============================PARSING FILES====================================#
-FILES = minishell ft_janitor
-FILES_P = ft_env_var ft_minishell_starter ft_quotes ft_tokens_scanner \
-		  ft_lxr_utils ft_parser ft_parser_utils ft_redirections \
-#=============================EXECUTION FILES==================================#
-EXEC_HELPERS = signals
-EXEC_BUILDIN = ft_cd ft_echo ft_env ft_exit ft_export ft_pwd ft_unset
-SRCS_E = 
-#=============================OBJs FILES=======================================#
-OBJS = 	$(addprefix $(OBJ_DIR), $(addsuffix .o, $(FILES)))\
-		$(addprefix $(OBJ_DIR), $(addsuffix .o, $(FILES_P)))\
-		$(addprefix $(OBJ_DIR), $(addsuffix .o, $(SRCS_E)))
-#==============================================================================#
-
-FILES_E = 
 MYLIB = src/mylib/mylib.a
 MYPRINT = src/mylib/ft_printf/ft_printf.a
-CFLAGS = -Wall -Wextra -Werror -g -fsanitize=address 
-
-all: os $(NAME)
-
 ifeq ($(OS), Darwin)
 RDLIB = -L/Users/rerayyad/goinfre/homebrew/Cellar/readline/8.2.1/lib
 RDINCLUDE = -I/Users/rerayyad/goinfre/homebrew/Cellar/readline/8.2.1/include
@@ -33,28 +15,25 @@ READLINE = -lreadline
 else
 READLINE = -lreadline -lncurses
 endif
+#=============================PARSING FILES====================================#
+FILES = minishell ft_janitor
+FILES_P = ft_env_var ft_minishell_starter ft_quotes ft_tokens_scanner \
+		  ft_lxr_utils ft_parser ft_parser_utils ft_redirections \
+#=============================EXECUTION FILES==================================#
+EXEC_HELPERS = signals
+EXEC_BUILDIN = ft_cd ft_echo ft_env ft_exit ft_export ft_pwd ft_unset
+#=============================OBJs FILES=======================================#
+OBJS = 	$(addprefix $(OBJ_DIR), $(addsuffix .o, $(FILES)))\
+		$(addprefix $(OBJ_DIR), $(addsuffix .o, $(FILES_P)))\
+		$(addprefix $(OBJ_DIR), $(addsuffix .o, $(SRCS_E)))
+#=============================RULES============================================#
+all: os $(NAME)
 
 $(NAME): $(OBJS)
 	@echo $(CURSIVE)$(GRAY)":::ompiling $(NAME):::" $(NONE)
 	@cc $(CFLAGS) $(OBJS) $(MYLIB) $(MYPRINT) -o $(NAME) $(READLINE)
 	@echo $(GREEN)":::Done:::\n"$(NONE)
 	@echo $(GREEN)":::✅ $(NAME) is ready ✅:::"$(NONE)
-
-$(OBJ_DIR)%.o: $(SRC_DIR)%.c
-	@echo $(CURSIVE)$(GRAY)":::Making object files:::" $(NONE)
-	@mkdir -p $(OBJ_DIR)
-	@make -s -C src/mylib/
-	@cc $(CFLAGS) -c $< -o $@
-
-$(OBJ_DIR)%.o: $(PAR_DIR)%.c
-	@mkdir -p $(OBJ_DIR)
-	@make -s -C src/mylib/
-	@cc $(CFLAGS) -c $< -o $@
-
-$(OBJ_DIR)%.o: $(EXEC_DIR)%.c
-	@mkdir -p $(OBJ_DIR)
-	@make -s -C src/mylib/
-	@cc $(CFLAGS) -c $< -o $@
 
 clean:
 	@echo $(CURSIVE)$(GRAY) ":::Deleting object files:::" $(NONE)
@@ -71,7 +50,24 @@ fclean: clean
 re: fclean all
 
 .PHONY:all clean fclean re
+#=============================COMPILING============================================#
+$(OBJ_DIR)%.o: $(SRC_DIR)%.c
+	@echo $(CURSIVE)$(GRAY)":::Making object files:::" $(NONE)
+	@mkdir -p $(OBJ_DIR)
+	@make -s -C src/mylib/
+	@cc $(CFLAGS) -c $< -o $@
 
+$(OBJ_DIR)%.o: $(PAR_DIR)%.c
+	@mkdir -p $(OBJ_DIR)
+	@make -s -C src/mylib/
+	@cc $(CFLAGS) -c $< -o $@
+
+$(OBJ_DIR)%.o: $(EXEC_DIR)%.c
+	@mkdir -p $(OBJ_DIR)
+	@make -s -C src/mylib/
+	@cc $(CFLAGS) -c $< -o $@
+
+#=================================================================================#
 NONE='\033[0m'
 GREEN='\033[32m'
 GRAY='\033[2;37m'
@@ -86,3 +82,5 @@ os :
 	@echo $(YELLOW) "_  / / / / /_  /  _  / / /_  /  _(__  ) _  / / //  __/_  /  _  /" $(NONE)
 	@echo $(YELLOW) "/_/ /_/ /_/ /_/   /_/ /_/ /_/   /____/  /_/ /_/ \___/ /_/   /_/" $(NONE)
 	@echo $(GREEN) "                                                               for $(OS)" $(NONE)
+
+#=================================================================================#
