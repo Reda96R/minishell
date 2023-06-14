@@ -22,11 +22,13 @@ FILES_P = ft_env_var ft_minishell_starter ft_quotes ft_tokens_scanner \
 		  ft_lxr_utils ft_parser ft_parser_utils ft_redirections \
 
 #=============================EXECUTION FILES==================================#
+
+
 BUILTIN_FILES = ft_cd
 HELPER_FILES = signals
 
-BUILTIN_OBJS := $(patsubst %,$(OBJ_DIR)/builtins/%.o,$(BUILTIN_FILES))
-HELPER_OBJS := $(patsubst %,$(OBJ_DIR)/helpers/%.o,$(HELPER_FILES))
+BUILTIN_OBJS := $(patsubst %,$(OBJ_DIR)builtins/%.o,$(BUILTIN_FILES))
+HELPER_OBJS := $(patsubst %,$(OBJ_DIR)helpers/%.o,$(HELPER_FILES))
 
 EXEC_OBJS := $(BUILTIN_OBJS) $(HELPER_OBJS)
 
@@ -73,15 +75,10 @@ $(OBJ_DIR)%.o: $(PAR_DIR)%.c
 	@make -s -C src/mylib/
 	@cc $(CFLAGS) -c $< -o $@
 
-$(OBJ_DIR)/builtins/%.o: $(EXEC_DIR)/builtins/%.c
-	@echo $(CURSIVE)$(GRAY)":::Making object files:::" $(NONE)
-	@mkdir -p $(OBJ_DIR)/builtins
-	@make -s -C src/mylib/
-	@cc $(CFLAGS) -c $< -o $@
-
-$(OBJ_DIR)/helpers/%.o: $(EXEC_DIR)/helpers/%.c
+$(OBJ_DIR)%.o: $(EXEC_DIR)%.c
 	@echo $(CURSIVE)$(GRAY)":::Making object files:::" $(NONE)
 	@mkdir -p $(OBJ_DIR)/helpers
+	@mkdir -p $(OBJ_DIR)/builtins
 	@make -s -C src/mylib/
 	@cc $(CFLAGS) -c $< -o $@
 
