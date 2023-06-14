@@ -22,10 +22,11 @@ FILES_P = ft_env_var ft_minishell_starter ft_quotes ft_tokens_scanner \
 		  ft_lxr_utils ft_parser ft_parser_utils ft_redirections \
 
 #=============================EXECUTION FILES==================================#
-
-
 BUILTIN_FILES = ft_cd
 HELPER_FILES = signals
+
+EXEC_OBJS := $(BUILTIN_OBJS) $(HELPER_OBJS)
+
 
 BUILTIN_OBJS := $(patsubst %,$(OBJ_DIR)builtins/%.o,$(BUILTIN_FILES))
 HELPER_OBJS := $(patsubst %,$(OBJ_DIR)helpers/%.o,$(HELPER_FILES))
@@ -70,21 +71,17 @@ $(OBJ_DIR)%.o: $(SRC_DIR)%.c
 	@cc $(CFLAGS) -c $< -o $@
 
 $(OBJ_DIR)%.o: $(PAR_DIR)%.c
-	@echo $(CURSIVE)$(GRAY)":::Making object files:::" $(NONE)
 	@mkdir -p $(OBJ_DIR)
 	@make -s -C src/mylib/
 	@cc $(CFLAGS) -c $< -o $@
 
 $(OBJ_DIR)%.o: $(EXEC_DIR)%.c
-	@echo $(CURSIVE)$(GRAY)":::Making object files:::" $(NONE)
-	@mkdir -p $(OBJ_DIR)/helpers
 	@mkdir -p $(OBJ_DIR)/builtins
+	@mkdir -p $(OBJ_DIR)/helpers
 	@make -s -C src/mylib/
 	@cc $(CFLAGS) -c $< -o $@
 
 
-HELP_DIR = $(OBJ_DIR)/helpers
-BUILT_DIR = $(OBJ_DIR)/builtins
 
 #=================================================================================#
 NONE='\033[0m'
