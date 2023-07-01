@@ -24,7 +24,10 @@ void  ft_errors_buster(int id, t_data *data)
 {
   printf("\033[0;31m");
   if (id == 1)
-    printf("ERROR: run without argument\n");
+	{
+		printf("ERROR: run without argument\n");
+		exit (0);
+	}
   else if (id == 2)
       printf("ERROR: unmatched quotes\n");
   else if (id == 3)
