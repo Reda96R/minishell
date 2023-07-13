@@ -16,37 +16,31 @@ else
 READLINE = -lreadline -lncurses
 endif
 
-#=============================PARSING FILES====================================#
+#=============================SHARED FILES=====================================#
 FILES = minishell ft_janitor
+
+#=============================PARSING FILES====================================#
 FILES_P = ft_env_var ft_minishell_starter ft_quotes ft_tokens_scanner \
 		  ft_lxr_utils ft_parser ft_parser_utils ft_redirections \
 
 #=============================EXECUTION FILES==================================#
-BUILTIN_FILES = ft_cd
-HELPER_FILES = signals
-
-EXEC_OBJS := $(BUILTIN_OBJS) $(HELPER_OBJS)
-
-
-BUILTIN_OBJS := $(patsubst %,$(OBJ_DIR)builtins/%.o,$(BUILTIN_FILES))
-HELPER_OBJS := $(patsubst %,$(OBJ_DIR)helpers/%.o,$(HELPER_FILES))
-
-EXEC_OBJS := $(BUILTIN_OBJS) $(HELPER_OBJS)
+FILES_E = 
 
 #=============================OBJs FILES=======================================#
 OBJS = 	$(addprefix $(OBJ_DIR), $(addsuffix .o, $(FILES)))\
 		$(addprefix $(OBJ_DIR), $(addsuffix .o, $(FILES_P)))\
 		$(addprefix $(OBJ_DIR), $(addsuffix .o, $(FILES_E)))
 
-#=============================RULES============================================#
+#=============================linker============================================#
 all: os $(NAME)
 
-$(NAME): $(OBJS) $(EXEC_OBJS)
+$(NAME): $(OBJS)
 	@echo $(CURSIVE)$(GRAY)":::compiling $(NAME):::" $(NONE)
-	@cc $(CFLAGS) $(OBJS) $(EXEC_OBJS) $(MYLIB) $(MYPRINT) -o $(NAME) $(READLINE)
+	@cc $(CFLAGS) $(OBJS) $(MYLIB) $(MYPRINT) -o $(NAME) $(READLINE)
 	@echo $(GREEN)":::Done:::\n"$(NONE)
 	@echo $(GREEN)":::✅ $(NAME) is ready ✅:::"$(NONE)
 
+#===========================cleaning===========================================#
 clean:
 	@echo $(CURSIVE)$(GRAY) ":::Deleting object files:::" $(NONE)
 	@rm -rf $(OBJ_DIR)
@@ -63,7 +57,7 @@ re: fclean all
 
 .PHONY:all clean fclean re
 
-#=============================COMPILING============================================#
+#=============================objects maker============================================#
 $(OBJ_DIR)%.o: $(SRC_DIR)%.c
 	@echo $(CURSIVE)$(GRAY)":::Making object files:::" $(NONE)
 	@mkdir -p $(OBJ_DIR)
@@ -76,12 +70,9 @@ $(OBJ_DIR)%.o: $(PAR_DIR)%.c
 	@cc $(CFLAGS) -c $< -o $@
 
 $(OBJ_DIR)%.o: $(EXEC_DIR)%.c
-	@mkdir -p $(OBJ_DIR)/builtins
-	@mkdir -p $(OBJ_DIR)/helpers
+	@mkdir -p $(OBJ_DIR)
 	@make -s -C src/mylib/
 	@cc $(CFLAGS) -c $< -o $@
-
-
 
 #=================================================================================#
 NONE='\033[0m'

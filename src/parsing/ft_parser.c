@@ -67,6 +67,6 @@ void ft_parser(t_data *data)
       data->cmds = cmd;
     else
     ft_add_cmd(&data->cmds, cmd);
-    data->mylexer = parser.mylexer;
+	data->mylexer = parser.mylexer;
   }
 }
