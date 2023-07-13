@@ -57,7 +57,7 @@ re: fclean all
 
 .PHONY:all clean fclean re
 
-#=============================objects maker============================================#
+#============================objects maker============================================#
 $(OBJ_DIR)%.o: $(SRC_DIR)%.c
 	@echo $(CURSIVE)$(GRAY)":::Making object files:::" $(NONE)
 	@mkdir -p $(OBJ_DIR)

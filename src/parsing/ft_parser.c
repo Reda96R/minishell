@@ -22,30 +22,30 @@ void  ft_parser_prep(t_data *data, t_parser *parser)
 
 void  ft_cmd_parser(t_parser *parser, t_cmds *cmd, t_data *data)
 {
-  char **args;
-  int args_size;
-  t_mylxr *tmp;
-  int     i;
+	char	**args;
+	int		args_size;
+	t_mylxr	*tmp;
+	int		i;
 
-  i = 0;
-  ft_redirections(parser, data);
-  args_size = ft_args_counter(parser->mylexer);
-  printf("%d\n", args_size);
-  args = (char **)malloc (sizeof (char *) * args_size + 1);
-  if (!args)
-      ft_errors_buster(4, data);
-  tmp = parser->mylexer;
-  while (args_size)
-  {
-    if (tmp->str)
-    {
-      args[i++] = ft_strdup(tmp->str);
-      ft_rm_node(&parser->mylexer, tmp->node_id);
-      tmp = parser->mylexer;
-    }
-    args_size--;
-  }
-  ft_new_cmd(parser, args, &cmd, data);
+	i = 0;
+	ft_redirections(parser, data);
+	args_size = ft_args_counter(parser->mylexer);
+	printf("%d\n", args_size);
+	args = (char **)malloc (sizeof (char *) * args_size + 1);
+	if (!args)
+		ft_errors_buster(4, data);
+	tmp = parser->mylexer;
+	while (args_size)
+	{
+		if (tmp->str)
+		{
+			args[i++] = ft_strdup(tmp->str);
+			ft_rm_node(&parser->mylexer, tmp->node_id);
+			tmp = parser->mylexer;
+		}
+		args_size--;
+	}
+	ft_new_cmd(parser, args, &cmd, data);
 }
 
 void ft_parser(t_data *data)

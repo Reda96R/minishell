@@ -59,11 +59,11 @@ int ft_words_parser(t_data *data, int *node_id, int i)
       break ;
     j++;
   }
-  if (!ft_new_node(&new, 0, ft_substr(data->input, i, j)) || !new)
-    return (-1);
-  new->node_id = (*node_id)++;
-  ft_add_node(&data->mylexer, new);
-  return (j);
+	if (!ft_new_node(&new, 0, ft_substr(data->input, i, j)) || !new)
+		return (-1);
+	new->node_id = (*node_id)++;
+	ft_add_node(&data->mylexer, new);
+	return (j);
 }
 
 int ft_token_scanner(t_data *data)
