@@ -37,7 +37,7 @@ void  ft_rm_node(t_mylxr **mylexer, int token)
   prev = NULL;
   while (node)
 	{
-		if (node->token_id == token)
+		if (node->node_id == token)
 		{
 			if (prev)
 				prev->next = node->next;

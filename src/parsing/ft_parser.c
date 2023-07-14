@@ -39,9 +39,11 @@ void  ft_cmd_parser(t_parser *parser, t_cmds *cmd, t_data *data)
 	{
 		if (tmp->str)
 		{
+			// printf("before: %s\n", tmp->str);
 			args[i++] = ft_strdup(tmp->str);
 			ft_rm_node(&parser->mylexer, tmp->node_id);
 			tmp = parser->mylexer;
+			// printf("after: %s\n", tmp->str);
 		}
 		args_size--;
 	}
@@ -55,12 +57,13 @@ void ft_parser(t_data *data)
   
   cmd = NULL;
   data->cmds = NULL;
-  while (data->mylexer->next)
+  while (data->mylexer)
   {
 		if (data->mylexer && data->mylexer->token_id == PIPE)
 			ft_rm_node(&data->mylexer, PIPE);
 		ft_parser_prep(data, &parser);
 		ft_cmd_parser(&parser, cmd, data);
+		// printf("%s\n", parser.mylexer->str);
 	// if (!cmd)
       // error;
 		if (!data->cmds)
