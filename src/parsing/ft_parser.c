@@ -15,22 +15,22 @@
 
 void  ft_parser_prep(t_data *data, t_parser *parser)
 {
-  parser->data = data;
-  parser->mylexer = data->mylexer;
-  parser->redirections = NULL;
+	parser->data = data;
+	parser->mylexer = data->mylexer;
+	parser->redirections = NULL;
+	parser->redirections_count = 0;
 }
 
 void  ft_cmd_parser(t_parser *parser, t_cmds *cmd, t_data *data)
 {
 	char	**args;
 	int		args_size;
-	t_mylxr	*tmp;
 	int		i;
+	t_mylxr	*tmp;
 
 	i = 0;
 	ft_redirections(parser, data);
 	args_size = ft_args_counter(parser->mylexer);
-	printf("%d\n", args_size);
 	args = (char **)malloc (sizeof (char *) * args_size + 1);
 	if (!args)
 		ft_errors_buster(4, data);
@@ -55,18 +55,18 @@ void ft_parser(t_data *data)
   
   cmd = NULL;
   data->cmds = NULL;
-  ft_parser_prep(data, &parser);
-  while (data->mylexer)
+  while (data->mylexer->next)
   {
-    if (data->mylexer->token_id == PIPE)
-      ft_rm_node(&data->mylexer, PIPE);
-    ft_cmd_parser(&parser, cmd, data);
-    // if (!cmd)
+		if (data->mylexer && data->mylexer->token_id == PIPE)
+			ft_rm_node(&data->mylexer, PIPE);
+		ft_parser_prep(data, &parser);
+		ft_cmd_parser(&parser, cmd, data);
+	// if (!cmd)
       // error;
-    if (!data->cmds)
-      data->cmds = cmd;
-    else
-    ft_add_cmd(&data->cmds, cmd);
-	data->mylexer = parser.mylexer;
+		if (!data->cmds)
+			data->cmds = cmd;
+		else
+			ft_add_cmd(&data->cmds, cmd);
+		data->mylexer = parser.mylexer;
   }
 }
