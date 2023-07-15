@@ -24,7 +24,7 @@ In this project we'll need to implement our own mini-shell that will consist of 
     - `unset` (no flags).
     - `env` (no flags or arguments).
     - `exit` (no flags).
-you can check the [subject]([minishell/minishell.sub.pdf at main · Reda96R/minishell (github.com)](https://github.com/Reda96R/minishell/blob/main/minishell.sub.pdf)) for more information.
+you can check the [subject](https://github.com/Reda96R/minishell/blob/main/minishell.sub.pdf) for more information.
 
 ## Background theory:
 The first thing we needed to know in order to tackle the project, is the functioning of Bash.
