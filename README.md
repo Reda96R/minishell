@@ -110,7 +110,8 @@ typedef struct s_cmds
 ### Environment variables:
 now let's parse our env vars, this step is somewhere close to what we did before in [pipex](https://github.com/Reda96R/pipex), so it might be useful to check it out.
 `ft_env_setter()` is our starting point here, in which we start by allocating enough memory to store all env vars in `data->vars`, then we search in the stored vars for `PWD` and `OLDPWD` variables, they contain respectively the current and the old working directory, and it's now turn for the paths, which we'll get using `ft_paths_parser()` that gets the `PATH` var using [`ft_path_finder()`](https://en.wikipedia.org/wiki/Nissan_Pathfinder), it then splits the paths by `:` and stores the final result in `data->paths` and by this the part of environment variables is done, **or is it?**
-![[nick-lang-tcb.gif]]
+
+![nick-lang-tcb](https://github.com/Reda96R/minishell/assets/59890802/a2060ef4-0142-4560-8c69-a8b48c8e7af9)
 
 ### Starting the shell:
 before diving into the code of how the core shell works, I would like to explain how the program looks from a bird's eye view,
