@@ -1,4 +1,4 @@
-# ::: Minishell :::
+# ::: Minishell_42 :::
 `This project is about creating a simple shell. Yes, your own little bash. You will learn a lot about processes and file descriptors.`
 
 ## Project overview :
@@ -24,10 +24,10 @@ In this project we'll need to implement our own mini-shell that will consist of 
     - `unset` (no flags).
     - `env` (no flags or arguments).
     - `exit` (no flags).
-you can check the [subject]([minishell/minishell.sub.pdf at main · Reda96R/minishell (github.com)](https://github.com/Reda96R/minishell/blob/main/minishell.sub.pdf)) for more information.
+you can check the [subject](https://github.com/Reda96R/minishell/blob/main/minishell.sub.pdf) for more information.
 
 ## Background theory:
-The first thing we needed to know in order to tackle the project, is the functioning of Bash.
+The first thing we need to know in order to tackle this project, is the functioning of Bash.
 
 ### What is bash?
 bash or *Bourne Again Shell* is a  free and enhanced version of the [Bourne shell](https://searchdatacenter.techtarget.com/definition/Bourne-shell) which is a type of computer program called a command-line interpreter that lets Linux and Unix users control their operating systems with command-line interfaces. Shells allow users to communicate efficiently and directly with their operating systems
@@ -64,4 +64,46 @@ Output: Hello, World!
 if you want to deep dive in how the bash works you can check [this](https://www.cs.purdue.edu/homes/grr/SystemsProgrammingBook/Book/Chapter5-WritingYourOwnShell.pdf).
 
 ## Making the code:
+We will start by parsing the environment variables, but first let's take a look at our structs, mainly we'll have four structs, but let's focus on what we'll use now,
+```c
+/* this is the main struct that will contain all the data that we'll need */
+typedef struct s_data
+{
+	char    **vars; //will contain our env vars
+	char    **paths; //will contain the paths fetched from env vars
+	char    *pwd; //current working dir
+	char    *old_pwd; // old working dir
+	char    *input; // user's input
+	int     color; // an int value to determine the prompt color R or G
+	int     pipes; // a count for all the existing pipes
+	t_mylxr *mylexer; // a pointer to the lexer struct
+	t_cmds  *cmds; // a pointer to the commands struct
+} t_data;
+/*---------------------------------------------------------------------*/
 
+/* this struct reprersents the nodes of a linked list containing the input where each node contains a word/cmd/token */
+typedef struct s_mylxr
+{
+	char    *str; // a word/cmd or a token
+	int     node_id // the id of the node in the linked list 
+	int     token_id; // token id if it is non null then it is a tkoen
+	struct s_mylxr *next; // pointer to the next node
+	struct s_mylxr *prerv; // pointer to the prervious node
+} t_mylxr;
+/*---------------------------------------------------------------------*/
+
+/* this struct is for the commands, it contains infos about each cmd in the linked list */
+typedef struct s_cmds
+{
+	char    **str; // the command and its args
+	char    *herdoc; // the herdoc if it exists
+	t_mylxr *redirections; // a pointer to the lxr struct for the redirections
+	int     redirections_count; // a count for all existing redirections
+	struct s_cmds *next; // pointer to the next node
+	struct s_cmds *next; // pointer to the previous node
+}
+/*---------------------------------------------------------------------*/
+```
+
+### Environment variables:
+now let's parse our env vars, this step is similar to what we did before in [pipex](https://github.com/Reda96R/pipex) so it might be useful to check it.
