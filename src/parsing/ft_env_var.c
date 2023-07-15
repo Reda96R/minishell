@@ -87,20 +87,21 @@ int	ft_env_setter(t_data *data, char **env, int n)
 	  if (!(data->vars = (char **)malloc(sizeof(char *) * (i + 1))))
 		  return (0);
 	  j = 0;
-	  while (j < i)
-	  {
-		  data->vars[j] = ft_strdup(env[j]);
-		  if (!data->vars[j])
-		  {
-			  while (j > 0)
-				  free(data->vars[--j]);
-			  free(data->vars);
-			  return (0);
-		  }
-		  j++;
-	  }
-	  data->vars[i] = NULL;
-    ft_pwd_finder(data);
+		while (j < i)
+		{
+			data->vars[j] = ft_strdup(env[j]);
+			if (!data->vars[j])
+			{
+				while (j > 0)
+					free(data->vars[--j]);
+				free(data->vars);
+				// ft_errors_buster(4, data);
+				return (0);
+			}
+			j++;
+		}
+		data->vars[i] = NULL;
+		ft_pwd_finder(data);
     }
 	ft_paths_parser(data);
   return (1);

@@ -1,7 +1,7 @@
 # ::: Minishell_42 :::
 `This project is about creating a simple shell. Yes, your own little bash. You will learn a lot about processes and file descriptors.`
 
-## Project overview :
+## Project overview:
 In this project we'll need to implement our own mini-shell that will consist of some basic features from bash which are:
 - Display a prompt while waiting for a new command.
 - Have a working history.
@@ -32,11 +32,11 @@ The first thing we need to know in order to tackle this project, is the function
 ### What is bash?
 bash or *Bourne Again Shell* is a  free and enhanced version of the [Bourne shell](https://searchdatacenter.techtarget.com/definition/Bourne-shell) which is a type of computer program called a command-line interpreter that lets Linux and Unix users control their operating systems with command-line interfaces. Shells allow users to communicate efficiently and directly with their operating systems
 
-### How it works?
+### How does it work?
 At its core, Bash acts as a translator, transforming human-readable commands into actions understood by the operating system, it first starts with the **lexer**, it scans the input and breaks it into tokens, while the **parser** analyzes the tokens' syntax and builds an abstract syntax tree (AST). The **expander** resolves variables, expands expressions, and substitutes commands within the AST. Finally, the **executor** traverses the modified AST, executing the commands, performing variable substitutions, handling I/O redirection, and managing control flow. Together, these stages ensure that Bash can process commands and scripts by tokenizing, parsing, expanding, and executing them in a systematic manner.
 here's a little demonstration of what we said,
 
-```
+```bash
 Input:
 ---------------
 $ echo "Hello, World!"
@@ -105,5 +105,14 @@ typedef struct s_cmds
 /*---------------------------------------------------------------------*/
 ```
 
+> **token_id** is a simple int that is 0 if the node containing a cmd/word or a non null value if it is a token, each token has its own id and they're specified in [macros.h](https://github.com/Reda96R/minishell/blob/main/src/includes/parsing/macros.h).
+
 ### Environment variables:
-now let's parse our env vars, this step is similar to what we did before in [pipex](https://github.com/Reda96R/pipex) so it might be useful to check it.
+now let's parse our env vars, this step is somewhere close to what we did before in [pipex](https://github.com/Reda96R/pipex), so it might be useful to check it out.
+`ft_env_setter()` is our starting point here, in which we start by allocating enough memory to store all env vars in `data->vars`, then we search in the stored vars for `PWD` and `OLDPWD` variables, they contain respectively the current and the old working directory, and it's now turn for the paths, which we'll get using `ft_paths_parser()` that gets the `PATH` var using [`ft_path_finder()`](https://en.wikipedia.org/wiki/Nissan_Pathfinder), it then splits the paths by `:` and stores the final result in `data->paths` and by this the part of environment variables is done, **or is it?**
+![[nick-lang-tcb.gif]]
+
+### Starting the shell:
+before diving into the code of how the core shell works, I would like to explain how the program looks from a bird's eye view,
+
+
