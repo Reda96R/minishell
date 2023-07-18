@@ -116,7 +116,98 @@ now let's parse our env vars, this step is somewhere close to what we did before
 ### Starting the shell:
 before diving into the code of how the core shell works, I would like to explain how the program looks from a bird's eye view,
 
-![mind_map](https://github.com/Reda96R/minishell/blob/main/images/minishell_map.png)
+![mind_map](https://github.com/Reda96R/minishell/blob/main/images/minishell_map.png?raw=true)
 
+## making the prompt:
+the first thing that we'll do is to obviously start the shell an keep it running until the program is signaled to stop, to do this we need a `while(1)` that will keep running,
 
+```C
+void  ft_prompt(t_data *data)
+{
+  if (!data->color)
+    data->input = ft_strtrim(readline(READLINE_MSG_R), " ");
+  else
+    data->input = ft_strtrim(readline(READLINE_MSG_G), " ");
+  if (!data->input)
+    exit(0);
+  if (data->input[0])
+    add_history(data->input);
+}
 
+void  ft_shell_starter(t_data *data)
+{
+  while (1)
+  {
+    ft_prompt(data);
+    if (ft_quotes_counter(data->input))
+    {
+      data->color = 1;
+      if (ft_token_scanner(data) > 0)
+        {
+          data->color = 1;
+          ft_parser(data);
+        }
+      else if (ft_token_scanner(data) == -1)
+         ft_errors_buster(3, data);
+    }
+    else
+      ft_errors_buster(2, data);
+  }
+}
+```
+as we can see in the code, we run the `while(1)` loop and then we initiate the prompt with the convenient color depending on the execution of the command, after that I check if there are any quotes if it is the case, I check for a consistent pattern of them with the help of [`ft_quotes_counter()`](https://github.com/Reda96R/minishell/blob/main/src/parsing/ft_quotes.c), if there is a problem in this part an error is displayed, and the user is given a new prompt, next comes the lexer.
+
+> the color of the prompt can be *Red* or *Green* depending on the execution of the command, if it is executed successfully then the prompt is given back in green, if it's not the case, it is given in red after an error message is displayed.
+> check [`macros.h`](https://github.com/Reda96R/minishell/blob/main/src/includes/parsing/macros.h)
+
+## the lexer:
+the lexer as I said earlier, is the part where bash breaks the input into tokens, and that's what we'll try to implement using [`ft_token_scanner()`](https://github.com/Reda96R/minishell/blob/main/src/parsing/ft_tokens_scanner.c),
+```c
+int ft_token_scanner(t_data *data)
+{
+  int i;
+  int j;
+  int id;
+  int node_id;
+
+  i = 0;
+  j = 0;
+  node_id = 0;
+  data->pipes = 0;
+  while (data->input[i])
+  {
+    while (data->input[i] && ft_isspace(data->input[i]))
+      i++;
+    id = ft_token_identifier(data, i);
+    if (id < 0 || (id && !node_id))
+      return (-1);
+    if (id)
+      j = ft_token_parser(data, &node_id, id);
+    else
+      j = ft_words_parser(data, &node_id, i);
+    if (j < 0)
+      return (0);
+    i += j;
+  }
+  return (1);
+}
+```
+first we identify the nature of the word that we're looking at whether it is a cmd or a token, and that is done by the use of [`ft_token_identifier`](https://github.com/Reda96R/minishell/blob/main/src/parsing/ft_tokens_scanner.c), where we create a node for each word and each node has its own id also an id if it contains a token, let's consider the following example,
+```bash
+comand: ls -l | wc -c
+
+--------------------------------------------------
+
+ ------     ------     -----     ------     ------
+| 'ls' |-->| '-l' |-->| '|' |-->| 'wc' |-->| '-c' |
+ ------     ------     -----     ------     ------
+t_id = 0   t_id = 0   t_id = 1  t_id = 0   t_id = 0
+```
+> tokens ids are defined in [`macros.h`](https://github.com/Reda96R/minishell/blob/main/src/includes/parsing/macros.h) as the following:
+> **|**  -> id = 1
+> **>**  -> id = 2
+> **>>** -> id = 3
+> **<**  -> id = 4
+> **<<** -> id = 5
+
+## the parser:
