@@ -20,8 +20,8 @@ READLINE = -lreadline -lncurses
 endif
 #========================variables============================#
 HEADER  	= -I includes $(RL_HEADER)
-SANITIZ		= -fsanitize=address
-CFLAGS 		= -Wall -Werror -Wextra $(HEADER) -c #$(SANITIZ)
+SANITIZ		= -g -fsanitize=address
+CFLAGS 		= -Wall -Werror -Wextra $(HEADER) -c 
 NAME    	= minishell
 DEL     	= rm -rf
 #=================parcing_files=======================================#
@@ -50,7 +50,7 @@ $(NAME) : 		$(OBJ) minishell.c
 				@stty -echoctl
 				@ar -rc minishell.a $(OBJ)
 				@make -s -C parsing/mylib
-				@cc minishell.c minishell.a $(libft_pars) $(HEADER) -o $(NAME) $(READLINE)
+				@cc $(SANITIZ) minishell.c minishell.a $(libft_pars) $(HEADER) -o $(NAME) $(READLINE)
 				@echo $(green)":::✅ $(NAME) is ready ✅:::"$(reset)
 
 clean :
