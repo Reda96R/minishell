@@ -6,7 +6,7 @@
 #    By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/24 13:54:21 by yes-slim          #+#    #+#              #
-#    Updated: 2023/07/18 16:19:20 by yes-slim         ###   ########.fr        #
+#    Updated: 2023/07/18 16:37:44 by yes-slim         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -52,6 +52,7 @@ $(NAME) : 		$(OBJ) minishell.c
 				@make -s -C parsing/mylib
 				@cc minishell.c minishell.a $(libft_pars) $(HEADER) -o $(NAME) $(READLINE)
 				@echo $(green)":::✅ $(NAME) is ready ✅:::"$(reset)
+				@echo $(cyan)$(underline)"minishell is ready to run" $(reset)
 
 clean :
 				@echo $(grey)$(italic)$(bold)":::Deleting object files:::"$(reset)
