@@ -27,7 +27,7 @@ AR = ar rc
 all: $(NAME)
 
 %.o: %.c
-	@echo $(grey)$(italic)"	~Compiling $<"$(reset)
+	@echo $(grey)$(italic)":::Compiling $<:::"$(reset)
 	@cc $(CFLAGS) -c $<
 	@$(AR) $(NAME) $@
 

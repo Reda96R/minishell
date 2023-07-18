@@ -18,8 +18,6 @@ READLINE = -lreadline
 else
 READLINE = -lreadline -lncurses
 endif
-RL_HEADER 	= -I ~/goinfre/homebrew/Cellar/readline/8.2.1/include/readline/
-RL_LIB  	= -L ~/goinfre/homebrew/Cellar/readline/8.2.1/lib/ $(READLINE)
 #========================variables============================#
 HEADER  	= -I includes $(RL_HEADER)
 SANITIZ		= -fsanitize=address
@@ -42,30 +40,32 @@ Exec_SRCS   = $(addsuffix .c, $(addprefix execution/helpers/, $(HELPERS)))
 #====================================================================#
 OBJ     	= $(Exec_SRCS:.c=.o) $(Pars_SRCS:.c=.o) ft_janitor.o
 #=========================compile=============================#
-%.o 		: %.c
-			@echo $(grey)$(italic)"	~Compiling $<"$(reset)
-			@cc $(CFLAGS) $< -o $@
+%.o : 		%.c
+			@echo $(grey)$(italic)":::Compiling $<:::"$(reset)
+			@cc $(CFLAGS) $< -o $@ 
 #==========================rules==============================#
-all 		: os $(NAME)
+all : 			os $(NAME)
 
-$(NAME) 	: $(OBJ) minishell.c
+$(NAME) : 		$(OBJ) minishell.c
 				@stty -echoctl
 				@ar -rc minishell.a $(OBJ)
 				@make -s -C parsing/mylib
-				@cc minishell.c minishell.a $(libft_pars) $(HEADER) -o $(NAME) $(RL_LIB)
-				@echo $(cyan)$(underline)"minishell is ready to run" $(reset)
+				@cc minishell.c minishell.a $(libft_pars) $(HEADER) -o $(NAME) $(READLINE)
+				@echo $(green)":::✅ $(NAME) is ready ✅:::"$(reset)
 
-clean 		:
+clean :
+				@echo $(grey)$(italic)$(bold)":::Deleting object files:::"$(reset)
 				@$(DEL) $(OBJ) minishell.a
 				@make clean -s -C parsing/mylib 
-				@echo $(green)$(italic)$(bold)"	~Deleting files..."$(reset)
+				@echo $(red)$(bold)":::Deleted:::"$(reset)
 
-fclean 		: clean
+fclean : 		clean
+				@echo $(grey)$(italic)$(bold)":::Deleting executeables:::"$(reset)
 				@$(DEL) $(NAME)
 				@make fclean -s -C parsing/mylib 
-				@echo $(green)$(italic)$(bold)"	~Deleting minishell..."$(reset)
+				@echo $(red)$(bold)":::All deleted:::"$(reset)
 
-re 			: fclean all
+re : fclean all
 
 .PHONY 		: all clean fclean re
 #===========================OS================================#
