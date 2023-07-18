@@ -2,32 +2,32 @@
 
 int ft_token_identifier(t_data *data, int i)
 {
-  if (data->input[i] == '|')
-    {
-      if (!ft_token_identifier(data, i + 1))
-      {
-        data->pipes++;
-        return (PIPE);
-      }
-      return (-1);
-    }
-  else if (data->input[i] == '>')
-  {
-    if (data->input[i + 1] == '>' && !ft_token_identifier(data, i + 2))
-  return (D_GREATER);
-    else if (!ft_token_identifier(data, i + 1))
-      return (GREATER);
-    return (-1);
-  }
-  else if (data->input[i] == '<')
-  {
-    if (data->input[i + 1] == '<' && !ft_token_identifier(data, i + 2))
-      return (D_LESS);
-    else if (! ft_token_identifier(data , i + 1))
-      return (LESS);
-    return (-1);
-  }
-  return (0);
+	if (data->input[i] == '|')
+	{
+		if (!ft_token_identifier(data, i + 1) && data->input[i + 1])
+		{
+			data->pipes++;
+			return (PIPE);
+		}
+		return (-1);
+	}
+	else if (data->input[i] == '>')
+	{
+		if (data->input[i + 1] == '>' && !ft_token_identifier(data, i + 2))
+			return (D_GREATER);
+		else if (!ft_token_identifier(data, i + 1))
+			return (GREATER);
+		return (-1);
+	}
+	else if (data->input[i] == '<')
+	{
+		if (data->input[i + 1] == '<' && !ft_token_identifier(data, i + 2))
+			return (D_LESS);
+		else if (! ft_token_identifier(data , i + 1))
+			return (LESS);
+		return (-1);
+	}
+	return (0);
 }
 
 int ft_token_parser(t_data *data, int *node_id, int id)

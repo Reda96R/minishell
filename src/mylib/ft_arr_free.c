@@ -14,10 +14,10 @@
 
 void  ft_arr_free(char **arr)
 {
-  int i;
+	int i;
 
-  i = 0;
-  while (arr[i])
-    free(arr[i++]);
-  free(arr);
+	i = 0;
+	while (arr[i])
+		free(arr[i++]);
+	free(arr);
 }

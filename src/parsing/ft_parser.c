@@ -61,16 +61,12 @@ void ft_parser(t_data *data)
 			ft_rm_node(&data->mylexer, PIPE);
 		ft_parser_prep(data, &parser);
 		ft_cmd_parser(&parser, &cmd, data);
-		// printf("%s\n", cmd->str[0]);
-		// printf("%s\n", cmd->str[0]);
 	// if (!cmd)
       // error;
 		if (!data->cmds)
 			data->cmds = cmd;
 		else
 			ft_add_cmd(&data->cmds, cmd);
-		// printf("%s\n", data->cmds->str[0]);
 		data->mylexer = parser.mylexer;
-		// exit (1);
   }
 }

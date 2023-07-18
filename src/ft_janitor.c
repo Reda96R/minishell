@@ -34,10 +34,8 @@ void  ft_errors_buster(int id, t_data *data)
     printf("syntax error near unexpected token\n");
   else if (id == 4)
     printf("memory error: unable to allocate memory\n");
-  // ft_lxr_cleaner(&data->mylexer);
   data->color = 0;
   ft_shell_reset(data);
-  // ft_shell_starter(data);
 }
 
 void  ft_lxr_cleaner(t_mylxr **mylexer)
@@ -69,8 +67,8 @@ void  ft_cmd_cleaner(t_cmds **cmds)
     tmp = (*cmds)->next;
     redirections = (*cmds)->redirections;
     ft_lxr_cleaner(&redirections);
-    if ((*cmds)->str)
-      ft_arr_free((*cmds)->str);
+	// if ((*cmds)->str)
+	// 		ft_arr_free((*cmds)->str);
     free(*cmds);
     *cmds = tmp;
   }

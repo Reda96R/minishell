@@ -17,8 +17,8 @@
 void  ft_shell_reset(t_data *data)
 {
   // if (data->input)
-    free(data->input);
-  ft_cmd_cleaner(&data->cmds);
+	free(data->input);
+	ft_cmd_cleaner(&data->cmds);
 	ft_shell_starter(data);
 }
 
@@ -46,13 +46,13 @@ void  ft_shell_starter(t_data *data)
 			{
 					data->color = 1;
 					ft_parser(data);
+					ft_shell_reset(data);
 			}
 			else if (ft_token_scanner(data) == -1)
 				ft_errors_buster(3, data);
 		}
 		else
 			ft_errors_buster(2, data);
-		// ft_shell_reset(data);
     // free(data->input);
   }
 }
