@@ -46,7 +46,7 @@ void  ft_rm_node(t_mylxr **mylexer, int token)
 			if (node->next)
 				node->next->prev = prev;
 			ft_node_clear(&node);
-			return;
+			return ;
 		}
 		prev = node;
 		node = node->next;

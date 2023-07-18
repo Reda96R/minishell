@@ -1,7 +1,7 @@
 #=============================VARIABLES========================================#
 OS = $(shell uname -s)
 NAME = minishell
-CFLAGS = -Wall -Wextra -Werror #-g3 -fsanitize=address
+CFLAGS = -Wall -Wextra -Werror -g -fsanitize=address
 SRC_DIR = src/
 PAR_DIR = src/parsing/
 EXEC_DIR = src/execution/

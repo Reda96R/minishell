@@ -19,10 +19,10 @@ void  ft_add_redirection(t_parser *parser, t_mylxr *tmp, int *node_id, t_data* d
   ft_new_node(&new, tmp->token_id, ft_strdup(tmp->next->str));
   if (!new)
     ft_errors_buster(4, data);
-  new->node_id = (*node_id)++;
+	new->node_id = (*node_id)++;
   ft_add_node(&parser->redirections, new);
-  ft_rm_node(&parser->mylexer, tmp->token_id);
   ft_rm_node(&parser->mylexer, tmp->next->token_id);
+  ft_rm_node(&parser->mylexer, tmp->token_id);
   parser->redirections_count++;
 }
 
