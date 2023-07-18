@@ -52,7 +52,6 @@ $(NAME) : 		$(OBJ) minishell.c
 				@make -s -C parsing/mylib
 				@cc minishell.c minishell.a $(libft_pars) $(HEADER) -o $(NAME) $(READLINE)
 				@echo $(green)":::✅ $(NAME) is ready ✅:::"$(reset)
-				@echo $(cyan)$(underline)"minishell is ready to run" $(reset)
 
 clean :
 				@echo $(grey)$(italic)$(bold)":::Deleting object files:::"$(reset)
