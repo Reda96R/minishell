@@ -1,93 +1,94 @@
-#=============================VARIABLES========================================#
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2023/06/24 13:54:21 by yes-slim          #+#    #+#              #
+#    Updated: 2023/07/18 16:19:20 by yes-slim         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
+#========================OS============================#
 OS = $(shell uname -s)
-NAME = minishell
-CFLAGS = -Wall -Wextra -Werror -g -fsanitize=address
-SRC_DIR = src/
-PAR_DIR = src/parsing/
-EXEC_DIR = src/execution/
-OBJ_DIR = obj/
-MYLIB = src/mylib/mylib.a
-MYPRINT = src/mylib/ft_printf/ft_printf.a
+#========================Readline============================#
 ifeq ($(OS), Darwin)
-RDLIB = -L/Users/rerayyad/goinfre/homebrew/Cellar/readline/8.2.1/lib
-RDINCLUDE = -I/Users/rerayyad/goinfre/homebrew/Cellar/readline/8.2.1/include
 READLINE = -lreadline
 else
 READLINE = -lreadline -lncurses
 endif
+RL_HEADER 	= -I ~/goinfre/homebrew/Cellar/readline/8.2.1/include/readline/
+RL_LIB  	= -L ~/goinfre/homebrew/Cellar/readline/8.2.1/lib/ $(READLINE)
+#========================variables============================#
+HEADER  	= -I includes $(RL_HEADER)
+SANITIZ		= -fsanitize=address
+CFLAGS 		= -Wall -Werror -Wextra $(HEADER) -c #$(SANITIZ)
+NAME    	= minishell
+DEL     	= rm -rf
+#=================parcing_files=======================================#
+Pars 		= ft_env_var ft_minishell_starter ft_quotes ft_tokens_scanner \
+		 	  ft_lxr_utils ft_parser ft_parser_utils ft_redirections
+libft_pars  = parsing/mylib/mylib.a
+Pars_SRCS   = $(addsuffix .c, $(addprefix parsing/, $(Pars))) 
 
-#=============================SHARED FILES=====================================#
-FILES = minishell ft_janitor
+#=================execution_files=======================================#
+LIBFT   	= ft_strdup ft_strlen list_create list_delete
+BUILTIN 	= ft_env ft_pwd #ft_echo ft_cd ft_export ft_unset ft_exit
+HELPERS 	= $(addprefix builtins/, $(BUILTIN))\
+		 	  $(addprefix libft/, $(LIBFT))\
+		 	  init signals
+Exec_SRCS   = $(addsuffix .c, $(addprefix execution/helpers/, $(HELPERS)))
+#====================================================================#
+OBJ     	= $(Exec_SRCS:.c=.o) $(Pars_SRCS:.c=.o) ft_janitor.o
+#=========================compile=============================#
+%.o 		: %.c
+			@echo $(grey)$(italic)"	~Compiling $<"$(reset)
+			@cc $(CFLAGS) $< -o $@
+#==========================rules==============================#
+all 		: os $(NAME)
 
-#=============================PARSING FILES====================================#
-FILES_P = ft_env_var ft_minishell_starter ft_quotes ft_tokens_scanner \
-		  ft_lxr_utils ft_parser ft_parser_utils ft_redirections \
+$(NAME) 	: $(OBJ) minishell.c
+				@stty -echoctl
+				@ar -rc minishell.a $(OBJ)
+				@make -s -C parsing/mylib
+				@cc minishell.c minishell.a $(libft_pars) $(HEADER) -o $(NAME) $(RL_LIB)
+				@echo $(cyan)$(underline)"minishell is ready to run" $(reset)
 
-#=============================EXECUTION FILES==================================#
-FILES_E = 
+clean 		:
+				@$(DEL) $(OBJ) minishell.a
+				@make clean -s -C parsing/mylib 
+				@echo $(green)$(italic)$(bold)"	~Deleting files..."$(reset)
 
-#=============================OBJs FILES=======================================#
-OBJS = 	$(addprefix $(OBJ_DIR), $(addsuffix .o, $(FILES)))\
-		$(addprefix $(OBJ_DIR), $(addsuffix .o, $(FILES_P)))\
-		$(addprefix $(OBJ_DIR), $(addsuffix .o, $(FILES_E)))
+fclean 		: clean
+				@$(DEL) $(NAME)
+				@make fclean -s -C parsing/mylib 
+				@echo $(green)$(italic)$(bold)"	~Deleting minishell..."$(reset)
 
-#=============================linker============================================#
-all: os $(NAME)
+re 			: fclean all
 
-$(NAME): $(OBJS)
-	@echo $(CURSIVE)$(GRAY)":::compiling $(NAME):::" $(NONE)
-	@cc $(CFLAGS) $(OBJS) $(MYLIB) $(MYPRINT) -o $(NAME) $(READLINE)
-	@echo $(GREEN)":::Done:::\n"$(NONE)
-	@echo $(GREEN)":::✅ $(NAME) is ready ✅:::"$(NONE)
-
-#===========================cleaning===========================================#
-clean:
-	@echo $(CURSIVE)$(GRAY) ":::Deleting object files:::" $(NONE)
-	@rm -rf $(OBJ_DIR)
-	@make -s clean -C src/mylib/
-	@echo $(RED)":::Deleted:::"$(NONE)
-
-fclean: clean
-	@echo $(CURSIVE)$(GRAY) ":::Deleting executables:::" $(NONE)
-	@rm -f $(NAME) 
-	@make -s fclean -C src/mylib/
-	@echo $(RED)":::All deleted:::"$(NONE)
-
-re: fclean all
-
-.PHONY:all clean fclean re
-
-#============================objects maker============================================#
-$(OBJ_DIR)%.o: $(SRC_DIR)%.c
-	@echo $(CURSIVE)$(GRAY)":::Making object files:::" $(NONE)
-	@mkdir -p $(OBJ_DIR)
-	@make -s -C src/mylib/
-	@cc $(CFLAGS) -c $< -o $@
-
-$(OBJ_DIR)%.o: $(PAR_DIR)%.c
-	@mkdir -p $(OBJ_DIR)
-	@make -s -C src/mylib/
-	@cc $(CFLAGS) -c $< -o $@
-
-$(OBJ_DIR)%.o: $(EXEC_DIR)%.c
-	@mkdir -p $(OBJ_DIR)
-	@make -s -C src/mylib/
-	@cc $(CFLAGS) -c $< -o $@
-
-#=================================================================================#
-NONE='\033[0m'
-GREEN='\033[32m'
-GRAY='\033[2;37m'
-RED = '\033[0;31m'
-YELLOW = '\033[0;33m'
-CURSIVE='\033[3m'
-
+.PHONY 		: all clean fclean re
+#===========================OS================================#
 os : 
-	@echo $(YELLOW) "            _____         _____         ______        ____________" $(NONE)
-	@echo $(YELLOW) "_______ ___ ___(_)_______ ___(_)___________  /_ _____ ___  /___  /" $(NONE)
-	@echo $(YELLOW) "__  __ \__ \__  / __  __ \__  / __  ___/__  __ \_  _ \__  / __  /" $(NONE)
-	@echo $(YELLOW) "_  / / / / /_  /  _  / / /_  /  _(__  ) _  / / //  __/_  /  _  /" $(NONE)
-	@echo $(YELLOW) "/_/ /_/ /_/ /_/   /_/ /_/ /_/   /____/  /_/ /_/ \___/ /_/   /_/" $(NONE)
-	@echo $(GREEN) "                                                               for $(OS)" $(NONE)
-	
-#=================================================================================#
+	@echo $(yellow) "            _____         _____         ______        ____________" $(reset)
+	@echo $(yellow) "_______ ___ ___(_)_______ ___(_)___________  /_ _____ ___  /___  /" $(reset)
+	@echo $(yellow) "__  __ \__ \__  / __  __ \__  / __  ___/__  __ \_  _ \__  / __  /" $(reset)
+	@echo $(yellow) "_  / / / / /_  /  _  / / /_  /  _(__  ) _  / / //  __/_  /  _  /" $(reset)
+	@echo $(yellow) "/_/ /_/ /_/ /_/   /_/ /_/ /_/   /____/  /_/ /_/ \___/ /_/   /_/" $(reset)
+	@echo $(green) "                                                               for $(OS)" $(reset)
+#===========================colors============================#
+black  		= "\033[0;30m"
+red    		= "\033[0;31m"
+green  		= "\033[0;32m"
+yellow 		= "\033[0;33m"
+blue   		= "\033[0;34m"
+purple		= "\033[0;35m"
+cyan  		= "\033[0;36m"
+grey   		= "\033[0;90m"
+reset  		= "\033[0m"
+#============================font=============================#
+bold     	= "\033[1m"
+italic    	= "\033[3m"
+underline 	= "\033[4m"
+inverse   	= "\033[7m"
+#=============================================================#
