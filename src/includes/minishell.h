@@ -69,7 +69,7 @@ void    ft_rm_node(t_mylxr **mylexer, int token);
 /*::: parser :::*/
 void    ft_parser(t_data *data);
 void    ft_parser_prep(t_data *data, t_parser *parser);
-void    ft_cmd_parser(t_parser *parser, t_cmds *cmd, t_data *data);
+void    ft_cmd_parser(t_parser *parser, t_cmds **cmd, t_data *data);
 void  ft_new_cmd(t_parser *parser, char **str, t_cmds **cmd, t_data *data);
 void    ft_add_cmd(t_cmds **cmds, t_cmds *cmd);
 int     ft_args_counter(t_mylxr *mylexer);

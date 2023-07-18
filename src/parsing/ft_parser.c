@@ -21,7 +21,7 @@ void  ft_parser_prep(t_data *data, t_parser *parser)
 	parser->redirections_count = 0;
 }
 
-void  ft_cmd_parser(t_parser *parser, t_cmds *cmd, t_data *data)
+void  ft_cmd_parser(t_parser *parser, t_cmds **cmd, t_data *data)
 {
 	char	**args;
 	int		args_size;
@@ -45,7 +45,7 @@ void  ft_cmd_parser(t_parser *parser, t_cmds *cmd, t_data *data)
 		}
 		args_size--;
 	}
-	ft_new_cmd(parser, args, &cmd, data);
+	ft_new_cmd(parser, args, cmd, data);
 }
 
 void ft_parser(t_data *data)
@@ -60,13 +60,17 @@ void ft_parser(t_data *data)
 		if (data->mylexer && data->mylexer->token_id == PIPE)
 			ft_rm_node(&data->mylexer, PIPE);
 		ft_parser_prep(data, &parser);
-		ft_cmd_parser(&parser, cmd, data);
+		ft_cmd_parser(&parser, &cmd, data);
+		// printf("%s\n", cmd->str[0]);
+		// printf("%s\n", cmd->str[0]);
 	// if (!cmd)
       // error;
 		if (!data->cmds)
 			data->cmds = cmd;
 		else
 			ft_add_cmd(&data->cmds, cmd);
+		// printf("%s\n", data->cmds->str[0]);
 		data->mylexer = parser.mylexer;
+		// exit (1);
   }
 }

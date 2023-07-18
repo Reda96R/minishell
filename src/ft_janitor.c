@@ -36,8 +36,8 @@ void  ft_errors_buster(int id, t_data *data)
     printf("memory error: unable to allocate memory\n");
   // ft_lxr_cleaner(&data->mylexer);
   data->color = 0;
-  // ft_shell_reset(data);
-  ft_shell_starter(data);
+  ft_shell_reset(data);
+  // ft_shell_starter(data);
 }
 
 void  ft_lxr_cleaner(t_mylxr **mylexer)
