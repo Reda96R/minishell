@@ -117,3 +117,4 @@ now let's parse our env vars, this step is somewhere close to what we did before
 before diving into the code of how the core shell works, I would like to explain how the program looks from a bird's eye view,
 
 
+
