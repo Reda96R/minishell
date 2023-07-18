@@ -6,17 +6,17 @@
 #    By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/24 13:54:21 by yes-slim          #+#    #+#              #
-#    Updated: 2023/07/18 17:36:48 by yes-slim         ###   ########.fr        #
+#    Updated: 2023/07/18 18:54:37 by yes-slim         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 #========================OS============================#
-OS = $(shell uname -s)
+OS			= $(shell uname -s)
 #========================Readline============================#
 ifeq ($(OS), Darwin)
-READLINE = -lreadline
+READLINE 	= -lreadline
 else
-READLINE = -lreadline -lncurses
+READLINE 	= -lreadline -lncurses
 endif
 #========================variables============================#
 HEADER  	= -I includes $(RL_HEADER)
@@ -40,32 +40,32 @@ Exec_SRCS   = $(addsuffix .c, $(addprefix execution/helpers/, $(HELPERS)))
 #====================================================================#
 OBJ     	= $(Exec_SRCS:.c=.o) $(Pars_SRCS:.c=.o) ft_janitor.o
 #=========================compile=============================#
-%.o : 		%.c
-			@echo $(grey)$(italic)"	~Compiling $<"$(reset)
-			@cc $(CFLAGS) $< -o $@ 
+%.o 	: %.c
+		 @echo $(grey)$(italic)"	~Compiling $<"$(reset)
+		 @cc $(CFLAGS) $< -o $@ 
 #==========================rules==============================#
-all : 			os $(NAME)
+all 	: os $(NAME)
 
-$(NAME) : 		$(OBJ) minishell.c
-				@stty -echoctl
-				@ar -rc minishell.a $(OBJ)
-				@make -s -C parsing/mylib
-				@cc $(SANITIZ) minishell.c minishell.a $(libft_pars) $(HEADER) -o $(NAME) $(READLINE)
-				@echo $(green)$(bold)":::$(NAME) is ready:::"$(reset)
+$(NAME) : $(OBJ) minishell.c
+		 @stty -echoctl
+		 @ar -rc minishell.a $(OBJ)
+		 @make -s -C parsing/mylib
+		 @cc $(SANITIZ) minishell.c minishell.a $(libft_pars) $(HEADER) -o $(NAME) $(READLINE)
+		 @echo $(green)$(bold)":::$(NAME) is ready:::"$(reset)
 
-clean :
-				@echo $(grey)$(italic)$(bold)":::Deleting object files:::"$(reset)
-				@$(DEL) $(OBJ) minishell.a
-				@make clean -s -C parsing/mylib 
-				@echo $(red)$(bold)":::Deleted:::"$(reset)
+clean 	:
+		 @echo $(grey)$(italic)$(bold)":::Deleting object files:::"$(reset)
+		 @$(DEL) $(OBJ) minishell.a
+		 @make clean -s -C parsing/mylib 
+		 @echo $(red)$(bold)":::Deleted:::"$(reset)
 
-fclean : 		clean
-				@echo $(grey)$(italic)$(bold)":::Deleting executeables:::"$(reset)
-				@$(DEL) $(NAME)
-				@make fclean -s -C parsing/mylib 
-				@echo $(red)$(bold)":::All deleted:::"$(reset)
+fclean 	: clean
+		 @echo $(grey)$(italic)$(bold)":::Deleting executeables:::"$(reset)
+		 @$(DEL) $(NAME)
+		 @make fclean -s -C parsing/mylib 				
+		 @echo $(red)$(bold)":::All deleted:::"$(reset)
 
-re : fclean all
+re 			: fclean all
 
 .PHONY 		: all clean fclean re
 #===========================OS================================#
