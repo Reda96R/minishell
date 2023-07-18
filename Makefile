@@ -20,7 +20,7 @@ READLINE = -lreadline -lncurses
 endif
 #========================variables============================#
 HEADER  	= -I includes $(RL_HEADER)
-SANITIZ		= -g -fsanitize=address
+SANITIZ		= -g3 -fsanitize=address
 CFLAGS 		= -Wall -Werror -Wextra $(HEADER) -c 
 NAME    	= minishell
 DEL     	= rm -rf
