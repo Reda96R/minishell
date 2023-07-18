@@ -119,3 +119,4 @@ before diving into the code of how the core shell works, I would like to explain
 ![mind_map](https://github.com/Reda96R/minishell/blob/main/images/minishell_map.png)
 
 
+
