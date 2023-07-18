@@ -6,7 +6,7 @@
 #    By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/24 13:54:21 by yes-slim          #+#    #+#              #
-#    Updated: 2023/07/18 16:19:20 by yes-slim         ###   ########.fr        #
+#    Updated: 2023/07/18 16:37:44 by yes-slim         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,8 +18,6 @@ READLINE = -lreadline
 else
 READLINE = -lreadline -lncurses
 endif
-RL_HEADER 	= -I ~/goinfre/homebrew/Cellar/readline/8.2.1/include/readline/
-RL_LIB  	= -L ~/goinfre/homebrew/Cellar/readline/8.2.1/lib/ $(READLINE)
 #========================variables============================#
 HEADER  	= -I includes $(RL_HEADER)
 SANITIZ		= -fsanitize=address
@@ -52,7 +50,7 @@ $(NAME) 	: $(OBJ) minishell.c
 				@stty -echoctl
 				@ar -rc minishell.a $(OBJ)
 				@make -s -C parsing/mylib
-				@cc minishell.c minishell.a $(libft_pars) $(HEADER) -o $(NAME) $(RL_LIB)
+				@cc minishell.c minishell.a $(libft_pars) $(HEADER) -o $(NAME) $(READLINE)
 				@echo $(cyan)$(underline)"minishell is ready to run" $(reset)
 
 clean 		:
