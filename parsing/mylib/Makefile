@@ -6,7 +6,7 @@
 #    By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/20 16:00:51 by rerayyad          #+#    #+#              #
-#    Updated: 2023/07/18 16:22:59 by yes-slim         ###   ########.fr        #
+#    Updated: 2023/07/18 17:37:05 by yes-slim         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,7 @@ AR = ar rc
 all: $(NAME)
 
 %.o: %.c
-	@echo $(grey)$(italic)":::Compiling $<:::"$(reset)
+	@echo $(grey)$(italic)"	~Compiling $<"$(reset)
 	@cc $(CFLAGS) -c $<
 	@$(AR) $(NAME) $@
 

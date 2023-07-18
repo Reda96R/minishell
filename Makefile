@@ -6,7 +6,7 @@
 #    By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/24 13:54:21 by yes-slim          #+#    #+#              #
-#    Updated: 2023/07/18 16:37:44 by yes-slim         ###   ########.fr        #
+#    Updated: 2023/07/18 17:36:48 by yes-slim         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,7 +41,7 @@ Exec_SRCS   = $(addsuffix .c, $(addprefix execution/helpers/, $(HELPERS)))
 OBJ     	= $(Exec_SRCS:.c=.o) $(Pars_SRCS:.c=.o) ft_janitor.o
 #=========================compile=============================#
 %.o : 		%.c
-			@echo $(grey)$(italic)":::Compiling $<:::"$(reset)
+			@echo $(grey)$(italic)"	~Compiling $<"$(reset)
 			@cc $(CFLAGS) $< -o $@ 
 #==========================rules==============================#
 all : 			os $(NAME)
@@ -51,7 +51,7 @@ $(NAME) : 		$(OBJ) minishell.c
 				@ar -rc minishell.a $(OBJ)
 				@make -s -C parsing/mylib
 				@cc $(SANITIZ) minishell.c minishell.a $(libft_pars) $(HEADER) -o $(NAME) $(READLINE)
-				@echo $(green)":::✅ $(NAME) is ready ✅:::"$(reset)
+				@echo $(green)$(bold)":::$(NAME) is ready:::"$(reset)
 
 clean :
 				@echo $(grey)$(italic)$(bold)":::Deleting object files:::"$(reset)
