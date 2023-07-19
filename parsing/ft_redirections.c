@@ -31,6 +31,7 @@ void  ft_redirections(t_parser *parser, t_data *data)
 	t_mylxr	*tmp;
 	int		node_id;
 
+	node_id = 0;
 	tmp = parser->mylexer;
 	while (tmp && !tmp->token_id)
 		tmp = tmp->next;
