@@ -54,8 +54,12 @@ void  ft_rm_node(t_mylxr **mylexer, int id)
 			if (prev)
 				prev->next = node->next;
 			else
+			{
 				*mylexer = node->next;
-			if (node->next)
+				if ((*mylexer))
+					(*mylexer)->prev = NULL;
+			}
+			if (prev && node->next)
 				node->next->prev = prev;
 			ft_node_clear(&node);
 			return ;
