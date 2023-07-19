@@ -6,7 +6,7 @@
 /*   By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 17:09:50 by rerayyad          #+#    #+#             */
-/*   Updated: 2023/07/19 11:52:13 by yes-slim         ###   ########.fr       */
+/*   Updated: 2023/07/19 11:54:01 by yes-slim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,20 +34,6 @@ void  ft_prompt(t_data *data)
     add_history(data->input);
 }
 
-void ft_check(t_data *data)
-{
-	t_cmds *tmp;
-	tmp = data->cmds;
-	int i = 0;
-	while (tmp)
-	{
-		while (tmp->str[i])
-			printf("cmd: %s ", tmp->str[i++]);
-		printf("\n");
-		tmp = tmp->next;
-	}
-}
-
 void  ft_shell_starter(t_data *data)
 {
 	while (1)
@@ -60,7 +46,6 @@ void  ft_shell_starter(t_data *data)
 			{
 				data->color = 1;
 				ft_parser(data);
-				ft_check(data);
 				ft_shell_reset(data);
 			}
 			else if (ft_token_scanner(data) == -1)
