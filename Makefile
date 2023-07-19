@@ -6,7 +6,7 @@
 #    By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/24 13:54:21 by yes-slim          #+#    #+#              #
-#    Updated: 2023/07/19 07:07:00 by rerayyad         ###   ########.fr        #
+#    Updated: 2023/07/19 08:00:40 by yes-slim         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ READLINE 	= -lreadline -lncurses
 endif
 #========================variables============================#
 HEADER  	= -I includes $(RL_HEADER)
-SANITIZ		= -g3 -fsanitize=address
+SANITIZ		=  -fsanitize=address #-g3
 CFLAGS 		= -Wall -Werror -Wextra $(HEADER) -c 
 NAME    	= minishell
 DEL     	= rm -rf
@@ -51,7 +51,7 @@ $(NAME) : $(OBJ) minishell.c
 		 @ar -rc minishell.a $(OBJ)
 		 @make -s -C parsing/mylib
 		 @cc $(SANITIZ) minishell.c minishell.a $(libft_pars) $(HEADER) -o $(NAME) $(READLINE)
-		 @echo $(bold)$(green)"	:::$(NAME) is ready:::"$(reset)
+		 @echo $(green)$(bold)":::$(NAME) is ready:::"$(reset)
 
 clean  :
 		 @echo $(grey)$(italic)$(bold)":::Deleting object files:::"$(reset)
