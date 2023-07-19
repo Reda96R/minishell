@@ -58,7 +58,7 @@ void ft_parser(t_data *data)
   while (data->mylexer)
   {
 		if (data->mylexer && data->mylexer->token_id == PIPE)
-			ft_rm_node(&data->mylexer, PIPE);
+			ft_rm_node(&data->mylexer, data->mylexer->token_id);
 		ft_parser_prep(data, &parser);
 		ft_cmd_parser(&parser, &cmd, data);
 	// if (!cmd)

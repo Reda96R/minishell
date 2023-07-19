@@ -51,7 +51,7 @@ $(NAME) : $(OBJ) minishell.c
 		 @ar -rc minishell.a $(OBJ)
 		 @make -s -C parsing/mylib
 		 @cc $(SANITIZ) minishell.c minishell.a $(libft_pars) $(HEADER) -o $(NAME) $(READLINE)
-		 @echo $(green)$(bold)":::$(NAME) is ready:::"$(reset)
+		 @echo $(bold)$(green)"	:::$(NAME) is ready:::"$(reset)
 
 clean  :
 		 @echo $(grey)$(italic)$(bold)":::Deleting object files:::"$(reset)

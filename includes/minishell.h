@@ -64,7 +64,7 @@ int     ft_token_identifier(t_data *data, int i);
 int     ft_words_parser(t_data *data, int *node_id, int i);
 void    ft_add_node(t_mylxr **mylxr, t_mylxr *new);
 int     ft_new_node(t_mylxr **new, int id, char *str);
-void    ft_rm_node(t_mylxr **mylexer, int token);
+void    ft_rm_node(t_mylxr **mylexer, int id);
 
 /*::: parser :::*/
 void    ft_parser(t_data *data);

@@ -40,16 +40,16 @@ void  ft_add_node(t_mylxr **mylxr, t_mylxr *new)
 	new->prev = tmp;
 }
 
-void  ft_rm_node(t_mylxr **mylexer, int token)
+void  ft_rm_node(t_mylxr **mylexer, int id)
 {
 	t_mylxr *node;
 	t_mylxr *prev;
 
 	node = *mylexer;
-  prev = NULL;
-  while (node)
+	prev = NULL;
+	while (node)
 	{
-		if (node->node_id == token)
+		if (node->node_id == id)
 		{
 			if (prev)
 				prev->next = node->next;

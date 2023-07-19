@@ -1,1 +1,1 @@
-cmd | cmd > file ------> infinite loop
+cmd > file | cmd ------> infinite loop

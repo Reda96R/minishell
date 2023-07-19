@@ -23,19 +23,19 @@
 void  ft_errors_buster(int id, t_data *data)
 {
   printf("\033[0;31m");
-  if (id == 1)
+	if (id == 1)
 	{
 		printf("ERROR: run without argument\n");
 		exit (0);
 	}
-  else if (id == 2)
-      printf("ERROR: unmatched quotes\n");
-  else if (id == 3)
-    printf("syntax error near unexpected token\n");
-  else if (id == 4)
-    printf("memory error: unable to allocate memory\n");
-  data->color = 0;
-  ft_shell_reset(data);
+	else if (id == 2)
+		printf("ERROR: unmatched quotes\n");
+	else if (id == 3)
+		printf("syntax error near unexpected token\n");
+	else if (id == 4)
+		printf("memory error: unable to allocate memory\n");
+	data->color = 0;
+	ft_shell_reset(data);
 }
 
 void  ft_lxr_cleaner(t_mylxr **mylexer)
