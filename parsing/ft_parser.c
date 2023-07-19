@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_parser.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rerayyad <rerayyad@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/10 16:10:13 by rerayyad          #+#    #+#             */
-/*   Updated: 2023/07/19 07:10:58 by rerayyad         ###   ########.fr       */
+/*   Updated: 2023/07/19 11:50:23 by yes-slim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ void  ft_cmd_parser(t_parser *parser, t_cmds **cmd, t_data *data)
 		}
 		args_size--;
 	}
+	args[i] = NULL;
 	ft_new_cmd(parser, args, cmd, data);
 }
 

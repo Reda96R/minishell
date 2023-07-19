@@ -45,13 +45,13 @@ void  ft_cmd_cleaner(t_cmds **cmds);
 /*::: core functions :::*/
 void    ft_shell_starter(t_data *data);
 int     ft_token_scanner(t_data *data);
-void  ft_shell_reset(t_data *data);
+void	ft_shell_reset(t_data *data);
 
 /*::: env_vars :::*/
 int     ft_env_setter(t_data *data, char **env, int n);
 void    ft_pwd_finder(t_data *data);
-void	  ft_paths_parser(t_data *data);
-char	  *ft_path_finder(char **vars);
+void	ft_paths_parser(t_data *data);
+char	*ft_path_finder(char **vars);
 
 /*::: quotes :::*/
 int     ft_quotes_counter(char *input);
