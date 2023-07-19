@@ -6,7 +6,7 @@
 #    By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/24 13:54:21 by yes-slim          #+#    #+#              #
-#    Updated: 2023/07/18 18:54:37 by yes-slim         ###   ########.fr        #
+#    Updated: 2023/07/19 07:07:00 by rerayyad         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,11 +40,11 @@ Exec_SRCS   = $(addsuffix .c, $(addprefix execution/helpers/, $(HELPERS)))
 #====================================================================#
 OBJ     	= $(Exec_SRCS:.c=.o) $(Pars_SRCS:.c=.o) ft_janitor.o
 #=========================compile=============================#
-%.o 	: %.c
+%.o     : %.c
 		 @echo $(grey)$(italic)"	~Compiling $<"$(reset)
 		 @cc $(CFLAGS) $< -o $@ 
 #==========================rules==============================#
-all 	: os $(NAME)
+all     : os $(NAME)
 
 $(NAME) : $(OBJ) minishell.c
 		 @stty -echoctl
@@ -53,21 +53,21 @@ $(NAME) : $(OBJ) minishell.c
 		 @cc $(SANITIZ) minishell.c minishell.a $(libft_pars) $(HEADER) -o $(NAME) $(READLINE)
 		 @echo $(green)$(bold)":::$(NAME) is ready:::"$(reset)
 
-clean 	:
+clean  :
 		 @echo $(grey)$(italic)$(bold)":::Deleting object files:::"$(reset)
 		 @$(DEL) $(OBJ) minishell.a
 		 @make clean -s -C parsing/mylib 
 		 @echo $(red)$(bold)":::Deleted:::"$(reset)
 
-fclean 	: clean
+fclean : clean
 		 @echo $(grey)$(italic)$(bold)":::Deleting executeables:::"$(reset)
 		 @$(DEL) $(NAME)
 		 @make fclean -s -C parsing/mylib 				
 		 @echo $(red)$(bold)":::All deleted:::"$(reset)
 
-re 			: fclean all
+re 	  : fclean all
 
-.PHONY 		: all clean fclean re
+.PHONY	: all clean fclean re
 #===========================OS================================#
 os : 
 	@echo $(yellow) "            _____         _____         ______        ____________" $(reset)

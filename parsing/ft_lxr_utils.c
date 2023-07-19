@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_lxr_utils.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rerayyad <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/07/19 06:38:02 by rerayyad          #+#    #+#             */
+/*   Updated: 2023/07/19 06:38:04 by rerayyad         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/minishell.h"
 
 int ft_new_node(t_mylxr **new ,int id, char *str)
@@ -14,18 +26,18 @@ int ft_new_node(t_mylxr **new ,int id, char *str)
 
 void  ft_add_node(t_mylxr **mylxr, t_mylxr *new)
 {
-  t_mylxr *tmp;
+	t_mylxr *tmp;
 
-  tmp = *mylxr;
-  if (!new->node_id)
-  {
-    *mylxr = new;
-    return ;
-  }
-  while (tmp->next)
-    tmp = tmp->next;
-  tmp->next = new;
-  new->prev = tmp;
+	tmp = *mylxr;
+	if (!new->node_id)
+	{
+		*mylxr = new;
+		return ;
+	}
+	while (tmp->next)
+		tmp = tmp->next;
+	tmp->next = new;
+	new->prev = tmp;
 }
 
 void  ft_rm_node(t_mylxr **mylexer, int token)
