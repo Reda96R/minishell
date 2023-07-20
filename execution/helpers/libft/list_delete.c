@@ -6,11 +6,11 @@
 /*   By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/27 10:12:37 by yes-slim          #+#    #+#             */
-/*   Updated: 2023/06/25 15:00:45 by yes-slim         ###   ########.fr       */
+/*   Updated: 2023/07/20 18:46:57 by yes-slim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "execution.h"
+#include "minishell.h"
 
 void	*del(void *content)
 {

@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lxr_utils.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rerayyad <rerayyad@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 06:38:02 by rerayyad          #+#    #+#             */
-/*   Updated: 2023/07/20 15:25:08 by rerayyad         ###   ########.fr       */
+/*   Updated: 2023/07/20 18:45:20 by yes-slim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/minishell.h"
+#include "minishell.h"
 
 int	ft_new_node(t_mylxr **new ,int id, char *str)
 {

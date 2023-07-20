@@ -6,11 +6,11 @@
 /*   By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/14 14:35:52 by yes-slim          #+#    #+#             */
-/*   Updated: 2023/07/09 11:10:34 by yes-slim         ###   ########.fr       */
+/*   Updated: 2023/07/20 18:46:28 by yes-slim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "execution.h"
+#include "minishell.h"
 
 void	sighandel(int sig)
 {

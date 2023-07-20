@@ -6,7 +6,7 @@
 #    By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/24 13:54:21 by yes-slim          #+#    #+#              #
-#    Updated: 2023/07/19 11:53:18 by yes-slim         ###   ########.fr        #
+#    Updated: 2023/07/20 18:31:56 by yes-slim         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,10 +14,11 @@
 OS			= $(shell uname -s)
 #========================Readline============================#
 ifeq ($(OS), Darwin)
-READLINE 	= -lreadline
+READLINE 	= -L ~/goinfre/homebrew/Cellar/readline/8.2.1/lib/ -lreadline
 else
 READLINE 	= -lreadline -lncurses
 endif
+RL_HEADER 	= -I ~/goinfre/homebrew/Cellar/readline/8.2.1/include/readline/
 #========================variables============================#
 HEADER  	= -I includes $(RL_HEADER)
 SANITIZ		=  -fsanitize=address #-g3
@@ -31,11 +32,11 @@ libft_pars  = parsing/mylib/mylib.a
 Pars_SRCS   = $(addsuffix .c, $(addprefix parsing/, $(Pars))) 
 
 #=================execution_files=======================================#
-LIBFT   	= ft_strdup ft_strlen list_create list_delete
-BUILTIN 	= ft_env ft_pwd #ft_echo ft_cd ft_export ft_unset ft_exit
+LIBFT   	= ft_strdup ft_strlen #list_create list_delete
+BUILTIN 	= #ft_env ft_pwd ft_echo ft_cd ft_export ft_unset ft_exit
 HELPERS 	= $(addprefix builtins/, $(BUILTIN))\
 		 	  $(addprefix libft/, $(LIBFT))\
-		 	  init signals
+		 	  signals
 Exec_SRCS   = $(addsuffix .c, $(addprefix execution/helpers/, $(HELPERS)))
 #====================================================================#
 OBJ     	= $(Exec_SRCS:.c=.o) $(Pars_SRCS:.c=.o) ft_janitor.o

@@ -6,11 +6,11 @@
 /*   By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/15 14:07:24 by yes-slim          #+#    #+#             */
-/*   Updated: 2023/06/24 15:58:51 by yes-slim         ###   ########.fr       */
+/*   Updated: 2023/07/20 18:46:57 by yes-slim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "execution.h"
+#include "minishell.h"
 
 char	*ft_strdup(const char *src)
 {

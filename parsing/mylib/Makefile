@@ -6,7 +6,7 @@
 #    By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/20 16:00:51 by rerayyad          #+#    #+#              #
-#    Updated: 2023/07/18 17:37:05 by yes-slim         ###   ########.fr        #
+#    Updated: 2023/07/20 18:33:46 by yes-slim         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@ FILES = ft_isdigit.c ft_isalnum.c ft_atoi.c ft_strrchr.c ft_striteri.c \
 				ft_memmove.c ft_memcpy.c  ft_strchr.c ft_putchar_fd.c ft_putendl_fd.c \
 				ft_putnbr_fd.c ft_putstr_fd.c ft_strchr.c ft_strlen.c ft_strnstr.c \
 				ft_substr.c ft_tolower.c ft_toupper.c ft_strtrim.c\
-				get_next_line.c ft_isspace.c ft_arr_free.c 
+				ft_isspace.c ft_arr_free.c 
 OBJS = $(FILES:.c=.o)
 CFLAGS = -Wall -Wextra -Werror
 AR = ar rc

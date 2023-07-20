@@ -3,15 +3,14 @@
 
 # include <stdlib.h>
 # include <stdio.h>
+# include <signal.h>
 # include <readline/readline.h>
 # include <readline/history.h>
 # include <unistd.h>
 # include "mylib.h"
-# include "parsing/macros.h"
-# include "parsing/mylexer.h"
-# include "parsing/parser.h"
+# include "macros.h"
+# include "structs.h"
 
-// t_cmds cmds;
 
 typedef struct s_data
 {
@@ -26,20 +25,11 @@ typedef struct s_data
   t_cmds  *cmds;
 } t_data;
 
-typedef struct s_parser
-{
-  int     redirections_count;
-  t_mylxr *mylexer;
-  t_mylxr *redirections;
-  // s_data  *data;
-  t_data *data;
-} t_parser;
-
 /*::: janitor :::*/
 void    ft_errors_buster(int id, t_data *data);
 t_mylxr	*ft_node_clear(t_mylxr **node);
-void  ft_lxr_cleaner(t_mylxr **mylexer);
-void  ft_cmd_cleaner(t_cmds **cmds);
+void 	 ft_lxr_cleaner(t_mylxr **mylexer);
+void  	ft_cmd_cleaner(t_cmds **cmds);
 
 /* -------------------Parsing-----------------------*/
 /*::: core functions :::*/
@@ -70,7 +60,7 @@ void    ft_rm_node(t_mylxr **mylexer, int id);
 void    ft_parser(t_data *data);
 void    ft_parser_prep(t_data *data, t_parser *parser);
 void    ft_cmd_parser(t_parser *parser, t_cmds **cmd, t_data *data);
-void  ft_new_cmd(t_parser *parser, char **str, t_cmds **cmd, t_data *data);
+void  	ft_new_cmd(t_parser *parser, char **str, t_cmds **cmd, t_data *data);
 void    ft_add_cmd(t_cmds **cmds, t_cmds *cmd);
 int     ft_args_counter(t_mylxr *mylexer);
 
@@ -81,8 +71,22 @@ void    ft_add_redirection(t_parser *parser, t_mylxr *tmp, int *node_id, t_data 
 
 
 /* -------------------Execution-----------------------*/
+/*::: Helpers :::*/
+void	signals(void);
 
+/*::: readline :::*/
+void 	rl_replace_line (const char *text, int clear_undo);
 
+/*::: Libfts :::*/
+char	*ft_strdup(const char *src);
+size_t	ft_strlen(const char *str);
+// t_env	*lstnew(void *key);
+// t_env	*lstlast(t_env *lst);
+// void	lst_add_back(t_env **lst, t_env *new);
+// void	lstdelone(t_env *lst, void (*del)(void *));
+// void	lstclear(t_env **lst, void (*del)(void *));
+
+/*::: Builtins :::*/
 
 
 #endif

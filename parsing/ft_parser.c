@@ -8,8 +8,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/minishell.h"
-#include "../includes/parsing/parser.h"
+#include "minishell.h"
 
 void	ft_parser_prep(t_data *data, t_parser *parser)
 {

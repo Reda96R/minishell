@@ -3,16 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_minishell_starter.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rerayyad <rerayyad@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 17:09:50 by rerayyad          #+#    #+#             */
-/*   Updated: 2023/07/20 18:02:57 by rerayyad         ###   ########.fr       */
+/*   Updated: 2023/07/20 18:45:09 by yes-slim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/minishell.h"
-#include <readline/readline.h>
-#include <readline/history.h>
+#include "minishell.h"
 
 void	ft_shell_reset(t_data *data)
 {
@@ -38,6 +36,7 @@ void	ft_shell_starter(t_data *data)
 {
 	while (1)
 	{
+		signals();
 		ft_prompt(data);
 		if (ft_quotes_counter(data->input))
 		{

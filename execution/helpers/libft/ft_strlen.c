@@ -6,11 +6,11 @@
 /*   By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/24 16:13:01 by yes-slim          #+#    #+#             */
-/*   Updated: 2023/06/24 16:13:11 by yes-slim         ###   ########.fr       */
+/*   Updated: 2023/07/20 18:46:57 by yes-slim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "execution.h"
+#include "minishell.h"
 
 size_t	ft_strlen(const char *str)
 {
