@@ -6,13 +6,13 @@
 /*   By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/25 18:47:03 by yes-slim          #+#    #+#             */
-/*   Updated: 2023/07/20 18:58:53 by yes-slim         ###   ########.fr       */
+/*   Updated: 2023/07/20 20:17:59 by yes-slim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	ft_execution(t_data *init)
-{
-	
-}
+// void	ft_execution(t_data *init)
+// {
+
+// }

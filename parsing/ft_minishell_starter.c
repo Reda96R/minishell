@@ -6,7 +6,7 @@
 /*   By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 17:09:50 by rerayyad          #+#    #+#             */
-/*   Updated: 2023/07/20 18:45:09 by yes-slim         ###   ########.fr       */
+/*   Updated: 2023/07/20 20:19:11 by yes-slim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,10 @@ void	ft_prompt(t_data *data)
 	else
 		data->input = ft_strtrim(readline(READLINE_MSG_G), " ");
 	if (!data->input)
+	{
+		printf("exit\n");
 		exit(0);
+	}
 	if (data->input[0])
 		add_history(data->input);
 }
