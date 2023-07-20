@@ -6,11 +6,11 @@
 /*   By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/14 14:40:45 by yes-slim          #+#    #+#             */
-/*   Updated: 2023/07/20 18:46:03 by yes-slim         ###   ########.fr       */
+/*   Updated: 2023/07/20 18:59:23 by yes-slim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../minishell.h"
+#include "minishell.h"
 
 char	**ft_remover(char **vars, char **rslt, char *str)
 {
