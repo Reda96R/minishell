@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rerayyad <rerayyad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/29 10:32:34 by rerayyad          #+#    #+#             */
-/*   Updated: 2023/07/18 15:52:29 by yes-slim         ###   ########.fr       */
+/*   Updated: 2023/07/20 15:36:26 by rerayyad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@ size_t	ft_strlen(const char *str)
 
 	i = 0;
 	if (!str)
-    return (0);
-  while (str[i])
+		return (0);
+	while (str[i])
 		i++;
 	return (i);
 }

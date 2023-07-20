@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   ft_redirections.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rerayyad <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: rerayyad <rerayyad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/11 15:07:51 by rerayyad          #+#    #+#             */
-/*   Updated: 2023/07/19 06:38:40 by rerayyad         ###   ########.fr       */
+/*   Updated: 2023/07/20 15:28:40 by rerayyad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "../includes/minishell.h"
+#include "../includes/minishell.h"
 
-void  ft_add_redirection(t_parser *parser, t_mylxr *tmp, int *node_id, t_data* data)
+void	ft_add_redirection(t_parser *parser, t_mylxr *tmp, int *node_id, t_data *data)
 {
-	t_mylxr  *new;
+	t_mylxr	*new;
 
 	ft_new_node(&new, tmp->token_id, ft_strdup(tmp->next->str));
 	if (!new)
@@ -26,7 +26,7 @@ void  ft_add_redirection(t_parser *parser, t_mylxr *tmp, int *node_id, t_data* d
 	parser->redirections_count++;
 }
 
-void  ft_redirections(t_parser *parser, t_data *data)
+void	ft_redirections(t_parser *parser, t_data *data)
 {
 	t_mylxr	*tmp;
 	int		node_id;

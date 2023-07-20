@@ -11,7 +11,7 @@
 #include "../includes/minishell.h"
 #include "../includes/parsing/parser.h"
 
-void  ft_parser_prep(t_data *data, t_parser *parser)
+void	ft_parser_prep(t_data *data, t_parser *parser)
 {
 	parser->data = data;
 	parser->mylexer = data->mylexer;
@@ -19,7 +19,7 @@ void  ft_parser_prep(t_data *data, t_parser *parser)
 	parser->redirections_count = 0;
 }
 
-void  ft_cmd_parser(t_parser *parser, t_cmds **cmd, t_data *data)
+void	ft_cmd_parser(t_parser *parser, t_cmds **cmd, t_data *data)
 {
 	char	**args;
 	int		args_size;
@@ -47,25 +47,26 @@ void  ft_cmd_parser(t_parser *parser, t_cmds **cmd, t_data *data)
 	ft_new_cmd(parser, args, cmd, data);
 }
 
-void ft_parser(t_data *data)
+void	ft_parser(t_data *data)
 {
-  t_parser  parser;
-  t_cmds    *cmd;
-  
-  cmd = NULL;
-  data->cmds = NULL;
-  while (data->mylexer)
-  {
+	t_parser	parser;
+	t_cmds		*cmd;
+
+	cmd = NULL;
+	data->cmds = NULL;
+	while (data->mylexer)
+	{
 		if (data->mylexer && data->mylexer->token_id == PIPE)
 			ft_rm_node(&data->mylexer, data->mylexer->node_id);
 		ft_parser_prep(data, &parser);
 		ft_cmd_parser(&parser, &cmd, data);
-	// if (!cmd)
-      // error;
+		// if (!cmd)
+		// error;
+		printf("%s\n", cmd->str[1]);
 		if (!data->cmds)
 			data->cmds = cmd;
 		else
 			ft_add_cmd(&data->cmds, cmd);
 		data->mylexer = parser.mylexer;
-  }
+	}
 }

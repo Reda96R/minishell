@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_env_var.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rerayyad <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: rerayyad <rerayyad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 15:58:19 by rerayyad          #+#    #+#             */
-/*   Updated: 2023/07/19 06:37:57 by rerayyad         ###   ########.fr       */
+/*   Updated: 2023/07/20 15:39:43 by rerayyad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,13 @@ char	*ft_path_finder(char **vars)
 	char	*path;
 
 	i = 0;
-  path = NULL;
-  while (vars[i])
+	path = NULL;
+	while (vars[i])
 	{
 		if (!ft_strncmp(vars[i], "PATH=", 5))
 		{
 			path = ft_substr(vars[i], 5, ft_strlen(vars[i]) - 5);
-			break;
+			break ;
 		}
 		i++;
 	}
@@ -37,29 +37,29 @@ void	ft_paths_parser(t_data *data)
 {
 	char	*path;
 	char	*str;
-  char  *last_char;
-	int	i;
+	char	*last_char;
+	int		i;
 
 	i = 0;
 	path = ft_path_finder(data->vars);
-  if (!path)
-    ft_errors_buster(4, data);
+	if (!path)
+		ft_errors_buster(4, data);
 	data->paths = ft_split(path, ':');
 	free(path);
 	while (data->paths[i])
 	{
-    last_char = &data->paths[i][ft_strlen(data->paths[i]) - 1];
+	last_char = &data->paths[i][ft_strlen(data->paths[i]) - 1];
 		if (ft_strncmp(last_char, "/", 1))
 		{
 			str = ft_strjoin(data->paths[i], "/");
-      // free(data->paths[i]);
+			// free(data->paths[i]);
 			data->paths[i] = str;
 		}
 		i++;
 	}
 }
 
-void  ft_pwd_finder(t_data *data)
+void	ft_pwd_finder(t_data *data)
 {
 	int	i;
 
@@ -79,14 +79,14 @@ int	ft_env_setter(t_data *data, char **env, int n)
 	int		i;
 	int		j;
 
-  if (n)
-  {
-    i = 0;
-	  while (env[i])
-		  i++;
-	  if (!(data->vars = (char **)malloc(sizeof(char *) * (i + 1))))
-		  return (0);
-	  j = 0;
+	if (n)
+	{
+		i = 0;
+		while (env[i])
+		i++;
+		if (!(data->vars = (char **)malloc(sizeof(char *) * (i + 1))))
+			return (0);
+		j = 0;
 		while (j < i)
 		{
 			data->vars[j] = ft_strdup(env[j]);
@@ -102,8 +102,7 @@ int	ft_env_setter(t_data *data, char **env, int n)
 		}
 		data->vars[i] = NULL;
 		ft_pwd_finder(data);
-    }
+	}
 	ft_paths_parser(data);
-  return (1);
+	return (1);
 }
-

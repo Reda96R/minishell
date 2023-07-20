@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rerayyad <rerayyad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/29 14:49:41 by rerayyad          #+#    #+#             */
-/*   Updated: 2023/07/18 15:52:29 by yes-slim         ###   ########.fr       */
+/*   Updated: 2023/07/20 15:38:48 by rerayyad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	ft_atoi(const char *str)
 {
 	int	i;
 	int	s;
-	int r;
+	int	r;
 
 	i = 0;
 	s = 1;

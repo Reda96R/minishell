@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   ft_minishell_starter.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rerayyad <rerayyad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 17:09:50 by rerayyad          #+#    #+#             */
-/*   Updated: 2023/07/19 11:54:01 by yes-slim         ###   ########.fr       */
+/*   Updated: 2023/07/20 18:02:57 by rerayyad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
-# include <readline/readline.h>
-# include <readline/history.h>
+#include <readline/readline.h>
+#include <readline/history.h>
 
-void  ft_shell_reset(t_data *data)
+void	ft_shell_reset(t_data *data)
 {
   // if (data->input)
 	free(data->input);
@@ -22,19 +22,19 @@ void  ft_shell_reset(t_data *data)
 	ft_shell_starter(data);
 }
 
-void  ft_prompt(t_data *data)
+void	ft_prompt(t_data *data)
 {
-  if (!data->color)
-    data->input = ft_strtrim(readline(READLINE_MSG_R), " ");
-  else
-    data->input = ft_strtrim(readline(READLINE_MSG_G), " ");
-  if (!data->input)
-    exit(0);
-  if (data->input[0])
-    add_history(data->input);
+	if (!data->color)
+		data->input = ft_strtrim(readline(READLINE_MSG_R), " ");
+	else
+		data->input = ft_strtrim(readline(READLINE_MSG_G), " ");
+	if (!data->input)
+		exit(0);
+	if (data->input[0])
+		add_history(data->input);
 }
 
-void  ft_shell_starter(t_data *data)
+void	ft_shell_starter(t_data *data)
 {
 	while (1)
 	{
@@ -53,8 +53,8 @@ void  ft_shell_starter(t_data *data)
 		}
 		else
 			ft_errors_buster(2, data);
-    // free(data->input);
-  }
+		// free(data->input);
+	}
 }
 //
 //     if (tools->args[0] == '\0')

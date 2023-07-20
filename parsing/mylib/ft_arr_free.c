@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   ft_arr_free.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rerayyad <rerayyad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 12:29:26 by rerayyad          #+#    #+#             */
-/*   Updated: 2023/07/18 15:52:30 by yes-slim         ###   ########.fr       */
+/*   Updated: 2023/07/20 15:35:54 by rerayyad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "../../includes/mylib.h"
+#include "../../includes/mylib.h"
 
-void  ft_arr_free(char **arr)
+void	ft_arr_free(char **arr)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (arr[i])

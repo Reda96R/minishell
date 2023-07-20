@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   ft_isspace.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rerayyad <rerayyad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/08 13:57:19 by rerayyad          #+#    #+#             */
-/*   Updated: 2023/07/18 15:52:29 by yes-slim         ###   ########.fr       */
+/*   Updated: 2023/07/20 15:38:41 by rerayyad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/mylib.h"
 
-int ft_isspace(int c)
+int	ft_isspace(int c)
 {
-  if (c == 32 || (c >= 9 && c <= 13))
-    return (1);
-  return (0);
+	if (c == 32 || (c >= 9 && c <= 13))
+		return (1);
+	return (0);
 }

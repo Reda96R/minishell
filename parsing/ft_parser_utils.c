@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_parser_utils.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rerayyad <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: rerayyad <rerayyad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/11 16:06:34 by rerayyad          #+#    #+#             */
-/*   Updated: 2023/07/19 06:38:28 by rerayyad         ###   ########.fr       */
+/*   Updated: 2023/07/20 15:26:31 by rerayyad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,12 +28,12 @@ int	ft_args_counter(t_mylxr *mylexer)
 	return (i);
 }
 
-void  ft_new_cmd(t_parser *parser, char **str, t_cmds **cmd, t_data *data)
+void	ft_new_cmd(t_parser *parser, char **str, t_cmds **cmd, t_data *data)
 {
 	*cmd = (t_cmds *)malloc (sizeof (t_cmds));
 	if (!cmd)
 		ft_errors_buster(4, data);
-  // (*cmd)->herdoc
+	// (*cmd)->herdoc
 	(*cmd)->str = str;
 	(*cmd)->redirections = parser->redirections;
 	(*cmd)->redirections_count = parser->redirections_count; 
@@ -42,9 +42,9 @@ void  ft_new_cmd(t_parser *parser, char **str, t_cmds **cmd, t_data *data)
 	(*cmd)->prev = NULL;
 }
 
-void  ft_add_cmd(t_cmds **cmds, t_cmds *cmd)
+void	ft_add_cmd(t_cmds **cmds, t_cmds *cmd)
 {
-	t_cmds *tmp;
+	t_cmds	*tmp;
 
 	tmp = *cmds;
 	if (!cmds)
