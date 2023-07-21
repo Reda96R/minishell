@@ -6,13 +6,13 @@
 /*   By: rerayyad <rerayyad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 06:38:02 by rerayyad          #+#    #+#             */
-/*   Updated: 2023/07/21 08:36:55 by rerayyad         ###   ########.fr       */
+/*   Updated: 2023/07/21 17:43:06 by rerayyad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	ft_new_node(t_mylxr **new ,int id, char *str)
+int	ft_new_node(t_mylxr **new, int id, char *str)
 {
 	*new = (t_mylxr *) malloc(sizeof (t_mylxr));
 	if (!new)
@@ -28,12 +28,12 @@ void	ft_add_node(t_mylxr **mylxr, t_mylxr *new)
 {
 	t_mylxr	*tmp;
 
-	tmp = *mylxr;
 	if (!new->node_id)
 	{
 		*mylxr = new;
 		return ;
 	}
+	tmp = *mylxr;
 	while (tmp->next)
 		tmp = tmp->next;
 	tmp->next = new;

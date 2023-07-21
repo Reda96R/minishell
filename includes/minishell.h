@@ -41,11 +41,11 @@ void	ft_shell_reset(t_data *data);
 
 /*::: env_vars :::*/
 int		ft_env_setter(t_data *data, char **env, int n);
-void	ft_pwd_finder(t_data *data);
+void	ft_pwd_finder(t_vars *vars, t_data *data);
 void	ft_paths_parser(t_data *data);
 char	*ft_path_finder(t_vars *vars);
 void	ft_add_var(t_vars **vars, t_vars *new_n);
-int		ft_new_var(t_vars **new_n, int *node_id, char *str);
+int		ft_new_var(t_vars **new_n, int node_id, char *str);
 t_vars	*ft_var_clear(t_vars **node);
 void	ft_rm_var(t_vars **vars, int id);
 

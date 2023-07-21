@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_minishell_starter.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rerayyad <rerayyad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 17:09:50 by rerayyad          #+#    #+#             */
-/*   Updated: 2023/07/21 07:44:15 by yes-slim         ###   ########.fr       */
+/*   Updated: 2023/07/21 18:33:48 by rerayyad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void	ft_shell_starter(t_data *data)
 {
 	while (1)
 	{
-		signals();
+		// signals();
 		ft_prompt(data);
 		if (ft_quotes_counter(data->input))
 		{
@@ -52,7 +52,7 @@ void	ft_shell_starter(t_data *data)
 				data->color = 1;
 				ft_parser(data);
 				// ft_check(data);
-				ft_execution(data);
+				// ft_execution(data);
 				ft_shell_reset(data);
 			}
 			else if (ft_token_scanner(data) == -1)

@@ -46,15 +46,15 @@ void  ft_paths_parser(t_data *data)
 	}
 }
 
-void  ft_pwd_finder(t_data *data)
+void	ft_pwd_finder(t_vars *vars, t_data *data)
 {
-	while (data->vars)
+	while (vars)
 	{
-		if (!ft_strncmp((const char *)data->vars->str, "PWD=", 4))
-			data->pwd = ft_substr(data->vars->str, 4, ft_strlen(data->vars->str) - 4);
-		else if (!ft_strncmp(data->vars->str, "OLDPWD=", 7))
-			data->old_pwd = ft_substr(data->vars->str, 7, ft_strlen(data->vars->str - 7));
-		data->vars = data->vars->next;
+		if (!ft_strncmp((const char *)vars->str, "PWD=", 4))
+			data->pwd = ft_substr(vars->str, 4, ft_strlen(vars->str) - 4);
+		else if (!ft_strncmp(vars->str, "OLDPWD=", 7))
+			data->old_pwd = ft_substr(vars->str, 7, ft_strlen(vars->str - 7));
+		vars = vars->next;
 	}
 }
 
@@ -70,11 +70,12 @@ int	ft_env_setter(t_data *data, char **env, int n)
 		node_id = 0;
 		while (env[i])
 		{
-			if (!ft_new_var(&new, &node_id, ft_strdup(env[i++])))
+			if (!ft_new_var(&new, node_id, ft_strdup(env[i++])))
 				return (0);
+			node_id++;
 			ft_add_var(&data->vars, new);
 		}
-		ft_pwd_finder(data);
+		ft_pwd_finder(data->vars, data);
 	}
 	ft_paths_parser(data);
 	return (1);

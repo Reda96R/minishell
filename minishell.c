@@ -6,11 +6,12 @@
 /*   By: rerayyad <rerayyad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 15:58:02 by rerayyad          #+#    #+#             */
-/*   Updated: 2023/07/20 15:22:07 by rerayyad         ###   ########.fr       */
+/*   Updated: 2023/07/21 17:39:35 by rerayyad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/minishell.h"
+#include "includes/structs.h"
 
 int	main(int ac, char *av[], char *env[])
 {
