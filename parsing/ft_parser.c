@@ -61,7 +61,6 @@ void	ft_parser(t_data *data)
 		ft_cmd_parser(&parser, &cmd, data);
 		// if (!cmd)
 		// error;
-		printf("%s\n", cmd->str[1]);
 		if (!data->cmds)
 			data->cmds = cmd;
 		else

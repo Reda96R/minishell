@@ -6,7 +6,7 @@
 /*   By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 17:09:50 by rerayyad          #+#    #+#             */
-/*   Updated: 2023/07/20 20:19:11 by yes-slim         ###   ########.fr       */
+/*   Updated: 2023/07/21 07:44:15 by yes-slim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,10 @@ void	ft_prompt(t_data *data)
 	if (data->input[0])
 		add_history(data->input);
 }
-
+// void ft_check(t_data *init)
+// {
+// 
+// }
 void	ft_shell_starter(t_data *data)
 {
 	while (1)
@@ -48,6 +51,8 @@ void	ft_shell_starter(t_data *data)
 			{
 				data->color = 1;
 				ft_parser(data);
+				// ft_check(data);
+				ft_execution(data);
 				ft_shell_reset(data);
 			}
 			else if (ft_token_scanner(data) == -1)

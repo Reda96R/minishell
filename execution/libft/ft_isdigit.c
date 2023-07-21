@@ -6,9 +6,11 @@
 /*   By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/15 12:58:39 by yes-slim          #+#    #+#             */
-/*   Updated: 2022/10/31 23:59:27 by yes-slim         ###   ########.fr       */
+/*   Updated: 2023/07/21 09:08:48 by yes-slim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "minishell.h"
 
 int	ft_isdigit(int c)
 {

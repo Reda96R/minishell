@@ -6,7 +6,7 @@
 #    By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/24 13:54:21 by yes-slim          #+#    #+#              #
-#    Updated: 2023/07/20 20:17:40 by yes-slim         ###   ########.fr        #
+#    Updated: 2023/07/21 09:22:40 by yes-slim         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,8 +32,8 @@ libft_pars  = parsing/mylib/mylib.a
 Pars_SRCS   = $(addsuffix .c, $(addprefix parsing/, $(Pars))) 
 
 #=================execution_files=======================================#
-LIBFT   	= ft_strdup ft_strlen #list_create list_delete
-BUILTIN 	= #ft_env ft_pwd ft_echo ft_cd ft_export ft_unset ft_exit
+LIBFT   	= ft_strdup ft_strlen ft_atoi ft_isdigit #list_create list_delete
+BUILTIN 	= ft_pwd ft_exit #ft_env ft_echo ft_cd ft_export ft_unset 
 HELPERS 	= $(addprefix builtins/, $(BUILTIN))\
 		 	  $(addprefix libft/, $(LIBFT))\
 		 	  execution signals path_getter

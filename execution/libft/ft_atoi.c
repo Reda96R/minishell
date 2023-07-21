@@ -6,17 +6,17 @@
 /*   By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/15 12:51:10 by yes-slim          #+#    #+#             */
-/*   Updated: 2022/11/02 23:18:55 by yes-slim         ###   ########.fr       */
+/*   Updated: 2023/07/21 09:11:26 by yes-slim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "minishell.h"
 
 int	ft_atoi(const char *str)
 {
 	int					i;
 	int					si;
-	unsigned long long	res;
+	long long	res;
 
 	i = 0;
 	res = 0;
@@ -32,11 +32,8 @@ int	ft_atoi(const char *str)
 	while (str[i] >= '0' && str[i] <= '9')
 	{
 		res = (res * 10) + (str[i] - '0');
-		i++;
+		if (res > INT_MAX || res < INT_MIN)
+			return (0);
 	}
-	if (res >= __LONG_LONG_MAX__ && si == 1)
-		return (-1);
-	if (res > __LONG_LONG_MAX__ && si == -1)
-		return (0);
 	return ((int)res * si);
 }

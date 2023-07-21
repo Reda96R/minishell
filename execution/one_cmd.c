@@ -1,22 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_pwd.c                                           :+:      :+:    :+:   */
+/*   one_cmd.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/14 14:40:43 by yes-slim          #+#    #+#             */
-/*   Updated: 2023/07/21 07:49:23 by yes-slim         ###   ########.fr       */
+/*   Created: 2023/07/21 07:31:45 by yes-slim          #+#    #+#             */
+/*   Updated: 2023/07/21 07:45:09 by yes-slim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	ft_pwd(void)
+void	one_cmd(t_data *init)
 {
-	char	*pwd;
-
-	pwd = getcwd(NULL, 0);
-	printf("%s\n", pwd);
-	free(pwd);
+	char *path;
+	
+	if (!is_builtin(init))
+		return ;
+	path = path_getter(init);
 }

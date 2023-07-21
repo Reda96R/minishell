@@ -10,6 +10,8 @@
 # include "mylib.h"
 # include "macros.h"
 # include "structs.h"
+# include <strings.h>
+# include <limits.h>
 
 
 typedef struct s_data
@@ -72,12 +74,19 @@ void    ft_add_redirection(t_parser *parser, t_mylxr *tmp, int *node_id, t_data 
 
 /* -------------------Execution-----------------------*/
 /*::: Helpers :::*/
+void	ft_execution(t_data *init);
 void	signals(void);
+int		is_builtin(t_cmds *init);
+void	one_cmd(t_data *init);
+void	multiple_cmds(t_data *init);
+void	path_getter(t_data *init);
 
 /*::: readline :::*/
 void 	rl_replace_line (const char *text, int clear_undo);
 
 /*::: Libfts :::*/
+int		ft_isdigit(int c);
+int		ft_atoi(const char *str);
 char	*ft_strdup(const char *src);
 size_t	ft_strlen(const char *str);
 // t_env	*lstnew(void *key);
@@ -87,6 +96,7 @@ size_t	ft_strlen(const char *str);
 // void	lstclear(t_env **lst, void (*del)(void *));
 
 /*::: Builtins :::*/
-
+void	ft_pwd(void);
+void	ft_exit(t_cmds *cmd);
 
 #endif
