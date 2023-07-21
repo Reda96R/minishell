@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structs.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rerayyad <rerayyad@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/20 18:33:55 by yes-slim          #+#    #+#             */
-/*   Updated: 2023/07/21 09:06:19 by rerayyad         ###   ########.fr       */
+/*   Updated: 2023/07/21 20:47:06 by yes-slim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ typedef struct s_vars
 	int			  node_id;
 	struct s_vars *next;
 	struct s_vars *prev;
+	struct s_data *data;
 } t_vars;
 
 
@@ -32,7 +33,8 @@ typedef struct s_mylxr
   int             token_id;
   int             node_id;
   struct s_mylxr  *next;  
-  struct s_mylxr  *prev;  
+  struct s_mylxr  *prev; 
+  struct s_data *data;
 } t_mylxr;
 
 /*===============T_CMDS==================*/
@@ -45,6 +47,7 @@ typedef struct s_cmds
   // builtins
   struct s_cmds *next;
   struct s_cmds *prev;
+  struct s_data *data;
 } t_cmds;
 
 /*===============T_PARSER==================*/

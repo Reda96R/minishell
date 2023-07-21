@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   macros.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rerayyad <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 16:34:40 by rerayyad          #+#    #+#             */
-/*   Updated: 2023/06/06 16:34:42 by rerayyad         ###   ########.fr       */
+/*   Updated: 2023/07/21 20:37:31 by yes-slim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,5 @@
 # define D_GREATER 3
 # define LESS 4
 # define D_LESS 5
-
 
 #endif

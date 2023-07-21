@@ -89,8 +89,8 @@ void	path_getter(t_data *init);
 void 	rl_replace_line (const char *text, int clear_undo);
 
 /*::: Libfts :::*/
-int		ft_isdigit(int c);
-int		ft_atoi(const char *str);
+int		_isdigit(int c);
+int		_atoi(const char *str);
 char	*ft_strdup(const char *src);
 size_t	ft_strlen(const char *str);
 // t_env	*lstnew(void *key);
@@ -100,7 +100,7 @@ size_t	ft_strlen(const char *str);
 // void	lstclear(t_env **lst, void (*del)(void *));
 
 /*::: Builtins :::*/
-void	ft_pwd(void);
+void	ft_pwd(t_data *init);
 void	ft_exit(t_cmds *cmd);
 
 #endif

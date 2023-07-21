@@ -6,7 +6,7 @@
 /*   By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/25 18:47:03 by yes-slim          #+#    #+#             */
-/*   Updated: 2023/07/21 09:21:52 by yes-slim         ###   ########.fr       */
+/*   Updated: 2023/07/21 20:47:11 by yes-slim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,12 @@
 
 int	is_builtin(t_cmds *init)
 {
-	// if (!strcmp(init->str[0], "echo"))
+	if (!strcmp(init->str[0], "pwd"))
+		return (ft_pwd(init->data), 0);
+	// else if (!strcmp(init->str[0], "echo"))
 	// 	return (ft_echo(), 0);
 	// else if (!strcmp(init->str[0], "cd"))
 	// 	return (ft_cd(, 0))
-	if (!strcmp(init->str[0], "pwd"))
-		return (ft_pwd(), 0);
 	// else if (!strcmp(init->str[0], "export"))
 	// 	return (ft_export(), 0);
 	// else if (!strcmp(init->str[0], "unset"))

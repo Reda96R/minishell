@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_exit.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rerayyad <rerayyad@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/14 14:40:40 by yes-slim          #+#    #+#             */
-/*   Updated: 2023/07/21 19:46:08 by rerayyad         ###   ########.fr       */
+/*   Updated: 2023/07/21 20:43:41 by yes-slim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ void	ft_exit(t_cmds *cmd)
 		exit(0);
 	while (cmd->str[1][i])
 	{
-		i = 0;
 		if (!ft_isdigit(cmd->str[1][i]))
 		{
 			printf("exit\n<?>: exit: %s: numeric argument required\n", cmd->str[i]);
@@ -35,7 +34,6 @@ void	ft_exit(t_cmds *cmd)
 		printf("exit\n<?>: exit: too many arguments\n");
 		return ;
 	}
-	
-	exit_code = atoi(cmd->str[1]);
+	exit_code = _atoi(cmd->str[1]);
 	exit(exit_code);
 }

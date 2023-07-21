@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: rerayyad <rerayyad@student.42.fr>          +#+  +:+       +#+         #
+#    By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/24 13:54:21 by yes-slim          #+#    #+#              #
-#    Updated: 2023/07/21 19:36:39 by rerayyad         ###   ########.fr        #
+#    Updated: 2023/07/21 20:40:45 by yes-slim         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ else
 READLINE 	= -lreadline -lncurses
 endif
 #========================variables============================#
-HEADER  	= -I includes #$(RL_HEADER)
+HEADER  	= -I includes $(RL_HEADER)
 SANITIZ		=  -fsanitize=address #-g3
 CFLAGS 		= -Wall -Werror -Wextra $(HEADER) -c 
 NAME    	= minishell
@@ -32,7 +32,7 @@ libft_pars  = parsing/mylib/mylib.a
 Pars_SRCS   = $(addsuffix .c, $(addprefix parsing/, $(Pars))) 
 
 #=================execution_files=======================================#
-LIBFT   	= ft_strdup ft_strlen ft_atoi ft_isdigit #list_create list_delete
+LIBFT   	= ft_strdup ft_strlen _atoi _isdigit #list_create list_delete
 BUILTIN 	= ft_pwd ft_exit #ft_env ft_echo ft_cd ft_export ft_unset 
 HELPERS 	= $(addprefix builtins/, $(BUILTIN))\
 		 	  $(addprefix libft/, $(LIBFT))\
@@ -52,7 +52,7 @@ $(NAME) : $(OBJ) minishell.c
 		 @ar -rc minishell.a $(OBJ)
 		 @make -s -C parsing/mylib
 		 @cc $(SANITIZ) minishell.c minishell.a $(libft_pars) $(HEADER) -o $(NAME) $(READLINE)
-		 @echo $(bold)$(green)"	:::$(NAME) is ready:::"$(reset)
+		 @echo $(green)$(bold)":::$(NAME) is ready:::"$(reset)
 
 clean  :
 		 @echo $(grey)$(italic)$(bold)":::Deleting object files:::"$(reset)

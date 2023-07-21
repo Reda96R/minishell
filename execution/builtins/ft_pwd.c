@@ -6,17 +6,23 @@
 /*   By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/14 14:40:43 by yes-slim          #+#    #+#             */
-/*   Updated: 2023/07/21 07:49:23 by yes-slim         ###   ########.fr       */
+/*   Updated: 2023/07/21 20:48:49 by yes-slim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	ft_pwd(void)
+void	ft_pwd(t_data *init)
 {
 	char	*pwd;
 
+	(void)init;
 	pwd = getcwd(NULL, 0);
+	// if (!pwd)
+	// {
+	// 	printf("%s\n", init->pwd);
+	// 	return ;
+	// }
 	printf("%s\n", pwd);
 	free(pwd);
 }
