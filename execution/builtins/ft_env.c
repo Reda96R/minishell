@@ -6,9 +6,13 @@
 /*   By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/14 14:40:38 by yes-slim          #+#    #+#             */
-/*   Updated: 2023/07/20 18:59:09 by yes-slim         ###   ########.fr       */
+/*   Updated: 2023/07/21 20:55:52 by yes-slim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
+void	ft_env(t_data *init)
+{
+	(void)init;
+}
