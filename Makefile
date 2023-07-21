@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+         #
+#    By: rerayyad <rerayyad@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/24 13:54:21 by yes-slim          #+#    #+#              #
-#    Updated: 2023/07/20 20:17:40 by yes-slim         ###   ########.fr        #
+#    Updated: 2023/07/21 11:53:05 by rerayyad         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,7 @@ NAME    	= minishell
 DEL     	= rm -rf
 #=================parcing_files=======================================#
 Pars 		= ft_env_var ft_minishell_starter ft_quotes ft_tokens_scanner \
-		 	  ft_lxr_utils ft_parser ft_parser_utils ft_redirections
+		 	  ft_lxr_utils ft_parser ft_parser_utils ft_redirections ft_env_vars_utils
 libft_pars  = parsing/mylib/mylib.a
 Pars_SRCS   = $(addsuffix .c, $(addprefix parsing/, $(Pars))) 
 

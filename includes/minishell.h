@@ -14,39 +14,43 @@
 
 typedef struct s_data
 {
-  char    **vars;
-  char    **paths;
-  char    *pwd;
-  char    *old_pwd;
-  char    *input;
-  int     color;
-  int     pipes;
+  char	  **paths;
+  char	  *pwd;
+  char	  *old_pwd;
+  char	  *input;
+  int	  color;
+  int	  pipes;
+  t_vars  *vars;
   t_mylxr *mylexer;
   t_cmds  *cmds;
 } t_data;
 
 /*::: janitor :::*/
-void    ft_errors_buster(int id, t_data *data);
+void	ft_errors_buster(int id, t_data *data);
 t_mylxr	*ft_node_clear(t_mylxr **node);
-void 	 ft_lxr_cleaner(t_mylxr **mylexer);
-void  	ft_cmd_cleaner(t_cmds **cmds);
+void	ft_lxr_cleaner(t_mylxr **mylexer);
+void	ft_cmd_cleaner(t_cmds **cmds);
 
 /* -------------------Parsing-----------------------*/
 /*::: core functions :::*/
-void    ft_shell_starter(t_data *data);
-int     ft_token_scanner(t_data *data);
+void	ft_shell_starter(t_data *data);
+int		ft_token_scanner(t_data *data);
 void	ft_shell_reset(t_data *data);
 
 /*::: env_vars :::*/
-int     ft_env_setter(t_data *data, char **env, int n);
-void    ft_pwd_finder(t_data *data);
+int		ft_env_setter(t_data *data, char **env, int n);
+void	ft_pwd_finder(t_data *data);
 void	ft_paths_parser(t_data *data);
-char	*ft_path_finder(char **vars);
+char	*ft_path_finder(t_vars *vars);
+void	ft_add_var(t_vars **vars, t_vars *new_n);
+int		ft_new_var(t_vars **new_n, int *node_id, char *str);
+t_vars	*ft_var_clear(t_vars **node);
+void	ft_rm_var(t_vars **vars, int id);
 
 /*::: quotes :::*/
-int     ft_quotes_counter(char *input);
-int     ft_quotes_matcher(char *input, int i, int quote, int *quote_count);
-int     ft_quote_skiper(char *str, int quote, int i);
+int		ft_quotes_counter(char *input);
+int		ft_quotes_matcher(char *input, int i, int quote, int *quote_count);
+int		ft_quote_skiper(char *str, int quote, int i);
 
 /*::: tokens :::*/
 int     ft_token_parser(t_data *data, int *node_id, int id);

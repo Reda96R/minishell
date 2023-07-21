@@ -1,39 +1,27 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ft_env_var.c                                       :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/06 15:58:19 by rerayyad          #+#    #+#             */
-/*   Updated: 2023/07/20 18:45:15 by yes-slim         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
+#include "../includes/minishell.h"
 
-#include "minishell.h"
-
-char	*ft_path_finder(char **vars)
+char  *ft_path_finder(t_vars *vars)
 {
 	int		i;
 	char	*path;
 
 	i = 0;
 	path = NULL;
-	while (vars[i])
+	while (vars)
 	{
-		if (!ft_strncmp(vars[i], "PATH=", 5))
+		if (!ft_strncmp(vars->str, "PATH=", 5))
 		{
-			path = ft_substr(vars[i], 5, ft_strlen(vars[i]) - 5);
+			path = ft_substr(vars->str, 5, ft_strlen(vars->str) - 5);
 			break ;
 		}
-		i++;
+		vars = vars->next;
 	}
 	if (!path)
 		path = ft_strdup("");
 	return (path);
 }
 
-void	ft_paths_parser(t_data *data)
+void  ft_paths_parser(t_data *data)
 {
 	char	*path;
 	char	*str;
@@ -48,59 +36,44 @@ void	ft_paths_parser(t_data *data)
 	free(path);
 	while (data->paths[i])
 	{
-	last_char = &data->paths[i][ft_strlen(data->paths[i]) - 1];
+		last_char = &data->paths[i][ft_strlen(data->paths[i]) - 1];
 		if (ft_strncmp(last_char, "/", 1))
 		{
 			str = ft_strjoin(data->paths[i], "/");
-			// free(data->paths[i]);
 			data->paths[i] = str;
 		}
 		i++;
 	}
 }
 
-void	ft_pwd_finder(t_data *data)
+void  ft_pwd_finder(t_data *data)
 {
-	int	i;
-
-  i = 0;
-	while (data->vars[i])
+	while (data->vars)
 	{
-		if (!ft_strncmp(data->vars[i], "PWD=", 4))
-			data->pwd = ft_substr(data->vars[i], 4, ft_strlen(data->vars[i]) - 4);
-		else if (!ft_strncmp(data->vars[i], "OLDPWD=", 7))
-			data->old_pwd = ft_substr(data->vars[i], 7, ft_strlen(data->vars[i]) - 7);
-		i++;
+		if (!ft_strncmp((const char *)data->vars->str, "PWD=", 4))
+			data->pwd = ft_substr(data->vars->str, 4, ft_strlen(data->vars->str) - 4);
+		else if (!ft_strncmp(data->vars->str, "OLDPWD=", 7))
+			data->old_pwd = ft_substr(data->vars->str, 7, ft_strlen(data->vars->str - 7));
+		data->vars = data->vars->next;
 	}
 }
 
 int	ft_env_setter(t_data *data, char **env, int n)
 {
 	int		i;
-	int		j;
+	t_vars	*new;
+	int		node_id;
 
 	if (n)
 	{
 		i = 0;
+		node_id = 0;
 		while (env[i])
-		i++;
-		if (!(data->vars = (char **)malloc(sizeof(char *) * (i + 1))))
-			return (0);
-		j = 0;
-		while (j < i)
 		{
-			data->vars[j] = ft_strdup(env[j]);
-			if (!data->vars[j])
-			{
-				while (j > 0)
-					free(data->vars[--j]);
-				free(data->vars);
-				// ft_errors_buster(4, data);
+			if (!ft_new_var(&new, &node_id, ft_strdup(env[i++])))
 				return (0);
-			}
-			j++;
+			ft_add_var(&data->vars, new);
 		}
-		data->vars[i] = NULL;
 		ft_pwd_finder(data);
 	}
 	ft_paths_parser(data);
