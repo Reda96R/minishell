@@ -6,13 +6,40 @@
 /*   By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/25 18:47:03 by yes-slim          #+#    #+#             */
-/*   Updated: 2023/07/20 20:17:59 by yes-slim         ###   ########.fr       */
+/*   Updated: 2023/07/21 09:21:52 by yes-slim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-// void	ft_execution(t_data *init)
-// {
+int	is_builtin(t_cmds *init)
+{
+	// if (!strcmp(init->str[0], "echo"))
+	// 	return (ft_echo(), 0);
+	// else if (!strcmp(init->str[0], "cd"))
+	// 	return (ft_cd(, 0))
+	if (!strcmp(init->str[0], "pwd"))
+		return (ft_pwd(), 0);
+	// else if (!strcmp(init->str[0], "export"))
+	// 	return (ft_export(), 0);
+	// else if (!strcmp(init->str[0], "unset"))
+	// 	return (ft_unset(), 0);
+	// else if (!strcmp(init->str[0], "env"))
+	// 	return (ft_env(), 0);
+	else if (!strcmp(init->str[0], "exit"))
+		return (ft_exit(init), 0);
+	return (1);
+}
 
-// }
+void	ft_execution(t_data *init)
+{
+	while (init->cmds)
+	{
+		is_builtin(init->cmds);
+		// if (!init->pipes)
+		// 	one_cmd(init);
+		// else
+		// 	multiple_cmds(init);
+		init->cmds = init->cmds->next;
+	}
+}
