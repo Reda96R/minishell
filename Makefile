@@ -6,11 +6,7 @@
 #    By: rerayyad <rerayyad@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/24 13:54:21 by yes-slim          #+#    #+#              #
-<<<<<<< HEAD
-#    Updated: 2023/07/21 11:53:05 by rerayyad         ###   ########.fr        #
-=======
-#    Updated: 2023/07/21 09:22:40 by yes-slim         ###   ########.fr        #
->>>>>>> e9d6bd8679c1f832de1cd8fa48597aed739b7572
+#    Updated: 2023/07/21 12:43:13 by rerayyad         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,7 +37,7 @@ BUILTIN 	= ft_pwd ft_exit #ft_env ft_echo ft_cd ft_export ft_unset
 HELPERS 	= $(addprefix builtins/, $(BUILTIN))\
 		 	  $(addprefix libft/, $(LIBFT))\
 		 	  execution signals path_getter
-Exec_SRCS   = $(addsuffix .c, $(addprefix execution/, $(HELPERS)))
+# Exec_SRCS   = $(addsuffix .c, $(addprefix execution/, $(HELPERS)))
 #====================================================================#
 OBJ     	= $(Exec_SRCS:.c=.o) $(Pars_SRCS:.c=.o) ft_janitor.o
 #=========================compile=============================#
