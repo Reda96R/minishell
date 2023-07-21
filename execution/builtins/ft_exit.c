@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_exit.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rerayyad <rerayyad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/14 14:40:40 by yes-slim          #+#    #+#             */
-/*   Updated: 2023/07/21 09:24:09 by yes-slim         ###   ########.fr       */
+/*   Updated: 2023/07/21 19:46:08 by rerayyad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,6 @@ void	ft_exit(t_cmds *cmd)
 		return ;
 	}
 	
-	exit_code = ft_atoi(cmd->str[1]);
+	exit_code = atoi(cmd->str[1]);
 	exit(exit_code);
 }

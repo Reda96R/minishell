@@ -6,7 +6,7 @@
 #    By: rerayyad <rerayyad@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/24 13:54:21 by yes-slim          #+#    #+#              #
-#    Updated: 2023/07/21 18:30:32 by rerayyad         ###   ########.fr        #
+#    Updated: 2023/07/21 19:36:39 by rerayyad         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,7 +37,7 @@ BUILTIN 	= ft_pwd ft_exit #ft_env ft_echo ft_cd ft_export ft_unset
 HELPERS 	= $(addprefix builtins/, $(BUILTIN))\
 		 	  $(addprefix libft/, $(LIBFT))\
 		 	  execution signals path_getter
-#Exec_SRCS   = $(addsuffix .c, $(addprefix execution/, $(HELPERS)))
+Exec_SRCS   = $(addsuffix .c, $(addprefix execution/, $(HELPERS)))
 #====================================================================#
 OBJ     	= $(Exec_SRCS:.c=.o) $(Pars_SRCS:.c=.o) ft_janitor.o
 #=========================compile=============================#
@@ -51,7 +51,7 @@ $(NAME) : $(OBJ) minishell.c
 		 @stty -echoctl
 		 @ar -rc minishell.a $(OBJ)
 		 @make -s -C parsing/mylib
-		 @cc $(SANITIZ) minishell.c minishell.a $(libft_pars) $(HEADER) -o $(NAME) -lreadline
+		 @cc $(SANITIZ) minishell.c minishell.a $(libft_pars) $(HEADER) -o $(NAME) $(READLINE)
 		 @echo $(bold)$(green)"	:::$(NAME) is ready:::"$(reset)
 
 clean  :
