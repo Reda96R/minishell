@@ -2,10 +2,8 @@
 
 char  *ft_path_finder(t_vars *vars)
 {
-	int		i;
 	char	*path;
 
-	i = 0;
 	path = NULL;
 	while (vars)
 	{
