@@ -6,7 +6,7 @@
 /*   By: rerayyad <rerayyad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/22 15:07:32 by rerayyad          #+#    #+#             */
-/*   Updated: 2023/07/22 16:29:36 by rerayyad         ###   ########.fr       */
+/*   Updated: 2023/07/22 18:10:32 by rerayyad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,8 @@ void	ft_pwd_finder(t_vars *vars, t_data *data)
 		if (!ft_strncmp((const char *)vars->key, "PWD=", 4))
 			data->pwd = ft_substr(vars->value, 4, ft_strlen(vars->value) - 4);
 		else if (!ft_strncmp(vars->key, "OLDPWD=", 7))
-			data->old_pwd = ft_substr(vars->value, 7, ft_strlen(vars->value - 7));
+			data->old_pwd = ft_substr(vars->value, 7, \
+							ft_strlen(vars->value - 7));
 		vars = vars->next;
 	}
 }
@@ -102,7 +103,7 @@ int	ft_env_var(t_data *data, char **env, int n)
 	tmp = data->vars;
 	while (tmp->next)
 		tmp = tmp->next;
-	data->env = (char **) malloc(sizeof (char *));
+	data->env = (char **) malloc(sizeof (char *) * (tmp->node_id + 2));
 	if (!data->env)
 		return (0);
 	tmp = data->vars;
@@ -116,8 +117,5 @@ int	ft_env_var(t_data *data, char **env, int n)
 		tmp = tmp->next;
 	}
 	data->env[i] = NULL;
-	// i = 0;
-	// while (data->env[i])
-	// 	printf("%s\n", data->env[i++]);
 	return (1);
 }
