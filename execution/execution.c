@@ -6,7 +6,7 @@
 /*   By: rerayyad <rerayyad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/25 18:47:03 by yes-slim          #+#    #+#             */
-/*   Updated: 2023/07/22 18:59:30 by rerayyad         ###   ########.fr       */
+/*   Updated: 2023/07/22 19:56:04 by yes-slim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,11 @@ int	is_builtin(t_cmds *init)
 	// 	return (ft_export(), 0);
 	// else if (!strcmp(init->str[0], "unset"))
 	// 	return (ft_unset(), 0);
-		else if (!strcmp(init->str[0], "env"))
-			return (ft_env(init->data), 0);
-		else if (!strcmp(init->str[0], "exit"))
-			return (ft_exit(init), 0);
-		return (1);
+	else if (!strcmp(init->str[0], "env"))
+		return (ft_env(init), 0);
+	else if (!strcmp(init->str[0], "exit"))
+		return (ft_exit(init), 0);
+	return (1);
 }
 
 void	ft_execution(t_data *init)
