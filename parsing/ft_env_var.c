@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_env_var.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rerayyad <rerayyad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/22 15:07:32 by rerayyad          #+#    #+#             */
-/*   Updated: 2023/07/22 20:29:25 by yes-slim         ###   ########.fr       */
+/*   Updated: 2023/07/22 21:46:14 by rerayyad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,18 +58,16 @@ void	ft_paths_parser(t_data *data)
 
 void	ft_pwd_finder(t_vars *vars, t_data *data)
 {
-	t_vars *tmp;
-	
+	t_vars	*tmp;
+
 	tmp = vars;
 	while (tmp)
 	{
-
-		if (!ft_strncmp((const char *)vars->key, "PWD=", 4))
-			data->pwd = ft_substr(vars->value, 4, ft_strlen(vars->value) - 4);
-		else if (!ft_strncmp(vars->key, "OLDPWD=", 7))
-			data->old_pwd = ft_substr(vars->value, 7, \
-							ft_strlen(vars->value - 7));
-		vars = vars->next;
+		if (!ft_strncmp((const char *)tmp->key, "PWD", 3))
+			data->pwd = ft_strdup(tmp->value);
+		else if (!ft_strncmp(tmp->key, "OLDPWD", 6))
+			data->old_pwd = ft_strdup(tmp->value);
+		tmp = tmp->next;
 	}
 }
 
@@ -114,15 +112,13 @@ int	ft_env_var(t_data *data, char **env, int n)
 	i = 0;
 	while (tmp)
 	{
-		if (!tmp->value)
+		if (tmp->value)
 		{
-			tmp = tmp->next;
-			continue ;
+			str = ft_strjoin(tmp->key, "=");
+			data->env[i] = ft_strdup(ft_strjoin(str, tmp->value));
+			free (str);
+			i++;
 		}
-		str = ft_strjoin(tmp->key, "=");
-		data->env[i] = ft_strdup(ft_strjoin(str, tmp->value));
-		free (str);
-		i++;
 		tmp = tmp->next;
 	}
 	data->env[i] = NULL;

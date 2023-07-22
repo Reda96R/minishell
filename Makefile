@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+         #
+#    By: rerayyad <rerayyad@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/24 13:54:21 by yes-slim          #+#    #+#              #
-#    Updated: 2023/07/22 13:22:39 by yes-slim         ###   ########.fr        #
+#    Updated: 2023/07/22 21:20:22 by rerayyad         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,7 +36,7 @@ LIBFT   	= ft_strdup ft_strlen _atoi _isdigit #list_create list_delete
 BUILTIN 	= ft_pwd ft_exit ft_env ft_echo #ft_cd ft_export ft_unset 
 HELPERS 	= $(addprefix builtins/, $(BUILTIN))\
 		 	  $(addprefix libft/, $(LIBFT))\
-		 	  execution signals path_getter
+		 	  execution signals
 Exec_SRCS   = $(addsuffix .c, $(addprefix execution/, $(HELPERS)))
 #====================================================================#
 OBJ     	= $(Exec_SRCS:.c=.o) $(Pars_SRCS:.c=.o) ft_janitor.o
