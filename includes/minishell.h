@@ -22,7 +22,7 @@ typedef struct s_data
   char	  *input;
   int	  color;
   int	  pipes;
-  char	**env;
+  char	  **env;
   t_vars  *vars;
   t_mylxr *mylexer;
   t_cmds  *cmds;
@@ -105,5 +105,6 @@ size_t	ft_strlen(const char *str);
 void	ft_pwd(t_data *init);
 void	ft_exit(t_cmds *cmd);
 void	ft_env(t_data *init);
+void	ft_echo(t_cmds *init);
 
 #endif
