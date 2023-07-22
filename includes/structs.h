@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structs.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rerayyad <rerayyad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/20 18:33:55 by yes-slim          #+#    #+#             */
-/*   Updated: 2023/07/21 20:47:06 by yes-slim         ###   ########.fr       */
+/*   Updated: 2023/07/22 11:56:35 by rerayyad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,8 @@
 /*===============T_VARS===================*/
 typedef struct s_vars
 {
-	char		  *str;
+	char		  *key;
+	char		  *value;
 	int			  node_id;
 	struct s_vars *next;
 	struct s_vars *prev;

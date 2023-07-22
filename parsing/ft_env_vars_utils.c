@@ -6,18 +6,24 @@
 /*   By: rerayyad <rerayyad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/21 11:28:33 by rerayyad          #+#    #+#             */
-/*   Updated: 2023/07/21 17:42:42 by rerayyad         ###   ########.fr       */
+/*   Updated: 2023/07/22 12:27:24 by rerayyad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
+#include <string.h>
 
 t_vars	*ft_var_clear(t_vars **node)
 {
-	if ((*node)->str)
+	if ((*node)->key)
 	{
-		free ((*node)->str);
-		(*node)->str = NULL;
+		free ((*node)->key);
+		(*node)->key = NULL;
+	}
+	if ((*node)->value)
+	{
+		free ((*node)->value);
+		(*node)->value = NULL;
 	}
 	free (*node);
 	*node = NULL;
@@ -26,10 +32,16 @@ t_vars	*ft_var_clear(t_vars **node)
 
 int	ft_new_var(t_vars **new_n, int node_id, char *str)
 {
+	int	i;
+
+	i = 0;
+	while (str[i] && str[i] != '=')
+		i++;
 	*new_n = (t_vars *) malloc(sizeof (t_vars));
 	if (!new_n)
 		return (0);
-	(*new_n)->str = str;
+	(*new_n)->key = ft_strdup(ft_substr(str, 0, i));
+	(*new_n)->value = ft_strdup(ft_substr(str, i + 1, ft_strlen(str) - i));
 	(*new_n)->node_id = node_id;
 	(*new_n)->next = NULL;
 	(*new_n)->prev = NULL;

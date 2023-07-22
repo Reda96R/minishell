@@ -6,7 +6,7 @@
 /*   By: rerayyad <rerayyad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 15:58:02 by rerayyad          #+#    #+#             */
-/*   Updated: 2023/07/21 17:39:35 by rerayyad         ###   ########.fr       */
+/*   Updated: 2023/07/22 12:27:11 by rerayyad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,9 @@ int	main(int ac, char *av[], char *env[])
 
 	if (ac > 1 || av[1])
 		ft_errors_buster(1, &data);
-	if (!ft_env_setter(&data, env, 1))
+	if (!ft_env_var(&data, env, 1))
 		return (0);
+	printf("%s\n", data.vars->value);
 	data.color = 1;
 	ft_shell_starter(&data);
 	return (0);

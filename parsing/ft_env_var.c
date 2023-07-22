@@ -1,15 +1,15 @@
 #include "../includes/minishell.h"
 
-char  *ft_path_finder(t_vars *vars)
+char	*ft_path_finder(t_vars *vars)
 {
 	char	*path;
 
 	path = NULL;
 	while (vars)
 	{
-		if (!ft_strncmp(vars->str, "PATH=", 5))
+		if (!ft_strncmp(vars->key, "PATH=", 5))
 		{
-			path = ft_substr(vars->str, 5, ft_strlen(vars->str) - 5);
+			path = ft_substr(vars->value, 5, ft_strlen(vars->value) - 5);
 			break ;
 		}
 		vars = vars->next;
@@ -19,7 +19,7 @@ char  *ft_path_finder(t_vars *vars)
 	return (path);
 }
 
-void  ft_paths_parser(t_data *data)
+void	ft_paths_parser(t_data *data)
 {
 	char	*path;
 	char	*str;
@@ -48,10 +48,10 @@ void	ft_pwd_finder(t_vars *vars, t_data *data)
 {
 	while (vars)
 	{
-		if (!ft_strncmp((const char *)vars->str, "PWD=", 4))
-			data->pwd = ft_substr(vars->str, 4, ft_strlen(vars->str) - 4);
-		else if (!ft_strncmp(vars->str, "OLDPWD=", 7))
-			data->old_pwd = ft_substr(vars->str, 7, ft_strlen(vars->str - 7));
+		if (!ft_strncmp((const char *)vars->key, "PWD=", 4))
+			data->pwd = ft_substr(vars->value, 4, ft_strlen(vars->value) - 4);
+		else if (!ft_strncmp(vars->key, "OLDPWD=", 7))
+			data->old_pwd = ft_substr(vars->value, 7, ft_strlen(vars->value - 7));
 		vars = vars->next;
 	}
 }
@@ -68,7 +68,7 @@ int	ft_env_setter(t_data *data, char **env, int n)
 		node_id = 0;
 		while (env[i])
 		{
-			if (!ft_new_var(&new, node_id, ft_strdup(env[i++])))
+			if (!ft_new_var(&new, node_id, env[i++]))
 				return (0);
 			node_id++;
 			ft_add_var(&data->vars, new);
@@ -76,5 +76,27 @@ int	ft_env_setter(t_data *data, char **env, int n)
 		ft_pwd_finder(data->vars, data);
 	}
 	ft_paths_parser(data);
+	return (1);
+}
+
+int	ft_env_var(t_data *data, char **env, int n)
+{
+	int	i;
+
+	i = 0;
+	while (env[i])
+		i++;
+	data->env = (char **) malloc(sizeof (char *) * i + 1);
+	if (!data->env)
+		return (0);
+	i = 0;
+	while (env[i])
+	{
+		data->env[i] = ft_strdup(env[i]);
+		i++;
+	}
+	data->env[i] = NULL;
+	if (!ft_env_setter(data, env, n))
+		return (0);
 	return (1);
 }

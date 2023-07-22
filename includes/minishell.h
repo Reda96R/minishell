@@ -22,6 +22,7 @@ typedef struct s_data
   char	  *input;
   int	  color;
   int	  pipes;
+  char	**env;
   t_vars  *vars;
   t_mylxr *mylexer;
   t_cmds  *cmds;
@@ -40,6 +41,7 @@ int		ft_token_scanner(t_data *data);
 void	ft_shell_reset(t_data *data);
 
 /*::: env_vars :::*/
+int		ft_env_var(t_data *data, char **env, int n);
 int		ft_env_setter(t_data *data, char **env, int n);
 void	ft_pwd_finder(t_vars *vars, t_data *data);
 void	ft_paths_parser(t_data *data);
