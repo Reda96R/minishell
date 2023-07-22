@@ -1,2 +1,2 @@
 cmd > file | cmd ------> infinite loop [solved]
-<< eof cmd ------> syntax error
+<< eof cmd ------> syntax error [solved]

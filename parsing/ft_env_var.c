@@ -63,11 +63,13 @@ void	ft_pwd_finder(t_vars *vars, t_data *data)
 	tmp = vars;
 	while (tmp)
 	{
-		if (!strcmp((const char *)tmp->key, "PWD"))
-			data->pwd = tmp->value;
-		if (!strcmp(tmp->key, "OLDPWD"))
-			data->old_pwd = tmp->value;
-		tmp = tmp->next;
+
+		if (!ft_strncmp((const char *)vars->key, "PWD=", 4))
+			data->pwd = ft_substr(vars->value, 4, ft_strlen(vars->value) - 4);
+		else if (!ft_strncmp(vars->key, "OLDPWD=", 7))
+			data->old_pwd = ft_substr(vars->value, 7, \
+							ft_strlen(vars->value - 7));
+		vars = vars->next;
 	}
 }
 
@@ -105,7 +107,7 @@ int	ft_env_var(t_data *data, char **env, int n)
 	tmp = data->vars;
 	while (tmp->next)
 		tmp = tmp->next;
-	data->env = (char **)(malloc(sizeof (char *) * (tmp->node_id + 2)));
+	data->env = (char **) malloc(sizeof (char *) * (tmp->node_id + 2));
 	if (!data->env)
 		return (0);
 	tmp = data->vars;
