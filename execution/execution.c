@@ -6,7 +6,7 @@
 /*   By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/25 18:47:03 by yes-slim          #+#    #+#             */
-/*   Updated: 2023/07/21 20:51:52 by yes-slim         ###   ########.fr       */
+/*   Updated: 2023/07/22 13:32:44 by yes-slim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@ int	is_builtin(t_cmds *init)
 {
 	if (!strcmp(init->str[0], "pwd"))
 		return (ft_pwd(init->data), 0);
-	// else if (!strcmp(init->str[0], "echo"))
-	// 	return (ft_echo(), 0);
+	else if (!strcmp(init->str[0], "echo"))
+		return (ft_echo(init), 0);
 	// else if (!strcmp(init->str[0], "cd"))
 	// 	return (ft_cd(, 0))
 	// else if (!strcmp(init->str[0], "export"))
@@ -33,6 +33,9 @@ int	is_builtin(t_cmds *init)
 
 void	ft_execution(t_data *init)
 {
+	if (!init->cmds)
+		return ;
+	init->cmds->data = init;
 	while (init->cmds)
 	{
 		is_builtin(init->cmds);
