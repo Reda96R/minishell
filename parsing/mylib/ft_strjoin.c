@@ -6,12 +6,11 @@
 /*   By: rerayyad <rerayyad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/29 12:37:15 by rerayyad          #+#    #+#             */
-/*   Updated: 2023/07/20 15:38:12 by rerayyad         ###   ########.fr       */
+/*   Updated: 2023/07/22 15:23:03 by rerayyad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/mylib.h"
-//#include <stddef>
 
 char	*ft_strjoin(char const *s1, char const *s2)
 {
@@ -33,6 +32,5 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	while (s2 && s2[j] != '\0')
 		str[i++] = s2[j++];
 	str[i] = '\0';
-	free((char *)s1);
 	return (str);
 }

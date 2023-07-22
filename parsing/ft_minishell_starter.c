@@ -6,16 +6,16 @@
 /*   By: rerayyad <rerayyad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 17:09:50 by rerayyad          #+#    #+#             */
-/*   Updated: 2023/07/21 19:36:52 by rerayyad         ###   ########.fr       */
+/*   Updated: 2023/07/22 13:53:26 by rerayyad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "../includes/minishell.h"
 
 void	ft_shell_reset(t_data *data)
 {
-  // if (data->input)
-	free(data->input);
+	if (data->input)
+		free(data->input);
 	ft_cmd_cleaner(&data->cmds);
 	ft_shell_starter(data);
 }
@@ -38,6 +38,7 @@ void	ft_prompt(t_data *data)
 // {
 // 
 // }
+
 void	ft_shell_starter(t_data *data)
 {
 	while (1)
@@ -60,31 +61,5 @@ void	ft_shell_starter(t_data *data)
 		}
 		else
 			ft_errors_buster(2, data);
-		// free(data->input);
 	}
 }
-//
-//     if (tools->args[0] == '\0')
-//     {
-//       free(tools->args);
-//       return (ft_reset(tools));
-//     }
-//       if (ft_quotes_counter(tools->args))
-//       {
-//         if (ft_token_reader(tools))
-//           {
-//             ft_parser(tools);
-//             ft_exec_prep(tools);
-//             ft_reset(tools);
-//           }
-//         else
-//           ft_error_busters(3, tools);
-//       }
-//       else 
-//         ft_error_busters(4, tools);
-//       free(tools->args);
-//     }
-//     return (ft_reset(tools));
-// }
-//
-
