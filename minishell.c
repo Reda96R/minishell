@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rerayyad <rerayyad@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 15:58:02 by rerayyad          #+#    #+#             */
-/*   Updated: 2023/07/22 17:13:16 by rerayyad         ###   ########.fr       */
+/*   Updated: 2023/07/22 18:07:20 by yes-slim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,9 @@ int	main(int ac, char *av[], char *env[])
 	// int i = 0;
 	// while (data.env[i])
 	// 	printf("%s\n", data.env[i++]);
-		// printf("%s\n", data.env[i++]);
+	// 	printf("%s\n", data.env[i++]);
 	// printf("%s\n", data.env[39]);
+	
 	ft_shell_starter(&data);
 	return (0);
 }

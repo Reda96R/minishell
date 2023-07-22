@@ -6,14 +6,14 @@
 /*   By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/22 16:15:05 by yes-slim          #+#    #+#             */
-/*   Updated: 2023/07/22 17:01:44 by yes-slim         ###   ########.fr       */
+/*   Updated: 2023/07/22 17:25:12 by yes-slim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int main(int ac, char **av, char **env)
-{
+// int main(int ac, char **av, char **env)
+// {
 
 
-}
+// }

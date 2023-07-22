@@ -6,7 +6,7 @@
 /*   By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/20 18:33:55 by yes-slim          #+#    #+#             */
-/*   Updated: 2023/07/22 16:35:14 by yes-slim         ###   ########.fr       */
+/*   Updated: 2023/07/22 17:25:53 by yes-slim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ typedef struct s_vars
 {
 	char		  *key;
 	char		  *value;
-	int			  id;
+	int			  node_id;
 	struct s_vars *next;
 	struct s_vars *prev;
 	struct s_data *data;

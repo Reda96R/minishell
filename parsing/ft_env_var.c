@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_env_var.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rerayyad <rerayyad@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/22 15:07:32 by rerayyad          #+#    #+#             */
-/*   Updated: 2023/07/22 16:29:36 by rerayyad         ###   ########.fr       */
+/*   Updated: 2023/07/22 18:06:14 by yes-slim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,7 +102,7 @@ int	ft_env_var(t_data *data, char **env, int n)
 	tmp = data->vars;
 	while (tmp->next)
 		tmp = tmp->next;
-	data->env = (char **) malloc(sizeof (char *));
+	data->env = (char **)(malloc(sizeof (char *) * (tmp->node_id + 2)));
 	if (!data->env)
 		return (0);
 	tmp = data->vars;
@@ -116,8 +116,5 @@ int	ft_env_var(t_data *data, char **env, int n)
 		tmp = tmp->next;
 	}
 	data->env[i] = NULL;
-	// i = 0;
-	// while (data->env[i])
-	// 	printf("%s\n", data->env[i++]);
 	return (1);
 }
