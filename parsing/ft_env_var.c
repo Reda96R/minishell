@@ -6,7 +6,7 @@
 /*   By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/22 15:07:32 by rerayyad          #+#    #+#             */
-/*   Updated: 2023/07/22 18:06:14 by yes-slim         ###   ########.fr       */
+/*   Updated: 2023/07/22 20:29:25 by yes-slim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,13 +58,16 @@ void	ft_paths_parser(t_data *data)
 
 void	ft_pwd_finder(t_vars *vars, t_data *data)
 {
-	while (vars)
+	t_vars *tmp;
+	
+	tmp = vars;
+	while (tmp)
 	{
-		if (!ft_strncmp((const char *)vars->key, "PWD=", 4))
-			data->pwd = ft_substr(vars->value, 4, ft_strlen(vars->value) - 4);
-		else if (!ft_strncmp(vars->key, "OLDPWD=", 7))
-			data->old_pwd = ft_substr(vars->value, 7, ft_strlen(vars->value - 7));
-		vars = vars->next;
+		if (!strcmp((const char *)tmp->key, "PWD"))
+			data->pwd = tmp->value;
+		if (!strcmp(tmp->key, "OLDPWD"))
+			data->old_pwd = tmp->value;
+		tmp = tmp->next;
 	}
 }
 
@@ -109,6 +112,11 @@ int	ft_env_var(t_data *data, char **env, int n)
 	i = 0;
 	while (tmp)
 	{
+		if (!tmp->value)
+		{
+			tmp = tmp->next;
+			continue ;
+		}
 		str = ft_strjoin(tmp->key, "=");
 		data->env[i] = ft_strdup(ft_strjoin(str, tmp->value));
 		free (str);

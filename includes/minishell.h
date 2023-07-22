@@ -104,7 +104,7 @@ size_t	ft_strlen(const char *str);
 /*::: Builtins :::*/
 void	ft_pwd(t_data *init);
 void	ft_exit(t_cmds *cmd);
-void	ft_env(t_data *init);
+void	ft_env(t_cmds *init);
 void	ft_echo(t_cmds *init);
 
 #endif
