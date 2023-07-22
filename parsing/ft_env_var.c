@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_env_var.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rerayyad <rerayyad@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/07/22 15:07:32 by rerayyad          #+#    #+#             */
+/*   Updated: 2023/07/22 16:29:36 by rerayyad         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/minishell.h"
 
 char	*ft_path_finder(t_vars *vars)
@@ -81,22 +93,31 @@ int	ft_env_setter(t_data *data, char **env, int n)
 
 int	ft_env_var(t_data *data, char **env, int n)
 {
-	int	i;
+	int		i;
+	char	*str;
+	t_vars	*tmp;
 
-	i = 0;
-	while (env[i])
-		i++;
-	data->env = (char **) malloc(sizeof (char *) * i + 1);
-	if (!data->env)
-		return (0);
-	i = 0;
-	while (env[i])
-	{
-		data->env[i] = ft_strdup(env[i]);
-		i++;
-	}
-	data->env[i] = NULL;
 	if (!ft_env_setter(data, env, n))
 		return (0);
+	tmp = data->vars;
+	while (tmp->next)
+		tmp = tmp->next;
+	data->env = (char **) malloc(sizeof (char *));
+	if (!data->env)
+		return (0);
+	tmp = data->vars;
+	i = 0;
+	while (tmp)
+	{
+		str = ft_strjoin(tmp->key, "=");
+		data->env[i] = ft_strdup(ft_strjoin(str, tmp->value));
+		free (str);
+		i++;
+		tmp = tmp->next;
+	}
+	data->env[i] = NULL;
+	// i = 0;
+	// while (data->env[i])
+	// 	printf("%s\n", data->env[i++]);
 	return (1);
 }

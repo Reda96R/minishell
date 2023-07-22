@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   path_getter.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rerayyad <rerayyad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/20 20:14:38 by yes-slim          #+#    #+#             */
-/*   Updated: 2023/07/20 20:17:52 by yes-slim         ###   ########.fr       */
+/*   Updated: 2023/07/22 13:48:29 by rerayyad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-// void	path_getter(t_data *init)
-// {
-	
-// }
+void	path_getter(t_data *init)
+{
+	(void) init;
+}
