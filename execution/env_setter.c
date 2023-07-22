@@ -1,28 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_pwd.c                                           :+:      :+:    :+:   */
+/*   env_setter.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/14 14:40:43 by yes-slim          #+#    #+#             */
-/*   Updated: 2023/07/22 15:04:51 by yes-slim         ###   ########.fr       */
+/*   Created: 2023/07/22 16:15:05 by yes-slim          #+#    #+#             */
+/*   Updated: 2023/07/22 17:01:44 by yes-slim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	ft_pwd(t_data *init)
+int main(int ac, char **av, char **env)
 {
-	char	*pwd;
 
-	(void)init;
-	pwd = getcwd(NULL, 0);
-	if (!pwd)
-	{
-		printf("%s\n", init->pwd);
-		return ;
-	}
-	printf("%s\n", pwd);
-	free(pwd);
+
 }

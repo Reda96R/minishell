@@ -6,7 +6,7 @@
 /*   By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/25 18:47:03 by yes-slim          #+#    #+#             */
-/*   Updated: 2023/07/22 13:32:44 by yes-slim         ###   ########.fr       */
+/*   Updated: 2023/07/22 15:27:59 by yes-slim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ void	ft_execution(t_data *init)
 		// 	one_cmd(init);
 		// else
 		// 	multiple_cmds(init);
+		printf("%s\n", init->cmds->herdoc);
 		init->cmds = init->cmds->next;
 	}
 }
