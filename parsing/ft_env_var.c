@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_env_var.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rerayyad <rerayyad@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/22 15:07:32 by rerayyad          #+#    #+#             */
-/*   Updated: 2023/07/22 21:46:14 by rerayyad         ###   ########.fr       */
+/*   Updated: 2023/07/23 11:37:16 by yes-slim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@ char	*ft_path_finder(t_vars *vars)
 	path = NULL;
 	while (vars)
 	{
-		if (!ft_strncmp(vars->key, "PATH=", 5))
+		if (!ft_strncmp(vars->key, "PATH", 4))
 		{
-			path = ft_substr(vars->value, 5, ft_strlen(vars->value) - 5);
+			path = ft_substr(vars->value, 0, ft_strlen(vars->value));
 			break ;
 		}
 		vars = vars->next;
@@ -64,9 +64,11 @@ void	ft_pwd_finder(t_vars *vars, t_data *data)
 	while (tmp)
 	{
 		if (!ft_strncmp((const char *)tmp->key, "PWD", 3))
-			data->pwd = ft_strdup(tmp->value);
-		else if (!ft_strncmp(tmp->key, "OLDPWD", 6))
-			data->old_pwd = ft_strdup(tmp->value);
+			if (tmp->value)
+				data->pwd = ft_strdup(tmp->value);
+		if (!ft_strncmp(tmp->key, "OLDPWD", 6))
+			if (tmp->value)
+				data->old_pwd = ft_strdup(tmp->value);
 		tmp = tmp->next;
 	}
 }
@@ -88,26 +90,16 @@ int	ft_env_setter(t_data *data, char **env, int n)
 			node_id++;
 			ft_add_var(&data->vars, new);
 		}
-		ft_pwd_finder(data->vars, data);
 	}
-	ft_paths_parser(data);
 	return (1);
 }
 
-int	ft_env_var(t_data *data, char **env, int n)
+void	ft_fill_env(t_data *data)
 {
-	int		i;
-	char	*str;
 	t_vars	*tmp;
+	char	*str;
+	int		i;
 
-	if (!ft_env_setter(data, env, n))
-		return (0);
-	tmp = data->vars;
-	while (tmp->next)
-		tmp = tmp->next;
-	data->env = (char **) malloc(sizeof (char *) * (tmp->node_id + 2));
-	if (!data->env)
-		return (0);
 	tmp = data->vars;
 	i = 0;
 	while (tmp)
@@ -122,5 +114,23 @@ int	ft_env_var(t_data *data, char **env, int n)
 		tmp = tmp->next;
 	}
 	data->env[i] = NULL;
+}
+
+int	ft_env_var(t_data *data, char **env, int n)
+{
+	t_vars	*tmp;
+
+	if(n)
+		if (!ft_env_setter(data, env, n))
+			return (0);
+	tmp = data->vars;
+	while (tmp->next)
+		tmp = tmp->next;
+	data->env = (char **) malloc(sizeof (char *) * (tmp->node_id + 2));
+	if (!data->env)
+		return (0);
+	ft_fill_env(data);
+	ft_pwd_finder(data->vars, data);
+	ft_paths_parser(data);
 	return (1);
 }

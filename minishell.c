@@ -6,7 +6,7 @@
 /*   By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 15:58:02 by rerayyad          #+#    #+#             */
-/*   Updated: 2023/07/22 18:10:20 by rerayyad         ###   ########.fr       */
+/*   Updated: 2023/07/23 11:26:07 by yes-slim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,9 @@ int	main(int ac, char *av[], char *env[])
 		ft_errors_buster(1, &data);
 	if (!ft_env_var(&data, env, 1))
 		return (0);
+	for (int i = 0; data.paths[i]; i++)
+		printf("%s\n", data.paths[i]);
+	exit(0);
 	data.color = 1;
 	// int i = 0;
 	// while (data.env[i])
