@@ -6,11 +6,11 @@
 /*   By: rerayyad <rerayyad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 06:38:46 by rerayyad          #+#    #+#             */
-/*   Updated: 2023/07/22 18:39:35 by rerayyad         ###   ########.fr       */
+/*   Updated: 2023/07/23 12:44:12 by rerayyad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "../includes/minishell.h"
 
 int	ft_token_identifier(t_data *data, int i)
 {
@@ -35,7 +35,7 @@ int	ft_token_identifier(t_data *data, int i)
 	{
 		if (data->input[i + 1] == '<' && !ft_token_identifier(data, i + 2))
 			return (D_LESS);
-		else if (! ft_token_identifier(data , i + 1))
+		else if (!ft_token_identifier(data , i + 1))
 			return (LESS);
 		return (-1);
 	}
@@ -59,7 +59,7 @@ int	ft_token_parser(t_data *data, int *node_id, int id)
 int	ft_words_parser(t_data *data, int *node_id, int i)
 {
 	t_mylxr	*new;
-	int				j;
+	int		j;
 
 	new = NULL;
 	j = 0;
