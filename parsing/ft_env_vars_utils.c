@@ -6,12 +6,37 @@
 /*   By: rerayyad <rerayyad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/21 11:28:33 by rerayyad          #+#    #+#             */
-/*   Updated: 2023/07/22 12:27:24 by rerayyad         ###   ########.fr       */
+/*   Updated: 2023/07/23 12:36:22 by rerayyad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
 #include <string.h>
+
+void	ft_paths_parser(t_data *data)
+{
+	char	*path;
+	char	*str;
+	char	*last_char;
+	int		i;
+
+	i = 0;
+	path = ft_path_finder(data->vars);
+	if (!path)
+		ft_errors_buster(4, data);
+	data->paths = ft_split(path, ':');
+	free(path);
+	while (data->paths[i])
+	{
+		last_char = &data->paths[i][ft_strlen(data->paths[i]) - 1];
+		if (ft_strncmp(last_char, "/", 1))
+		{
+			str = ft_strjoin(data->paths[i], "/");
+			data->paths[i] = str;
+		}
+		i++;
+	}
+}
 
 t_vars	*ft_var_clear(t_vars **node)
 {

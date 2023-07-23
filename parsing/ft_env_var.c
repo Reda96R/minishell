@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_env_var.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rerayyad <rerayyad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/22 15:07:32 by rerayyad          #+#    #+#             */
-/*   Updated: 2023/07/23 11:37:16 by yes-slim         ###   ########.fr       */
+/*   Updated: 2023/07/23 12:36:33 by rerayyad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,31 +29,6 @@ char	*ft_path_finder(t_vars *vars)
 	if (!path)
 		path = ft_strdup("");
 	return (path);
-}
-
-void	ft_paths_parser(t_data *data)
-{
-	char	*path;
-	char	*str;
-	char	*last_char;
-	int		i;
-
-	i = 0;
-	path = ft_path_finder(data->vars);
-	if (!path)
-		ft_errors_buster(4, data);
-	data->paths = ft_split(path, ':');
-	free(path);
-	while (data->paths[i])
-	{
-		last_char = &data->paths[i][ft_strlen(data->paths[i]) - 1];
-		if (ft_strncmp(last_char, "/", 1))
-		{
-			str = ft_strjoin(data->paths[i], "/");
-			data->paths[i] = str;
-		}
-		i++;
-	}
 }
 
 void	ft_pwd_finder(t_vars *vars, t_data *data)
@@ -120,7 +95,7 @@ int	ft_env_var(t_data *data, char **env, int n)
 {
 	t_vars	*tmp;
 
-	if(n)
+	if (n)
 		if (!ft_env_setter(data, env, n))
 			return (0);
 	tmp = data->vars;
