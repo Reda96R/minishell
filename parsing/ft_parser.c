@@ -34,9 +34,11 @@ void	ft_cmd_parser(t_parser *parser, t_cmds **cmd, t_data *data)
 	tmp = parser->mylexer;
 	while (args_size)
 	{
-		if (tmp->str)
+		if (tmp->str)	
 		{
-			args[i++] = ft_strdup(tmp->str);
+			args[i] = ft_strdup(tmp->str);
+			if (!args[i++])
+				ft_errors_buster(4, data);
 			ft_rm_node(&parser->mylexer, tmp->node_id);
 			tmp = parser->mylexer;
 		}

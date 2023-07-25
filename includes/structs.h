@@ -6,7 +6,7 @@
 /*   By: rerayyad <rerayyad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/20 18:33:55 by yes-slim          #+#    #+#             */
-/*   Updated: 2023/07/22 17:25:53 by yes-slim         ###   ########.fr       */
+/*   Updated: 2023/07/25 11:02:42 by rerayyad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ typedef struct s_mylxr
 typedef struct s_cmds
 {
   char          **str;
-  char          *herdoc;
+  char          *herdoc_name;
   t_mylxr       *redirections;
   int           redirections_count;
   struct s_cmds *next;
