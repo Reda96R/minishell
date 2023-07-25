@@ -41,7 +41,7 @@ int		ft_token_scanner(t_data *data);
 void	ft_shell_reset(t_data *data);
 
 /*::: env_vars :::*/
-int		ft_env_var(t_data *data, char **env, int n);
+int		ft	_env_var(t_data *data, char **env, int n);
 int		ft_env_setter(t_data *data, char **env, int n);
 void	ft_pwd_finder(t_vars *vars, t_data *data);
 void	ft_paths_parser(t_data *data);
@@ -106,5 +106,6 @@ void	ft_pwd(t_data *init);
 void	ft_exit(t_cmds *cmd);
 void	ft_env(t_cmds *init);
 void	ft_echo(t_cmds *init);
+int		ft_cd(t_cmds *init);
 
 #endif

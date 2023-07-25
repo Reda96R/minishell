@@ -6,7 +6,7 @@
 /*   By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/25 18:47:03 by yes-slim          #+#    #+#             */
-/*   Updated: 2023/07/23 10:46:16 by yes-slim         ###   ########.fr       */
+/*   Updated: 2023/07/24 08:09:50 by yes-slim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,12 @@ int	is_builtin(t_cmds *init)
 {
 	if (!strcmp(init->str[0], "pwd"))
 		return (ft_pwd(init->data), 0);
+	if (!strcmp(init->str[0], "oldpwd"))
+		printf("%s\n", init->data->old_pwd);
 	else if (!strcmp(init->str[0], "echo"))
 		return (ft_echo(init), 0);
-	// else if (!strcmp(init->str[0], "cd"))
-	// 	return (ft_cd(, 0))
+	else if (!strcmp(init->str[0], "cd"))
+		return (ft_cd(init), 0);
 	// else if (!strcmp(init->str[0], "export"))
 	// 	return (ft_export(), 0);
 	// else if (!strcmp(init->str[0], "unset"))

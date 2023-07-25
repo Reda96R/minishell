@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_env_var.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rerayyad <rerayyad@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/22 15:07:32 by rerayyad          #+#    #+#             */
-/*   Updated: 2023/07/23 12:36:33 by rerayyad         ###   ########.fr       */
+/*   Updated: 2023/07/25 13:33:42 by yes-slim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,7 @@ void	ft_fill_env(t_data *data)
 		}
 		tmp = tmp->next;
 	}
+	
 	data->env[i] = NULL;
 }
 
@@ -96,8 +97,12 @@ int	ft_env_var(t_data *data, char **env, int n)
 	t_vars	*tmp;
 
 	if (n)
+	{
 		if (!ft_env_setter(data, env, n))
 			return (0);
+		ft_pwd_finder(data->vars, data);
+		ft_paths_parser(data);
+	}
 	tmp = data->vars;
 	while (tmp->next)
 		tmp = tmp->next;
@@ -105,7 +110,5 @@ int	ft_env_var(t_data *data, char **env, int n)
 	if (!data->env)
 		return (0);
 	ft_fill_env(data);
-	ft_pwd_finder(data->vars, data);
-	ft_paths_parser(data);
 	return (1);
 }
