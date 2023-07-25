@@ -13,6 +13,14 @@
 # include <strings.h>
 # include <limits.h>
 
+/* --------------Global variable----------------- */
+typedef struct s_glbl
+{
+	int	error_status;
+}	t_glbl;
+
+t_glbl	g_var;
+/*------------------------------------------------*/
 
 typedef struct s_data
 {
