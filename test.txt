@@ -1,2 +1,4 @@
-cmd > file | cmd ------> infinite loop [solved]
-<< eof cmd ------> syntax error [solved]
+- cmd > file | cmd ------> infinite loop [solved]
+- << eof cmd ------> syntax error [solved]
+- error with herdoc -----> segfault when delemiter is not given
+- echo "test" ------> quotes should be deleted
