@@ -3,14 +3,35 @@
 /*                                                        :::      ::::::::   */
 /*   ft_quotes.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rerayyad <rerayyad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/07 12:18:09 by rerayyad          #+#    #+#             */
-/*   Updated: 2023/07/20 18:45:36 by yes-slim         ###   ########.fr       */
+/*   Updated: 2023/07/25 12:24:43 by rerayyad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "../includes/minishell.h"
+
+char	*ft_rm_quote(char *str, char c)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	j = 0;
+	while (str[i])
+	{
+		if (str[i] == c)
+		{
+			j = 0;
+			while (str[i + j])
+				j++;
+			ft_strlcpy(&str[i], &str[i + j], ft_strlen(str) - i);
+		}
+		i++;
+	}
+	return (str);
+}
 
 int	ft_quote_skiper(char *str, int quote, int i)
 {

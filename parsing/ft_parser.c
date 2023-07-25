@@ -1,14 +1,16 @@
+/* ************************************************************************** */
+/*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   ft_parser.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rerayyad <rerayyad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/10 16:10:13 by rerayyad          #+#    #+#             */
-/*   Updated: 2023/07/19 12:11:10 by rerayyad         ###   ########.fr       */
+/*   Created: 2023/07/25 12:25:18 by rerayyad          #+#    #+#             */
+/*   Updated: 2023/07/25 12:25:19 by rerayyad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "../includes/minishell.h"
 
 void	ft_parser_prep(t_data *data, t_parser *parser)
 {
@@ -34,7 +36,7 @@ void	ft_cmd_parser(t_parser *parser, t_cmds **cmd, t_data *data)
 	tmp = parser->mylexer;
 	while (args_size)
 	{
-		if (tmp->str)	
+		if (tmp->str)
 		{
 			args[i] = ft_strdup(tmp->str);
 			if (!args[i++])
