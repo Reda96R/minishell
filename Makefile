@@ -6,7 +6,7 @@
 #    By: rerayyad <rerayyad@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/24 13:54:21 by yes-slim          #+#    #+#              #
-#    Updated: 2023/07/22 21:20:22 by rerayyad         ###   ########.fr        #
+#    Updated: 2023/07/26 13:52:15 by rerayyad         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,11 +25,18 @@ SANITIZ		=  -fsanitize=address #-g3
 CFLAGS 		= -Wall -Werror -Wextra $(HEADER) -c 
 NAME    	= minishell
 DEL     	= rm -rf
-#=================parcing_files=======================================#
-Pars 		= ft_env_var ft_minishell_starter ft_quotes ft_tokens_scanner \
-		 	  ft_lxr_utils ft_parser ft_parser_utils ft_redirections ft_env_vars_utils
+#=================parsing_files=======================================#
+STRT 		= ft_minishell_starter
+EXP 		= ft_expander ft_expander_utils
+LXR 		= ft_quotes ft_tokens_scanner ft_lxr_utils
+PAR         = ft_env_var ft_env_vars_utils ft_parser ft_parser_utils ft_redirections
 libft_pars  = parsing/mylib/mylib.a
-Pars_SRCS   = $(addsuffix .c, $(addprefix parsing/, $(Pars))) 
+PARS 		= $(addprefix expander/, $(EXP))\
+			  $(addprefix lexer/, $(LXR))\
+			  $(addprefix parser/, $(PAR))\
+			  $(STRT)
+
+Pars_SRCS   = $(addsuffix .c, $(addprefix parsing/, $(PARS))) 
 
 #=================execution_files=======================================#
 LIBFT   	= ft_strdup ft_strlen _atoi _isdigit #list_create list_delete

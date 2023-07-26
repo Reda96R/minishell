@@ -85,6 +85,14 @@ int		ft_args_counter(t_mylxr *mylexer);
 void	ft_redirections(t_parser *parser, t_data *data);
 void    ft_add_redirection(t_parser *parser, t_mylxr *tmp, int *node_id, t_data *data);
 
+/*::: expanding :::*/
+char	**ft_expander(t_data *data, char **cmd);
+size_t	ft_dollar_s(char *str);
+char	*ft_gold_finder(t_data *data, char *str);
+int		ft_question_handler(char **str);
+int		ft_digit_skipper(char *str, int n);
+int		ft_translater(int i, char *str, char **tmp, t_data *data);
+
 /* -------------------Execution-----------------------*/
 /*::: Helpers :::*/
 void	ft_execution(t_data *init);
