@@ -6,11 +6,11 @@
 /*   By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/22 15:07:32 by rerayyad          #+#    #+#             */
-/*   Updated: 2023/07/25 13:33:42 by yes-slim         ###   ########.fr       */
+/*   Updated: 2023/07/26 12:21:50 by yes-slim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/minishell.h"
+#include "minishell.h"
 
 char	*ft_path_finder(t_vars *vars)
 {
@@ -83,12 +83,11 @@ void	ft_fill_env(t_data *data)
 		{
 			str = ft_strjoin(tmp->key, "=");
 			data->env[i] = ft_strdup(ft_strjoin(str, tmp->value));
-			free (str);
+			free(str);
 			i++;
 		}
 		tmp = tmp->next;
 	}
-	
 	data->env[i] = NULL;
 }
 
@@ -100,8 +99,6 @@ int	ft_env_var(t_data *data, char **env, int n)
 	{
 		if (!ft_env_setter(data, env, n))
 			return (0);
-		ft_pwd_finder(data->vars, data);
-		ft_paths_parser(data);
 	}
 	tmp = data->vars;
 	while (tmp->next)
@@ -109,6 +106,8 @@ int	ft_env_var(t_data *data, char **env, int n)
 	data->env = (char **) malloc(sizeof (char *) * (tmp->node_id + 2));
 	if (!data->env)
 		return (0);
+	ft_paths_parser(data);
+	ft_pwd_finder(data->vars, data);
 	ft_fill_env(data);
 	return (1);
 }

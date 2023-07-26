@@ -3,15 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_env_vars_utils.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rerayyad <rerayyad@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/21 11:28:33 by rerayyad          #+#    #+#             */
-/*   Updated: 2023/07/23 12:36:22 by rerayyad         ###   ########.fr       */
+/*   Updated: 2023/07/26 09:06:25 by yes-slim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/minishell.h"
-#include <string.h>
+#include "minishell.h"
 
 void	ft_paths_parser(t_data *data)
 {
