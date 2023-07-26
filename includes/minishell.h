@@ -121,5 +121,6 @@ void	ft_pwd(t_data *init);
 void	ft_exit(t_cmds *cmd);
 void	ft_env(t_cmds *init);
 void	ft_echo(t_cmds *init);
+int		ft_cd(t_cmds *init);
 
 #endif

@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_tokens_scanner.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rerayyad <rerayyad@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 06:38:46 by rerayyad          #+#    #+#             */
-/*   Updated: 2023/07/23 12:44:12 by rerayyad         ###   ########.fr       */
+/*   Updated: 2023/07/26 09:06:37 by yes-slim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/minishell.h"
+#include "minishell.h"
 
 int	ft_token_identifier(t_data *data, int i)
 {
