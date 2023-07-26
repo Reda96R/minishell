@@ -1,5 +1,17 @@
 #include "../../includes/minishell.h"
 
+char	*ft_converter(char c, t_data *data)
+{
+	char	*str;
+
+	str = (char *) malloc(sizeof (char) * 2);
+	if (!str)
+		ft_errors_buster(4, data);
+	str[0] = c;
+	str[1] = '\0';
+	return (str);
+}
+
 int	ft_digit_skipper(char *str, int n)
 {
 	int	i;
@@ -18,7 +30,7 @@ int	ft_question_handler(char **str)
 	return (ft_strlen(*str) + 1);
 }
 
-int	ft_translater(int i, char *str, char **tmp, t_data *data)
+int	ft_translator(int i, char *str, char **tmp, t_data *data)
 {
 	char	*tmp0;
 	char	*tmp1;
