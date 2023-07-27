@@ -6,7 +6,7 @@
 /*   By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/26 17:27:00 by yes-slim          #+#    #+#             */
-/*   Updated: 2023/07/27 10:18:32 by yes-slim         ###   ########.fr       */
+/*   Updated: 2023/07/27 11:34:24 by yes-slim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,11 +40,6 @@ char	*path_getter(t_cmds *init)
 		else
 			return (strdup(init->str[0]));
 	}
-	path = get_path(init->str[0], init->data->paths);
-	if (!path)
-		ft_error_exec(1, init);
-	else
-		return (path);
 	if (init->str[0][0] == '.' && init->str[0][1] == '/')
 	{
 		if (access(init->str[0], X_OK) == -1)
@@ -52,5 +47,10 @@ char	*path_getter(t_cmds *init)
 		else
 			return (strdup(init->str[0]));
 	}
+	path = get_path(init->str[0], init->data->paths);
+	if (!path)
+		ft_error_exec(1, init);
+	else
+		return (path);
 	return (NULL);
 }
