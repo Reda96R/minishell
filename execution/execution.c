@@ -6,7 +6,7 @@
 /*   By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/25 18:47:03 by yes-slim          #+#    #+#             */
-/*   Updated: 2023/07/24 08:09:50 by yes-slim         ###   ########.fr       */
+/*   Updated: 2023/07/27 10:18:17 by yes-slim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,14 +38,15 @@ void	ft_execution(t_data *init)
 	if (!init->cmds)
 		return ;
 	init->cmds->data = init;
-	while (init->cmds)
+	if (!init->pipes)
+		one_cmd(init->cmds);
+	else
 	{
-		is_builtin(init->cmds);
-		// if (!init->pipes)
-		// 	one_cmd(init);
-		// else
-		// 	multiple_cmds(init);
-		// printf("%s\n", init->cmds->herdoc);
-		init->cmds = init->cmds->next;
+		while (init->cmds)
+		{
+			// multiple_cmds(init);
+			// printf("%s\n", init->cmds->herdoc);
+			init->cmds = init->cmds->next;
+		}
 	}
 }
