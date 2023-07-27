@@ -6,7 +6,7 @@
 /*   By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 15:58:10 by rerayyad          #+#    #+#             */
-/*   Updated: 2023/07/26 09:06:46 by yes-slim         ###   ########.fr       */
+/*   Updated: 2023/07/27 08:31:49 by yes-slim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,21 @@
 //   data->mylexer = NULL;
 //   ft_env_setter(data, data->vars, 0);
 // }
+
+void	ft_error_exec(int id, t_cmds *init)
+{
+	printf("\033[0;31m");
+	if (id == 1)
+		printf("<?>: %s: No such file of directory\n", init->str[0]);
+	// else if (id == )
+	// else if (id == )
+	// else if (id == )
+	// else if (id == )
+	// else if (id == )
+	// else if (id == )
+	init->data->color = 0;
+	ft_shell_reset(init->data);	
+}
 
 void	ft_errors_buster(int id, t_data *data)
 {

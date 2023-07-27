@@ -6,17 +6,25 @@
 /*   By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/21 07:31:45 by yes-slim          #+#    #+#             */
-/*   Updated: 2023/07/21 07:45:09 by yes-slim         ###   ########.fr       */
+/*   Updated: 2023/07/27 11:11:20 by yes-slim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	one_cmd(t_data *init)
+void	one_cmd(t_cmds *init)
 {
-	char *path;
+	char	*path;
+	pid_t	pid;
 	
 	if (!is_builtin(init))
 		return ;
 	path = path_getter(init);
+	pid = fork();
+	if (pid == 0)
+	{
+		ft_check_infile(init->redirections);
+		execve(path, init->str, init->data->env);
+	}
+	waitpid(pid, NULL, 0);
 }

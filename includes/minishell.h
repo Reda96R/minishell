@@ -7,11 +7,14 @@
 # include <readline/readline.h>
 # include <readline/history.h>
 # include <unistd.h>
+# include <strings.h>
+# include <limits.h>
+# include <sys/wait.h>
+# include <fcntl.h>
 # include "mylib.h"
 # include "macros.h"
 # include "structs.h"
-# include <strings.h>
-# include <limits.h>
+
 
 /* --------------Global variable----------------- */
 typedef struct s_glbl
@@ -41,6 +44,8 @@ void	ft_errors_buster(int id, t_data *data);
 t_mylxr	*ft_node_clear(t_mylxr **node);
 void	ft_lxr_cleaner(t_mylxr **mylexer);
 void	ft_cmd_cleaner(t_cmds **cmds);
+
+void	ft_error_exec(int id, t_cmds *init);
 
 /* -------------------Parsing-----------------------*/
 /*::: core functions :::*/
@@ -97,11 +102,12 @@ char	*ft_converter(char c, t_data *data);
 /* -------------------Execution-----------------------*/
 /*::: Helpers :::*/
 void	ft_execution(t_data *init);
+char	*path_getter(t_cmds *init);
+void	ft_check_infile(t_mylxr *files);
 void	signals(void);
 int		is_builtin(t_cmds *init);
-void	one_cmd(t_data *init);
+void	one_cmd(t_cmds *init);
 void	multiple_cmds(t_data *init);
-void	path_getter(t_data *init);
 
 /*::: readline :::*/
 void 	rl_replace_line (const char *text, int clear_undo);
