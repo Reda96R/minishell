@@ -6,13 +6,13 @@
 /*   By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/14 14:40:40 by yes-slim          #+#    #+#             */
-/*   Updated: 2023/07/22 13:46:30 by yes-slim         ###   ########.fr       */
+/*   Updated: 2023/07/29 15:01:21 by yes-slim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	check_numeriq(char *str)
+int		check_numeriq(char *str)
 {
 	int i;
 
@@ -22,10 +22,12 @@ void	check_numeriq(char *str)
 		if (!ft_isdigit(str[i]))
 		{
 			printf("exit\n<?>: exit: %s: numeric argument required\n", str);
-			exit(255);
+			g_var.exit_status = 255;
+			return (0);
 		}
 		i++;
 	}
+	return (1);
 }
 
 void	ft_exit(t_cmds *cmd)
@@ -39,15 +41,16 @@ void	ft_exit(t_cmds *cmd)
 	if (!cmd->str[1][i])
 	{
 		printf("exit\n<?>: exit: %s: numeric argument required\n", cmd->str[i]);
-		exit(255);
+		g_var.exit_status = 255;
 	}
 	while (cmd->str[i])
-		check_numeriq(cmd->str[i++]);
+		if (!check_numeriq(cmd->str[i++]))
+			break ;
 	if (cmd->str[2])
 	{
 		printf("exit\n<?>: exit: too many arguments\n");
 		return ;
 	}
 	exit_code = _atoi(cmd->str[1]);
-	exit(exit_code);
+	exit(g_var.exit_status);
 }

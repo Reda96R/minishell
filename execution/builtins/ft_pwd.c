@@ -6,7 +6,7 @@
 /*   By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/14 14:40:43 by yes-slim          #+#    #+#             */
-/*   Updated: 2023/07/23 19:53:19 by yes-slim         ###   ########.fr       */
+/*   Updated: 2023/07/29 12:36:30 by yes-slim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	ft_pwd(t_data *init)
 {
 	char	*pwd;
-
+	(void)init;
 	pwd = getcwd(NULL, 0);
 	if (!pwd)
 	{

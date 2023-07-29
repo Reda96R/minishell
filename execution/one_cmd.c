@@ -6,7 +6,7 @@
 /*   By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/21 07:31:45 by yes-slim          #+#    #+#             */
-/*   Updated: 2023/07/27 11:34:47 by yes-slim         ###   ########.fr       */
+/*   Updated: 2023/07/29 15:41:31 by yes-slim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	one_cmd(t_cmds *init)
 	if (pid == 0)
 	{
 		ft_check_infile(init->redirections);
-		execve(path, init->str, init->data->env);
+		execve(path, init->str, g_var.data->env);
 	}
 	waitpid(pid, NULL, 0);
 }

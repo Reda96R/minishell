@@ -19,12 +19,12 @@
 /* --------------Global variable----------------- */
 typedef struct s_glbl
 {
-	int	error_status;
+	struct 	s_data	*data;
+	unsigned char	exit_status;
 }	t_glbl;
 
 t_glbl	g_var;
 /*------------------------------------------------*/
-
 typedef struct s_data
 {
   char	  **paths;
