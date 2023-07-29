@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_parser.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rerayyad <rerayyad@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 12:25:18 by rerayyad          #+#    #+#             */
-/*   Updated: 2023/07/25 16:02:56 by rerayyad         ###   ########.fr       */
+/*   Updated: 2023/07/29 15:41:58 by yes-slim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 void	ft_parser_prep(t_data *data, t_parser *parser)
 {
-	parser->data = data;
 	parser->mylexer = data->mylexer;
 	parser->redirections = NULL;
 	parser->redirections_count = 0;
