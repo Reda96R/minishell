@@ -6,7 +6,7 @@
 /*   By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 15:58:02 by rerayyad          #+#    #+#             */
-/*   Updated: 2023/07/27 10:58:50 by yes-slim         ###   ########.fr       */
+/*   Updated: 2023/07/29 15:38:36 by yes-slim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ int	main(int ac, char *av[], char *env[])
 	if (!ft_env_var(&data, env, 1))
 		return (0);
 	data.color = 1;
+	g_var.data = &data;
 	ft_shell_starter(&data);
 	return (0);
 }

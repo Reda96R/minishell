@@ -6,7 +6,7 @@
 /*   By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/14 14:40:33 by yes-slim          #+#    #+#             */
-/*   Updated: 2023/07/29 13:44:54 by yes-slim         ###   ########.fr       */
+/*   Updated: 2023/07/29 15:39:52 by yes-slim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,17 +83,17 @@ int	ft_cd(t_cmds *init)
 {
 	char	*HOME;
 
-	HOME = get_home(init->data);
+	HOME = get_home(g_var.data);
 	if (!init->str[1] || !strcmp(init->str[1], "~"))
 	{
 		if (!chdir(HOME))
-			return (change_dir(init->data, init->data->pwd), 0);
+			return (change_dir(g_var.data, g_var.data->pwd), 0);
 		return (printf("<?>: cd: HOME not set\n"), 0);
 	}
 	if (strcmp(init->str[1], "."))
 	{
 		if (!chdir(init->str[1]))
-			change_dir(init->data, init->data->pwd);
+			change_dir(g_var.data, g_var.data->pwd);
 		else
 			return (printf("<?>: cd: %s: No such file or directory\n", init->str[1]), 0);
 	}
