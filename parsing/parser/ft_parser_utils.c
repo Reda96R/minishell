@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_parser_utils.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rerayyad <rerayyad@student.42.fr>          +#+  +:+       +#+        */
+/*   By: YOUNES <YOUNES@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/11 16:06:34 by rerayyad          #+#    #+#             */
-/*   Updated: 2023/07/25 11:16:31 by rerayyad         ###   ########.fr       */
+/*   Updated: 2023/07/30 22:16:05 by YOUNES           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,8 @@ void	ft_new_cmd(t_parser *parser, char **str, t_cmds **cmd, t_data *data)
 	(*cmd)->str = str;
 	(*cmd)->redirections = parser->redirections;
 	(*cmd)->redirections_count = parser->redirections_count; 
+	(*cmd)->fd_in = 0;
+	(*cmd)->fd_out = 1;
 	(*cmd)->next = NULL;
 	(*cmd)->prev = NULL;
 }
