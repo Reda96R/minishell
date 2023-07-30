@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   one_cmd.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rerayyad <rerayyad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/21 07:31:45 by yes-slim          #+#    #+#             */
-/*   Updated: 2023/07/29 15:41:31 by yes-slim         ###   ########.fr       */
+/*   Updated: 2023/07/30 14:41:06 by rerayyad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	one_cmd(t_cmds *init)
 	pid = fork();
 	if (pid == 0)
 	{
-		ft_check_infile(init->redirections);
+		ft_check_infile(init);
 		execve(path, init->str, g_var.data->env);
 	}
 	waitpid(pid, NULL, 0);

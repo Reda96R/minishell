@@ -88,7 +88,7 @@ void	ft_add_cmd(t_cmds **cmds, t_cmds *cmd);
 int		ft_args_counter(t_mylxr *mylexer);
 
 /*::: redirections :::*/
-void	ft_redirections(t_parser *parser, t_data *data);
+void	ft_redirections(t_parser *parser, t_data *data, int	*node_id);
 void    ft_add_redirection(t_parser *parser, t_mylxr *tmp, int *node_id, t_data *data);
 
 /*::: expanding :::*/
@@ -104,7 +104,7 @@ char	*ft_converter(char c, t_data *data);
 /*::: Helpers :::*/
 void	ft_execution(t_data *init);
 char	*path_getter(t_cmds *init);
-void	ft_check_infile(t_mylxr *files);
+void	ft_check_infile(t_cmds *cmd);
 void	signals(void);
 int		is_builtin(t_cmds *init);
 void	one_cmd(t_cmds *init);
