@@ -6,7 +6,7 @@
 /*   By: rerayyad <rerayyad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 17:09:50 by rerayyad          #+#    #+#             */
-/*   Updated: 2023/07/30 16:05:33 by rerayyad         ###   ########.fr       */
+/*   Updated: 2023/07/30 18:16:54 by rerayyad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ void	ft_shell_starter(t_data *data)
 			{
 				data->color = 1;
 				ft_parser(data);
+				// ft_expander(data, data->cmds->str);
 				ft_execution(data);
 				ft_shell_reset(data);
 			}

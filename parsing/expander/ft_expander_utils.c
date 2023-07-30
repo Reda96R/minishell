@@ -25,8 +25,9 @@ int	ft_digit_skipper(char *str, int n)
 
 int	ft_question_handler(char **str)
 {
-	free (str);
-	*str = ft_itoa(g_var.exit_status);
+	free (*str);
+	// *str = ft_itoa(g_var.exit_status);
+	*str = "127";
 	return (ft_strlen(*str) + 1);
 }
 

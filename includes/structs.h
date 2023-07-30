@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structs.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rerayyad <rerayyad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/20 18:33:55 by yes-slim          #+#    #+#             */
-/*   Updated: 2023/07/29 15:39:01 by yes-slim         ###   ########.fr       */
+/*   Updated: 2023/07/30 18:13:54 by rerayyad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,10 +39,12 @@ typedef struct s_mylxr
 /*===============T_CMDS==================*/
 typedef struct s_cmds
 {
-  char          **str;
+  char			**str;
   char          *herdoc_name;
   t_mylxr       *redirections;
   int           redirections_count;
+  int			in;
+  int			out;
   struct s_cmds *next;
   struct s_cmds *prev;
 } t_cmds;

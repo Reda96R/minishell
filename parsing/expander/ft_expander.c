@@ -6,7 +6,7 @@
 /*   By: rerayyad <rerayyad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 14:42:53 by rerayyad          #+#    #+#             */
-/*   Updated: 2023/07/26 15:26:12 by rerayyad         ###   ########.fr       */
+/*   Updated: 2023/07/30 17:31:39 by rerayyad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,5 +81,6 @@ char	**ft_expander(t_data *data, char **cmd)
 		}
 		i++;
 	}
+	printf("%s\n", *cmd);
 	return (cmd);
 }
