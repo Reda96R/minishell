@@ -42,14 +42,14 @@ int	ft_translator(int i, char *str, char **tmp, t_data *data)
 	var = data->vars;
 	while (var)
 	{
-		if (ft_strncmp(str + i + 1, var->key, ft_strlen(var->key)))
+		if (!ft_strncmp(str + i + 1, var->key, ft_strlen(var->key)))
 		{
 			tmp0 = ft_strdup(var->value);
 			tmp1 = ft_strjoin(*tmp, tmp0);
 			free (*tmp);
 			*tmp = tmp1;
 			free (tmp0);
-			// r = 
+			r = 5;
 		}
 		var = var->next;
 	}
