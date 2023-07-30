@@ -3,21 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   ft_cd.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+        */
+/*   By: YOUNES <YOUNES@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/14 14:40:33 by yes-slim          #+#    #+#             */
-/*   Updated: 2023/07/29 15:39:52 by yes-slim         ###   ########.fr       */
+/*   Updated: 2023/07/30 13:13:56 by YOUNES           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	change_dir(t_data *init, char *old_pwd)
+void	change_pwd(void)
 {
 	t_vars	*var;
 	char	*pwd;
 	
-	var = init->vars;
+	var = g_var.data->vars;
 	while (var)
 	{
 		if (!strcmp(var->key, "PWD"))
@@ -25,13 +25,19 @@ void	change_dir(t_data *init, char *old_pwd)
 			free(var->value);
 			pwd = getcwd(NULL, 0);
 			if (!pwd)
-				var->value = ft_strdup(init->pwd);
+				var->value = ft_strdup(g_var.data->pwd);
 			else
 				var->value = pwd;
 		}
 		var = var->next;
 	}
-	var = init->vars;
+}
+
+void	change_oldpwd(char *old_pwd)
+{
+	t_vars	*var;
+
+	var = g_var.data->vars;
 	while (var)
 	{
 		if (!strcmp(var->key, "OLDPWD"))
@@ -51,8 +57,7 @@ int	check_fail(void)
 	if (!check)
 	{
 		free(check);
-		printf("cd: error retrieving current directory: getcwd: cannot ");
-		printf("access parent directories: No such file or directory\n");
+		ft_builtins_error(1, NULL);
 		return (0);
 	}
 	return (1);
@@ -60,11 +65,9 @@ int	check_fail(void)
 
 char	*get_home(t_data *data)
 {
-	int		i;
 	char	*home;
 	t_vars	*var;
-
-	i = 0;
+	
 	home = malloc(sizeof(char *));
 	var = data->vars;
 	while (var)
@@ -87,15 +90,18 @@ int	ft_cd(t_cmds *init)
 	if (!init->str[1] || !strcmp(init->str[1], "~"))
 	{
 		if (!chdir(HOME))
-			return (change_dir(g_var.data, g_var.data->pwd), 0);
-		return (printf("<?>: cd: HOME not set\n"), 0);
+			return (change_oldpwd(g_var.data->pwd), change_pwd(), 0);
+		return (ft_builtins_error(2, NULL), 0);
 	}
 	if (strcmp(init->str[1], "."))
 	{
 		if (!chdir(init->str[1]))
-			change_dir(g_var.data, g_var.data->pwd);
+		{	
+			change_oldpwd(g_var.data->pwd);
+			change_pwd();
+		}
 		else
-			return (printf("<?>: cd: %s: No such file or directory\n", init->str[1]), 0);
+			return (ft_builtins_error(2, init->str[1]), 0);
 	}
 	check_fail();
 	return (0);

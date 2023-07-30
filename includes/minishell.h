@@ -45,7 +45,8 @@ t_mylxr	*ft_node_clear(t_mylxr **node);
 void	ft_lxr_cleaner(t_mylxr **mylexer);
 void	ft_cmd_cleaner(t_cmds **cmds);
 
-void	ft_error_exec(int id, t_cmds *init);
+void	ft_error_exec(int id, char *str);
+void	ft_builtins_error(int id, char *str);
 
 /* -------------------Parsing-----------------------*/
 /*::: core functions :::*/
