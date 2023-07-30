@@ -6,7 +6,7 @@
 /*   By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/14 14:40:40 by yes-slim          #+#    #+#             */
-/*   Updated: 2023/07/29 15:01:21 by yes-slim         ###   ########.fr       */
+/*   Updated: 2023/07/29 17:10:53 by yes-slim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int		check_numeriq(char *str)
 	{
 		if (!ft_isdigit(str[i]))
 		{
-			printf("exit\n<?>: exit: %s: numeric argument required\n", str);
+		ft_builtins_error(5, str);
 			g_var.exit_status = 255;
 			return (0);
 		}
@@ -40,7 +40,7 @@ void	ft_exit(t_cmds *cmd)
 		exit(0);
 	if (!cmd->str[1][i])
 	{
-		printf("exit\n<?>: exit: %s: numeric argument required\n", cmd->str[i]);
+		ft_builtins_error(5, cmd->str[i]);
 		g_var.exit_status = 255;
 	}
 	while (cmd->str[i])
@@ -48,7 +48,7 @@ void	ft_exit(t_cmds *cmd)
 			break ;
 	if (cmd->str[2])
 	{
-		printf("exit\n<?>: exit: too many arguments\n");
+		ft_builtins_error(6, NULL);
 		return ;
 	}
 	exit_code = _atoi(cmd->str[1]);

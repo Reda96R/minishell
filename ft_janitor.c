@@ -6,7 +6,7 @@
 /*   By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 15:58:10 by rerayyad          #+#    #+#             */
-/*   Updated: 2023/07/29 15:42:23 by yes-slim         ###   ########.fr       */
+/*   Updated: 2023/07/29 17:11:16 by yes-slim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,42 @@
 //   ft_env_setter(data, data->vars, 0);
 // }
 
-void	ft_error_exec(int id, t_cmds *init)
+void	ft_builtins_error(int id, char *str)
 {
 	printf("\033[0;31m");
 	if (id == 1)
-		printf("<?>: %s: No such file of directory\n", init->str[0]);
+	{
+		printf("cd: error retrieving current directory: getcwd: cannot ");
+		printf("access parent directories: No such file or directory\n");
+	}
+	else if (id == 2)
+		printf("<?>: cd: HOME not set\n");
+	else if (id == 3)
+		printf("<?>: cd: %s: No such file or directory\n", str);
+	else if (id == 4)
+		printf("env: %s: no such file or directory\n", str);
+	else if (id ==  5)
+		printf("exit\n<?>: exit: %s: numeric argument required\n", str);
+	else if (id == 6)
+		printf("exit\n<?>: exit: too many arguments\n");
 	// else if (id == )
+	
+	// else if (id == )
+	
+	// else if (id == )
+	
+	// else if (id == )
+	
+	g_var.data->color = 0;
+}
+
+void	ft_error_exec(int id, char *str)
+{
+	printf("\033[0;31m");
+	if (id == 1)
+		printf("<?>: %s: No such file of directory\n", str);
+	else if (id == 2)
+		printf("<?>: %s: command not found\n", str);
 	// else if (id == )
 	// else if (id == )
 	// else if (id == )
