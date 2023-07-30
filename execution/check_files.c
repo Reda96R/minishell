@@ -6,7 +6,7 @@
 /*   By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 10:59:29 by yes-slim          #+#    #+#             */
-/*   Updated: 2023/07/30 18:58:19 by yes-slim         ###   ########.fr       */
+/*   Updated: 2023/07/30 19:12:29 by yes-slim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,17 +32,11 @@ int	check_outfile(t_mylxr *file)
 	int	fd;
 
 	if (file->token_id == GREATER)
-		fd = open(file->str, O_CREAT | O_WRONLY);
+		fd = open(file->str, O_CREAT | O_TRUNC | O_WRONLY);
 	if (file->token_id == D_GREATER)
-		fd = open(file->str, O_CREAT, O_TRUNC | O_WRONLY);
+		fd = open(file->str, O_CREAT | O_APPEND | O_WRONLY);
 	if (fd == -1)
-	{
-		if (access(file->str, F_OK) == -1)
-			ft_error_exec(1, file->str);
-		else
-			ft_error_exec(3, file->str);
-		return (0);
-	}
+		ft_error_exec(3, file->str);
 	return (fd);
 }
 
