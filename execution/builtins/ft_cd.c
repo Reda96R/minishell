@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_cd.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+        */
+/*   By: YOUNES <YOUNES@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/14 14:40:33 by yes-slim          #+#    #+#             */
-/*   Updated: 2023/07/29 18:01:20 by yes-slim         ###   ########.fr       */
+/*   Updated: 2023/07/30 13:13:56 by YOUNES           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,11 +65,9 @@ int	check_fail(void)
 
 char	*get_home(t_data *data)
 {
-	int		i;
 	char	*home;
 	t_vars	*var;
-
-	i = 0;
+	
 	home = malloc(sizeof(char *));
 	var = data->vars;
 	while (var)
@@ -98,7 +96,10 @@ int	ft_cd(t_cmds *init)
 	if (strcmp(init->str[1], "."))
 	{
 		if (!chdir(init->str[1]))
-			change_oldpwd(g_var.data->pwd), change_pwd(), 0;
+		{	
+			change_oldpwd(g_var.data->pwd);
+			change_pwd();
+		}
 		else
 			return (ft_builtins_error(2, init->str[1]), 0);
 	}
