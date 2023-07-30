@@ -1,30 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   one_cmd.c                                          :+:      :+:    :+:   */
+/*   ft_isalpha.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/21 07:31:45 by yes-slim          #+#    #+#             */
-/*   Updated: 2023/07/30 17:21:25 by yes-slim         ###   ########.fr       */
+/*   Created: 2022/10/15 13:02:12 by yes-slim          #+#    #+#             */
+/*   Updated: 2022/10/31 23:59:32 by yes-slim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
-
-void	one_cmd(t_cmds *init)
+int	ft_isalpha(int c)
 {
-	char	*path;
-	pid_t	pid;
-	
-	ft_check_files(init);
-	if (!init->str[0])
-		return ;
-	if (!is_builtin(init))
-		return ;
-	path = path_getter(init);
-	pid = fork();
-	if (pid == 0)
-		execve(path, init->str, g_var.data->env);
-	waitpid(pid, NULL, 0);
+	if ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z'))
+		return (1);
+	return (0);
 }

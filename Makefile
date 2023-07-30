@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: rerayyad <rerayyad@student.42.fr>          +#+  +:+       +#+         #
+#    By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/24 13:54:21 by yes-slim          #+#    #+#              #
-#    Updated: 2023/07/30 16:06:00 by rerayyad         ###   ########.fr        #
+#    Updated: 2023/07/30 18:56:59 by yes-slim         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,7 +39,7 @@ PARS 		= $(addprefix expander/, $(EXP))\
 Pars_SRCS   = $(addsuffix .c, $(addprefix parsing/, $(PARS))) 
 
 #=================execution_files=======================================#
-LIBFT   	= ft_strdup ft_strlen _atoi _isdigit #list_create list_delete
+LIBFT   	= ft_strdup ft_strlen _atoi _isdigit 
 BUILTIN 	= ft_pwd ft_exit ft_env ft_echo ft_cd #ft_export ft_unset 
 HELPERS 	= $(addprefix builtins/, $(BUILTIN))\
 		 	  $(addprefix libft/, $(LIBFT))\
