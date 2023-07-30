@@ -6,13 +6,14 @@
 /*   By: rerayyad <rerayyad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/11 15:07:51 by rerayyad          #+#    #+#             */
-/*   Updated: 2023/07/30 15:17:38 by rerayyad         ###   ########.fr       */
+/*   Updated: 2023/07/30 16:27:01 by rerayyad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
 
-void	ft_add_redirection(t_parser *parser, t_mylxr *tmp, int *node_id, t_data *data)
+void	ft_add_redirection(t_parser *parser, t_mylxr *tmp,
+		int *node_id, t_data *data)
 {
 	t_mylxr	*new;
 

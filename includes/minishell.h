@@ -89,7 +89,8 @@ int		ft_args_counter(t_mylxr *mylexer);
 
 /*::: redirections :::*/
 void	ft_redirections(t_parser *parser, t_data *data, int	*node_id);
-void    ft_add_redirection(t_parser *parser, t_mylxr *tmp, int *node_id, t_data *data);
+void    ft_add_redirection(t_parser *parser, t_mylxr *tmp, int *node_id,
+			t_data *data);
 
 /*::: expanding :::*/
 char	**ft_expander(t_data *data, char **cmd);

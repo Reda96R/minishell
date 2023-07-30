@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_tokens_scanner.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rerayyad <rerayyad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 06:38:46 by rerayyad          #+#    #+#             */
-/*   Updated: 2023/07/26 09:06:37 by yes-slim         ###   ########.fr       */
+/*   Updated: 2023/07/30 16:05:10 by rerayyad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "../../includes/minishell.h"
 
 int	ft_token_identifier(t_data *data, int i)
 {
@@ -94,7 +94,7 @@ int	ft_token_scanner(t_data *data)
 		while (data->input[i] && ft_isspace(data->input[i]))
 			i++;
 		id = ft_token_identifier(data, i);
-		if ((id < 0 || (id && !node_id)) && id != D_LESS)
+		if ((id < 0 || (id && !node_id)) && id < 4)
 			return (-1);
 		if (id)
 			j = ft_token_parser(data, &node_id, id);

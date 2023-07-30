@@ -1,4 +1,6 @@
 - cmd > file | cmd ------> infinite loop [solved]
 - << eof cmd ------> syntax error [solved]
+- cmd > file0 > fil1 -----> only the last file is stored [solved]
+- < file -----> bug with syntax error [solved] 
 - error with herdoc -----> segfault when delemiter is not given
 - echo "test" ------> quotes should be deleted
