@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rerayyad <rerayyad@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/31 12:11:17 by rerayyad          #+#    #+#             */
-/*   Updated: 2023/07/31 12:16:04 by rerayyad         ###   ########.fr       */
+/*   Created: 2023/07/31 18:57:45 by yes-slim          #+#    #+#             */
+/*   Updated: 2023/07/31 19:11:39 by yes-slim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,28 +28,30 @@
 # include "macros.h"
 # include "structs.h"
 
+
 /* --------------Global variable----------------- */
 typedef struct s_glbl
 {
-	struct s_data	*data;
+	struct 	s_data	*data;
 	unsigned char	exit_status;
 }	t_glbl;
 
 t_glbl	g_var;
 /*------------------------------------------------*/
-
 typedef struct s_data
 {
-	char	**paths;
-	char	*pwd;
-	char	*old_pwd;
-	char	*input;
-	int		color;
-	int		pipes;
-	char	**env;
-	t_vars	*vars;
-	t_mylxr	*mylexer;
-	t_cmds	*cmds;
+  char	 	**paths;
+  char	 	*pwd;
+  char	 	*old_pwd;
+  char	 	*input;
+  int	 	color;
+  int	 	pipes;
+  char		**env;
+  int		std_in;
+  int		std_out;
+  t_vars 	*vars;
+  t_mylxr	*mylexer;
+  t_cmds 	*cmds;
 }	t_data;
 
 /*::: janitor :::*/
@@ -102,7 +104,7 @@ int		ft_args_counter(t_mylxr *mylexer);
 
 /*::: redirections :::*/
 void	ft_redirections(t_parser *parser, t_data *data, int	*node_id);
-void	ft_add_redirection(t_parser *parser, t_mylxr *tmp, int *node_id,
+void    ft_add_redirection(t_parser *parser, t_mylxr *tmp, int *node_id,
 			t_data *data);
 
 /*::: expanding :::*/
@@ -113,7 +115,6 @@ int		ft_question_handler(char **str);
 int		ft_digit_skipper(char *str, int n);
 int		ft_translator(int i, char *str, char **tmp, t_data *data);
 char	*ft_converter(char c, t_data *data);
-int		ft_lenght_cal(char *str, int i);
 
 /* -------------------Execution-----------------------*/
 /*::: Helpers :::*/
@@ -122,12 +123,12 @@ char	*path_getter(t_cmds *init);
 void	signals(void);
 int		is_builtin(t_cmds *init);
 void	one_cmd(t_cmds *init);
-void	multiple_cmds(t_data *init);
+void	multiple_cmds(t_data *init)
 void	ft_check_files(t_cmds *cmd);
 int		_dprintf(int fd, const char *str, ...);
 
 /*::: readline :::*/
-void	rl_replace_line(const char *text, int clear_undo);
+void 	rl_replace_line (const char *text, int clear_undo);
 
 /*::: Libfts :::*/
 int		_isdigit(int c);
