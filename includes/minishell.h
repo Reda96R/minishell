@@ -6,7 +6,7 @@
 /*   By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/31 18:57:45 by yes-slim          #+#    #+#             */
-/*   Updated: 2023/07/31 19:11:39 by yes-slim         ###   ########.fr       */
+/*   Updated: 2023/07/31 19:14:02 by yes-slim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,7 +123,7 @@ char	*path_getter(t_cmds *init);
 void	signals(void);
 int		is_builtin(t_cmds *init);
 void	one_cmd(t_cmds *init);
-void	multiple_cmds(t_data *init)
+void	multiple_cmds(t_data *init);
 void	ft_check_files(t_cmds *cmd);
 int		_dprintf(int fd, const char *str, ...);
 
