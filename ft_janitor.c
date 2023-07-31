@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "includes/minishell.h"
 
 // void  ft_data_prep(t_data *data)
 // {
@@ -75,7 +75,7 @@ void	ft_error_exec(int id, char *str)
 	// else if (id == )
 
 	g_var.data->color = 0;
-	ft_shell_reset(g_var.data);	
+	ft_shell_reset(g_var.data);
 }
 
 void	ft_errors_buster(int id, t_data *data)

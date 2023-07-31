@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_expander_utils.c                                :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rerayyad <rerayyad@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/07/31 08:31:04 by rerayyad          #+#    #+#             */
+/*   Updated: 2023/07/31 10:24:33 by rerayyad         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../includes/minishell.h"
 
 char	*ft_converter(char c, t_data *data)
@@ -26,32 +38,45 @@ int	ft_digit_skipper(char *str, int n)
 int	ft_question_handler(char **str)
 {
 	free (*str);
-	// *str = ft_itoa(g_var.exit_status);
-	*str = "127";
+	*str = ft_itoa(g_var.exit_status);
 	return (ft_strlen(*str) + 1);
+}
+
+int	ft_lenght_cal(char *str, int i)
+{
+	int	j;
+
+	j = i + 1;
+	while (str[j] && str[j] != '$' && str[j] != '=' && str[j] != ' '
+		&& str[j] != '\"' && str[j] != '\'' && str[j] != '-' && str[j] != ':')
+		j++;
+	return (j);
 }
 
 int	ft_translator(int i, char *str, char **tmp, t_data *data)
 {
 	char	*tmp0;
 	char	*tmp1;
-	int		r;
+	int		l;
 	t_vars	*var;
 
-	r = 0;
+	l = 0;
 	var = data->vars;
 	while (var)
 	{
-		if (!ft_strncmp(str + i + 1, var->key, ft_strlen(var->key)))
+		if (!ft_strncmp(str + i + 1, var->key, ft_strlen(var->key))
+			&& ft_lenght_cal(str, i) - i == (int)ft_strlen(var->key) + 1)
 		{
 			tmp0 = ft_strdup(var->value);
 			tmp1 = ft_strjoin(*tmp, tmp0);
 			free (*tmp);
 			*tmp = tmp1;
 			free (tmp0);
-			r = 5;
+			l = ft_strlen(var->key) + 1;
 		}
 		var = var->next;
 	}
-	return (r);
+	if (!l)
+		l = ft_lenght_cal(str, i) - i;
+	return (l);
 }

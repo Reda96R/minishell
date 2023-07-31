@@ -18,6 +18,7 @@ void	one_cmd(t_cmds *init)
 	pid_t	pid;
 	
 	ft_check_files(init);
+	// printf("in:%d-----out%d\n", init->fd_in, init->fd_out);
 	if (!init->str[0])
 		return ;
 	if (!is_builtin(init))
