@@ -6,7 +6,7 @@
 /*   By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/25 18:47:03 by yes-slim          #+#    #+#             */
-/*   Updated: 2023/07/31 12:58:09 by yes-slim         ###   ########.fr       */
+/*   Updated: 2023/07/31 13:55:41 by yes-slim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@ void	ft_execution(t_data *init)
 {
 	if (init->cmds)
 	{
+		init->std_in = dup(0);
+		init->std_out = dup(1);
 		if (!init->pipes)
 			one_cmd(init->cmds);
 		else

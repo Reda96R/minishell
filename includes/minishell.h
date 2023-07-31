@@ -27,17 +27,19 @@ t_glbl	g_var;
 /*------------------------------------------------*/
 typedef struct s_data
 {
-  char	  **paths;
-  char	  *pwd;
-  char	  *old_pwd;
-  char	  *input;
-  int	  color;
-  int	  pipes;
-  char	  **env;
-  t_vars  *vars;
-  t_mylxr *mylexer;
-  t_cmds  *cmds;
-} t_data;
+  char	 	**paths;
+  char	 	*pwd;
+  char	 	*old_pwd;
+  char	 	*input;
+  int	 	color;
+  int	 	pipes;
+  char		**env;
+  int		std_in;
+  int		std_out;
+  t_vars 	*vars;
+  t_mylxr	*mylexer;
+  t_cmds 	*cmds;
+}	t_data;
 
 /*::: janitor :::*/
 void	ft_errors_buster(int id, t_data *data);

@@ -6,7 +6,7 @@
 /*   By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/14 14:40:34 by yes-slim          #+#    #+#             */
-/*   Updated: 2023/07/22 14:17:25 by yes-slim         ###   ########.fr       */
+/*   Updated: 2023/07/31 14:07:04 by yes-slim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	ft_echo(t_cmds *init)
 	n = 1;
 	if (!init->str[i])
 	{
-		printf("\n");
+		dprintf(init->fd_out, "\n");
 		return ;
 	}
 	while (init->str[i])
@@ -53,10 +53,10 @@ void	ft_echo(t_cmds *init)
 	while (init->str[i])
 	{
 		if (!init->str[i + 1])
-			printf("%s", init->str[i++]);
+			dprintf(init->fd_out, "%s", init->str[i++]);
 		else
-			printf("%s ", init->str[i++]);
+			dprintf(init->fd_out, "%s ", init->str[i++]);
 	}
 	if (n)
-		printf("\n");
+		dprintf(init->fd_out, "\n");
 }
