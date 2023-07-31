@@ -112,6 +112,7 @@ int		is_builtin(t_cmds *init);
 void	one_cmd(t_cmds *init);
 void	multiple_cmds(t_data *init);
 void	ft_check_files(t_cmds *cmd);
+int		_dprintf(int fd, const char *str, ...);
 
 /*::: readline :::*/
 void 	rl_replace_line (const char *text, int clear_undo);
