@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   _dprintf.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+        */
+/*   By: YOUNES <YOUNES@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/31 14:21:47 by yes-slim          #+#    #+#             */
-/*   Updated: 2023/07/31 14:26:57 by yes-slim         ###   ########.fr       */
+/*   Updated: 2023/07/31 17:13:20 by YOUNES           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ int _dprintf(int fd, const char *str, ...)
 		}
 		else
 			ft_putchar(fd, str[i], &len);
-			i++;
+		i++;
 	}
 	va_end(ap);
 	return len;

@@ -9,6 +9,7 @@
 # include <unistd.h>
 # include <strings.h>
 # include <limits.h>
+# include <stdarg.h>
 # include <sys/wait.h>
 # include <fcntl.h>
 # include "mylib.h"
@@ -129,7 +130,7 @@ size_t	ft_strlen(const char *str);
 // void	lstclear(t_env **lst, void (*del)(void *));
 
 /*::: Builtins :::*/
-void	ft_pwd(t_data *init);
+void	ft_pwd(t_cmds *init);
 void	ft_exit(t_cmds *cmd);
 void	ft_env(t_cmds *init);
 void	ft_echo(t_cmds *init);

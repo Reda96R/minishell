@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_echo.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+        */
+/*   By: YOUNES <YOUNES@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/14 14:40:34 by yes-slim          #+#    #+#             */
-/*   Updated: 2023/07/31 14:07:04 by yes-slim         ###   ########.fr       */
+/*   Updated: 2023/07/31 17:18:03 by YOUNES           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	ft_echo(t_cmds *init)
 	n = 1;
 	if (!init->str[i])
 	{
-		dprintf(init->fd_out, "\n");
+		_dprintf(init->fd_out, "\n");
 		return ;
 	}
 	while (init->str[i])
@@ -53,10 +53,10 @@ void	ft_echo(t_cmds *init)
 	while (init->str[i])
 	{
 		if (!init->str[i + 1])
-			dprintf(init->fd_out, "%s", init->str[i++]);
+			_dprintf(init->fd_out, "%s", init->str[i++]);
 		else
-			dprintf(init->fd_out, "%s ", init->str[i++]);
+			_dprintf(init->fd_out, "%s ", init->str[i++]);
 	}
 	if (n)
-		dprintf(init->fd_out, "\n");
+		_dprintf(init->fd_out, "\n");
 }

@@ -3,25 +3,24 @@
 /*                                                        :::      ::::::::   */
 /*   ft_pwd.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+        */
+/*   By: YOUNES <YOUNES@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/14 14:40:43 by yes-slim          #+#    #+#             */
-/*   Updated: 2023/07/29 12:36:30 by yes-slim         ###   ########.fr       */
+/*   Updated: 2023/07/31 17:19:25 by YOUNES           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	ft_pwd(t_data *init)
+void	ft_pwd(t_cmds *init)
 {
 	char	*pwd;
-	(void)init;
 	pwd = getcwd(NULL, 0);
 	if (!pwd)
 	{
-		printf("%s\n", init->pwd);
+		_dprintf(init->fd_out, "%s\n", g_var.data->pwd);
 		return ;
 	}
-	printf("%s\n", pwd);
+	_dprintf(init->fd_out, "%s\n", pwd);
 	free(pwd);
 }

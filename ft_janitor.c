@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_janitor.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+        */
+/*   By: YOUNES <YOUNES@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 15:58:10 by rerayyad          #+#    #+#             */
-/*   Updated: 2023/07/31 10:23:33 by yes-slim         ###   ########.fr       */
+/*   Updated: 2023/07/31 17:17:24 by YOUNES           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,12 +58,22 @@ void	ft_error_exec(int id, char *str)
 		printf("<?>: %s: command not found\n", str);
 	else if (id == 3)
 		printf("<?>: %s: Permission denied\n", str);
-	else if (id == 4)
-		printf("<?>: fork faiure\n");
-	else if (id == 5)
-		printf("<?>: dup2 failure\n");
 	// else if (id == )
+	
 	// else if (id == )
+	
+	// else if (id == )
+	
+	// else if (id == )
+	
+	// else if (id == )
+
+	// else if (id == )
+
+	// else if (id == )
+
+	// else if (id == )
+
 	g_var.data->color = 0;
 	ft_shell_reset(g_var.data);	
 }

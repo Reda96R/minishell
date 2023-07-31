@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execution.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+        */
+/*   By: YOUNES <YOUNES@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/25 18:47:03 by yes-slim          #+#    #+#             */
-/*   Updated: 2023/07/31 13:55:41 by yes-slim         ###   ########.fr       */
+/*   Updated: 2023/07/31 17:19:54 by YOUNES           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int	is_builtin(t_cmds *init)
 {
 	if (!strcmp(init->str[0], "pwd"))
-		return (ft_pwd(g_var.data), 0);
+		return (ft_pwd(init), 0);
 	else if (!strcmp(init->str[0], "echo"))
 		return (ft_echo(init), 0);
 	else if (!strcmp(init->str[0], "cd"))
