@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_parser_utils.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: YOUNES <YOUNES@student.42.fr>              +#+  +:+       +#+        */
+/*   By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/11 16:06:34 by rerayyad          #+#    #+#             */
-/*   Updated: 2023/07/30 22:16:05 by YOUNES           ###   ########.fr       */
+/*   Updated: 2023/07/31 10:03:40 by yes-slim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,6 @@ void	ft_new_cmd(t_parser *parser, char **str, t_cmds **cmd, t_data *data)
 	*cmd = (t_cmds *)malloc (sizeof (t_cmds));
 	if (!cmd)
 		ft_errors_buster(4, data);
-	(*cmd)->in = 0;
-	(*cmd)->out = 1;
 	(*cmd)->herdoc_name = NULL;
 	(*cmd)->str = str;
 	(*cmd)->redirections = parser->redirections;

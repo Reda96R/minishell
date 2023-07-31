@@ -6,7 +6,7 @@
 /*   By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/25 18:47:03 by yes-slim          #+#    #+#             */
-/*   Updated: 2023/07/30 16:36:18 by yes-slim         ###   ########.fr       */
+/*   Updated: 2023/07/31 12:58:09 by yes-slim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,6 @@ int	is_builtin(t_cmds *init)
 {
 	if (!strcmp(init->str[0], "pwd"))
 		return (ft_pwd(g_var.data), 0);
-	if (!strcmp(init->str[0], "oldpwd"))
-		printf("%s\n", g_var.data->old_pwd);
 	else if (!strcmp(init->str[0], "echo"))
 		return (ft_echo(init), 0);
 	else if (!strcmp(init->str[0], "cd"))
