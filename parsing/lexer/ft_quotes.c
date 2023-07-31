@@ -6,7 +6,7 @@
 /*   By: rerayyad <rerayyad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/07 12:18:09 by rerayyad          #+#    #+#             */
-/*   Updated: 2023/07/25 12:24:43 by rerayyad         ###   ########.fr       */
+/*   Updated: 2023/07/31 11:54:16 by rerayyad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ char	*ft_rm_quote(char *str, char c)
 		if (str[i] == c)
 		{
 			j = 0;
-			while (str[i + j])
+			while (str[i + j] == c)
 				j++;
 			ft_strlcpy(&str[i], &str[i + j], ft_strlen(str) - i);
 		}
