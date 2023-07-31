@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execution.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rerayyad <rerayyad@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/25 18:47:03 by yes-slim          #+#    #+#             */
-/*   Updated: 2023/07/30 18:55:34 by rerayyad         ###   ########.fr       */
+/*   Updated: 2023/07/30 16:36:18 by yes-slim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,17 +35,18 @@ int	is_builtin(t_cmds *init)
 
 void	ft_execution(t_data *init)
 {
-	if (!init->cmds)
-		return ;
-	if (!init->pipes)
-		one_cmd(init->cmds);
-	else
+	if (init->cmds)
 	{
-		while (init->cmds)
+		if (!init->pipes)
+			one_cmd(init->cmds);
+		else
 		{
-			// multiple_cmds(init);
-			// printf("%s\n", init->cmds->herdoc);
-			init->cmds = init->cmds->next;
+			while (init->cmds)
+			{
+				// multiple_cmds(init);
+				// printf("%s\n", init->cmds->herdoc);
+				init->cmds = init->cmds->next;
+			}
 		}
 	}
 }

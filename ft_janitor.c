@@ -6,7 +6,7 @@
 /*   By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 15:58:10 by rerayyad          #+#    #+#             */
-/*   Updated: 2023/07/29 17:11:16 by yes-slim         ###   ########.fr       */
+/*   Updated: 2023/07/30 17:57:16 by yes-slim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,8 @@ void	ft_error_exec(int id, char *str)
 		printf("<?>: %s: No such file of directory\n", str);
 	else if (id == 2)
 		printf("<?>: %s: command not found\n", str);
-	// else if (id == )
+	else if (id == 3)
+		printf("<?>: %s: Permission denied\n", str);
 	// else if (id == )
 	// else if (id == )
 	// else if (id == )

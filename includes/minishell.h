@@ -105,11 +105,11 @@ char	*ft_converter(char c, t_data *data);
 /*::: Helpers :::*/
 void	ft_execution(t_data *init);
 char	*path_getter(t_cmds *init);
-void	ft_check_infile(t_cmds *cmd);
 void	signals(void);
 int		is_builtin(t_cmds *init);
 void	one_cmd(t_cmds *init);
 void	multiple_cmds(t_data *init);
+void	ft_check_files(t_cmds *cmd);
 
 /*::: readline :::*/
 void 	rl_replace_line (const char *text, int clear_undo);
