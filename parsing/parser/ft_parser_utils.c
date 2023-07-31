@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "../../includes/minishell.h"
 
 int	ft_args_counter(t_mylxr *mylexer)
 {
@@ -33,6 +33,8 @@ void	ft_new_cmd(t_parser *parser, char **str, t_cmds **cmd, t_data *data)
 	*cmd = (t_cmds *)malloc (sizeof (t_cmds));
 	if (!cmd)
 		ft_errors_buster(4, data);
+	(*cmd)->in = 0;
+	(*cmd)->out = 1;
 	(*cmd)->herdoc_name = NULL;
 	(*cmd)->str = str;
 	(*cmd)->redirections = parser->redirections;

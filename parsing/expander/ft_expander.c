@@ -6,7 +6,7 @@
 /*   By: rerayyad <rerayyad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 14:42:53 by rerayyad          #+#    #+#             */
-/*   Updated: 2023/07/26 15:26:12 by rerayyad         ###   ########.fr       */
+/*   Updated: 2023/07/30 19:01:56 by rerayyad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,15 +71,19 @@ char	**ft_expander(t_data *data, char **cmd)
 			&& cmd[i][ft_dollar_s(cmd[i])])
 		{
 			str = ft_gold_finder(data, cmd[i]);
-			free(cmd);
+			// printf("%s\n", cmd[0]);
+			free(cmd[i]);
 			cmd[i] = str;
 		}
-		if (ft_strncmp(cmd[0], "export", ft_strlen(cmd[0]) - 1))
-		{
-			cmd[i] = ft_rm_quote(cmd[i], '\"');
-			cmd[i] = ft_rm_quote(cmd[i], '\'');
-		}
+		// exit (0);
+		// if (ft_strncmp(cmd[0], "export", ft_strlen(cmd[0]) - 1))
+		// {
+		// 	cmd[i] = ft_rm_quote(cmd[i], '\"');
+		// 	cmd[i] = ft_rm_quote(cmd[i], '\'');
+		// }
 		i++;
 	}
+	// printf("%s\n", cmd[1]);
+	// exit (0);
 	return (cmd);
 }

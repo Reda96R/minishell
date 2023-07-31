@@ -39,7 +39,7 @@ typedef struct s_mylxr
 /*===============T_CMDS==================*/
 typedef struct s_cmds
 {
-  char          **str;
+  char			**str;
   char          *herdoc_name;
   t_mylxr       *redirections;
   int           redirections_count;
