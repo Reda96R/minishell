@@ -3,20 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   check_files.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: YOUNES <YOUNES@student.42.fr>              +#+  +:+       +#+        */
+/*   By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 10:59:29 by yes-slim          #+#    #+#             */
-/*   Updated: 2023/07/30 22:16:34 by YOUNES           ###   ########.fr       */
+/*   Updated: 2023/07/31 18:34:12 by yes-slim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/minishell.h"
+#include "minishell.h"
 
 int	check_infile(t_mylxr *file)
 {
 	int	fd;
 	
-	fd = open(file->str, O_RDONLY); 
+	fd = open(file->str, O_RDONLY, 0666); 
 	if (fd == -1)
 	{
 		if (access(file->str, F_OK) == -1)
@@ -32,9 +32,9 @@ int	check_outfile(t_mylxr *file)
 	int	fd;
 
 	if (file->token_id == GREATER)
-		fd = open(file->str, O_CREAT | O_TRUNC | O_WRONLY);
+		fd = open(file->str, O_CREAT | O_TRUNC | O_WRONLY, 0666);
 	if (file->token_id == D_GREATER)
-		fd = open(file->str, O_CREAT | O_APPEND | O_WRONLY);
+		fd = open(file->str, O_CREAT | O_APPEND | O_WRONLY, 0666);
 	if (fd == -1)
 		ft_error_exec(3, file->str);
 	return (fd);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_janitor.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rerayyad <rerayyad@student.42.fr>          +#+  +:+       +#+        */
+/*   By: YOUNES <YOUNES@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 15:58:10 by rerayyad          #+#    #+#             */
-/*   Updated: 2023/07/31 07:52:28 by rerayyad         ###   ########.fr       */
+/*   Updated: 2023/07/31 17:33:23 by YOUNES           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,22 +22,22 @@
 
 void	ft_builtins_error(int id, char *str)
 {
-	printf("\033[0;31m");
+	_dprintf(2, "\033[0;31m");
 	if (id == 1)
 	{
-		printf("cd: error retrieving current directory: getcwd: cannot ");
-		printf("access parent directories: No such file or directory\n");
+		_dprintf(2, "cd: error retrieving current directory: getcwd: cannot ");
+		_dprintf(2, "access parent directories: No such file or directory\n");
 	}
 	else if (id == 2)
-		printf("<?>: cd: HOME not set\n");
+		_dprintf(2, "<?>: cd: HOME not set\n");
 	else if (id == 3)
-		printf("<?>: cd: %s: No such file or directory\n", str);
+		_dprintf(2, "<?>: cd: %s: No such file or directory\n", str);
 	else if (id == 4)
-		printf("env: %s: no such file or directory\n", str);
-	else if (id == 5)
-		printf("exit\n<?>: exit: %s: numeric argument required\n", str);
+		_dprintf(2, "env: %s: no such file or directory\n", str);
+	else if (id ==  5)
+		_dprintf(2, "exit\n<?>: exit: %s: numeric argument required\n", str);
 	else if (id == 6)
-		printf("exit\n<?>: exit: too many arguments\n");
+		_dprintf(2, "exit\n<?>: exit: too many arguments\n");
 	// else if (id == )
 	
 	// else if (id == )
@@ -51,37 +51,49 @@ void	ft_builtins_error(int id, char *str)
 
 void	ft_error_exec(int id, char *str)
 {
-	printf("\033[0;31m");
+	_dprintf(2, "\033[0;31m");
 	if (id == 1)
-		printf("<?>: %s: No such file of directory\n", str);
+		_dprintf(2, "<?>: %s: No such file of directory\n", str);
 	else if (id == 2)
-		printf("<?>: %s: command not found\n", str);
+		_dprintf(2, "<?>: %s: command not found\n", str);
 	else if (id == 3)
-		printf("<?>: %s: Permission denied\n", str);
+		_dprintf(2, "<?>: %s: Permission denied\n", str);
 	// else if (id == )
+	
 	// else if (id == )
+	
 	// else if (id == )
+	
 	// else if (id == )
+	
+	// else if (id == )
+
+	// else if (id == )
+
+	// else if (id == )
+
+	// else if (id == )
+
 	g_var.data->color = 0;
 	ft_shell_reset(g_var.data);
 }
 
 void	ft_errors_buster(int id, t_data *data)
 {
-	printf("\033[0;31m");
+	_dprintf(2, "\033[0;31m");
 	if (id == 1)
 	{
-		printf("ERROR: run without argument\n");
+		_dprintf(2, "ERROR: run without argument\n");
 		exit (0);
 	}
 	else if (id == 2)
-		printf("ERROR: unmatched quotes\n");
+		_dprintf(2, "ERROR: unmatched quotes\n");
 	else if (id == 3)
-		printf("syntax error near unexpected token\n");
+		_dprintf(2, "syntax error near unexpected token\n");
 	else if (id == 4)
-		printf("memory error: unable to allocate memory\n");
+		_dprintf(2, "memory error: unable to allocate memory\n");
 	else if (id == 5)
-		printf("ERROR: unset: not enough arguments\n");
+		_dprintf(2, "ERROR: unset: not enough arguments\n");
 	data->color = 0;
 	ft_shell_reset(data);
 }

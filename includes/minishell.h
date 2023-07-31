@@ -21,6 +21,7 @@
 # include <unistd.h>
 # include <strings.h>
 # include <limits.h>
+# include <stdarg.h>
 # include <sys/wait.h>
 # include <fcntl.h>
 # include "mylib.h"
@@ -123,6 +124,7 @@ int		is_builtin(t_cmds *init);
 void	one_cmd(t_cmds *init);
 void	multiple_cmds(t_data *init);
 void	ft_check_files(t_cmds *cmd);
+int		_dprintf(int fd, const char *str, ...);
 
 /*::: readline :::*/
 void	rl_replace_line(const char *text, int clear_undo);
@@ -139,7 +141,7 @@ size_t	ft_strlen(const char *str);
 // void	lstclear(t_env **lst, void (*del)(void *));
 
 /*::: Builtins :::*/
-void	ft_pwd(t_data *init);
+void	ft_pwd(t_cmds *init);
 void	ft_exit(t_cmds *cmd);
 void	ft_env(t_cmds *init);
 void	ft_echo(t_cmds *init);

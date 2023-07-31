@@ -15,9 +15,7 @@
 int	is_builtin(t_cmds *init)
 {
 	if (!strcmp(init->str[0], "pwd"))
-		return (ft_pwd(g_var.data), 0);
-	if (!strcmp(init->str[0], "oldpwd"))
-		printf("%s\n", g_var.data->old_pwd);
+		return (ft_pwd(init), 0);
 	else if (!strcmp(init->str[0], "echo"))
 		return (ft_echo(init), 0);
 	else if (!strcmp(init->str[0], "cd"))
@@ -38,6 +36,8 @@ void	ft_execution(t_data *init)
 	if (init->cmds)
 	{
 		init->cmds->str = ft_expander(init, init->cmds->str);
+		init->std_in = dup(0);
+		init->std_out = dup(1);
 		if (!init->pipes)
 			one_cmd(init->cmds);
 		else
