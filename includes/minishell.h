@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   minishell.h                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rerayyad <rerayyad@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/07/31 12:11:17 by rerayyad          #+#    #+#             */
+/*   Updated: 2023/07/31 12:16:04 by rerayyad         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef MINISHELL_H
 # define MINISHELL_H
 
@@ -15,29 +27,29 @@
 # include "macros.h"
 # include "structs.h"
 
-
 /* --------------Global variable----------------- */
 typedef struct s_glbl
 {
-	struct 	s_data	*data;
+	struct s_data	*data;
 	unsigned char	exit_status;
 }	t_glbl;
 
 t_glbl	g_var;
 /*------------------------------------------------*/
+
 typedef struct s_data
 {
-  char	  **paths;
-  char	  *pwd;
-  char	  *old_pwd;
-  char	  *input;
-  int	  color;
-  int	  pipes;
-  char	  **env;
-  t_vars  *vars;
-  t_mylxr *mylexer;
-  t_cmds  *cmds;
-} t_data;
+	char	**paths;
+	char	*pwd;
+	char	*old_pwd;
+	char	*input;
+	int		color;
+	int		pipes;
+	char	**env;
+	t_vars	*vars;
+	t_mylxr	*mylexer;
+	t_cmds	*cmds;
+}	t_data;
 
 /*::: janitor :::*/
 void	ft_errors_buster(int id, t_data *data);
@@ -89,7 +101,7 @@ int		ft_args_counter(t_mylxr *mylexer);
 
 /*::: redirections :::*/
 void	ft_redirections(t_parser *parser, t_data *data, int	*node_id);
-void    ft_add_redirection(t_parser *parser, t_mylxr *tmp, int *node_id,
+void	ft_add_redirection(t_parser *parser, t_mylxr *tmp, int *node_id,
 			t_data *data);
 
 /*::: expanding :::*/
@@ -113,7 +125,7 @@ void	multiple_cmds(t_data *init);
 void	ft_check_files(t_cmds *cmd);
 
 /*::: readline :::*/
-void 	rl_replace_line (const char *text, int clear_undo);
+void	rl_replace_line(const char *text, int clear_undo);
 
 /*::: Libfts :::*/
 int		_isdigit(int c);
