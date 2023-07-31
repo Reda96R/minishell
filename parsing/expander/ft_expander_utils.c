@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_expander_utils.c                                :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rerayyad <rerayyad@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/07/31 08:31:04 by rerayyad          #+#    #+#             */
+/*   Updated: 2023/07/31 10:24:33 by rerayyad         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../includes/minishell.h"
 
 char	*ft_converter(char c, t_data *data)
@@ -52,7 +64,8 @@ int	ft_translator(int i, char *str, char **tmp, t_data *data)
 	var = data->vars;
 	while (var)
 	{
-		if (!ft_strncmp(str + i + 1, var->key, ft_strlen(var->key)))
+		if (!ft_strncmp(str + i + 1, var->key, ft_strlen(var->key))
+			&& ft_lenght_cal(str, i) - i == (int)ft_strlen(var->key) + 1)
 		{
 			tmp0 = ft_strdup(var->value);
 			tmp1 = ft_strjoin(*tmp, tmp0);

@@ -100,6 +100,7 @@ int		ft_question_handler(char **str);
 int		ft_digit_skipper(char *str, int n);
 int		ft_translator(int i, char *str, char **tmp, t_data *data);
 char	*ft_converter(char c, t_data *data);
+int		ft_lenght_cal(char *str, int i);
 
 /* -------------------Execution-----------------------*/
 /*::: Helpers :::*/

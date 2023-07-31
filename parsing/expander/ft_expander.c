@@ -6,7 +6,7 @@
 /*   By: rerayyad <rerayyad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 14:42:53 by rerayyad          #+#    #+#             */
-/*   Updated: 2023/07/31 07:53:14 by rerayyad         ###   ########.fr       */
+/*   Updated: 2023/07/31 10:07:47 by rerayyad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,20 +33,16 @@ char	*ft_gold_finder(t_data *data, char *str)
 	char	*tmp1;
 	char	*tmp2;
 
-	(void) data;
-	tmp1 = NULL;
 	i = 0;
 	tmp0 = ft_strdup("\0");
 	while (str[i])
 	{
 		i += ft_digit_skipper(str, i);
-		if (str[i] == '$' && str[i + 1])
-		{
-			if (str[i + 1] == '?')
-				i += ft_question_handler(&tmp0);
-			else if ((str[i + 1] != '"' || str[i + 2]) && str[i + 1] != ' ')
-				i += ft_translator(i, str, &tmp0, data);
-		}
+		if (str[i] == '$' && str[i + 1] == '?')
+			i += ft_question_handler(&tmp0);
+		else if (str[i] == '$' && (str[i + 1] != '"'
+				|| str[i + 2]) && str[i + 1] != ' ')
+			i += ft_translator(i, str, &tmp0, data);
 		else
 		{
 			tmp1 = ft_converter(str[i++], data);
