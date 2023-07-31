@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_janitor.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rerayyad <rerayyad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 15:58:10 by rerayyad          #+#    #+#             */
-/*   Updated: 2023/07/30 17:57:16 by yes-slim         ###   ########.fr       */
+/*   Updated: 2023/07/31 07:52:28 by rerayyad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "includes/minishell.h"
 
 // void  ft_data_prep(t_data *data)
 // {
@@ -34,7 +34,7 @@ void	ft_builtins_error(int id, char *str)
 		printf("<?>: cd: %s: No such file or directory\n", str);
 	else if (id == 4)
 		printf("env: %s: no such file or directory\n", str);
-	else if (id ==  5)
+	else if (id == 5)
 		printf("exit\n<?>: exit: %s: numeric argument required\n", str);
 	else if (id == 6)
 		printf("exit\n<?>: exit: too many arguments\n");
@@ -63,7 +63,7 @@ void	ft_error_exec(int id, char *str)
 	// else if (id == )
 	// else if (id == )
 	g_var.data->color = 0;
-	ft_shell_reset(g_var.data);	
+	ft_shell_reset(g_var.data);
 }
 
 void	ft_errors_buster(int id, t_data *data)

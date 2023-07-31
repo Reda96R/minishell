@@ -26,19 +26,29 @@ int	ft_digit_skipper(char *str, int n)
 int	ft_question_handler(char **str)
 {
 	free (*str);
-	// *str = ft_itoa(g_var.exit_status);
-	*str = "127";
+	*str = ft_itoa(g_var.exit_status);
 	return (ft_strlen(*str) + 1);
+}
+
+int	ft_lenght_cal(char *str, int i)
+{
+	int	j;
+
+	j = i + 1;
+	while (str[j] && str[j] != '$' && str[j] != '=' && str[j] != ' '
+		&& str[j] != '\"' && str[j] != '\'' && str[j] != '-' && str[j] != ':')
+		j++;
+	return (j);
 }
 
 int	ft_translator(int i, char *str, char **tmp, t_data *data)
 {
 	char	*tmp0;
 	char	*tmp1;
-	int		r;
+	int		l;
 	t_vars	*var;
 
-	r = 0;
+	l = 0;
 	var = data->vars;
 	while (var)
 	{
@@ -49,9 +59,11 @@ int	ft_translator(int i, char *str, char **tmp, t_data *data)
 			free (*tmp);
 			*tmp = tmp1;
 			free (tmp0);
-			r = 5;
+			l = ft_strlen(var->key) + 1;
 		}
 		var = var->next;
 	}
-	return (r);
+	if (!l)
+		l = ft_lenght_cal(str, i) - i;
+	return (l);
 }
