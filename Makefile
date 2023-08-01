@@ -6,7 +6,7 @@
 #    By: YOUNES <YOUNES@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/24 13:54:21 by yes-slim          #+#    #+#              #
-#    Updated: 2023/08/01 16:38:03 by YOUNES           ###   ########.fr        #
+#    Updated: 2023/08/01 18:14:40 by YOUNES           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,7 @@ READLINE 	= -lreadline -lncurses
 endif
 #========================variables============================#
 HEADER  	= -I includes $(RL_HEADER)
-SANITIZ		=  -fsanitize=address #-g3
+SANITIZ		=  #-fsanitize=address #-g3
 CFLAGS 		= -Wall -Werror -Wextra $(HEADER) -c 
 NAME    	= minishell
 DEL     	= rm -rf

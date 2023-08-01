@@ -6,7 +6,7 @@
 /*   By: YOUNES <YOUNES@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/31 18:36:23 by yes-slim          #+#    #+#             */
-/*   Updated: 2023/08/01 16:56:01 by YOUNES           ###   ########.fr       */
+/*   Updated: 2023/08/01 18:22:28 by YOUNES           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,10 @@ void    first_child(t_cmds *cmd, int *pp)
 		signal(SIGINT, SIG_DFL);
 		if (dup2(cmd->fd_in, 0) == -1)
 			ft_error_exec(5, NULL);
+        close(cmd->fd_in);
 		if (dup2(cmd->fd_out, 1) == -1)
 			ft_error_exec(5, NULL);
+        close(cmd->fd_out);
 		execve(path, cmd->str, g_var.data->env);
 	}
     waitpid(pid, NULL, 0);
@@ -60,10 +62,13 @@ void	mid_childs(t_cmds *cmd, int *pp)
 		signal(SIGINT, SIG_DFL);
 		if (dup2(cmd->fd_in, 0) == -1)
 			ft_error_exec(5, NULL);
+        close(cmd->fd_in);
 		if (dup2(cmd->fd_out, 1) == -1)
 			ft_error_exec(5, NULL);
+        close(cmd->fd_out);
 		execve(path, cmd->str, g_var.data->env);
 	}
+    
     waitpid(pid, NULL, 0);
 }
 
@@ -87,8 +92,10 @@ void	last_child(t_cmds *cmd, int *pp)
 		signal(SIGINT, SIG_DFL);
 		if (dup2(cmd->fd_in, 0) == -1)
 			ft_error_exec(5, NULL);
+        close(cmd->fd_in);
 		if (dup2(cmd->fd_out, 1) == -1)
 			ft_error_exec(5, NULL);
+        close(cmd->fd_out);
 		execve(path, cmd->str, g_var.data->env);
 	}
     waitpid(pid, NULL, 0);
@@ -97,14 +104,16 @@ void	last_child(t_cmds *cmd, int *pp)
 void	multiple_cmds(t_data *init)
 {
 	int	pp[2];
+    t_cmds *tmp;
 
     pipe(pp);
-    first_child(init->cmds, pp);
-	init->cmds = init->cmds->next;
-	while (init->cmds->next)
+    tmp = init->cmds;
+    first_child(tmp, pp);
+	tmp = tmp->next;
+	while (tmp->next)
 	{
-		mid_childs(init->cmds, pp);
-		init->cmds = init->cmds->next;
+		mid_childs(tmp, pp);
+		tmp = tmp->next;
 	}
-	last_child(init->cmds, pp);
+	last_child(tmp, pp);
 }
