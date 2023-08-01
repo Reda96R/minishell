@@ -6,7 +6,7 @@
 /*   By: YOUNES <YOUNES@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/31 18:36:23 by yes-slim          #+#    #+#             */
-/*   Updated: 2023/08/01 19:47:58 by YOUNES           ###   ########.fr       */
+/*   Updated: 2023/08/01 20:04:31 by YOUNES           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,10 +109,8 @@ void	multiple_cmds(t_data *init)
     tmp = init->cmds;
     first_child(tmp, pp);
 	tmp = tmp->next;
-	while (tmp)
+	while (tmp->next)
 	{
-		if (!tmp->next)
-			break ;
 		mid_childs(tmp, pp);
 		tmp = tmp->next;
 	}
