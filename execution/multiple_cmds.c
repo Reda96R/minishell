@@ -6,7 +6,7 @@
 /*   By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/31 18:36:23 by yes-slim          #+#    #+#             */
-/*   Updated: 2023/07/31 20:49:02 by yes-slim         ###   ########.fr       */
+/*   Updated: 2023/08/01 10:33:11 by yes-slim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ void	multiple_cmds(t_data *init)
 	int	*pipe;
 
 	pipe = first_child(init->cmds);
+	init->cmds = init->cmds->next;
 	while (init->cmds->next)
 	{
 		pipe = mid_childs(init->cmds, pipe);
