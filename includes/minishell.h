@@ -6,7 +6,7 @@
 /*   By: rerayyad <rerayyad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/31 12:11:17 by rerayyad          #+#    #+#             */
-/*   Updated: 2023/07/31 12:16:04 by rerayyad         ###   ########.fr       */
+/*   Updated: 2023/08/01 09:36:41 by rerayyad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,8 @@ typedef struct s_data
 	int		color;
 	int		pipes;
 	char	**env;
+	int		std_in;
+	int		std_out;
 	t_vars	*vars;
 	t_mylxr	*mylexer;
 	t_cmds	*cmds;
