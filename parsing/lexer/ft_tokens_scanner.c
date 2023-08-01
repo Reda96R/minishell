@@ -6,7 +6,7 @@
 /*   By: rerayyad <rerayyad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 06:38:46 by rerayyad          #+#    #+#             */
-/*   Updated: 2023/08/01 09:55:07 by rerayyad         ###   ########.fr       */
+/*   Updated: 2023/08/01 18:19:55 by rerayyad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int	ft_token_identifier(t_data *data, int i)
 	{
 		if (data->input[i + 1] == '<' && !ft_token_identifier(data, i + 2))
 			return (D_LESS);
-		else if (!ft_token_identifier(data , i + 1))
+		else if (!ft_token_identifier(data, i + 1))
 			return (LESS);
 		return (-1);
 	}
@@ -94,7 +94,7 @@ int	ft_token_scanner(t_data *data)
 		while (data->input[i] && ft_isspace(data->input[i]))
 			i++;
 		id = ft_token_identifier(data, i);
-		if ((id < 0 || (id && !node_id)) && id == 1)
+		if ((id < 0 || (id == 1 && !node_id)))
 			return (-1);
 		if (id)
 			j = ft_token_parser(data, &node_id, id);
