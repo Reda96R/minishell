@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   multiple_cmds.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+        */
+/*   By: YOUNES <YOUNES@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/31 18:36:23 by yes-slim          #+#    #+#             */
-/*   Updated: 2023/08/02 19:23:13 by yes-slim         ###   ########.fr       */
+/*   Updated: 2023/08/02 21:42:23 by YOUNES           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,18 +28,21 @@ void    first_child(t_cmds *cmd, int *pp)
 	{
 		signal(SIGINT, SIG_DFL);
 		if (!is_builtin(cmd))
-			return ;
+			exit(0);
 		path = path_getter(cmd);
+		close(cmd->fd_out);
 		if (dup2(cmd->fd_in, 0) == -1)
 			ft_error_exec(5, NULL);
+		close(cmd->fd_in);
 		if (dup2(cmd->fd_out, 1) == -1)
 			ft_error_exec(5, NULL);
+		close(cmd->fd_out);
 		execve(path, cmd->str, g_var.data->env);
 	}
+	close(cmd->fd_out);
+	close(cmd->fd_in);
 	if (dup2(pp[0], 0) == -1)
 		ft_error_exec(5, NULL);
-	close(cmd->fd_in);
-	close(cmd->fd_out);
     waitpid(pid, NULL, 0);
 }
 
@@ -62,18 +65,21 @@ void	mid_childs(t_cmds *cmd)
 	{
 		signal(SIGINT, SIG_DFL);
 		if (!is_builtin(cmd))
-			return ;
+			exit(0);
 		path = path_getter(cmd);
+		close(cmd->fd_out);
 		if (dup2(cmd->fd_in, 0) == -1)
 			ft_error_exec(5, NULL);
+		close(cmd->fd_in);
 		if (dup2(cmd->fd_out, 1) == -1)
 			ft_error_exec(5, NULL);
+		close(cmd->fd_out);
 		execve(path, cmd->str, g_var.data->env);
 	}
+	close(cmd->fd_out);
+    close(cmd->fd_in);
 	if (dup2(pp[0], 0) == -1)
 		ft_error_exec(5, NULL);
-    close(cmd->fd_in);
-	close(cmd->fd_out);
     waitpid(pid, NULL, 0);
 }
 
@@ -95,12 +101,15 @@ void	last_child(t_cmds *cmd)
 	{
 		signal(SIGINT, SIG_DFL);
 		if (!is_builtin(cmd))
-			return ;
+			exit(0);
 		path = path_getter(cmd);
+		close(cmd->fd_out);
 		if (dup2(cmd->fd_in, 0) == -1)
 			ft_error_exec(5, NULL);
+		close(cmd->fd_in);
 		if (dup2(cmd->fd_out, 1) == -1)
 			ft_error_exec(5, NULL);
+		close(cmd->fd_out);
 		execve(path, cmd->str, g_var.data->env);
 	}
 	close(cmd->fd_in);
