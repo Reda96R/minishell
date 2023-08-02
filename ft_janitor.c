@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_janitor.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: YOUNES <YOUNES@student.42.fr>              +#+  +:+       +#+        */
+/*   By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 15:58:10 by rerayyad          #+#    #+#             */
-/*   Updated: 2023/07/31 17:33:23 by YOUNES           ###   ########.fr       */
+/*   Updated: 2023/08/02 13:28:56 by yes-slim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,7 @@ void	ft_error_exec(int id, char *str)
 
 void	ft_errors_buster(int id, t_data *data)
 {
+	(void)data;
 	_dprintf(2, "\033[0;31m");
 	if (id == 1)
 	{
@@ -94,7 +95,7 @@ void	ft_errors_buster(int id, t_data *data)
 		_dprintf(2, "memory error: unable to allocate memory\n");
 	else if (id == 5)
 		_dprintf(2, "ERROR: unset: not enough arguments\n");
-	data->color = 0;
+	g_var.data->color = 0;
 	ft_shell_reset(data);
 }
 
