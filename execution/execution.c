@@ -6,7 +6,7 @@
 /*   By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/25 18:47:03 by yes-slim          #+#    #+#             */
-/*   Updated: 2023/08/02 13:46:31 by yes-slim         ###   ########.fr       */
+/*   Updated: 2023/08/02 15:13:10 by yes-slim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@ int	is_builtin(t_cmds *init)
 
 void	ft_execution(t_data *init)
 {
+	g_var.data->std_in = dup(0);
+	g_var.data->std_out = dup(1);
 	if (init->cmds)
 	{
 		init->cmds->str = ft_expander(init, init->cmds->str);

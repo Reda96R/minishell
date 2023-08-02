@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_minishell_starter.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rerayyad <rerayyad@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 17:09:50 by rerayyad          #+#    #+#             */
-/*   Updated: 2023/08/02 12:32:42 by rerayyad         ###   ########.fr       */
+/*   Updated: 2023/08/02 15:19:48 by yes-slim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,8 @@ void	ft_shell_starter(t_data *data)
 {
 	while (1)
 	{
-		ft_prompt(data);
 		signals();
+		ft_prompt(data);
 		if (ft_quotes_counter(data->input))
 		{
 			data->color = 1;
