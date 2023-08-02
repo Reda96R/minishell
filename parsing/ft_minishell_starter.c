@@ -6,7 +6,7 @@
 /*   By: rerayyad <rerayyad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 17:09:50 by rerayyad          #+#    #+#             */
-/*   Updated: 2023/07/31 07:33:56 by rerayyad         ###   ########.fr       */
+/*   Updated: 2023/08/02 12:32:42 by rerayyad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,8 @@ void	ft_shell_starter(t_data *data)
 {
 	while (1)
 	{
-		signals();
 		ft_prompt(data);
+		signals();
 		if (ft_quotes_counter(data->input))
 		{
 			data->color = 1;

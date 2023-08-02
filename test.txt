@@ -5,4 +5,9 @@
 - echo "test" ------> quotes should be deleted [solved]
 - error with herdoc -----> segfault when delemiter is not given
 - expanding in null -----> $test cmd
+- $"test ls" -----> shows file not found instead of command not found
+- true_cmd | false_cmd -----> program exits
+
+
+
 - ls|ls
