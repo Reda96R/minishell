@@ -6,7 +6,7 @@
 /*   By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/31 18:36:23 by yes-slim          #+#    #+#             */
-/*   Updated: 2023/08/02 15:22:17 by yes-slim         ###   ########.fr       */
+/*   Updated: 2023/08/02 15:54:20 by yes-slim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,15 +21,15 @@ void    first_child(t_cmds *cmd, int *pp)
     ft_check_files(cmd);
 	if (!cmd->str[0])
 		return ;
-	if (!is_builtin(cmd))
-		return ;
-	path = path_getter(cmd);
 	pid = fork();
 	if (pid == -1)
 		ft_error_exec(4, NULL);
 	if (pid == 0)
 	{
 		signal(SIGINT, SIG_DFL);
+		if (!is_builtin(cmd))
+			return ;
+		path = path_getter(cmd);
 		if (dup2(cmd->fd_in, 0) == -1)
 			ft_error_exec(5, NULL);
 		if (dup2(cmd->fd_out, 1) == -1)
@@ -51,15 +51,15 @@ void	mid_childs(t_cmds *cmd, int *pp)
 	ft_check_files(cmd);
 	if (!cmd->str[0])
 		return ;
-	if (!is_builtin(cmd))
-		return ;
-	path = path_getter(cmd);
 	pid = fork();
 	if (pid == -1)
 		ft_error_exec(4, NULL);
 	if (pid == 0)
 	{
 		signal(SIGINT, SIG_DFL);
+		if (!is_builtin(cmd))
+			return ;
+		path = path_getter(cmd);
 		if (dup2(cmd->fd_in, 0) == -1)
 			ft_error_exec(5, NULL);
 		if (dup2(cmd->fd_out, 1) == -1)
@@ -80,15 +80,15 @@ void	last_child(t_cmds *cmd, int *pp)
 	ft_check_files(cmd);
 	if (!cmd->str[0])
 		return ;
-	if (!is_builtin(cmd))
-		return ;
-	path = path_getter(cmd);
 	pid = fork();
 	if (pid == -1)
 		ft_error_exec(4, NULL);
 	if (pid == 0)
 	{
 		signal(SIGINT, SIG_DFL);
+		if (!is_builtin(cmd))
+			return ;
+		path = path_getter(cmd);
 		if (dup2(cmd->fd_in, 0) == -1)
 			ft_error_exec(5, NULL);
 		if (dup2(cmd->fd_out, 1) == -1)
