@@ -6,11 +6,40 @@
 /*   By: rerayyad <rerayyad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 14:42:53 by rerayyad          #+#    #+#             */
-/*   Updated: 2023/07/31 11:58:57 by rerayyad         ###   ########.fr       */
+/*   Updated: 2023/08/02 15:58:23 by rerayyad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
+
+char	**ft_skipper(char **cmd)
+{
+	char	**str;
+	int		i;
+	int		j;
+
+	i = 0;
+	j = 0;
+	while (cmd[i])
+	{
+		if (cmd[i][j])
+			j++;
+		i++;
+	}
+	str = (char **) malloc(sizeof (char *) * j + 1);
+	if (!str)
+		ft_errors_buster(4, g_var.data);
+	i = 0;
+	j = 0;
+	while (cmd[i])
+	{
+		if (cmd[i][j] != '\0')
+			str[j++] = cmd[i];
+		i++;
+	}
+	str[j] = NULL;
+	return (str);
+}
 
 size_t	ft_dollar_s(char *str)
 {
@@ -67,6 +96,8 @@ char	**ft_expander(t_data *data, char **cmd)
 			&& cmd[i][ft_dollar_s(cmd[i])])
 		{
 			str = ft_gold_finder(data, cmd[i]);
+			if (!i && !str[0] && !cmd[i + 1])
+				ft_shell_reset(data);
 			free(cmd[i]);
 			cmd[i] = str;
 		}
@@ -77,5 +108,5 @@ char	**ft_expander(t_data *data, char **cmd)
 		}
 		i++;
 	}
-	return (cmd);
+	return (ft_skipper(cmd));
 }

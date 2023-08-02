@@ -6,7 +6,7 @@
 /*   By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/31 18:36:23 by yes-slim          #+#    #+#             */
-/*   Updated: 2023/08/02 16:05:51 by yes-slim         ###   ########.fr       */
+/*   Updated: 2023/08/02 19:23:13 by yes-slim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,8 @@ void    first_child(t_cmds *cmd, int *pp)
 			ft_error_exec(5, NULL);
 		execve(path, cmd->str, g_var.data->env);
 	}
-	dup2(pp[0], 0);
+	if (dup2(pp[0], 0) == -1)
+		ft_error_exec(5, NULL);
 	close(cmd->fd_in);
 	close(cmd->fd_out);
     waitpid(pid, NULL, 0);
@@ -69,6 +70,8 @@ void	mid_childs(t_cmds *cmd)
 			ft_error_exec(5, NULL);
 		execve(path, cmd->str, g_var.data->env);
 	}
+	if (dup2(pp[0], 0) == -1)
+		ft_error_exec(5, NULL);
     close(cmd->fd_in);
 	close(cmd->fd_out);
     waitpid(pid, NULL, 0);
@@ -100,7 +103,6 @@ void	last_child(t_cmds *cmd)
 			ft_error_exec(5, NULL);
 		execve(path, cmd->str, g_var.data->env);
 	}
-	dup2(pp[0], 0);
 	close(cmd->fd_in);
 	close(cmd->fd_out);
     waitpid(pid, NULL, 0);
@@ -109,18 +111,18 @@ void	last_child(t_cmds *cmd)
 void	multiple_cmds(t_data *init)
 {
 	int	pp[2];
-    t_cmds *tmp;
 
     pipe(pp);
-    tmp = init->cmds;
-    first_child(tmp, pp);
-	tmp = tmp->next;
-	while (tmp->next)
+    first_child(init->cmds, pp);
+	init->cmds = init->cmds->next;
+	while (init->cmds->next)
 	{
-		mid_childs(tmp);
-		tmp = tmp->next;
+		mid_childs(init->cmds);
+		init->cmds = init->cmds->next;
 	}
-	last_child(tmp);
-	dup2(g_var.data->std_in, 0);
-	dup2(g_var.data->std_out, 1);
+	last_child(init->cmds);
+	if (dup2(g_var.data->std_in, 0) == -1)
+		ft_error_exec(5, NULL);
+	if (dup2(g_var.data->std_out, 1) == -1)
+		ft_error_exec(5, NULL);
 }
