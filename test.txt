@@ -4,3 +4,5 @@
 - < file -----> bug with syntax error [solved] 
 - echo "test" ------> quotes should be deleted [solved]
 - error with herdoc -----> segfault when delemiter is not given
+- expanding in null -----> $test cmd
+- ls|ls

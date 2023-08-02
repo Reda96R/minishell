@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/31 18:57:45 by yes-slim          #+#    #+#             */
-/*   Updated: 2023/07/31 19:14:02 by yes-slim         ###   ########.fr       */
+/*   Created: 2023/07/31 12:11:17 by rerayyad          #+#    #+#             */
+/*   Updated: 2023/08/01 18:10:00 by rerayyad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,18 +40,18 @@ t_glbl	g_var;
 /*------------------------------------------------*/
 typedef struct s_data
 {
-  char	 	**paths;
-  char	 	*pwd;
-  char	 	*old_pwd;
-  char	 	*input;
-  int	 	color;
-  int	 	pipes;
-  char		**env;
-  int		std_in;
-  int		std_out;
-  t_vars 	*vars;
-  t_mylxr	*mylexer;
-  t_cmds 	*cmds;
+	char	**paths;
+	char	*pwd;
+	char	*old_pwd;
+	char	*input;
+	int		color;
+	int		pipes;
+	char	**env;
+	int		std_in;
+	int		std_out;
+	t_vars	*vars;
+	t_mylxr	*mylexer;
+	t_cmds	*cmds;
 }	t_data;
 
 /*::: janitor :::*/
