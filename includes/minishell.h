@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rerayyad <rerayyad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/31 12:11:17 by rerayyad          #+#    #+#             */
-/*   Updated: 2023/08/02 11:39:17 by yes-slim         ###   ########.fr       */
+/*   Updated: 2023/08/02 17:44:59 by rerayyad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,10 @@
 # include "macros.h"
 # include "structs.h"
 
-
 /* --------------Global variable----------------- */
 typedef struct s_glbl
 {
-	struct 	s_data	*data;
+	struct s_data	*data;
 	unsigned char	exit_status;
 }	t_glbl;
 
@@ -104,7 +103,7 @@ int		ft_args_counter(t_mylxr *mylexer);
 
 /*::: redirections :::*/
 void	ft_redirections(t_parser *parser, t_data *data, int	*node_id);
-void    ft_add_redirection(t_parser *parser, t_mylxr *tmp, int *node_id,
+void	ft_add_redirection(t_parser *parser, t_mylxr *tmp, int *node_id,
 			t_data *data);
 
 /*::: expanding :::*/
@@ -115,6 +114,7 @@ int		ft_question_handler(char **str);
 int		ft_digit_skipper(char *str, int n);
 int		ft_translator(int i, char *str, char **tmp, t_data *data);
 char	*ft_converter(char c, t_data *data);
+char	**ft_skipper(char **cmd);
 
 /* -------------------Execution-----------------------*/
 /*::: Helpers :::*/

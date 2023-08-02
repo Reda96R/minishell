@@ -6,6 +6,14 @@
 - expanding in null -----> $test cmd [solved]
 - $"test ls"
 - true_cmd | false_cmd -----> program exits
-- $$VAR ----> 
+- $$VAR ----> should display command not found 
 - ls|ls
 - error with herdoc -----> segfault when delemiter is not given
+- echo "ls       l"
+- echo -n l
+- exit 1 a ----> should display too many args
+- echo '"ls"' ----> should display "ls"
+- echo '"$ls"' ----> should display "$ls"
+- echo "'$VAR'" ----> it should expand the var = 'VAR'
+- "ls -la" ----> quote should be considered one comand (cmd[0])
+- ctrl + \ ------> should stop cat
