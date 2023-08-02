@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execution.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rerayyad <rerayyad@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/25 18:47:03 by yes-slim          #+#    #+#             */
-/*   Updated: 2023/08/02 16:56:22 by rerayyad         ###   ########.fr       */
+/*   Created: 2023/08/02 18:57:34 by yes-slim          #+#    #+#             */
+/*   Updated: 2023/08/02 18:57:37 by yes-slim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@ int	is_builtin(t_cmds *init)
 
 void	ft_execution(t_data *init)
 {
+	g_var.data->std_in = dup(0);
+	g_var.data->std_out = dup(1);
 	if (init->cmds)
 	{
 		init->cmds->str = ft_expander(init, init->cmds->str);
