@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execution.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rerayyad <rerayyad@student.42.fr>          +#+  +:+       +#+        */
+/*   By: YOUNES <YOUNES@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/25 18:47:03 by yes-slim          #+#    #+#             */
-/*   Updated: 2023/07/31 07:30:02 by rerayyad         ###   ########.fr       */
+/*   Updated: 2023/08/01 16:38:16 by YOUNES           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,18 +36,9 @@ void	ft_execution(t_data *init)
 	if (init->cmds)
 	{
 		init->cmds->str = ft_expander(init, init->cmds->str);
-		init->std_in = dup(0);
-		init->std_out = dup(1);
 		if (!init->pipes)
 			one_cmd(init->cmds);
 		else
-		{
-			while (init->cmds)
-			{
-				// multiple_cmds(init);
-				// printf("%s\n", init->cmds->herdoc);
-				init->cmds = init->cmds->next;
-			}
-		}
+			multiple_cmds(init);
 	}
 }
