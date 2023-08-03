@@ -6,7 +6,7 @@
 /*   By: rerayyad <rerayyad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 14:42:53 by rerayyad          #+#    #+#             */
-/*   Updated: 2023/08/02 15:58:23 by rerayyad         ###   ########.fr       */
+/*   Updated: 2023/08/03 17:15:50 by rerayyad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,10 +90,10 @@ char	**ft_expander(t_data *data, char **cmd)
 	int		i;
 
 	i = 0;
-	while (cmd[i])
+	while (cmd[i] && cmd[i][0] != '\'')
 	{
 		if (ft_dollar_s(cmd[i]) && cmd[i][ft_dollar_s(cmd[i]) - 2] != '\''
-			&& cmd[i][ft_dollar_s(cmd[i])])
+				&& cmd[i][ft_dollar_s(cmd[i])])
 		{
 			str = ft_gold_finder(data, cmd[i]);
 			if (!i && !str[0] && !cmd[i + 1])
@@ -108,5 +108,7 @@ char	**ft_expander(t_data *data, char **cmd)
 		}
 		i++;
 	}
+	if (cmd[i] && cmd[i][0] == '\'')
+		ft_rm_quote(cmd[i], '\'');
 	return (ft_skipper(cmd));
 }

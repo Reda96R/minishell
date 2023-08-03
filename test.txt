@@ -1,19 +1,28 @@
+============================fixed=========================================
+
 - cmd > file | cmd ------> infinite loop [solved]
 - << eof cmd ------> syntax error [solved]
 - cmd > file0 > fil1 -----> only the last file is stored [solved]
 - < file -----> bug with syntax error [solved] 
 - echo "test" ------> quotes should be deleted [solved]
 - expanding in null -----> $test cmd [solved]
-- $"test ls"
+- echo "ls       l" [solved]
+- $"test ls" [solved]
+- "ls -la" ----> quote should be considered one comand (cmd[0]) [solved]
+
+=========================not fixed yet===================================
 - true_cmd | false_cmd -----> program exits
 - $$VAR ----> should display command not found 
 - ls|ls
 - error with herdoc -----> segfault when delemiter is not given
-- echo "ls       l"
 - echo -n l
 - exit 1 a ----> should display too many args
 - echo '"ls"' ----> should display "ls"
 - echo '"$ls"' ----> should display "$ls"
 - echo "'$VAR'" ----> it should expand the var = 'VAR'
-- "ls -la" ----> quote should be considered one comand (cmd[0])
 - ctrl + \ ------> should stop cat
+- "$PWD" ------> should be expanded
+- '""'
+- echo "test" > file0
+- cmd -flag1 -flag2  (only the first flag works) ---> both should work
+- ls | ls < dgh
