@@ -6,7 +6,7 @@
 #    By: YOUNES <YOUNES@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/24 13:54:21 by yes-slim          #+#    #+#              #
-#    Updated: 2023/08/03 14:55:20 by YOUNES           ###   ########.fr        #
+#    Updated: 2023/08/03 15:02:36 by YOUNES           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,11 +41,13 @@ Pars_SRCS   = $(addsuffix .c, $(addprefix parsing/, $(PARS)))
 #=================execution_files=======================================#
 LIBFT   	= ft_strdup ft_strlen _atoi _isdigit 
 BUILTIN 	= ft_pwd ft_exit ft_env ft_echo ft_cd ft_export #ft_unset 
-HELPERS 	= $(addprefix builtins/, $(BUILTIN))\
-		 	  $(addprefix libft/, $(LIBFT))\
-		 	  execution signals path_getter one_cmd check_files _dprintf multiple_cmds \
+HELPERS 	= signals path_getter one_cmd check_files _dprintf multiple_cmds
+EXEC		= execution \
+			  $(addprefix builtins/, $(BUILTIN)) \
+		 	  $(addprefix libft/, $(LIBFT)) \
+		 	  $(addprefix helpers/, $(HELPERS))
 			  
-Exec_SRCS   = $(addsuffix .c, $(addprefix execution/, $(HELPERS)))
+Exec_SRCS   = $(addsuffix .c, $(addprefix execution/, $(EXEC)))
 #====================================================================#
 OBJ     	= $(Exec_SRCS:.c=.o) $(Pars_SRCS:.c=.o) ft_janitor.o
 #=========================compile=============================#
