@@ -6,15 +6,29 @@
 /*   By: YOUNES <YOUNES@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/31 18:36:23 by yes-slim          #+#    #+#             */
-/*   Updated: 2023/08/03 13:20:37 by YOUNES           ###   ########.fr       */
+/*   Updated: 2023/08/03 14:10:20 by YOUNES           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
+void	execute(t_cmds *cmd)
+{
+	char *path;
+	
+	signal(SIGINT, SIG_DFL);
+	if (!is_builtin(cmd))
+		exit(0);
+	path = path_getter(cmd);
+	if (dup2(cmd->fd_in, 0) == -1)
+		ft_error_exec(5, NULL);
+	if (dup2(cmd->fd_out, 1) == -1)
+		ft_error_exec(5, NULL);
+	execve(path, cmd->str, g_var.data->env);
+}
+
 void    first_child(t_cmds *cmd, int *pp)
 {
-	char	*path;
 	pid_t	pid;
 
     cmd->fd_out = pp[1];
@@ -25,17 +39,7 @@ void    first_child(t_cmds *cmd, int *pp)
 	if (pid == -1)
 		ft_error_exec(4, NULL);
 	if (pid == 0)
-	{
-		signal(SIGINT, SIG_DFL);
-		if (!is_builtin(cmd))
-			exit(0);
-		path = path_getter(cmd);
-		if (dup2(cmd->fd_in, 0) == -1)
-			ft_error_exec(5, NULL);
-		if (dup2(cmd->fd_out, 1) == -1)
-			ft_error_exec(5, NULL);
-		execve(path, cmd->str, g_var.data->env);
-	}
+		execute(cmd);
 	if (dup2(pp[0], 0) == -1)
 		ft_error_exec(5, NULL);
 	close(cmd->fd_in);
@@ -45,7 +49,6 @@ void    first_child(t_cmds *cmd, int *pp)
 
 void	mid_childs(t_cmds *cmd)
 {
-	char	*path;
 	pid_t	pid;
 	int		pp[2];
 
@@ -59,17 +62,7 @@ void	mid_childs(t_cmds *cmd)
 	if (pid == -1)
 		ft_error_exec(4, NULL);
 	if (pid == 0)
-	{
-		signal(SIGINT, SIG_DFL);
-		if (!is_builtin(cmd))
-			exit(0);
-		path = path_getter(cmd);
-		if (dup2(cmd->fd_in, 0) == -1)
-			ft_error_exec(5, NULL);
-		if (dup2(cmd->fd_out, 1) == -1)
-			ft_error_exec(5, NULL);
-		execve(path, cmd->str, g_var.data->env);
-	}
+		execute(cmd);
 	if (dup2(pp[0], 0) == -1)
 		ft_error_exec(5, NULL);
     close(cmd->fd_in);
@@ -79,7 +72,6 @@ void	mid_childs(t_cmds *cmd)
 
 void	last_child(t_cmds *cmd)
 {
-	char	*path;
 	pid_t	pid;
 	int		pp[2];
 
@@ -92,17 +84,7 @@ void	last_child(t_cmds *cmd)
 	if (pid == -1)
 		ft_error_exec(4, NULL);
 	if (pid == 0)
-	{
-		signal(SIGINT, SIG_DFL);
-		if (!is_builtin(cmd))
-			exit(0);
-		path = path_getter(cmd);
-		if (dup2(cmd->fd_in, 0) == -1)
-			ft_error_exec(5, NULL);
-		if (dup2(cmd->fd_out, 1) == -1)
-			ft_error_exec(5, NULL);
-		execve(path, cmd->str, g_var.data->env);
-	}
+		execute(cmd);
 	close(cmd->fd_in);
 	close(cmd->fd_out);
     waitpid(pid, NULL, 0);
