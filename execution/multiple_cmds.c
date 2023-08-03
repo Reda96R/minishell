@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   multiple_cmds.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: YOUNES <YOUNES@student.42.fr>              +#+  +:+       +#+        */
+/*   By: rerayyad <rerayyad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/31 18:36:23 by yes-slim          #+#    #+#             */
-/*   Updated: 2023/08/03 14:10:20 by YOUNES           ###   ########.fr       */
+/*   Updated: 2023/08/03 15:46:08 by rerayyad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,15 +87,15 @@ void	last_child(t_cmds *cmd)
 		execute(cmd);
 	close(cmd->fd_in);
 	close(cmd->fd_out);
-    waitpid(pid, NULL, 0);
+	waitpid(pid, NULL, 0);
 }
 
 void	multiple_cmds(t_data *init)
 {
 	int	pp[2];
 
-    pipe(pp);
-    first_child(init->cmds, pp);
+	pipe(pp);
+	first_child(init->cmds, pp);
 	init->cmds = init->cmds->next;
 	while (init->cmds->next)
 	{
