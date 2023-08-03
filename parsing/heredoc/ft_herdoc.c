@@ -1,4 +1,4 @@
-#include "../../includes/minishell.h"8
+#include "../../includes/minishell.h"
 
 int	ft_heredoc(t_data *data, char *file, t_mylxr *heredoc)
 {

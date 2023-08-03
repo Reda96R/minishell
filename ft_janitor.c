@@ -6,7 +6,11 @@
 /*   By: rerayyad <rerayyad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 15:58:10 by rerayyad          #+#    #+#             */
+<<<<<<< HEAD
+/*   Updated: 2023/08/03 15:43:44 by yes-slim         ###   ########.fr       */
+=======
 /*   Updated: 2023/08/03 15:43:15 by rerayyad         ###   ########.fr       */
+>>>>>>> main
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,14 +42,11 @@ void	ft_builtins_error(int id, char *str)
 		_dprintf(2, "exit\n<?>: exit: %s: numeric argument required\n", str);
 	else if (id == 6)
 		_dprintf(2, "exit\n<?>: exit: too many arguments\n");
+	else if (id == 7)
+		_dprintf(2, "<?>: exit: %s: numeric argument required\n", str);
 	// else if (id == )
-	
 	// else if (id == )
-	
 	// else if (id == )
-	
-	// else if (id == )
-	
 	g_var.data->color = 0;
 }
 
@@ -59,21 +60,13 @@ void	ft_error_exec(int id, char *str)
 	else if (id == 3)
 		_dprintf(2, "<?>: %s: Permission denied\n", str);
 	// else if (id == )
-	
 	// else if (id == )
-	
 	// else if (id == )
-	
 	// else if (id == )
-	
 	// else if (id == )
-
 	// else if (id == )
-
 	// else if (id == )
-
 	// else if (id == )
-
 	g_var.data->color = 0;
 	ft_shell_reset(g_var.data);
 }
