@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_export.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: YOUNES <YOUNES@student.42.fr>              +#+  +:+       +#+        */
+/*   By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/14 14:40:41 by yes-slim          #+#    #+#             */
-/*   Updated: 2023/08/03 14:56:10 by YOUNES           ###   ########.fr       */
+/*   Updated: 2023/08/03 17:52:15 by yes-slim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,14 @@ void    _print(void)
 
 void    ft_export(t_cmds *init)
 {
-    if (init->str[1])
-    {
-        
-    }
-    else
+    int i;
+
+    i = 1;
+    if (!init->str[i])
         _print();
+    while (init->str[i])
+    {
+        printf("%s\n", init->str[i]);
+        i++;
+    }
 }
