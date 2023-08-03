@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_janitor.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rerayyad <rerayyad@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 15:58:10 by rerayyad          #+#    #+#             */
-/*   Updated: 2023/08/03 18:08:06 by rerayyad         ###   ########.fr       */
+/*   Updated: 2023/08/03 18:52:27 by yes-slim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,8 +55,10 @@ void	ft_error_exec(int id, char *str)
 		_dprintf(2, "<?>: %s: command not found\n", str);
 	else if (id == 3)
 		_dprintf(2, "<?>: %s: Permission denied\n", str);
-	// else if (id == )
-	// else if (id == )
+	else if (id == 4)
+		_dprintf(2, "<?>: fork error\n");
+	else if (id == 5)
+		_dprintf(2, "<?>: dup2 error\n");
 	// else if (id == )
 	// else if (id == )
 	// else if (id == )
