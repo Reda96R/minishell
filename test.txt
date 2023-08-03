@@ -21,9 +21,8 @@
 - echo '"$ls"' ----> should display "$ls"
 - echo "'$VAR'" ----> it should expand the var = 'VAR'
 - ctrl + \ ------> should stop cat
-- "$PWD" ------> should be expanding
+- "$PWD" ------> should be expanded
 - '""'
 - echo "test" > file0
-- cmd -flag1 -flag2  (only the first one works) ---> both flags should work
+- cmd -flag1 -flag2  (only the first flag works) ---> both should work
 - ls | ls < dgh
-- cd - ----> should return to oldpwd
