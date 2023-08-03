@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rerayyad <rerayyad@student.42.fr>          +#+  +:+       +#+        */
+/*   By: YOUNES <YOUNES@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/31 12:11:17 by rerayyad          #+#    #+#             */
-/*   Updated: 2023/08/02 17:44:59 by rerayyad         ###   ########.fr       */
+/*   Updated: 2023/08/03 14:54:52 by YOUNES           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -147,5 +147,6 @@ void	ft_exit(t_cmds *cmd);
 void	ft_env(t_cmds *init);
 void	ft_echo(t_cmds *init);
 int		ft_cd(t_cmds *init);
+void    ft_export(t_cmds *init);
 
 #endif
