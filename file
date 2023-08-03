@@ -1,0 +1,15 @@
+execution
+file
+ft_janitor.c
+ft_janitor.o
+images
+includes
+Makefile
+minishell
+minishell.a
+minishell.c
+minishell.corr.pdf
+minishell.sub.pdf
+parsing
+README.md
+test.txt
