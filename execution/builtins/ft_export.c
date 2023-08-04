@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_export.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+        */
+/*   By: YOUNES <YOUNES@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/14 14:40:41 by yes-slim          #+#    #+#             */
-/*   Updated: 2023/08/04 11:35:46 by yes-slim         ###   ########.fr       */
+/*   Updated: 2023/08/04 19:17:17 by YOUNES           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,16 +26,46 @@ void    _print(t_cmds *init)
     }
 }
 
+int	ft_check(char *str)
+{
+	int	i;
+	
+	i = 0;
+	if (!_isalpha(str[i]) && str[i] != '_')
+		return (0);
+	i++;
+	while (str[i])
+	{
+		if (!_isalnum(str[i]) && str[i] != '_')
+			return (0);
+		i++;
+	}
+	return (1);
+}
+
+void	ft_add_var()
+{
+	
+}
+
 void    ft_export(t_cmds *init)
 {
     int		i;
     
 	i = 1;
-    if (!init->str[i])
-        _print(init);
+    if (!init->str[1])
+	{
+		_print(init);
+		return ;
+	}
 	while (init->str[i])
     {
-		
+		if (ft_check(init->str[i]))
+		{
+			
+		}
+		else
+			ft_builtins_error(8, init->str[i]);
 		i++;
     }
 }
