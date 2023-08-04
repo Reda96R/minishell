@@ -115,6 +115,7 @@ int		ft_digit_skipper(char *str, int n);
 int		ft_translator(int i, char *str, char **tmp, t_data *data);
 char	*ft_converter(char c, t_data *data);
 char	**ft_skipper(char **cmd);
+char	**ft_quote_handler(char **str, int i, int r);
 
 /* -------------------Execution-----------------------*/
 /*::: Helpers :::*/

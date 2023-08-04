@@ -6,7 +6,7 @@
 /*   By: rerayyad <rerayyad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 14:42:53 by rerayyad          #+#    #+#             */
-/*   Updated: 2023/08/03 17:15:50 by rerayyad         ###   ########.fr       */
+/*   Updated: 2023/08/03 18:56:22 by rerayyad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,31 +84,42 @@ char	*ft_gold_finder(t_data *data, char *str)
 	return (tmp0);
 }
 
+char	**ft_quote_handler(char **str, int i, int r)
+{
+	if (ft_strncmp(str[0], "export", ft_strlen(str[0]) - 1))
+	{
+		if (r)
+			str[i] = ft_rm_quote(str[i], '\"');
+		str[i] = ft_rm_quote(str[i], '\'');
+	}
+	return (str);
+}
+
 char	**ft_expander(t_data *data, char **cmd)
 {
 	char	*str;
 	int		i;
+	int		r;
 
 	i = 0;
-	while (cmd[i] && cmd[i][0] != '\'')
+	r = 1;
+	while (cmd[i])
 	{
-		if (ft_dollar_s(cmd[i]) && cmd[i][ft_dollar_s(cmd[i]) - 2] != '\''
-				&& cmd[i][ft_dollar_s(cmd[i])])
+		if (ft_dollar_s(cmd[i]) //&& cmd[i][ft_dollar_s(cmd[i]) - 2] != '\''
+				&& cmd[i][ft_dollar_s(cmd[i])] && cmd[i][0] != '\'')
 		{
 			str = ft_gold_finder(data, cmd[i]);
 			if (!i && !str[0] && !cmd[i + 1])
 				ft_shell_reset(data);
 			free(cmd[i]);
 			cmd[i] = str;
+			if (cmd[i] && cmd[i][0] == '\'')
+				r = 0;
 		}
-		if (ft_strncmp(cmd[0], "export", ft_strlen(cmd[0]) - 1))
-		{
-			cmd[i] = ft_rm_quote(cmd[i], '\"');
-			cmd[i] = ft_rm_quote(cmd[i], '\'');
-		}
+		if (cmd[i][0] == '\'')
+			r = 0;
+		cmd = ft_quote_handler(cmd, i, r);
 		i++;
 	}
-	if (cmd[i] && cmd[i][0] == '\'')
-		ft_rm_quote(cmd[i], '\'');
 	return (ft_skipper(cmd));
 }
