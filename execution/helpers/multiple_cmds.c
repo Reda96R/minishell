@@ -6,7 +6,7 @@
 /*   By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/31 18:36:23 by yes-slim          #+#    #+#             */
-/*   Updated: 2023/08/04 08:36:58 by yes-slim         ###   ########.fr       */
+/*   Updated: 2023/08/04 09:34:43 by yes-slim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,8 @@ void	mid_childs(t_cmds *cmd)
 	pid_t	pid;
 	int		pp[2];
 
-	pipe(pp);
+	if (pipe(pp) == -1)
+		ft_error_exec(6, NULL);
     cmd->fd_out = pp[1];
 	ft_check_files(cmd);
 	if (!cmd->str[0])
@@ -100,7 +101,8 @@ void	multiple_cmds(t_data *init)
 	int	pid;
 	int	pp[2];
 
-    pipe(pp);
+    if (pipe(pp) == -1)
+		ft_error_exec(6, NULL);
     first_child(init->cmds, pp);
 	init->cmds = init->cmds->next;
 	while (init->cmds->next)

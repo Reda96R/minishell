@@ -6,7 +6,7 @@
 /*   By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 15:58:10 by rerayyad          #+#    #+#             */
-/*   Updated: 2023/08/03 18:52:27 by yes-slim         ###   ########.fr       */
+/*   Updated: 2023/08/04 09:31:35 by yes-slim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,11 +56,13 @@ void	ft_error_exec(int id, char *str)
 	else if (id == 3)
 		_dprintf(2, "<?>: %s: Permission denied\n", str);
 	else if (id == 4)
-		_dprintf(2, "<?>: fork error\n");
+		_dprintf(2, "<?>: fork failed: Resource temporarily unavailable\n");
 	else if (id == 5)
-		_dprintf(2, "<?>: dup2 error\n");
-	// else if (id == )
-	// else if (id == )
+		_dprintf(2, "<?>: dup2 failed: Resource temporarily unavailable\n");
+	else if (id == 6)
+		_dprintf(2, "<?>: pipe failed: Resource temporarily unavailable\n");
+	else if (id == 7)
+		_dprintf(2, "<?>: dup failed: Resource temporarily unavailable\n");
 	// else if (id == )
 	// else if (id == )
 	// else if (id == )
