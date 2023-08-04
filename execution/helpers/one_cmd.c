@@ -6,7 +6,7 @@
 /*   By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/21 07:31:45 by yes-slim          #+#    #+#             */
-/*   Updated: 2023/08/02 13:49:03 by yes-slim         ###   ########.fr       */
+/*   Updated: 2023/08/04 09:20:11 by yes-slim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ void	one_cmd(t_cmds *init)
 	if (pid == 0)
 	{
 		signal(SIGINT, SIG_DFL);
+		signal(SIGQUIT, SIG_DFL);
 		if (dup2(init->fd_in, 0) == -1)
 			ft_error_exec(5, NULL);
 		if (dup2(init->fd_out, 1) == -1)
