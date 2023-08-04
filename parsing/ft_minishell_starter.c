@@ -6,7 +6,7 @@
 /*   By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/02 18:58:02 by yes-slim          #+#    #+#             */
-/*   Updated: 2023/08/03 19:11:21 by yes-slim         ###   ########.fr       */
+/*   Updated: 2023/08/04 09:22:44 by yes-slim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ void	ft_prompt(t_data *data)
 		data->input = ft_strtrim(readline(READLINE_MSG_R), " ");
 	else
 		data->input = ft_strtrim(readline(READLINE_MSG_G), " ");
+	signal(SIGINT, SIG_IGN);
 	if (!data->input)
 	{
 		printf("exit\n");
