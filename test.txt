@@ -26,3 +26,20 @@
 - echo "test" > file0
 - cmd -flag1 -flag2  (only the first flag works) ---> both should work
 - ls | ls < dgh
+
+
+
+- echo $USER.hello
+- echo $$$$$$
+- echo asdasd.$.USER
+- echo "$""USER"
+- echo $USER.USER
+- echo ''$"USER"
+- echo ""''""''""''""''""''""'''$USER'
+- echo "'""'"'""'
+- echo $USER"hello"''
+- echo "'$USER'""hello"
+- echo "|" ----------> check for quotes not only in the start
+- 
+
+
