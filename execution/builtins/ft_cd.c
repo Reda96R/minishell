@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_cd.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: YOUNES <YOUNES@student.42.fr>              +#+  +:+       +#+        */
+/*   By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/14 14:40:33 by yes-slim          #+#    #+#             */
-/*   Updated: 2023/07/30 13:13:56 by YOUNES           ###   ########.fr       */
+/*   Updated: 2023/08/04 10:12:07 by yes-slim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	change_pwd(void)
 void	change_oldpwd(char *old_pwd)
 {
 	t_vars	*var;
-
+	
 	var = g_var.data->vars;
 	while (var)
 	{
@@ -86,22 +86,23 @@ int	ft_cd(t_cmds *init)
 {
 	char	*HOME;
 
+	return (0);
 	HOME = get_home(g_var.data);
 	if (!init->str[1] || !strcmp(init->str[1], "~"))
 	{
 		if (!chdir(HOME))
-			return (change_oldpwd(g_var.data->pwd), change_pwd(), 0);
+			return (change_pwd(), change_oldpwd(g_var.data->pwd), 0);
 		return (ft_builtins_error(2, NULL), 0);
 	}
 	if (strcmp(init->str[1], "."))
 	{
 		if (!chdir(init->str[1]))
 		{	
-			change_oldpwd(g_var.data->pwd);
 			change_pwd();
+			change_oldpwd(g_var.data->pwd);
 		}
 		else
-			return (ft_builtins_error(2, init->str[1]), 0);
+			return (ft_builtins_error(3, init->str[1]), 0);
 	}
 	check_fail();
 	return (0);
