@@ -3,19 +3,38 @@
 /*                                                        :::      ::::::::   */
 /*   one_cmd.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+        */
+/*   By: YOUNES <YOUNES@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/21 07:31:45 by yes-slim          #+#    #+#             */
-/*   Updated: 2023/08/04 09:20:11 by yes-slim         ###   ########.fr       */
+/*   Updated: 2023/08/05 11:37:24 by YOUNES           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
+void	ft_wait_one(int pid)
+{
+	int	status;
+
+	waitpid(pid, &status, 0);
+	if (WIFEXITED(status))
+		g_var.exit_status = WEXITSTATUS(status);
+	if (WIFSIGNALED(status))
+	{
+		if (WTERMSIG(status) == 3)
+		{
+			g_var.exit_status = 131;
+			printf("QUIT: 3\n");
+		}
+		if (WTERMSIG(status) == 2)
+			g_var.exit_status = 130;
+	}
+}
+
 void	one_cmd(t_cmds *init)
 {
 	char	*path;
-	pid_t	pid;
+	int		pid;
 	
 	ft_check_files(init);
 	if (!init->str[0])
@@ -36,5 +55,5 @@ void	one_cmd(t_cmds *init)
 			ft_error_exec(5, NULL);
 		execve(path, init->str, g_var.data->env);
 	}
-	waitpid(pid, NULL, 0);
+	ft_wait_one(pid);
 }

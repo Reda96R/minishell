@@ -6,7 +6,7 @@
 /*   By: YOUNES <YOUNES@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/14 14:40:41 by yes-slim          #+#    #+#             */
-/*   Updated: 2023/08/04 20:22:02 by YOUNES           ###   ########.fr       */
+/*   Updated: 2023/08/04 21:26:59 by YOUNES           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int	ft_check(char *str)
 	if (!_isalpha(str[i]) && str[i] != '_')
 		return (0);
 	i++;
-	while (str[i] || str[i] != '=')
+	while (str[i] && str[i] != '=')
 	{
 		if (!_isalnum(str[i]) && str[i] != '_')
 			return (0);
@@ -62,7 +62,7 @@ void    ft_export(t_cmds *init)
     {
 		if (ft_check(init->str[i]))
 		{
-			printf("%s\n", init->str[i]);
+			
 		}
 		else
 			ft_builtins_error(8, init->str[i]);
