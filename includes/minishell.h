@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+        */
+/*   By: YOUNES <YOUNES@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/31 12:11:17 by rerayyad          #+#    #+#             */
-/*   Updated: 2023/08/03 19:21:29 by yes-slim         ###   ########.fr       */
+/*   Updated: 2023/08/04 18:22:53 by YOUNES           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,6 +133,8 @@ void 	rl_replace_line (const char *text, int clear_undo);
 
 /*::: Libfts :::*/
 int		_isdigit(int c);
+int		_isalpha(int c);
+int		_isalnum(int c);
 int		_atoi(const char *str);
 char	*ft_strdup(const char *src);
 size_t	ft_strlen(const char *str);

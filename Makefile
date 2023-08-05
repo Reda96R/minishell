@@ -6,7 +6,7 @@
 #    By: YOUNES <YOUNES@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/24 13:54:21 by yes-slim          #+#    #+#              #
-#    Updated: 2023/08/03 15:02:36 by YOUNES           ###   ########.fr        #
+#    Updated: 2023/08/04 18:29:40 by YOUNES           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,7 +39,7 @@ PARS 		= $(addprefix expander/, $(EXP))\
 Pars_SRCS   = $(addsuffix .c, $(addprefix parsing/, $(PARS))) 
 
 #=================execution_files=======================================#
-LIBFT   	= ft_strdup ft_strlen _atoi _isdigit 
+LIBFT   	= ft_strdup ft_strlen _atoi _isdigit _isalpha _isalnum
 BUILTIN 	= ft_pwd ft_exit ft_env ft_echo ft_cd ft_export #ft_unset 
 HELPERS 	= signals path_getter one_cmd check_files _dprintf multiple_cmds
 EXEC		= execution \
