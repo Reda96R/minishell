@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   multiple_cmds.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: YOUNES <YOUNES@student.42.fr>              +#+  +:+       +#+        */
+/*   By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/31 18:36:23 by yes-slim          #+#    #+#             */
-/*   Updated: 2023/08/04 21:41:54 by YOUNES           ###   ########.fr       */
+/*   Updated: 2023/08/05 16:03:26 by yes-slim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,9 +105,15 @@ void	ft_wait(int pid)
 		g_var.exit_status = WEXITSTATUS(status);
 	if (WIFSIGNALED(status))
 	{
-		printf("%d\n", WEXITSTATUS(status));
+		if (WTERMSIG(status) == 3)
+		{
+			g_var.exit_status = 131;
+			printf("Quit: 3\n");
+		}
+		if (WTERMSIG(status) == 2)
+			g_var.exit_status = 130;
 	}
-	while (wait(&status) != -1);
+	while (wait(NULL) != -1);
 }
 
 void	multiple_cmds(t_data *init)

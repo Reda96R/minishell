@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_export.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: YOUNES <YOUNES@student.42.fr>              +#+  +:+       +#+        */
+/*   By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/14 14:40:41 by yes-slim          #+#    #+#             */
-/*   Updated: 2023/08/04 21:26:59 by YOUNES           ###   ########.fr       */
+/*   Updated: 2023/08/05 21:51:59 by yes-slim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,8 @@ void    _print(t_cmds *init)
     {
         _dprintf(init->fd_out, "declare -x %s", tmp->key);
         if (tmp->value)
-            _dprintf(init->fd_out, "=\"%s\"\n", tmp->value);
+            _dprintf(init->fd_out, "=\"%s\"", tmp->value);
+		_dprintf(init->fd_out, "\n");
         tmp = tmp->next;
     }
 }
@@ -43,10 +44,42 @@ int	ft_check(char *str)
 	return (1);
 }
 
-// void	ft_add_var()
-// {
-	
-// }
+void	add_var(char *ident)
+{
+	t_vars *tmp;
+	t_vars *node;
+	char **str;
+	int	id;
+	int	j;
+
+	tmp = g_var.data->vars;
+	id = 0;
+	while(tmp)
+	{
+		id++;
+		tmp = tmp->next;
+	}
+	tmp = g_var.data->vars;
+	while (tmp->next)
+		tmp = tmp->next;
+	str = malloc(sizeof(char *) * 2);
+	j = 0;
+	while (ident[j] && ident[j] != '=')
+		j++;
+	str[0] = ft_substr(ident, 0, j);
+	str[1] = ft_substr(ident, j + 1, ft_strlen(&ident[j]));
+	if (ident[j] != '=')
+		str[1] = NULL;
+	node = malloc(sizeof(t_vars));
+	if (!node)
+		ft_error_exec(8, NULL);
+	node->key = str[0];
+	node->value = str[1];
+	node->node_id = id;
+	node->next = NULL;
+	tmp->next = node;
+	// printf("id:%d, key:%s, value:%s\n", node->node_id, node->key, node->value);
+}
 
 void    ft_export(t_cmds *init)
 {
@@ -62,7 +95,7 @@ void    ft_export(t_cmds *init)
     {
 		if (ft_check(init->str[i]))
 		{
-			
+			add_var(init->str[i]);
 		}
 		else
 			ft_builtins_error(8, init->str[i]);

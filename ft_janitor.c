@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_janitor.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: YOUNES <YOUNES@student.42.fr>              +#+  +:+       +#+        */
+/*   By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 15:58:10 by rerayyad          #+#    #+#             */
-/*   Updated: 2023/08/04 18:31:38 by YOUNES           ###   ########.fr       */
+/*   Updated: 2023/08/05 18:17:06 by yes-slim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,8 @@ void	ft_error_exec(int id, char *str)
 		_dprintf(2, "<?>: pipe failed: Resource temporarily unavailable\n");
 	else if (id == 7)
 		_dprintf(2, "<?>: dup failed: Resource temporarily unavailable\n");
-	// else if (id == )
+	else if (id == 8)
+		_dprintf(2, "<?>: malloc failed: Resource temporarily unavailable\n");
 	// else if (id == )
 	// else if (id == )
 	// else if (id == )
