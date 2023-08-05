@@ -6,7 +6,7 @@
 /*   By: YOUNES <YOUNES@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 15:58:02 by rerayyad          #+#    #+#             */
-/*   Updated: 2023/08/01 19:47:01 by YOUNES           ###   ########.fr       */
+/*   Updated: 2023/08/05 12:53:07 by YOUNES           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ int	main(int ac, char *av[], char *env[])
 		return (0);
 	data.color = 1;
 	g_var.data = &data;
+	g_var.sig = 1;
 	ft_shell_starter(&data);
 	return (1);
 }
