@@ -6,7 +6,7 @@
 /*   By: YOUNES <YOUNES@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/31 12:11:17 by rerayyad          #+#    #+#             */
-/*   Updated: 2023/08/04 18:22:53 by YOUNES           ###   ########.fr       */
+/*   Updated: 2023/08/05 12:16:53 by YOUNES           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ typedef struct s_glbl
 {
 	struct s_data	*data;
 	unsigned char	exit_status;
+	int				sig;
 }	t_glbl;
 
 t_glbl	g_var;

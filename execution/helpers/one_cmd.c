@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   one_cmd.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: YOUNES <YOUNES@student.42.fr>              +#+  +:+       +#+        */
+/*   By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/21 07:31:45 by yes-slim          #+#    #+#             */
-/*   Updated: 2023/08/05 11:37:24 by YOUNES           ###   ########.fr       */
+/*   Updated: 2023/08/05 16:02:44 by yes-slim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	ft_wait_one(int pid)
 		if (WTERMSIG(status) == 3)
 		{
 			g_var.exit_status = 131;
-			printf("QUIT: 3\n");
+			printf("Quit: 3\n");
 		}
 		if (WTERMSIG(status) == 2)
 			g_var.exit_status = 130;
