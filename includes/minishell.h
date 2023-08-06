@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: YOUNES <YOUNES@student.42.fr>              +#+  +:+       +#+        */
+/*   By: rerayyad <rerayyad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/31 12:11:17 by rerayyad          #+#    #+#             */
 /*   Updated: 2023/08/06 20:20:54 by YOUNES           ###   ########.fr       */
@@ -84,7 +84,7 @@ void	ft_rm_var(t_vars **vars, int id);
 int		ft_quotes_counter(char *input);
 int		ft_quotes_matcher(char *input, int i, int quote, int *quote_count);
 int		ft_quote_skiper(char *str, int quote, int i);
-char	*ft_rm_quote(char *str, char c);
+char	*ft_rm_quote(char *str, char c, int n);
 
 /*::: tokens :::*/
 int		ft_token_parser(t_data *data, int *node_id, int id);
@@ -116,7 +116,7 @@ int		ft_digit_skipper(char *str, int n);
 int		ft_translator(int i, char *str, char **tmp, t_data *data);
 char	*ft_converter(char c, t_data *data);
 char	**ft_skipper(char **cmd);
-char	**ft_quote_handler(char **str, int i, int r);
+char	*ft_quote_handler(char *cmd, int *j);
 
 /* -------------------Execution-----------------------*/
 /*::: Helpers :::*/
