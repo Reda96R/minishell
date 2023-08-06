@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_export.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+        */
+/*   By: YOUNES <YOUNES@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/14 14:40:41 by yes-slim          #+#    #+#             */
-/*   Updated: 2023/08/06 16:22:11 by yes-slim         ###   ########.fr       */
+/*   Updated: 2023/08/06 20:21:34 by YOUNES           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,7 @@ void	add_var(char *ident)
 	}
 	node = malloc(sizeof(t_vars));
 	if (!node)
-		ft_error_exec(8, NULL);
+		ft_error_exec(8, NULL, 0);
 	node->key = str[0];
 	node->value = str[1];
 	node->node_id = id;

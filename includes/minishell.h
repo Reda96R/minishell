@@ -6,7 +6,7 @@
 /*   By: YOUNES <YOUNES@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/31 12:11:17 by rerayyad          #+#    #+#             */
-/*   Updated: 2023/08/06 10:15:51 by YOUNES           ###   ########.fr       */
+/*   Updated: 2023/08/06 20:20:54 by YOUNES           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ t_mylxr	*ft_node_clear(t_mylxr **node);
 void	ft_lxr_cleaner(t_mylxr **mylexer);
 void	ft_cmd_cleaner(t_cmds **cmds);
 
-void	ft_error_exec(int id, char *str);
+void	ft_error_exec(int id, char *str, int i);
 void	ft_builtins_error(int id, char *str);
 
 /* -------------------Parsing-----------------------*/

@@ -6,7 +6,7 @@
 /*   By: YOUNES <YOUNES@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/02 18:57:34 by yes-slim          #+#    #+#             */
-/*   Updated: 2023/08/06 11:03:49 by YOUNES           ###   ########.fr       */
+/*   Updated: 2023/08/06 20:21:26 by YOUNES           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,10 +38,10 @@ void	ft_execution(t_data *init)
 {
 	g_var.data->std_in = dup(0);
 	if (g_var.data->std_in == -1)
-		ft_error_exec(7, NULL);
+		ft_error_exec(7, NULL, 0);
 	g_var.data->std_out = dup(1);
 	if (g_var.data->std_out == -1)
-		ft_error_exec(7, NULL);
+		ft_error_exec(7, NULL, 0);
 	if (init->cmds)
 	{
 		// init->cmds->str = ft_expander(init, init->cmds->str);

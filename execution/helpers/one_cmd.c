@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   one_cmd.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+        */
+/*   By: YOUNES <YOUNES@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/21 07:31:45 by yes-slim          #+#    #+#             */
-/*   Updated: 2023/08/05 16:02:44 by yes-slim         ###   ########.fr       */
+/*   Updated: 2023/08/06 20:23:45 by YOUNES           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,15 +44,15 @@ void	one_cmd(t_cmds *init)
 	path = path_getter(init);
 	pid = fork();
 	if (pid == -1)
-		ft_error_exec(4, NULL);
+		ft_error_exec(4, NULL, 0);
 	if (pid == 0)
 	{
 		signal(SIGINT, SIG_DFL);
 		signal(SIGQUIT, SIG_DFL);
 		if (dup2(init->fd_in, 0) == -1)
-			ft_error_exec(5, NULL);
+			ft_error_exec(5, NULL, -1);
 		if (dup2(init->fd_out, 1) == -1)
-			ft_error_exec(5, NULL);
+			ft_error_exec(5, NULL, -1);
 		execve(path, init->str, g_var.data->env);
 	}
 	ft_wait_one(pid);

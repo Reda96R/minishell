@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_janitor.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+        */
+/*   By: YOUNES <YOUNES@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 15:58:10 by rerayyad          #+#    #+#             */
-/*   Updated: 2023/08/06 13:00:38 by yes-slim         ###   ########.fr       */
+/*   Updated: 2023/08/06 20:30:38 by YOUNES           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void	ft_builtins_error(int id, char *str)
 	g_var.data->color = 0;
 }
 
-void	ft_error_exec(int id, char *str)
+void	ft_error_exec(int id, char *str, int i)
 {
 	_dprintf(2, "\033[0;31m");
 	if (id == 1)
@@ -67,11 +67,11 @@ void	ft_error_exec(int id, char *str)
 		_dprintf(2, "<?>: dup failed: Resource temporarily unavailable\n");
 	else if (id == 8)
 		_dprintf(2, "<?>: malloc failed: Resource temporarily unavailable\n");
-	// else if (id == )
-	// else if (id == )
-	// else if (id == )
 	g_var.data->color = 0;
-	ft_shell_reset(g_var.data);
+	if (i == -1)
+		exit(0);
+	if (i == 0)
+		ft_shell_reset(g_var.data);
 }
 
 void	ft_errors_buster(int id, t_data *data)
