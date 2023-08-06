@@ -6,7 +6,7 @@
 /*   By: YOUNES <YOUNES@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 15:58:10 by rerayyad          #+#    #+#             */
-/*   Updated: 2023/08/06 10:01:09 by YOUNES           ###   ########.fr       */
+/*   Updated: 2023/08/06 11:12:12 by YOUNES           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,9 @@ void	ft_builtins_error(int id, char *str)
 	else if (id == 4)
 		_dprintf(2, "env: %s: no such file or directory\n", str);
 	else if (id ==  5)
-		_dprintf(2, "exit\n<?>: exit: %s: numeric argument required\n", str);
+		_dprintf(2, "<?>: exit: %s: numeric argument required\n", str);
 	else if (id == 6)
-		_dprintf(2, "exit\n<?>: exit: too many arguments\n");
+		_dprintf(2, "<?>: exit: too many arguments\n");
 	else if (id == 7)
 		_dprintf(2, "<?>: exit: %s: numeric argument required\n", str);
 	else if (id == 8)
