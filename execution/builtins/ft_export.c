@@ -6,13 +6,33 @@
 /*   By: YOUNES <YOUNES@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/14 14:40:41 by yes-slim          #+#    #+#             */
-/*   Updated: 2023/08/06 10:18:03 by YOUNES           ###   ########.fr       */
+/*   Updated: 2023/08/06 20:21:34 by YOUNES           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	ft_check(char *str);
+int	ft_check_export(char *str)
+{
+	int	i;
+	
+	i = 0;
+	if (!_isalpha(str[i]) && str[i] != '_')
+		return (0);
+	i++;
+	while (str[i] && str[i] != '=')
+	{
+		if (str[i] == '+' && str[i + 1] == '=')
+		{
+			i++;
+			continue ;
+		}
+		if (!_isalnum(str[i]) && str[i] != '_')
+			return (0);
+		i++;
+	}
+	return (1);
+}
 
 void    _print(t_cmds *init)
 {
@@ -50,10 +70,17 @@ void	add_var(char *ident)
 		prev = prev->next;
 	j = 0;
 	while (ident[j] && ident[j] != '=')
+	{
+		if (ident[j] == '+' && ident[j + 1] == '=')
+			break ;
 		j++;
+	}
 	str[0] = ft_substr(ident, 0, j);
-	str[1] = ft_substr(ident, j + 1, ft_strlen(&ident[j]));
-	if (ident[j] != '=')
+	if (ident[j] == '+')
+		str[1] = ft_substr(ident, j + 2, ft_strlen(&ident[j + 1]));
+	else if (ident[j] == '=')
+		str[1] = ft_substr(ident, j + 1, ft_strlen(&ident[j]));
+	if (ident[j] != '=' && ident[j] != '+')
 		str[1] = NULL;
 	tmp = g_var.data->vars;
 	while (tmp)
@@ -61,14 +88,19 @@ void	add_var(char *ident)
 		if (!strcmp(tmp->key, str[0]))
 		{
 			if (str[1])
-				tmp->value = str[1];
+			{
+				if (ident[j] == '+')
+					tmp->value = ft_strjoin(tmp->value, str[1]);
+				else
+					tmp->value = str[1];
+			}
 			return;
 		}
 		tmp = tmp->next;
 	}
 	node = malloc(sizeof(t_vars));
 	if (!node)
-		ft_error_exec(8, NULL);
+		ft_error_exec(8, NULL, 0);
 	node->key = str[0];
 	node->value = str[1];
 	node->node_id = id;
@@ -89,7 +121,7 @@ void    ft_export(t_cmds *init)
 	}
 	while (init->str[i])
     {
-		if (ft_check(init->str[i]))
+		if (ft_check_export(init->str[i]))
 			add_var(init->str[i]);
 		else
 			ft_builtins_error(8, init->str[i]);

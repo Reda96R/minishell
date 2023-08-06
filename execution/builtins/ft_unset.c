@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_unset.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: YOUNES <YOUNES@student.42.fr>              +#+  +:+       +#+        */
+/*   By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/14 14:40:45 by yes-slim          #+#    #+#             */
-/*   Updated: 2023/08/06 10:17:07 by YOUNES           ###   ########.fr       */
+/*   Updated: 2023/08/06 16:20:31 by yes-slim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	ft_check(char *str)
+int	ft_check_unset(char *str)
 {
 	int	i;
 	
@@ -20,7 +20,7 @@ int	ft_check(char *str)
 	if (!_isalpha(str[i]) && str[i] != '_')
 		return (0);
 	i++;
-	while (str[i] && str[i] != '=')
+	while (str[i])
 	{
 		if (!_isalnum(str[i]) && str[i] != '_')
 			return (0);
@@ -49,7 +49,7 @@ void	ft_unset(t_cmds *init)
 	i = 1;
 	while(init->str[i])
 	{
-		if (ft_check(init->str[i]))
+		if (ft_check_unset(init->str[i]))
 			del_var(init->str[i]);
 		else
 			ft_builtins_error(9, init->str[i]);

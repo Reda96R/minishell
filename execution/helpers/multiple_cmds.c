@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   multiple_cmds.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+        */
+/*   By: YOUNES <YOUNES@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/31 18:36:23 by yes-slim          #+#    #+#             */
-/*   Updated: 2023/08/05 16:03:26 by yes-slim         ###   ########.fr       */
+/*   Updated: 2023/08/06 20:34:36 by YOUNES           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,35 +22,36 @@ void	execute(t_cmds *cmd)
 		exit(0);
 	path = path_getter(cmd);
 	if (dup2(cmd->fd_in, 0) == -1)
-		ft_error_exec(5, NULL);
+		ft_error_exec(5, NULL, -1);
 	if (cmd->fd_in != 0)
 		close(cmd->fd_in);
 	if (dup2(cmd->fd_out, 1) == -1)
-		ft_error_exec(5, NULL);
+		ft_error_exec(5, NULL, -1);
 	if (cmd->fd_out != 1)
 		close(cmd->fd_out);
 	execve(path, cmd->str, g_var.data->env);
+	exit (127);
 }
 
 void    first_child(t_cmds *cmd, int *pp)
 {
 	pid_t	pid;
-
-    cmd->fd_out = pp[1];
+	
+	cmd->fd_out = pp[1];
     ft_check_files(cmd);
-	if (!cmd->str[0])
+	if (!cmd->str[0] || cmd->fd_in == -1 || cmd->fd_out == -1)
 		return ;
 	pid = fork();
 	if (pid == -1)
-		ft_error_exec(4, NULL);
+		ft_error_exec(4, NULL, 0);
 	if (pid == 0)
 	{
-		close(pp[0]);	
+		close(pp[0]);
 		execute(cmd);
 	}
 	close(pp[1]);
 	if (dup2(pp[0], 0) == -1)
-		ft_error_exec(5, NULL);
+		ft_error_exec(5, NULL, 0);
 	close(pp[0]);
 }
 
@@ -60,14 +61,14 @@ void	mid_childs(t_cmds *cmd)
 	int		pp[2];
 
 	if (pipe(pp) == -1)
-		ft_error_exec(6, NULL);
+		ft_error_exec(6, NULL, 0);
     cmd->fd_out = pp[1];
 	ft_check_files(cmd);
-	if (!cmd->str[0])
+	if (!cmd->str[0] || cmd->fd_in == -1 || cmd->fd_out == -1)
 		return ;
 	pid = fork();
 	if (pid == -1)
-		ft_error_exec(4, NULL);
+		ft_error_exec(4, NULL, 0);
 	if (pid == 0)
 	{
 		close(pp[0]);
@@ -75,7 +76,7 @@ void	mid_childs(t_cmds *cmd)
 	}
     close(cmd->fd_in);
 	if (dup2(pp[0], 0) == -1)
-		ft_error_exec(5, NULL);
+		ft_error_exec(5, NULL, 0);
 	close(cmd->fd_out);
 }
 
@@ -84,15 +85,17 @@ int	last_child(t_cmds *cmd)
 	pid_t	pid;
 
 	ft_check_files(cmd);
-	if (!cmd->str[0])
+	if (!cmd->str[0] || cmd->fd_in == -1 || cmd->fd_out == -1)
 		return (-1);
 	pid = fork();
 	if (pid == -1)
-		ft_error_exec(4, NULL);
+		ft_error_exec(4, NULL, 0);
 	if (pid == 0)
 		execute(cmd);
-	close(cmd->fd_in);
-	close(cmd->fd_out);
+	if (cmd->fd_in != 0)
+		close(cmd->fd_in);
+	if (cmd->fd_out != 1)
+		close(cmd->fd_out);
 	return (pid);
 }
 
@@ -122,7 +125,7 @@ void	multiple_cmds(t_data *init)
 	int	pp[2];
 
     if (pipe(pp) == -1)
-		ft_error_exec(6, NULL);
+		ft_error_exec(6, NULL, 0);
     first_child(init->cmds, pp);
 	init->cmds = init->cmds->next;
 	while (init->cmds->next)
@@ -131,9 +134,9 @@ void	multiple_cmds(t_data *init)
 		init->cmds = init->cmds->next;
 	}
 	pid = last_child(init->cmds);
-	if (dup2(g_var.data->std_in, 0) == -1)
-		ft_error_exec(5, NULL);
-	if (dup2(g_var.data->std_out, 1) == -1)
-		ft_error_exec(5, NULL);
 	ft_wait(pid);
+	if (dup2(g_var.data->std_in, 0) == -1)
+		ft_error_exec(5, NULL, 0);
+	if (dup2(g_var.data->std_out, 1) == -1)
+		ft_error_exec(5, NULL, 0);
 }

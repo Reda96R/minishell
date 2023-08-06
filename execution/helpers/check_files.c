@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_files.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+        */
+/*   By: YOUNES <YOUNES@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 10:59:29 by yes-slim          #+#    #+#             */
-/*   Updated: 2023/08/03 19:20:06 by yes-slim         ###   ########.fr       */
+/*   Updated: 2023/08/06 20:33:19 by YOUNES           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,9 @@ int	check_infile(t_mylxr *file)
 	if (fd == -1)
 	{
 		if (access(file->str, F_OK) == -1)
-			ft_error_exec(1, file->str);
+			ft_error_exec(1, file->str, 2);
 		else
-			ft_error_exec(3, file->str);
+			ft_error_exec(3, file->str, 2);
 	}
 	return (fd);
 }
@@ -36,7 +36,7 @@ int	check_outfile(t_mylxr *file)
 	if (file->token_id == D_GREATER)
 		fd = open(file->str, O_CREAT | O_APPEND | O_WRONLY, 0666);
 	if (fd == -1)
-		ft_error_exec(3, file->str);
+		ft_error_exec(3, file->str, 2);
 	return (fd);
 }
 
