@@ -3,14 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: YOUNES <YOUNES@student.42.fr>              +#+  +:+       +#+        */
+/*   By: rerayyad <rerayyad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/31 12:11:17 by rerayyad          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2023/08/05 15:28:07 by rerayyad         ###   ########.fr       */
-=======
-/*   Updated: 2023/08/06 10:15:51 by YOUNES           ###   ########.fr       */
->>>>>>> 66bc58f795ca261357772bb2bca2b8f184a83799
+/*   Updated: 2023/08/06 18:10:31 by rerayyad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,7 +116,7 @@ int		ft_digit_skipper(char *str, int n);
 int		ft_translator(int i, char *str, char **tmp, t_data *data);
 char	*ft_converter(char c, t_data *data);
 char	**ft_skipper(char **cmd);
-char	**ft_quote_handler(char **str, int i, int r);
+char	*ft_quote_handler(char *cmd, int *j);
 
 /* -------------------Execution-----------------------*/
 /*::: Helpers :::*/

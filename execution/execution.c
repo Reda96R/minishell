@@ -3,17 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execution.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-<<<<<<< HEAD
 /*   By: rerayyad <rerayyad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/02 18:57:34 by yes-slim          #+#    #+#             */
-/*   Updated: 2023/08/06 15:07:25 by rerayyad         ###   ########.fr       */
-=======
-/*   By: YOUNES <YOUNES@student.42.fr>              +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/02 18:57:34 by yes-slim          #+#    #+#             */
-/*   Updated: 2023/08/06 10:03:22 by YOUNES           ###   ########.fr       */
->>>>>>> 66bc58f795ca261357772bb2bca2b8f184a83799
+/*   Updated: 2023/08/06 18:15:10 by rerayyad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +44,7 @@ void	ft_execution(t_data *init)
 		ft_error_exec(7, NULL);
 	if (init->cmds)
 	{
-		// init->cmds->str = ft_expander(init, init->cmds->str);
+		init->cmds->str = ft_expander(init, init->cmds->str);
 		if (!init->pipes)
 			one_cmd(init->cmds);
 		else
