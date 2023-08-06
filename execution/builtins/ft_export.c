@@ -6,7 +6,7 @@
 /*   By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/14 14:40:41 by yes-slim          #+#    #+#             */
-/*   Updated: 2023/08/06 14:07:51 by yes-slim         ###   ########.fr       */
+/*   Updated: 2023/08/06 16:22:11 by yes-slim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,13 @@ int	ft_check_export(char *str)
 	if (!_isalpha(str[i]) && str[i] != '_')
 		return (0);
 	i++;
-	while (str[i] && str[i] != '=' && (str[i] == '+' && str[i + 1] == '='))
+	while (str[i] && str[i] != '=')
 	{
+		if (str[i] == '+' && str[i + 1] == '=')
+		{
+			i++;
+			continue ;
+		}
 		if (!_isalnum(str[i]) && str[i] != '_')
 			return (0);
 		i++;
@@ -52,11 +57,9 @@ void	add_var(char *ident)
 	char *str[2];
 	int	id;
 	int	j;
-	int	k;
 
 	tmp = g_var.data->vars;
 	id = 0;
-	k = 0;
 	while(tmp)
 	{
 		id++;
@@ -67,13 +70,17 @@ void	add_var(char *ident)
 		prev = prev->next;
 	j = 0;
 	while (ident[j] && ident[j] != '=')
+	{
+		if (ident[j] == '+' && ident[j + 1] == '=')
+			break ;
 		j++;
-	if (ident[j - 1] == '+')
-		str[0] = ft_substr(ident, 0, j - 1);
+	}
+	str[0] = ft_substr(ident, 0, j);
+	if (ident[j] == '+')
+		str[1] = ft_substr(ident, j + 2, ft_strlen(&ident[j + 1]));
 	else if (ident[j] == '=')
-		str[0] = ft_substr(ident, 0, j);
-	str[1] = ft_substr(ident, j + 1, ft_strlen(&ident[j]));
-	if (ident[j] != '=')
+		str[1] = ft_substr(ident, j + 1, ft_strlen(&ident[j]));
+	if (ident[j] != '=' && ident[j] != '+')
 		str[1] = NULL;
 	tmp = g_var.data->vars;
 	while (tmp)
@@ -81,7 +88,12 @@ void	add_var(char *ident)
 		if (!strcmp(tmp->key, str[0]))
 		{
 			if (str[1])
-				tmp->value = str[1];
+			{
+				if (ident[j] == '+')
+					tmp->value = ft_strjoin(tmp->value, str[1]);
+				else
+					tmp->value = str[1];
+			}
 			return;
 		}
 		tmp = tmp->next;

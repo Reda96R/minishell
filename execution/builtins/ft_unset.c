@@ -6,7 +6,7 @@
 /*   By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/14 14:40:45 by yes-slim          #+#    #+#             */
-/*   Updated: 2023/08/06 14:02:14 by yes-slim         ###   ########.fr       */
+/*   Updated: 2023/08/06 16:20:31 by yes-slim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	ft_check_unset(char *str)
 	if (!_isalpha(str[i]) && str[i] != '_')
 		return (0);
 	i++;
-	while (str[i] && str[i] != '=')
+	while (str[i])
 	{
 		if (!_isalnum(str[i]) && str[i] != '_')
 			return (0);
