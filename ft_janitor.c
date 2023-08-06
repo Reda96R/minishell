@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_janitor.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+        */
+/*   By: YOUNES <YOUNES@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 15:58:10 by rerayyad          #+#    #+#             */
-/*   Updated: 2023/08/05 18:17:06 by yes-slim         ###   ########.fr       */
+/*   Updated: 2023/08/06 10:01:09 by YOUNES           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,8 @@ void	ft_builtins_error(int id, char *str)
 		_dprintf(2, "<?>: exit: %s: numeric argument required\n", str);
 	else if (id == 8)
 		_dprintf(2, "<?>: export: `%s': not a valid identifier\n", str);
-	// else if (id == )
+	else if (id == 9)
+		_dprintf(2, "<?>: unset: `%s': not a valid identifier\n", str);
 	// else if (id == )
 	g_var.data->color = 0;
 }

@@ -6,7 +6,7 @@
 /*   By: YOUNES <YOUNES@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/31 12:11:17 by rerayyad          #+#    #+#             */
-/*   Updated: 2023/08/05 12:16:53 by YOUNES           ###   ########.fr       */
+/*   Updated: 2023/08/06 10:15:51 by YOUNES           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -152,5 +152,6 @@ void	ft_env(t_cmds *init);
 void	ft_echo(t_cmds *init);
 int		ft_cd(t_cmds *init);
 void    ft_export(t_cmds *init);
+void	ft_unset(t_cmds *init);
 
 #endif

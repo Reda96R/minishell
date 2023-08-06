@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execution.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+        */
+/*   By: YOUNES <YOUNES@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/02 18:57:34 by yes-slim          #+#    #+#             */
-/*   Updated: 2023/08/05 13:31:39 by yes-slim         ###   ########.fr       */
+/*   Updated: 2023/08/06 10:03:22 by YOUNES           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ int	is_builtin(t_cmds *init)
 		return (ft_cd(init), 0);
 	else if (!strcmp(init->str[0], "export"))
 		return (ft_export(init), 0);
-	// else if (!strcmp(init->str[0], "unset"))
-		// return (ft_unset(), 0);
+	else if (!strcmp(init->str[0], "unset"))
+		return (ft_unset(init), 0);
 	else if (!strcmp(init->str[0], "env"))
 		return (ft_env(init), 0);
 	else if (!strcmp(init->str[0], "exit"))
