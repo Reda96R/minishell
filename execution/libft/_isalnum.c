@@ -1,30 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   signals.c                                          :+:      :+:    :+:   */
+/*   _isalnum.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: YOUNES <YOUNES@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/14 14:35:52 by yes-slim          #+#    #+#             */
-/*   Updated: 2023/08/01 19:09:31 by YOUNES           ###   ########.fr       */
+/*   Created: 2022/10/15 12:59:41 by yes-slim          #+#    #+#             */
+/*   Updated: 2023/08/04 18:34:09 by YOUNES           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	sighandel(int sig)
+int	_isalnum(int c)
 {
-	if (sig == SIGINT)
-	{
-		write(1, "\n", 1);
-		rl_on_new_line();
-		rl_replace_line("", 1);
-		rl_redisplay();
-	}
-}
-
-void	signals(void)
-{
-	signal(SIGINT, sighandel);
-	signal(SIGQUIT, SIG_IGN);
+	if (_isalpha(c) || _isdigit(c))
+		return (1);
+	return (0);
 }

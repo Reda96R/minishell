@@ -6,7 +6,7 @@
 /*   By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 10:59:29 by yes-slim          #+#    #+#             */
-/*   Updated: 2023/07/31 18:34:12 by yes-slim         ###   ########.fr       */
+/*   Updated: 2023/08/03 19:20:06 by yes-slim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int	check_infile(t_mylxr *file)
 {
 	int	fd;
 	
-	fd = open(file->str, O_RDONLY, 0666); 
+	fd = open(file->str, O_RDONLY); 
 	if (fd == -1)
 	{
 		if (access(file->str, F_OK) == -1)

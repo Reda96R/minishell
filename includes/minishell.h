@@ -3,10 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rerayyad <rerayyad@student.42.fr>          +#+  +:+       +#+        */
+/*   By: YOUNES <YOUNES@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/31 12:11:17 by rerayyad          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2023/08/05 15:28:07 by rerayyad         ###   ########.fr       */
+=======
+/*   Updated: 2023/08/06 10:15:51 by YOUNES           ###   ########.fr       */
+>>>>>>> 66bc58f795ca261357772bb2bca2b8f184a83799
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +37,7 @@ typedef struct s_glbl
 {
 	struct s_data	*data;
 	unsigned char	exit_status;
+	int				sig;
 }	t_glbl;
 
 t_glbl	g_var;
@@ -115,6 +120,7 @@ int		ft_digit_skipper(char *str, int n);
 int		ft_translator(int i, char *str, char **tmp, t_data *data);
 char	*ft_converter(char c, t_data *data);
 char	**ft_skipper(char **cmd);
+char	**ft_quote_handler(char **str, int i, int r);
 
 /* -------------------Execution-----------------------*/
 /*::: Helpers :::*/
@@ -132,6 +138,8 @@ void 	rl_replace_line (const char *text, int clear_undo);
 
 /*::: Libfts :::*/
 int		_isdigit(int c);
+int		_isalpha(int c);
+int		_isalnum(int c);
 int		_atoi(const char *str);
 char	*ft_strdup(const char *src);
 size_t	ft_strlen(const char *str);
@@ -147,5 +155,7 @@ void	ft_exit(t_cmds *cmd);
 void	ft_env(t_cmds *init);
 void	ft_echo(t_cmds *init);
 int		ft_cd(t_cmds *init);
+void    ft_export(t_cmds *init);
+void	ft_unset(t_cmds *init);
 
 #endif

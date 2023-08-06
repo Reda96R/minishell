@@ -6,7 +6,11 @@
 /*   By: rerayyad <rerayyad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 14:42:53 by rerayyad          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2023/08/06 17:41:50 by rerayyad         ###   ########.fr       */
+=======
+/*   Updated: 2023/08/03 18:56:22 by rerayyad         ###   ########.fr       */
+>>>>>>> 66bc58f795ca261357772bb2bca2b8f184a83799
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +88,7 @@ char	*ft_gold_finder(t_data *data, char *str)
 	return (tmp0);
 }
 
+<<<<<<< HEAD
 char	*ft_quote_handler(char *cmd, int *j)
 {
 	char	r;
@@ -163,6 +168,15 @@ char	*ft_black_box(char *str)
 		else if (str[i] == -3)
 			str[i] = '$';
 		i++;
+=======
+char	**ft_quote_handler(char **str, int i, int r)
+{
+	if (ft_strncmp(str[0], "export", ft_strlen(str[0]) - 1))
+	{
+		if (r)
+			str[i] = ft_rm_quote(str[i], '\"');
+		str[i] = ft_rm_quote(str[i], '\'');
+>>>>>>> 66bc58f795ca261357772bb2bca2b8f184a83799
 	}
 	return (str);
 }
@@ -171,6 +185,7 @@ char	**ft_expander(t_data *data, char **cmd)
 {
 	char	*str;
 	int		i;
+<<<<<<< HEAD
 	int		j;
 
 	i = 0;
@@ -219,6 +234,28 @@ char	**ft_expander(t_data *data, char **cmd)
 		ft_rm_quote(cmd[i], '\"', 1);
 		ft_rm_quote(cmd[i], '$', 1);
 		ft_black_box(cmd[i]);
+=======
+	int		r;
+
+	i = 0;
+	r = 1;
+	while (cmd[i])
+	{
+		if (ft_dollar_s(cmd[i]) //&& cmd[i][ft_dollar_s(cmd[i]) - 2] != '\''
+				&& cmd[i][ft_dollar_s(cmd[i])] && cmd[i][0] != '\'')
+		{
+			str = ft_gold_finder(data, cmd[i]);
+			if (!i && !str[0] && !cmd[i + 1])
+				ft_shell_reset(data);
+			free(cmd[i]);
+			cmd[i] = str;
+			if (cmd[i] && cmd[i][0] == '\'')
+				r = 0;
+		}
+		if (cmd[i][0] == '\'')
+			r = 0;
+		cmd = ft_quote_handler(cmd, i, r);
+>>>>>>> 66bc58f795ca261357772bb2bca2b8f184a83799
 		i++;
 	}
 	// printf("%s\n", cmd[1]);

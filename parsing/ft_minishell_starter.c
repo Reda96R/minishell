@@ -6,7 +6,7 @@
 /*   By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/02 18:58:02 by yes-slim          #+#    #+#             */
-/*   Updated: 2023/08/02 18:58:05 by yes-slim         ###   ########.fr       */
+/*   Updated: 2023/08/05 13:30:04 by yes-slim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ void	ft_prompt(t_data *data)
 		data->input = ft_strtrim(readline(READLINE_MSG_R), " ");
 	else
 		data->input = ft_strtrim(readline(READLINE_MSG_G), " ");
+	g_var.sig = 0;
 	if (!data->input)
 	{
 		printf("exit\n");
@@ -50,6 +51,7 @@ void	ft_shell_starter(t_data *data)
 				data->color = 1;
 				ft_parser(data);
 				ft_execution(data);
+				g_var.sig = 1;
 				ft_shell_reset(data);
 			}
 			else if (ft_token_scanner(data) == -1)

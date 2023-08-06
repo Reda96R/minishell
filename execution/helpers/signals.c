@@ -1,39 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstmap_bonus.c                                  :+:      :+:    :+:   */
+/*   signals.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/02 21:43:52 by yes-slim          #+#    #+#             */
-/*   Updated: 2022/11/02 23:51:42 by yes-slim         ###   ########.fr       */
+/*   Created: 2023/06/14 14:35:52 by yes-slim          #+#    #+#             */
+/*   Updated: 2023/08/05 13:29:29 by yes-slim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "minishell.h"
 
-t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
+void	sighandel(int sig)
 {
-	t_list	*head;
-	t_list	*tmp;
-	void	*content;
-
-	if (!f || !del)
-		return (NULL);
-	head = NULL;
-	while (lst)
-	{
-		content = f(lst->content);
-		tmp = ft_lstnew(content);
-		if (!tmp)
+	if (sig == SIGINT)
+	{	
+		write(1, "\n", 1);
+		if (g_var.sig == 1)
 		{
-			if (content)
-				del(content);
-			ft_lstclear(&head, del);
-			return (NULL);
+			rl_on_new_line();
+			rl_replace_line("", 1);
+			rl_redisplay();
 		}
-		ft_lstadd_back(&head, tmp);
-		lst = lst->next;
 	}
-	return (head);
+}
+
+void	signals(void)
+{
+	signal(SIGINT, sighandel);
+	signal(SIGQUIT, SIG_IGN);
 }
