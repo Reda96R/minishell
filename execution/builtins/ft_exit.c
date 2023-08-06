@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_exit.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: YOUNES <YOUNES@student.42.fr>              +#+  +:+       +#+        */
+/*   By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/14 14:40:40 by yes-slim          #+#    #+#             */
-/*   Updated: 2023/08/06 11:11:04 by YOUNES           ###   ########.fr       */
+/*   Updated: 2023/08/06 13:34:33 by yes-slim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,7 @@ int		check_numeriq(char *str)
 		if (!ft_isdigit(str[i]))
 		{
 			ft_builtins_error(5, str);
-			g_var.exit_status = 255;
-			return (0);
+			exit(255);
 		}
 		i++;
 	}
@@ -36,24 +35,25 @@ void	ft_exit(t_cmds *cmd)
 	
 	i = 1;
 	if (!cmd->str[1])
-	{
-		printf("exit\n");
 		exit(0);
+	if (cmd->str[2])
+	{
+		ft_builtins_error(6, NULL);
+		return ;
 	}	
+	while (cmd->str[i])
+		if (!check_numeriq(cmd->str[i++]))
+			break ;
 	if (!cmd->str[1][i])
 	{
 		ft_builtins_error(5, cmd->str[i]);
 		g_var.exit_status = 255;
 	}
-	while (cmd->str[i])
-		if (!check_numeriq(cmd->str[i++]))
-			break ;
-	if (cmd->str[2])
+
+	else
 	{
-		ft_builtins_error(6, NULL);
-		return ;
+		printf("exit\n");
+		g_var.exit_status = _atoi(cmd->str[1]);
+		exit(g_var.exit_status);
 	}
-	printf("exit\n");
-	g_var.exit_status = _atoi(cmd->str[1]);
-	exit(g_var.exit_status);
 }
