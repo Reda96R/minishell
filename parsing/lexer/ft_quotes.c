@@ -6,13 +6,13 @@
 /*   By: rerayyad <rerayyad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/07 12:18:09 by rerayyad          #+#    #+#             */
-/*   Updated: 2023/07/31 11:54:16 by rerayyad         ###   ########.fr       */
+/*   Updated: 2023/08/05 15:27:40 by rerayyad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
 
-char	*ft_rm_quote(char *str, char c)
+char	*ft_rm_quote(char *str, char c, int n)
 {
 	int	i;
 	int	j;
@@ -27,6 +27,8 @@ char	*ft_rm_quote(char *str, char c)
 			while (str[i + j] == c)
 				j++;
 			ft_strlcpy(&str[i], &str[i + j], ft_strlen(str) - i);
+			if (!n)
+				return (str);
 		}
 		i++;
 	}

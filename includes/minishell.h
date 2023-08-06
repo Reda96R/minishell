@@ -6,7 +6,7 @@
 /*   By: rerayyad <rerayyad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/31 12:11:17 by rerayyad          #+#    #+#             */
-/*   Updated: 2023/08/02 17:44:59 by rerayyad         ###   ########.fr       */
+/*   Updated: 2023/08/05 15:28:07 by rerayyad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ void	ft_rm_var(t_vars **vars, int id);
 int		ft_quotes_counter(char *input);
 int		ft_quotes_matcher(char *input, int i, int quote, int *quote_count);
 int		ft_quote_skiper(char *str, int quote, int i);
-char	*ft_rm_quote(char *str, char c);
+char	*ft_rm_quote(char *str, char c, int n);
 
 /*::: tokens :::*/
 int		ft_token_parser(t_data *data, int *node_id, int id);
