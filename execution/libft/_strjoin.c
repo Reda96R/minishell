@@ -1,55 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   list_create.c                                      :+:      :+:    :+:   */
+/*   _strjoin.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/27 10:10:53 by yes-slim          #+#    #+#             */
-/*   Updated: 2023/07/20 18:46:57 by yes-slim         ###   ########.fr       */
+/*   Created: 2023/08/07 11:49:20 by yes-slim          #+#    #+#             */
+/*   Updated: 2023/08/07 11:51:12 by yes-slim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-t_env	*lstnew(void *key)
+char	*_strjoin(char *s1, char *s2)
 {
-	t_env	*new;
+	int		i;
+	char	*new;
+	int		j;
 
-	new = malloc(sizeof(t_env));
+	if (!s2)
+		return (NULL);
+	if (!s1)
+		return (ft_strdup(s2));
+	i = 0;
+	j = ft_strlen(s1);
+	new = malloc(ft_strlen(s1) + ft_strlen(s2) * sizeof(char) + 1);
 	if (!new)
 		return (NULL);
-	new->key = key;
-	new->next = NULL;
+	while (s1[i])
+	{
+		new[i] = s1[i];
+		i++;
+	}
+	i = 0;
+	while (s2[i])
+		new[j++] = s2[i++];
+	new[j] = '\0';
+	free (s1);
 	return (new);
-}
-
-t_env	*lstlast(t_env *lst)
-{
-	t_env	*tmp;
-
-	tmp = lst;
-	while (tmp != NULL)
-	{
-		if (tmp->next == NULL)
-			break ;
-		tmp = tmp->next;
-	}
-	return (tmp);
-}
-
-void	lst_add_back(t_env **lst, t_env *new)
-{
-	t_env	*tmp;
-
-	if (new)
-	{
-		if (*lst)
-		{
-			tmp = lstlast(*lst);
-			tmp->next = new;
-		}
-		else
-			*lst = new;
-	}
 }

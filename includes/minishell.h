@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rerayyad <rerayyad@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/31 12:11:17 by rerayyad          #+#    #+#             */
-/*   Updated: 2023/08/06 20:20:54 by YOUNES           ###   ########.fr       */
+/*   Updated: 2023/08/07 11:56:23 by yes-slim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -137,13 +137,10 @@ int		_isdigit(int c);
 int		_isalpha(int c);
 int		_isalnum(int c);
 int		_atoi(const char *str);
-char	*ft_strdup(const char *src);
-size_t	ft_strlen(const char *str);
-// t_env	*lstnew(void *key);
-// t_env	*lstlast(t_env *lst);
-// void	lst_add_back(t_env **lst, t_env *new);
-// void	lstdelone(t_env *lst, void (*del)(void *));
-// void	lstclear(t_env **lst, void (*del)(void *));
+char	*_strjoin(char *s1, char *s2);
+char	*_strdup(const char *src);
+size_t	_strlen(const char *str);
+int		_strcmp(char *s1, char *s2);
 
 /*::: Builtins :::*/
 void	ft_pwd(t_cmds *init);

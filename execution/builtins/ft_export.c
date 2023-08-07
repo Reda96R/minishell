@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_export.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: YOUNES <YOUNES@student.42.fr>              +#+  +:+       +#+        */
+/*   By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/14 14:40:41 by yes-slim          #+#    #+#             */
-/*   Updated: 2023/08/07 11:12:37 by YOUNES           ###   ########.fr       */
+/*   Updated: 2023/08/07 11:55:47 by yes-slim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,12 +107,12 @@ void	add_var(char *ident)
 	tmp = g_var.data->vars;
 	while (tmp)
 	{
-		if (!strcmp(tmp->key, str[0]))
+		if (!_strcmp(tmp->key, str[0]))
 		{
 			if (str[1])
 			{
 				if (ident[j] == '+')
-					tmp->value = ft_strjoin(tmp->value, str[1]);
+					tmp->value = _strjoin(tmp->value, str[1]);
 				else
 					tmp->value = str[1];
 			}
