@@ -6,7 +6,7 @@
 /*   By: YOUNES <YOUNES@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/14 14:40:41 by yes-slim          #+#    #+#             */
-/*   Updated: 2023/08/06 20:21:34 by YOUNES           ###   ########.fr       */
+/*   Updated: 2023/08/07 11:12:37 by YOUNES           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,26 +48,37 @@ void    _print(t_cmds *init)
         tmp = tmp->next;
     }
 }
-
-void	add_var(char *ident)
+void	new_var(char **str)
 {
 	t_vars *prev;
-	t_vars *tmp;
 	t_vars *node;
-	char *str[2];
-	int	id;
-	int	j;
-
-	tmp = g_var.data->vars;
+	int		id;
+	
 	id = 0;
-	while(tmp)
-	{
-		id++;
-		tmp = tmp->next;
-	}
 	prev = g_var.data->vars;
 	while (prev->next)
+	{
+		id++;	
 		prev = prev->next;
+	}
+	id++;
+	node = malloc(sizeof(t_vars));
+	if (!node)
+		ft_error_exec(8, NULL, 0);
+	node->key = str[0];
+	node->value = str[1];
+	node->node_id = id;
+	node->next = NULL;
+	node->prev = prev;
+	prev->next = node;
+}
+
+char **get_keyvalue(char *ident, int *i)
+{
+	char **str;
+	int	j;
+
+	str = malloc(2 * sizeof(char *));
 	j = 0;
 	while (ident[j] && ident[j] != '=')
 	{
@@ -82,6 +93,17 @@ void	add_var(char *ident)
 		str[1] = ft_substr(ident, j + 1, ft_strlen(&ident[j]));
 	if (ident[j] != '=' && ident[j] != '+')
 		str[1] = NULL;
+	*i = j;
+	return (str);
+}
+
+void	add_var(char *ident)
+{
+	t_vars *tmp;
+	char **str;
+	int	j;
+
+	str = get_keyvalue(ident, &j);
 	tmp = g_var.data->vars;
 	while (tmp)
 	{
@@ -98,15 +120,7 @@ void	add_var(char *ident)
 		}
 		tmp = tmp->next;
 	}
-	node = malloc(sizeof(t_vars));
-	if (!node)
-		ft_error_exec(8, NULL, 0);
-	node->key = str[0];
-	node->value = str[1];
-	node->node_id = id;
-	node->next = NULL;
-	node->prev = prev;
-	prev->next = node;
+	new_var(str);
 }
 
 void    ft_export(t_cmds *init)

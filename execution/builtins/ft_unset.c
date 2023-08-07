@@ -3,14 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   ft_unset.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+        */
+/*   By: YOUNES <YOUNES@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/14 14:40:45 by yes-slim          #+#    #+#             */
-/*   Updated: 2023/08/06 16:20:31 by yes-slim         ###   ########.fr       */
+/*   Updated: 2023/08/06 21:38:51 by YOUNES           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
+void	ft_free(t_vars *init)
+{
+	free(init->key);
+	if (init->value)
+		free(init->value);
+	free(init);
+}
 
 int	ft_check_unset(char *str)
 {
@@ -37,8 +45,10 @@ void	del_var(char *str)
 	while (tmp)
 	{
 		if (!strcmp(tmp->key, str))
+		{
 			tmp->prev->next = tmp->next; 
-			// printf("%s\n", tmp->prev->key);
+			ft_free(tmp);
+		}
 		tmp = tmp->next;
 	}
 }
