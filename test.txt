@@ -9,26 +9,6 @@
 - echo "ls       l" [solved]
 - $"test ls" [solved]
 - "ls -la" ----> quote should be considered one comand (cmd[0]) [solved]
-
-=========================not fixed yet===================================
-- true_cmd | false_cmd -----> program exits
-- $$VAR ----> should display command not found 
-- ls|ls
-- error with herdoc -----> segfault when delemiter is not given
-- echo -n l
-- exit 1 a ----> should display too many args
-- echo '"ls"' ----> should display "ls"
-- echo '"$ls"' ----> should display "$ls"
-- echo "'$VAR'" ----> it should expand the var = 'VAR'
-- ctrl + \ ------> should stop cat
-- "$PWD" ------> should be expanded
-- '""'
-- echo "test" > file0
-- cmd -flag1 -flag2  (only the first flag works) ---> both should work
-- ls | ls < dgh
-
-
-
 - echo $USER.hello
 - echo $$$$$$
 - echo asdasd.$.USER
@@ -40,6 +20,20 @@
 - echo $USER"hello"''
 - echo "'$USER'""hello"
 - echo "|" ----------> check for quotes not only in the start
-- 
+- echo '"ls"' ----> should display "ls"
+- echo '"$ls"' ----> should display "$ls"
+- "$PWD" ------> should be expanded
+- echo "'$VAR'" ----> it should expand the var = 'VAR'
 
+=========================not fixed yet===================================
+- true_cmd | false_cmd -----> program exits
+- $$VAR ----> should display command not found 
+- ls|ls
+- error with herdoc -----> segfault when delemiter is not given
+- echo -n l
+- exit 1 a ----> should display too many args
+- ctrl + \ ------> should stop cat
+- echo "test" > file0
+- cmd -flag1 -flag2  (only the first flag works) ---> both should work
+- ls | ls < dgh
 
