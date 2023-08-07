@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_minishell_starter.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rerayyad <rerayyad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/02 18:58:02 by yes-slim          #+#    #+#             */
-/*   Updated: 2023/08/05 13:30:04 by yes-slim         ###   ########.fr       */
+/*   Updated: 2023/08/07 16:53:12 by rerayyad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	ft_shell_reset(t_data *data)
 {
-	if (data->input)
-		free(data->input);
+	// if (data->input)
+	// 	free(data->input);
 	ft_cmd_cleaner(&data->cmds);
 	ft_env_var(data, NULL, 0);
 	ft_shell_starter(data);
@@ -53,6 +53,7 @@ void	ft_shell_starter(t_data *data)
 				ft_execution(data);
 				g_var.sig = 1;
 				ft_shell_reset(data);
+				exit (0);
 			}
 			else if (ft_token_scanner(data) == -1)
 				ft_errors_buster(3, data);
