@@ -6,7 +6,7 @@
 /*   By: YOUNES <YOUNES@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 15:32:30 by YOUNES            #+#    #+#             */
-/*   Updated: 2023/08/07 20:21:55 by YOUNES           ###   ########.fr       */
+/*   Updated: 2023/08/07 20:37:18 by YOUNES           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,13 @@ int	ft_heredoc(t_mylxr *del)
 		while (1)
 		{
 			str = readline("> ");
-			if (!str || !_strcmp(del->str, str))
-				exit(1);
+			if (!str)
+			{
+				printf("\n");
+				exit(0);
+			} 
+			if (!_strcmp(del->str, str))
+				exit(0);
 			_dprintf(pp[1], "%s\n", str);
 			free(str);
 		}
