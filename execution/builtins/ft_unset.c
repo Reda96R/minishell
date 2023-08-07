@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_unset.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: YOUNES <YOUNES@student.42.fr>              +#+  +:+       +#+        */
+/*   By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/14 14:40:45 by yes-slim          #+#    #+#             */
-/*   Updated: 2023/08/06 21:38:51 by YOUNES           ###   ########.fr       */
+/*   Updated: 2023/08/07 11:55:47 by yes-slim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void	del_var(char *str)
 	tmp = g_var.data->vars;
 	while (tmp)
 	{
-		if (!strcmp(tmp->key, str))
+		if (!_strcmp(tmp->key, str))
 		{
 			tmp->prev->next = tmp->next; 
 			ft_free(tmp);

@@ -1,42 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   list_delete.c                                      :+:      :+:    :+:   */
+/*   __strcmp.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/27 10:12:37 by yes-slim          #+#    #+#             */
-/*   Updated: 2023/07/20 18:46:57 by yes-slim         ###   ########.fr       */
+/*   Created: 2023/08/07 11:51:45 by yes-slim          #+#    #+#             */
+/*   Updated: 2023/08/07 11:52:38 by yes-slim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	*del(void *content)
+int	_strcmp(char *s1, char *s2)
 {
-	free(content);
-	return (NULL);
+	int	i;
+
+	i = 0;
+	while (s1[i] && s2[i] && s1[i] == s2[i])
+		i++;
+	return (s1[i] - s2[i]);
 }
-
-void	lstdelone(t_env *lst, void (*del)(void *))
-{
-	if (!lst || !del)
-		return ;
-	(*del)(lst->key);
-	free(lst);
-}
-
-void	lstclear(t_env **lst, void (*del)(void *))
-{
-	t_env	*tmp;
-
-	if (!lst || !del)
-		return ;
-	while (*lst)
-	{
-		tmp = (*lst)->next;
-		lstdelone(*lst, del);
-		*lst = tmp;
-	}
-}
-

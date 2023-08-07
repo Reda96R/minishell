@@ -6,7 +6,7 @@
 /*   By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/14 14:40:33 by yes-slim          #+#    #+#             */
-/*   Updated: 2023/08/04 10:12:07 by yes-slim         ###   ########.fr       */
+/*   Updated: 2023/08/07 11:55:47 by yes-slim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	change_pwd(void)
 	var = g_var.data->vars;
 	while (var)
 	{
-		if (!strcmp(var->key, "PWD"))
+		if (!_strcmp(var->key, "PWD"))
 		{
 			free(var->value);
 			pwd = getcwd(NULL, 0);
@@ -40,7 +40,7 @@ void	change_oldpwd(char *old_pwd)
 	var = g_var.data->vars;
 	while (var)
 	{
-		if (!strcmp(var->key, "OLDPWD"))
+		if (!_strcmp(var->key, "OLDPWD"))
 		{
 			free(var->value);
 			var->value = old_pwd;
@@ -72,7 +72,7 @@ char	*get_home(t_data *data)
 	var = data->vars;
 	while (var)
 	{
-		if (!strcmp(var->key, "HOME"))
+		if (!_strcmp(var->key, "HOME"))
 		{
 			home = var->value;
 			return (home);
@@ -88,13 +88,13 @@ int	ft_cd(t_cmds *init)
 
 	return (0);
 	HOME = get_home(g_var.data);
-	if (!init->str[1] || !strcmp(init->str[1], "~"))
+	if (!init->str[1] || !_strcmp(init->str[1], "~"))
 	{
 		if (!chdir(HOME))
 			return (change_pwd(), change_oldpwd(g_var.data->pwd), 0);
 		return (ft_builtins_error(2, NULL), 0);
 	}
-	if (strcmp(init->str[1], "."))
+	if (_strcmp(init->str[1], "."))
 	{
 		if (!chdir(init->str[1]))
 		{	

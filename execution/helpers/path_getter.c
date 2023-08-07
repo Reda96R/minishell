@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   path_getter.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: YOUNES <YOUNES@student.42.fr>              +#+  +:+       +#+        */
+/*   By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/26 17:27:00 by yes-slim          #+#    #+#             */
-/*   Updated: 2023/08/06 20:25:22 by YOUNES           ###   ########.fr       */
+/*   Updated: 2023/08/07 12:00:39 by yes-slim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,12 @@ char	*get_path(char *str, char **path)
 	i = 0;
 	while (path[i])
 	{
-		cmd = ft_strjoin(path[i], str);
+		cmd =ft_strjoin(path[i], str);
 		if (access(cmd, X_OK) == -1)
 			i++;
 		else
 			return (cmd);
+		free(cmd);
 	}
 	return (NULL);
 }
