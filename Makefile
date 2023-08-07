@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+         #
+#    By: YOUNES <YOUNES@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/24 13:54:21 by yes-slim          #+#    #+#              #
-#    Updated: 2023/08/07 11:56:39 by yes-slim         ###   ########.fr        #
+#    Updated: 2023/08/07 17:04:45 by YOUNES           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,7 +41,7 @@ Pars_SRCS   = $(addsuffix .c, $(addprefix parsing/, $(PARS)))
 #=================execution_files=======================================#
 LIBFT   	= _strdup _strlen _atoi _isdigit _isalpha _isalnum _strjoin _strcmp
 BUILTIN 	= ft_pwd ft_exit ft_env ft_echo ft_cd ft_export ft_unset 
-HELPERS 	= signals path_getter one_cmd check_files _dprintf multiple_cmds
+HELPERS 	= signals path_getter one_cmd check_files _dprintf multiple_cmds _heredoc
 EXEC		= execution \
 			  $(addprefix builtins/, $(BUILTIN)) \
 		 	  $(addprefix libft/, $(LIBFT)) \

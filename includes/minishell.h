@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+        */
+/*   By: YOUNES <YOUNES@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/31 12:11:17 by rerayyad          #+#    #+#             */
-/*   Updated: 2023/08/07 11:56:23 by yes-slim         ###   ########.fr       */
+/*   Updated: 2023/08/07 17:17:26 by YOUNES           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,6 +128,7 @@ void	one_cmd(t_cmds *init);
 void	multiple_cmds(t_data *init);
 void	ft_check_files(t_cmds *cmd);
 int		_dprintf(int fd, const char *str, ...);
+int		ft_heredoc(t_mylxr *del);
 
 /*::: readline :::*/
 void 	rl_replace_line (const char *text, int clear_undo);
