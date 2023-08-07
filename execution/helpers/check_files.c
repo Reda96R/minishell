@@ -6,7 +6,7 @@
 /*   By: YOUNES <YOUNES@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 10:59:29 by yes-slim          #+#    #+#             */
-/*   Updated: 2023/08/06 20:33:19 by YOUNES           ###   ########.fr       */
+/*   Updated: 2023/08/07 17:17:37 by YOUNES           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,8 @@ void	ft_check_files(t_cmds *cmd)
 			cmd->fd_out = check_outfile(tmp);
 		else if (tmp->token_id == LESS)
 			cmd->fd_in = check_infile(tmp);
-		// else
-		// 	cmd->fd_in = ft_heredoc(tmp);
+		else if (tmp->token_id == D_LESS)
+			cmd->fd_in = ft_heredoc(tmp);
 		tmp = tmp->next;
 	}
 }
