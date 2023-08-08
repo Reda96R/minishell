@@ -6,7 +6,11 @@
 /*   By: rerayyad <rerayyad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 14:42:53 by rerayyad          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2023/08/08 14:10:41 by rerayyad         ###   ########.fr       */
+=======
+/*   Updated: 2023/08/08 14:35:31 by rerayyad         ###   ########.fr       */
+>>>>>>> 0ba4d25ee0222ab8cccf930a629b6c9b4e1c1da9
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,7 +139,12 @@ char	**ft_expander(t_data *data, char **cmd)
 						ft_shell_reset(data);
 					free(cmd[i]);
 					cmd[i] = str;
+<<<<<<< HEAD
 					if (cmd[i][j] != '\'' && cmd[i][j] != '\"') // check if it can be removed
+=======
+					if (cmd[i][j] != '\''
+						&& cmd[i][j] != '\"') // check if it can be removed
+>>>>>>> 0ba4d25ee0222ab8cccf930a629b6c9b4e1c1da9
 						j++;
 				}
 			}

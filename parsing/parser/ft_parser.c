@@ -6,7 +6,7 @@
 /*   By: rerayyad <rerayyad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 12:25:18 by rerayyad          #+#    #+#             */
-/*   Updated: 2023/08/07 19:14:52 by rerayyad         ###   ########.fr       */
+/*   Updated: 2023/08/08 14:30:21 by rerayyad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,20 +22,17 @@ void	ft_parser_prep(t_data *data, t_parser *parser)
 void	ft_cmd_parser(t_parser *parser, t_cmds **cmd, t_data *data)
 {
 	char	**args;
-	int		args_size;
 	int		i;
 	t_mylxr	*tmp;
 	int		node_id;
+	int		args_size;
 
 	i = 0;
 	node_id = 0;
 	ft_redirections(parser, data, &node_id);
-	args_size = ft_args_counter(parser->mylexer);
-	args = (char **)malloc (sizeof (char *) * args_size + 1);
-	if (!args)
-		ft_errors_buster(4, data);
+	args = ft_args_allocator(parser->mylexer, &args_size);
 	tmp = parser->mylexer;
-	while (args_size)
+	while (args_size--)
 	{
 		if (tmp->str)
 		{
@@ -45,7 +42,6 @@ void	ft_cmd_parser(t_parser *parser, t_cmds **cmd, t_data *data)
 			ft_rm_node(&parser->mylexer, tmp->node_id);
 			tmp = parser->mylexer;
 		}
-		args_size--;
 	}
 	args[i] = NULL;
 	ft_new_cmd(parser, args, cmd, data);

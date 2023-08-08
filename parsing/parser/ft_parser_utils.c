@@ -6,16 +6,17 @@
 /*   By: rerayyad <rerayyad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/11 16:06:34 by rerayyad          #+#    #+#             */
-/*   Updated: 2023/07/31 11:59:21 by rerayyad         ###   ########.fr       */
+/*   Updated: 2023/08/08 14:32:18 by rerayyad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
 
-int	ft_args_counter(t_mylxr *mylexer)
+char	**ft_args_allocator(t_mylxr *mylexer, int *args_size)
 {
 	t_mylxr	*tmp;
 	int		i;
+	char	**args;
 
 	i = 0;
 	tmp = mylexer;
@@ -25,7 +26,11 @@ int	ft_args_counter(t_mylxr *mylexer)
 			i++;
 		tmp = tmp->next;
 	}
-	return (i);
+	args = (char **)malloc (sizeof (char *) * i + 1);
+	if (!args)
+		ft_errors_buster(4, g_var.data);
+	*args_size = i;
+	return (args);
 }
 
 void	ft_new_cmd(t_parser *parser, char **str, t_cmds **cmd, t_data *data)
