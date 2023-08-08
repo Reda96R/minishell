@@ -6,14 +6,9 @@
 /*   By: rerayyad <rerayyad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 06:38:46 by rerayyad          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2023/08/08 14:12:29 by rerayyad         ###   ########.fr       */
-=======
-/*   Updated: 2023/08/08 14:21:41 by rerayyad         ###   ########.fr       */
->>>>>>> 0ba4d25ee0222ab8cccf930a629b6c9b4e1c1da9
+/*   Updated: 2023/08/08 20:43:19 by rerayyad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 #include "../../includes/minishell.h"
 
 int	ft_token_identifier(t_data *data, int i)
