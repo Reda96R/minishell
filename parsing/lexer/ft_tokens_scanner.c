@@ -6,7 +6,7 @@
 /*   By: rerayyad <rerayyad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 06:38:46 by rerayyad          #+#    #+#             */
-/*   Updated: 2023/08/08 10:32:50 by rerayyad         ###   ########.fr       */
+/*   Updated: 2023/08/08 14:21:41 by rerayyad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,30 +15,9 @@
 int	ft_token_identifier(t_data *data, int i)
 {
 	if (data->input[i] == '|')
-	{
-		if (ft_token_identifier(data, i + 1) != PIPE && data->input[i + 1])
-		{
-			data->pipes++;
-			return (PIPE);
-		}
-		return (-1);
-	}
-	else if (data->input[i] == '>')
-	{
-		if (data->input[i + 1] == '>' && !ft_token_identifier(data, i + 2))
-			return (D_GREATER);
-		else if (!ft_token_identifier(data, i + 1))
-			return (GREATER);
-		return (-1);
-	}
-	else if (data->input[i] == '<')
-	{
-		if (data->input[i + 1] == '<' && !ft_token_identifier(data, i + 2))
-			return (D_LESS);
-		else if (!ft_token_identifier(data, i + 1))
-			return (LESS);
-		return (-1);
-	}
+		return (ft_pipe_identifier(data, i));
+	else if (data->input[i] == '>' || data->input[i] == '<')
+		return (ft_redirection_identifier(data, i));
 	return (0);
 }
 
@@ -56,6 +35,21 @@ int	ft_token_parser(t_data *data, int *node_id, int id)
 	return (1);
 }
 
+int	ft_true_word(t_data *data, int i, int r, int j)
+{
+	r += ft_quote_skiper(data->input, '\"', i + j);
+	r += ft_quote_skiper(data->input, '\'', i + j);
+	if (r)
+		j += r;
+	while (data->input[i + j] && r)
+	{
+		if (data->input[i + j] == '\'' || data->input[i + j] == '\"')
+			r = 0;
+		j++;
+	}
+	return (j);
+}
+
 int	ft_words_parser(t_data *data, int *node_id, int i)
 {
 	t_mylxr	*new;
@@ -68,18 +62,7 @@ int	ft_words_parser(t_data *data, int *node_id, int i)
 	while (data->input[i + j])
 	{
 		if ((data->input[i + j] == '\'' || data->input[i + j] == '\"') && !r)
-		{
-			r += ft_quote_skiper(data->input, '\"', i + j);
-			r += ft_quote_skiper(data->input, '\'', i + j);
-			if (r)
-				j += r;
-			while (data->input[i + j] && r)
-			{
-				if (data->input[i + j] == '\'' || data->input[i + j] == '\"')
-					r = 0;
-				j++;
-			}
-		}
+			j = ft_true_word(data, i, r, j);
 		else
 		{
 			if ((ft_token_identifier(data, i + j)
