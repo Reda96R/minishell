@@ -6,7 +6,7 @@
 /*   By: rerayyad <rerayyad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 14:42:53 by rerayyad          #+#    #+#             */
-/*   Updated: 2023/08/08 10:29:16 by rerayyad         ###   ########.fr       */
+/*   Updated: 2023/08/08 14:10:41 by rerayyad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,10 @@ char	**ft_skipper(char **cmd)
 	j = 0;
 	while (cmd[i])
 	{
+		// printf("%d\n", cmd[i][j]);
 		if (cmd[i][j])
 		{
-		// printf("%c\n", cmd[i][j]);
+			// printf("%c\n", cmd[i][j]);
 			j++;
 		}
 		i++;
@@ -41,7 +42,6 @@ char	**ft_skipper(char **cmd)
 		i++;
 	}
 	str[j] = NULL;
-	// exit (0);
 	return (str);
 }
 
@@ -84,73 +84,7 @@ char	*ft_gold_finder(t_data *data, char *str)
 			free (tmp1);
 		}
 	}
-	// exit (0);
 	return (tmp0);
-}
-
-char	*ft_quote_handler(char *cmd, int *j)
-{
-	char	r;
-
-	r = cmd[*j];
-	if (r == '\'')
-	{
-		*j += 1;
-		while (cmd[*j] && cmd[*j] != r)
-		{
-			if (cmd[*j] == '\"')
-					cmd[*j] = -2;
-			else if (cmd[*j] == '$')
-					cmd[*j] = -3;
-			*j += 1;
-		}
-		if (cmd[*j] == r)
-			*j += 1;
-	}
-	else
-	{
-		// printf("check\n");
-		*j += 1;
-		// printf("%d\n", *j);
-		// printf("%c\n", cmd[*j + 1]);
-		if (ft_dollar_s(ft_substr(cmd, *j, ft_strlen(cmd))) && cmd[*j] != r)
-		{
-			while (cmd[*j] && cmd[*j] != r)
-			{
-				if (cmd[*j] == '$')
-				{
-					if (cmd[*j + 1] == '\"' || cmd[*j + 1] == '\'' || !ft_isalnum(cmd[*j + 1]))
-					{
-						cmd[*j] = -3;
-						*j += 1;
-					}
-					else if (cmd[*j + 1] != '\'' && cmd[*j + 1] != '\"' && cmd[*j + 1] != '$')
-					{
-						cmd = ft_gold_finder(g_var.data, cmd);
-					}
-				}
-				else
-				{
-					if (cmd[*j] == '\'')
-						cmd[*j] = -1;
-					*j += 1;
-				}
-			}
-		}
-		else
-		{
-			while (cmd[*j] && cmd[*j] != r)
-			{
-				if (cmd[*j] == '\'')
-					cmd[*j] = -1;
-				*j += 1;
-			}
-			if (cmd[*j] == r)
-				*j += 1;
-		}
-	}
-	// exit (0);
-	return (cmd);
 }
 
 char	*ft_black_box(char *str)
@@ -158,6 +92,9 @@ char	*ft_black_box(char *str)
 	int	i;
 
 	i = 0;
+	ft_rm_quote(str, '\'', 1);
+	ft_rm_quote(str, '\"', 1);
+	ft_rm_quote(str, '$', 1);
 	while (str[i])
 	{
 		if (str[i] == -1)
@@ -185,15 +122,10 @@ char	**ft_expander(t_data *data, char **cmd)
 		while (cmd[i][j])
 		{
 			if (cmd[i][j] == '\'' || cmd[i][j] == '\"')
-			{
-				// printf("------------------first------------------\n");
 				cmd[i] = ft_quote_handler(cmd[i], &j);
-				// printf("%c\n", cmd[i][j]);
-			}
-			else if (cmd[i][j] == '$' && cmd[i][j + 1] != '\'' && cmd[i][j + 1] != '\"')
+			else if (cmd[i][j] == '$' && cmd[i][j + 1] != '\''
+					&& cmd[i][j + 1] != '\"')
 			{
-				// printf("------------------second-----------------\n");
-				// printf("%c\n", cmd[i][j]);
 				if (!ft_isalnum(cmd[i][j + 1]) && cmd[i][j + 1] != '?')
 					cmd[i][j++] = -3;
 				else
@@ -203,31 +135,14 @@ char	**ft_expander(t_data *data, char **cmd)
 						ft_shell_reset(data);
 					free(cmd[i]);
 					cmd[i] = str;
-					if (cmd[i][j] != '\'' && cmd[i][j] != '\"')
+					if (cmd[i][j] != '\'' && cmd[i][j] != '\"') // check if it can be removed
 						j++;
 				}
 			}
 			else
-			{
-				// printf("----------------third-------------------\n");
-				// printf("%c\n", cmd[i][j]);
 				j++;
-			}
-			// if (ft_strncmp(cmd[0], "export", ft_strlen(cmd[0]) - 1))
-			// {
-			// 	cmd[i] = ft_rm_quote(cmd[i], '\"', 1);
-			// 	cmd[i] = ft_rm_quote(cmd[i], '\'', 1);
-			// }
 		}
-		ft_rm_quote(cmd[i], '\'', 1);
-		ft_rm_quote(cmd[i], '\"', 1);
-		ft_rm_quote(cmd[i], '$', 1);
-		ft_black_box(cmd[i]);
-		i++;
+		ft_black_box(cmd[i++]);
 	}
-	// printf("%s\n", cmd[1]);
-	// exit (0);
-	// printf("%s\n", cmd[1]);
-	// exit (0);
 	return (ft_skipper(cmd));
 }

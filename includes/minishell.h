@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: YOUNES <YOUNES@student.42.fr>              +#+  +:+       +#+        */
+/*   By: rerayyad <rerayyad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/31 12:11:17 by rerayyad          #+#    #+#             */
-/*   Updated: 2023/08/07 17:17:26 by YOUNES           ###   ########.fr       */
+/*   Updated: 2023/08/08 14:09:00 by rerayyad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,8 @@ char	*ft_rm_quote(char *str, char c, int n);
 /*::: tokens :::*/
 int		ft_token_parser(t_data *data, int *node_id, int id);
 int		ft_token_identifier(t_data *data, int i);
+int		ft_pipe_identifier(t_data *data, int i);
+int		ft_redirection_identifier(t_data *data, int i);
 int		ft_words_parser(t_data *data, int *node_id, int i);
 void	ft_add_node(t_mylxr **mylxr, t_mylxr *new);
 int		ft_new_node(t_mylxr **new, int id, char *str);
@@ -117,6 +119,8 @@ int		ft_translator(int i, char *str, char **tmp, t_data *data);
 char	*ft_converter(char c, t_data *data);
 char	**ft_skipper(char **cmd);
 char	*ft_quote_handler(char *cmd, int *j);
+char	*ft_single_quote(char *cmd, int *j, char r);
+char	*ft_double_quote(char *cmd, int *j, char r);
 
 /* -------------------Execution-----------------------*/
 /*::: Helpers :::*/

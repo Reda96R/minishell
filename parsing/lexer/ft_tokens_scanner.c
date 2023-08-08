@@ -6,7 +6,7 @@
 /*   By: rerayyad <rerayyad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 06:38:46 by rerayyad          #+#    #+#             */
-/*   Updated: 2023/08/08 10:32:50 by rerayyad         ###   ########.fr       */
+/*   Updated: 2023/08/08 14:12:29 by rerayyad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,30 +15,9 @@
 int	ft_token_identifier(t_data *data, int i)
 {
 	if (data->input[i] == '|')
-	{
-		if (ft_token_identifier(data, i + 1) != PIPE && data->input[i + 1])
-		{
-			data->pipes++;
-			return (PIPE);
-		}
-		return (-1);
-	}
-	else if (data->input[i] == '>')
-	{
-		if (data->input[i + 1] == '>' && !ft_token_identifier(data, i + 2))
-			return (D_GREATER);
-		else if (!ft_token_identifier(data, i + 1))
-			return (GREATER);
-		return (-1);
-	}
-	else if (data->input[i] == '<')
-	{
-		if (data->input[i + 1] == '<' && !ft_token_identifier(data, i + 2))
-			return (D_LESS);
-		else if (!ft_token_identifier(data, i + 1))
-			return (LESS);
-		return (-1);
-	}
+		return (ft_pipe_identifier(data, i));
+	else if (data->input[i] == '>' || data->input[i] == '<')
+		return (ft_redirection_identifier(data, i));
 	return (0);
 }
 
