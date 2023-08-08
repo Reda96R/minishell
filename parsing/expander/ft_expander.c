@@ -6,7 +6,7 @@
 /*   By: rerayyad <rerayyad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 14:42:53 by rerayyad          #+#    #+#             */
-/*   Updated: 2023/08/06 18:15:13 by rerayyad         ###   ########.fr       */
+/*   Updated: 2023/08/08 10:29:16 by rerayyad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,10 @@ char	**ft_skipper(char **cmd)
 	while (cmd[i])
 	{
 		if (cmd[i][j])
+		{
+		// printf("%c\n", cmd[i][j]);
 			j++;
+		}
 		i++;
 	}
 	str = (char **) malloc(sizeof (char *) * j + 1);
@@ -38,6 +41,7 @@ char	**ft_skipper(char **cmd)
 		i++;
 	}
 	str[j] = NULL;
+	// exit (0);
 	return (str);
 }
 
@@ -190,7 +194,7 @@ char	**ft_expander(t_data *data, char **cmd)
 			{
 				// printf("------------------second-----------------\n");
 				// printf("%c\n", cmd[i][j]);
-				if (!ft_isalnum(cmd[i][j + 1]))
+				if (!ft_isalnum(cmd[i][j + 1]) && cmd[i][j + 1] != '?')
 					cmd[i][j++] = -3;
 				else
 				{
@@ -221,6 +225,8 @@ char	**ft_expander(t_data *data, char **cmd)
 		ft_black_box(cmd[i]);
 		i++;
 	}
+	// printf("%s\n", cmd[1]);
+	// exit (0);
 	// printf("%s\n", cmd[1]);
 	// exit (0);
 	return (ft_skipper(cmd));

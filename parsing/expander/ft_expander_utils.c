@@ -6,7 +6,7 @@
 /*   By: rerayyad <rerayyad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/31 08:31:04 by rerayyad          #+#    #+#             */
-/*   Updated: 2023/08/06 17:41:24 by rerayyad         ###   ########.fr       */
+/*   Updated: 2023/08/08 10:18:39 by rerayyad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,8 @@ int	ft_digit_skipper(char *str, int n)
 
 int	ft_question_handler(char **str)
 {
-	free (*str);
+	if (*str)
+		free (*str);
 	*str = ft_itoa(g_var.exit_status);
 	return (ft_strlen(*str) + 1);
 }

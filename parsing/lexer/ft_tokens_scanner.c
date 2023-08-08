@@ -6,7 +6,7 @@
 /*   By: rerayyad <rerayyad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 06:38:46 by rerayyad          #+#    #+#             */
-/*   Updated: 2023/08/07 19:17:05 by rerayyad         ###   ########.fr       */
+/*   Updated: 2023/08/08 10:32:50 by rerayyad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int	ft_token_identifier(t_data *data, int i)
 {
 	if (data->input[i] == '|')
 	{
-		if (!ft_token_identifier(data, i + 1) && data->input[i + 1])
+		if (ft_token_identifier(data, i + 1) != PIPE && data->input[i + 1])
 		{
 			data->pipes++;
 			return (PIPE);
@@ -82,8 +82,8 @@ int	ft_words_parser(t_data *data, int *node_id, int i)
 		}
 		else
 		{
-			if ((ft_token_identifier(data, i + j) || ft_isspace(data->input[i + j]))
-				&& !r)
+			if ((ft_token_identifier(data, i + j)
+					|| ft_isspace(data->input[i + j])) && !r)
 				break ;
 			j++;
 		}

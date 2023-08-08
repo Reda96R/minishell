@@ -9,6 +9,7 @@
 - echo "ls       l" [solved]
 - $"test ls" [solved]
 - "ls -la" ----> quote should be considered one comand (cmd[0]) [solved]
+- | > not a syntax error [solved]
 - echo $USER.hello
 - echo $$$$$$
 - echo asdasd.$.USER
@@ -23,7 +24,7 @@
 - echo '"ls"' ----> should display "ls"
 - echo '"$ls"' ----> should display "$ls"
 - "$PWD" ------> should be expanded
-- echo "'$VAR'" ----> it should expand the var = 'VAR'
+- echo "'$VAR'" ----> it should expand the var = 'VAR' 
 
 =========================not fixed yet===================================
 - true_cmd | false_cmd -----> program exits
@@ -37,3 +38,8 @@
 - cmd -flag1 -flag2  (only the first flag works) ---> both should work
 - ls | ls < dgh
 
+
+
+
+- segfault when ---> echo $? many times 
+- wrong exit status
