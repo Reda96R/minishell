@@ -6,7 +6,7 @@
 /*   By: rerayyad <rerayyad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/11 16:06:34 by rerayyad          #+#    #+#             */
-/*   Updated: 2023/08/08 14:32:18 by rerayyad         ###   ########.fr       */
+/*   Updated: 2023/08/09 14:53:59 by rerayyad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ char	**ft_args_allocator(t_mylxr *mylexer, int *args_size)
 			i++;
 		tmp = tmp->next;
 	}
-	args = (char **)malloc (sizeof (char *) * i + 1);
+	args = (char **)malloc (sizeof (char *) * (i + 1));
 	if (!args)
 		ft_errors_buster(4, g_var.data);
 	*args_size = i;

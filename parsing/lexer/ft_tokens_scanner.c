@@ -6,10 +6,11 @@
 /*   By: rerayyad <rerayyad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 06:38:46 by rerayyad          #+#    #+#             */
-/*   Updated: 2023/08/08 20:43:19 by rerayyad         ###   ########.fr       */
+/*   Updated: 2023/08/09 14:30:18 by rerayyad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "../../includes/minishell.h"
+
+#include "minishell.h"
 
 int	ft_token_identifier(t_data *data, int i)
 {
@@ -25,7 +26,7 @@ int	ft_token_parser(t_data *data, int *node_id, int id)
 	t_mylxr	*new;
 
 	new = NULL;
-	if (!ft_new_node(&new, id, NULL) || !new)
+	if (!ft_new_node(&new, id, NULL, 0) || !new)
 		return (-1);
 	new->node_id = (*node_id)++;
 	ft_add_node(&data->mylexer, new);
@@ -70,7 +71,7 @@ int	ft_words_parser(t_data *data, int *node_id, int i)
 			j++;
 		}
 	}
-	if (!ft_new_node(&new, 0, ft_substr(data->input, i, j)) || !new)
+	if (!ft_new_node(&new, 0, ft_substr(data->input, i, j), 0) || !new)
 		return (-1);
 	new->node_id = (*node_id)++;
 	ft_add_node(&data->mylexer, new);

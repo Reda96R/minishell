@@ -6,7 +6,7 @@
 /*   By: rerayyad <rerayyad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 14:42:53 by rerayyad          #+#    #+#             */
-/*   Updated: 2023/08/08 20:43:04 by rerayyad         ###   ########.fr       */
+/*   Updated: 2023/08/09 17:00:50 by rerayyad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "../../includes/minishell.h"
@@ -107,7 +107,7 @@ char	*ft_black_box(char *str)
 	return (str);
 }
 
-char	**ft_expander(t_data *data, char **cmd)
+char	**ft_expander(t_data *data, char **cmd, int n)
 {
 	char	*str;
 	int		i;
@@ -130,7 +130,7 @@ char	**ft_expander(t_data *data, char **cmd)
 				else
 				{
 					str = ft_gold_finder(data, cmd[i]);
-					if (!i && !str[0] && !cmd[i + 1])
+					if (!i && !str[0] && !cmd[i + 1] && n)
 						ft_shell_reset(data);
 					free(cmd[i]);
 					cmd[i] = str;

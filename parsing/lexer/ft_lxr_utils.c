@@ -6,17 +6,20 @@
 /*   By: rerayyad <rerayyad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 06:38:02 by rerayyad          #+#    #+#             */
-/*   Updated: 2023/08/08 14:10:06 by rerayyad         ###   ########.fr       */
+/*   Updated: 2023/08/09 17:03:04 by rerayyad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "../../includes/minishell.h"
 
-int	ft_new_node(t_mylxr **new, int id, char *str)
+int	ft_new_node(t_mylxr **new, int id, char *str, int n)
 {
 	*new = (t_mylxr *) malloc(sizeof (t_mylxr));
 	if (!new)
 		return (0);
+	if (n)
+		if (!str)
+			ft_errors_buster(6, g_var.data);
 	(*new)->token_id = id;
 	(*new)->str = str;
 	(*new)->next = NULL;
