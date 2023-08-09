@@ -6,10 +6,9 @@
 /*   By: rerayyad <rerayyad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 14:42:53 by rerayyad          #+#    #+#             */
-/*   Updated: 2023/08/08 14:35:31 by rerayyad         ###   ########.fr       */
+/*   Updated: 2023/08/08 20:43:04 by rerayyad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 #include "../../includes/minishell.h"
 
 char	**ft_skipper(char **cmd)

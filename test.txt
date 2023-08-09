@@ -45,4 +45,7 @@
 - wrong exit status
 - exit -9223372036854775807
 - cat <"./test_files/file name with spaces"
+<<<<<<< HEAD
+=======
 - wc - ---------> program crashes
+>>>>>>> 0ba4d25ee0222ab8cccf930a629b6c9b4e1c1da9
