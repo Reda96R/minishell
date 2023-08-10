@@ -6,9 +6,10 @@
 /*   By: rerayyad <rerayyad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/31 12:11:17 by rerayyad          #+#    #+#             */
-/*   Updated: 2023/08/08 20:42:16 by rerayyad         ###   ########.fr       */
+/*   Updated: 2023/08/09 17:01:40 by rerayyad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+	
 #ifndef MINISHELL_H
 # define MINISHELL_H
 
@@ -92,7 +93,7 @@ int		ft_pipe_identifier(t_data *data, int i);
 int		ft_redirection_identifier(t_data *data, int i);
 int		ft_words_parser(t_data *data, int *node_id, int i);
 void	ft_add_node(t_mylxr **mylxr, t_mylxr *new);
-int		ft_new_node(t_mylxr **new, int id, char *str);
+int		ft_new_node(t_mylxr **new, int id, char *str, int n);
 void	ft_rm_node(t_mylxr **mylexer, int id);
 
 /*::: parser :::*/
@@ -109,7 +110,7 @@ void	ft_add_redirection(t_parser *parser, t_mylxr *tmp, int *node_id,
 			t_data *data);
 
 /*::: expanding :::*/
-char	**ft_expander(t_data *data, char **cmd);
+char	**ft_expander(t_data *data, char **cmd, int n);
 size_t	ft_dollar_s(char *str);
 char	*ft_gold_finder(t_data *data, char *str);
 int		ft_question_handler(char **str);

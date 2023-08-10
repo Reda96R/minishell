@@ -42,3 +42,7 @@
 - wrong exit status
 - cat <"./test_files/file name with spaces"
 - wc - ---------> program crashes
+- wc - ---------> program crashes
+- "" ---> should send '\0' and not null
+- ls > $FAKE_VAR ----> ambiguous redirect
+- ls > $HOME

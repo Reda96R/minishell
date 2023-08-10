@@ -6,9 +6,10 @@
 /*   By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 14:42:53 by rerayyad          #+#    #+#             */
-/*   Updated: 2023/08/09 14:20:11 by yes-slim         ###   ########.fr       */
+/*   Updated: 2023/08/10 09:52:41 by yes-slim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 
 #include "minishell.h"
 
@@ -108,7 +109,7 @@ char	*ft_black_box(char *str)
 	return (str);
 }
 
-char	**ft_expander(t_data *data, char **cmd)
+char	**ft_expander(t_data *data, char **cmd, int n)
 {
 	char	*str;
 	int		i;
@@ -131,7 +132,7 @@ char	**ft_expander(t_data *data, char **cmd)
 				else
 				{
 					str = ft_gold_finder(data, cmd[i]);
-					if (!i && !str[0] && !cmd[i + 1])
+					if (!i && !str[0] && !cmd[i + 1] && n)
 						ft_shell_reset(data);
 					free(cmd[i]);
 					cmd[i] = str;

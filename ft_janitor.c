@@ -6,9 +6,10 @@
 /*   By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 15:58:10 by rerayyad          #+#    #+#             */
-/*   Updated: 2023/08/09 14:35:30 by yes-slim         ###   ########.fr       */
+/*   Updated: 2023/08/10 09:52:13 by yes-slim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 
 #include "includes/minishell.h"
 
@@ -93,6 +94,8 @@ void	ft_errors_buster(int id, t_data *data)
 		_dprintf(2, "memory error: unable to allocate memory\n");
 	else if (id == 5)
 		_dprintf(2, "ERROR: unset: not enough arguments\n");
+	else if (id == 6)
+		_dprintf(2, "ERROR: ambiguous redirect\n");
 	g_var.data->color = 0;
 	ft_shell_reset(data);
 }
