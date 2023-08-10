@@ -6,7 +6,7 @@
 /*   By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/21 07:31:45 by yes-slim          #+#    #+#             */
-/*   Updated: 2023/08/08 19:25:13 by yes-slim         ###   ########.fr       */
+/*   Updated: 2023/08/09 14:36:10 by yes-slim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,16 @@ void	one_cmd(t_cmds *init)
 			ft_error_exec(5, NULL, -1);
 		if (dup2(init->fd_out, 1) == -1)
 			ft_error_exec(5, NULL, -1);
+		printf("+++++++++%p\n", &init->str);
+		printf("=========%p\n", &init->str[0]);
+		printf("---------%p\n", &init->str[1]);
+		printf("*********%p\n", &init->str[2]);
+		// printf("%s\n", path);
+		// for(int i=0; g_var.data->env[i]; i++)
+		// 	printf("%s\n", g_var.data->env[i]);
 		execve(path, init->str, g_var.data->env);
+		perror("<?>: execve");
+		exit(0);
 	}
 	ft_wait_one(pid);
 }

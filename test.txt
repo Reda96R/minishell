@@ -25,10 +25,7 @@
 - echo '"$ls"' ----> should display "$ls"
 - "$PWD" ------> should be expanded
 - echo "'$VAR'" ----> it should expand the var = 'VAR' 
-
-=========================not fixed yet===================================
 - true_cmd | false_cmd -----> program exits
-- $$VAR ----> should display command not found 
 - ls|ls
 - error with herdoc -----> segfault when delemiter is not given
 - echo -n l
@@ -37,15 +34,11 @@
 - echo "test" > file0
 - cmd -flag1 -flag2  (only the first flag works) ---> both should work
 - ls | ls < dgh
+- exit -9223372036854775807
 
-
-
-
+=========================not fixed yet===================================
+- $$VAR ----> should display command not found -----> (send empty string unsted of a NULL)
 - segfault when ---> echo $? many times 
 - wrong exit status
-- exit -9223372036854775807
 - cat <"./test_files/file name with spaces"
-<<<<<<< HEAD
-=======
 - wc - ---------> program crashes
->>>>>>> 0ba4d25ee0222ab8cccf930a629b6c9b4e1c1da9
