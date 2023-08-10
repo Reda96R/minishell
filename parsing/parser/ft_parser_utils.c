@@ -6,12 +6,24 @@
 /*   By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/11 16:06:34 by rerayyad          #+#    #+#             */
-/*   Updated: 2023/08/10 09:52:55 by yes-slim         ###   ########.fr       */
+/*   Updated: 2023/08/10 15:09:27 by yes-slim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
 #include "../../includes/minishell.h"
+
+char **ft_arr_dup(char **arr)
+{
+	int len=0;
+	while (arr[len++]);
+	char **str = malloc(sizeof(char *) * (len + 1));
+	int i=-1;
+	while (arr[++i])
+		str[i] = ft_strdup(arr[i]);
+	str[i] = NULL;
+	return (str);
+}
 
 char	**ft_args_allocator(t_mylxr *mylexer, int *args_size)
 {
@@ -40,7 +52,7 @@ void	ft_new_cmd(t_parser *parser, char **str, t_cmds **cmd, t_data *data)
 	if (!cmd)
 		ft_errors_buster(4, data);
 	(*cmd)->herdoc_name = NULL;
-	(*cmd)->str = str;
+	(*cmd)->str = ft_arr_dup(str);
 	(*cmd)->redirections = parser->redirections;
 	(*cmd)->redirections_count = parser->redirections_count;
 	(*cmd)->fd_in = 0;
