@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   _dprintf.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: YOUNES <YOUNES@student.42.fr>              +#+  +:+       +#+        */
+/*   By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/31 14:21:47 by yes-slim          #+#    #+#             */
-/*   Updated: 2023/07/31 17:13:20 by YOUNES           ###   ########.fr       */
+/*   Updated: 2023/08/10 21:32:53 by yes-slim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void ft_putchar(int fd, char c, int *len)
+void	ft_putchar(int fd, char c, int *len)
 {
 	write(fd, &c, 1);
 	*len = *len + 1;
@@ -20,25 +20,30 @@ void ft_putchar(int fd, char c, int *len)
 
 void	ft_putstr(int fd, char *str, int *len)
 {
-	int i = 0;
-	if(!str)
+	int	i;
+
+	i = 0;
+	if (!str)
 		str = "(null)";
-	while(str[i])
+	while (str[i])
 	{
 		ft_putchar(fd, str[i], len);
 		i++;
 	}
 }
 
-int _dprintf(int fd, const char *str, ...)
+int	_dprintf(int fd, const char *str, ...)
 {
-	va_list ap;
-	int len = 0;
-	int i = 0;
+	va_list	ap;
+	int		len;
+	int		i;
+
+	len = 0;
+	i = 0;
 	va_start(ap, str);
-	while(str[i])
+	while (str[i])
 	{
-		if(str[i] == '%' && str[i + 1])
+		if (str[i] == '%' && str[i + 1])
 		{
 			i++;
 			if (str[i] == 's')
@@ -49,5 +54,5 @@ int _dprintf(int fd, const char *str, ...)
 		i++;
 	}
 	va_end(ap);
-	return len;
+	return (len);
 }

@@ -6,7 +6,7 @@
 /*   By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/26 17:27:00 by yes-slim          #+#    #+#             */
-/*   Updated: 2023/08/09 14:16:38 by yes-slim         ###   ########.fr       */
+/*   Updated: 2023/08/10 21:38:05 by yes-slim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ char	*get_path(char *str, char **path)
 	i = 0;
 	while (path[i])
 	{
-		cmd =ft_strjoin(path[i], str);
+		cmd = ft_strjoin(path[i], str);
 		if (access(cmd, X_OK) == -1)
 			i++;
 		else

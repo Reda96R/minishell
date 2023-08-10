@@ -6,15 +6,15 @@
 /*   By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/14 14:40:40 by yes-slim          #+#    #+#             */
-/*   Updated: 2023/08/10 21:07:24 by yes-slim         ###   ########.fr       */
+/*   Updated: 2023/08/10 21:22:51 by yes-slim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int		check_numeriq(char *str)
+int	check_numeriq(char *str)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (str[i])
@@ -32,7 +32,7 @@ int		check_numeriq(char *str)
 void	ft_exit(t_cmds *cmd)
 {
 	int	i;
-	
+
 	i = 1;
 	if (!cmd->str[1])
 		exit(0);

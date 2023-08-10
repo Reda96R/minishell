@@ -6,7 +6,7 @@
 /*   By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/14 14:40:33 by yes-slim          #+#    #+#             */
-/*   Updated: 2023/08/10 21:04:40 by yes-slim         ###   ########.fr       */
+/*   Updated: 2023/08/10 21:21:52 by yes-slim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	change_pwd(void)
 {
 	t_vars	*var;
 	char	*pwd;
-	
+
 	var = g_var.data->vars;
 	while (var)
 	{
@@ -36,7 +36,7 @@ void	change_pwd(void)
 void	change_oldpwd(char *old_pwd)
 {
 	t_vars	*var;
-	
+
 	var = g_var.data->vars;
 	while (var)
 	{
@@ -67,7 +67,7 @@ char	*get_home(t_data *data)
 {
 	char	*home;
 	t_vars	*var;
-	
+
 	home = malloc(sizeof(char *));
 	var = data->vars;
 	while (var)
@@ -79,17 +79,17 @@ char	*get_home(t_data *data)
 		}
 		var = var->next;
 	}
-	return NULL;
+	return (NULL);
 }
 
 int	ft_cd(t_cmds *init)
 {
-	char	*HOME;
+	char	*home;
 
-	HOME = get_home(g_var.data);
+	home = get_home(g_var.data);
 	if (!init->str[1] || !_strcmp(init->str[1], "~"))
 	{
-		if (!chdir(HOME))
+		if (!chdir(home))
 			return (change_pwd(), change_oldpwd(g_var.data->pwd), 0);
 		return (ft_builtins_error(2, NULL), 0);
 	}

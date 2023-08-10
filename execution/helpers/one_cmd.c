@@ -6,7 +6,7 @@
 /*   By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/21 07:31:45 by yes-slim          #+#    #+#             */
-/*   Updated: 2023/08/10 14:26:28 by yes-slim         ###   ########.fr       */
+/*   Updated: 2023/08/10 21:37:51 by yes-slim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	one_cmd(t_cmds *init)
 {
 	char	*path;
 	int		pid;
-	
+
 	ft_check_files(init);
 	if (!init->str[0])
 		return ;

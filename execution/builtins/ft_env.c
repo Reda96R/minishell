@@ -6,7 +6,7 @@
 /*   By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/14 14:40:38 by yes-slim          #+#    #+#             */
-/*   Updated: 2023/08/09 14:16:38 by yes-slim         ###   ########.fr       */
+/*   Updated: 2023/08/10 21:22:30 by yes-slim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	ft_env(t_cmds *init)
 {
 	int	i;
-	
+
 	if (init->str[1])
 	{
 		ft_builtins_error(4, init->str[1]);

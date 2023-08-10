@@ -6,7 +6,7 @@
 #    By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/24 13:54:21 by yes-slim          #+#    #+#              #
-#    Updated: 2023/08/10 14:29:25 by yes-slim         ###   ########.fr        #
+#    Updated: 2023/08/10 21:38:45 by yes-slim         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,8 +40,8 @@ Pars_SRCS   = $(addsuffix .c, $(addprefix parsing/, $(PARS)))
 
 #=================execution_files=======================================#
 LIBFT   	= _strdup _strlen _atoi _isdigit _isalpha _isalnum _strjoin _strcmp
-BUILTIN 	= ft_pwd ft_exit ft_env ft_echo ft_cd ft_export ft_unset 
-HELPERS 	= signals path_getter one_cmd check_files _dprintf multiple_cmds _heredoc
+BUILTIN 	= ft_pwd ft_exit ft_env ft_echo ft_cd ft_export ft_unset export_helpers
+HELPERS 	= signals path_getter one_cmd check_files _dprintf multiple_cmds _heredoc multiple_cmds_helpers
 EXEC		= execution \
 			  $(addprefix builtins/, $(BUILTIN)) \
 		 	  $(addprefix libft/, $(LIBFT)) \
