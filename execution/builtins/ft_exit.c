@@ -6,7 +6,7 @@
 /*   By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/14 14:40:40 by yes-slim          #+#    #+#             */
-/*   Updated: 2023/08/10 21:22:51 by yes-slim         ###   ########.fr       */
+/*   Updated: 2023/08/10 21:58:57 by yes-slim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,14 +36,13 @@ void	ft_exit(t_cmds *cmd)
 	i = 1;
 	if (!cmd->str[1])
 		exit(0);
+	if (!check_numeriq(cmd->str[i++]))
+		return ;
 	if (cmd->str[2])
 	{
 		ft_builtins_error(6, NULL);
 		return ;
 	}	
-	while (cmd->str[i])
-		if (!check_numeriq(cmd->str[i++]))
-			break ;
 	if (!cmd->str[1][i])
 	{
 		ft_builtins_error(5, cmd->str[i]);
