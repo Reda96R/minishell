@@ -3,22 +3,26 @@
 /*                                                        :::      ::::::::   */
 /*   ft_parser_utils.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rerayyad <rerayyad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/11 16:06:34 by rerayyad          #+#    #+#             */
-/*   Updated: 2023/08/10 15:09:27 by yes-slim         ###   ########.fr       */
+/*   Updated: 2023/08/10 19:23:26 by rerayyad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "../../includes/minishell.h"
 
-char **ft_arr_dup(char **arr)
+char	**ft_arr_dup(char **arr)
 {
-	int len=0;
-	while (arr[len++]);
-	char **str = malloc(sizeof(char *) * (len + 1));
-	int i=-1;
+	char	**str;
+	int		len;
+	int		i;
+
+	i = -1;
+	len = 0;
+	while (arr[len])
+		len++;
+	str = malloc(sizeof(char *) * (len + 1));
 	while (arr[++i])
 		str[i] = ft_strdup(arr[i]);
 	str[i] = NULL;
