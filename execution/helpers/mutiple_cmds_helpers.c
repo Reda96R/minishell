@@ -6,11 +6,14 @@
 /*   By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 21:35:26 by yes-slim          #+#    #+#             */
-/*   Updated: 2023/08/10 21:35:59 by yes-slim         ###   ########.fr       */
+/*   Updated: 2023/08/10 21:46:01 by yes-slim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
+void	execute(t_cmds *cmd);
+void	ft_wait(int pid);
 
 void	first_child(t_cmds *cmd, int *pp)
 {
