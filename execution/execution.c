@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execution.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rerayyad <rerayyad@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/02 18:57:34 by yes-slim          #+#    #+#             */
-/*   Updated: 2023/08/09 17:01:09 by rerayyad         ###   ########.fr       */
+/*   Updated: 2023/08/10 09:51:45 by yes-slim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,15 +36,15 @@ int	is_builtin(t_cmds *init)
 
 void	ft_execution(t_data *init)
 {
-	g_var.data->std_in = dup(0);
-	if (g_var.data->std_in == -1)
-		ft_error_exec(7, NULL, 0);
-	g_var.data->std_out = dup(1);
-	if (g_var.data->std_out == -1)
-		ft_error_exec(7, NULL, 0);
 	if (init->cmds)
 	{
-		init->cmds->str = ft_expander(init, init->cmds->str, 1);
+		g_var.data->std_in = dup(0);
+		if (g_var.data->std_in == -1)
+			ft_error_exec(7, NULL, 0);
+		g_var.data->std_out = dup(1);
+		if (g_var.data->std_out == -1)
+			ft_error_exec(7, NULL, 0);
+		init->cmds->str = ft_expander(init, init->cmds->str, 2);
 		if (!init->pipes)
 			one_cmd(init->cmds);
 		else
