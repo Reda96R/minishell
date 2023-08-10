@@ -6,7 +6,7 @@
 /*   By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/14 14:40:33 by yes-slim          #+#    #+#             */
-/*   Updated: 2023/08/09 14:16:38 by yes-slim         ###   ########.fr       */
+/*   Updated: 2023/08/10 21:04:40 by yes-slim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,6 @@ int	ft_cd(t_cmds *init)
 {
 	char	*HOME;
 
-	return (0);
 	HOME = get_home(g_var.data);
 	if (!init->str[1] || !_strcmp(init->str[1], "~"))
 	{

@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   _heredoc.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rerayyad <rerayyad@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 15:32:30 by YOUNES            #+#    #+#             */
-/*   Updated: 2023/08/10 19:40:17 by rerayyad         ###   ########.fr       */
+/*   Updated: 2023/08/10 21:17:37 by yes-slim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/minishell.h"
+#include "minishell.h"
 
 void	ft_wait_hd(int pid)
 {
@@ -71,8 +71,6 @@ int	ft_heredoc(t_mylxr *del)
 				printf("\n");
 				exit(0);
 			}
-			if (!_strcmp(str, del->str))
-				exit(0);
 			_dprintf(pp[1], "%s\n", ft_heredoc_core(del, str));
 		}
 	}
