@@ -6,10 +6,9 @@
 /*   By: rerayyad <rerayyad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/31 12:11:17 by rerayyad          #+#    #+#             */
-/*   Updated: 2023/08/09 17:01:40 by rerayyad         ###   ########.fr       */
+/*   Updated: 2023/08/10 13:36:30 by rerayyad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-	
 #ifndef MINISHELL_H
 # define MINISHELL_H
 
@@ -34,6 +33,7 @@ typedef struct s_glbl
 	struct s_data	*data;
 	unsigned char	exit_status;
 	int				sig;
+	int				hd_expansion;
 }	t_glbl;
 
 t_glbl	g_var;

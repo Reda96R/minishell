@@ -6,7 +6,7 @@
 /*   By: rerayyad <rerayyad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/02 18:58:02 by yes-slim          #+#    #+#             */
-/*   Updated: 2023/08/09 11:50:18 by rerayyad         ###   ########.fr       */
+/*   Updated: 2023/08/10 14:15:21 by rerayyad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,6 @@ void	ft_shell_starter(t_data *data)
 				ft_execution(data);
 				g_var.sig = 1;
 				ft_shell_reset(data);
-				exit (0);
 			}
 			else if (ft_token_scanner(data) == -1)
 				ft_errors_buster(3, data);

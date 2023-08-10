@@ -46,3 +46,5 @@
 - "" ---> should send '\0' and not null
 - ls > $FAKE_VAR ----> ambiguous redirect
 - ls > $HOME
+- "" it should send an empty string instead of null
+

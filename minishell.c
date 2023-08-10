@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rerayyad <rerayyad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 15:58:02 by rerayyad          #+#    #+#             */
-/*   Updated: 2023/08/10 09:46:41 by yes-slim         ###   ########.fr       */
+/*   Updated: 2023/08/10 14:15:15 by rerayyad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ int	main(int ac, char *av[], char *env[])
 	data.color = 1;
 	g_var.data = &data;
 	g_var.sig = 1;
+	g_var.hd_expansion = 1;
 	ft_shell_starter(&data);
 	return (1);
 }
