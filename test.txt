@@ -47,4 +47,13 @@
 - ls > $FAKE_VAR ----> ambiguous redirect
 - ls > $HOME
 - "" it should send an empty string instead of null
+- env | grep "=" --------> rm quotes
+- export c = "x" -----> should display export: `=': not a valid identifier
+- cd ?
+- bash -> exit +1 -> echo $? ----------> should display 1
+- echo ''"'$HOME'"'' ------------------> check expand single quotes
+- handle _ in parsing, $USER_ ----> should not expanded
+if next to _ is alphanum it is considered from the name of VAR
+else just print the following or expand
+- if herdoc expand is on quotes rules are ignored
 
