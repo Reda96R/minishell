@@ -6,7 +6,7 @@
 /*   By: rerayyad <rerayyad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 14:42:53 by rerayyad          #+#    #+#             */
-/*   Updated: 2023/08/10 11:06:43 by rerayyad         ###   ########.fr       */
+/*   Updated: 2023/08/11 02:42:35 by rerayyad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,9 @@ char	**ft_skipper(char **cmd)
 	while (cmd[i])
 	{
 		// printf("%d\n", cmd[i][j]);
-		if (cmd[i][j])
+		if (cmd[i][j] != 0)
 		{
-			// printf("%c\n", cmd[i][j]);
+			printf("here\n");
 			j++;
 		}
 		i++;
@@ -73,7 +73,8 @@ char	*ft_gold_finder(t_data *data, char *str)
 		i += ft_digit_skipper(str, i);
 		if (str[i] == '$' && str[i + 1] == '?')
 			i += ft_question_handler(&tmp0);
-		else if (str[i] == '$' && ft_isalnum(str[i + 1]) && str[i + 1] != ' ')
+		else if (str[i] == '$' && (ft_isalnum(str[i + 1]) || str[i + 1] == '_')
+			&& str[i + 1] != ' ')
 			i += ft_translator(i, str, &tmp0, data);
 		else
 		{
@@ -108,7 +109,7 @@ char	*ft_black_box(char *str)
 	return (str);
 }
 
-char	**ft_expander(t_data *data, char **cmd, int n)
+char	**ft_expander(t_data *data, char **cmd, int n, int quote_protect)
 {
 	char	*str;
 	int		i;
@@ -122,11 +123,12 @@ char	**ft_expander(t_data *data, char **cmd, int n)
 		while (cmd[i][j])
 		{
 			if (cmd[i][j] == '\'' || cmd[i][j] == '\"')
-				cmd[i] = ft_quote_handler(cmd[i], &j);
+				cmd[i] = ft_quote_handler(cmd[i], &j, quote_protect);
 			else if (cmd[i][j] == '$' && cmd[i][j + 1] != '\''
 					&& cmd[i][j + 1] != '\"')
 			{
-				if (!ft_isalnum(cmd[i][j + 1]) && cmd[i][j + 1] != '?')
+				if (!ft_isalnum(cmd[i][j + 1]) && cmd[i][j + 1] != '_' &&
+					cmd[i][j + 1] != '?')
 					cmd[i][j++] = -3;
 				else
 				{

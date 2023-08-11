@@ -35,25 +35,26 @@
 - cmd -flag1 -flag2  (only the first flag works) ---> both should work
 - ls | ls < dgh
 - exit -9223372036854775807
+- wc - ---------> program crashes
+- ls > $FAKE_VAR ----> ambiguous redirect
+- cd not working
+- if herdoc expand is on quotes rules are ignored
+- echo ''"'$HOME'"'' ------------------> check expand single quotes
+- handle _ in parsing
+- env | grep "=" --------> rm quotes
+- $$VAR ----> should display command not found -----> (send empty string unsted of a NULL)
 
 =========================not fixed yet===================================
-- $$VAR ----> should display command not found -----> (send empty string unsted of a NULL)
 - segfault when ---> echo $? many times 
 - wrong exit status
 - cat <"./test_files/file name with spaces"
-- wc - ---------> program crashes
-- wc - ---------> program crashes
-- "" ---> should send '\0' and not null
-- ls > $FAKE_VAR ----> ambiguous redirect
 - ls > $HOME
-- "" it should send an empty string instead of null
-- env | grep "=" --------> rm quotes
-- export c = "x" -----> should display export: `=': not a valid identifier
-- cd ?
 - bash -> exit +1 -> echo $? ----------> should display 1
-- echo ''"'$HOME'"'' ------------------> check expand single quotes
-- handle _ in parsing, $USER_ ----> should not expanded
-if next to _ is alphanum it is considered from the name of VAR
-else just print the following or expand
-- if herdoc expand is on quotes rules are ignored
+
+
+- "" ---> should send '\0' and not null
+- export c = "x" -----> should display export: `=': not a valid identifier 
+
+
+
 
