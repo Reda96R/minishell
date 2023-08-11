@@ -3,22 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   _dprintf.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+        */
+/*   By: YOUNES <YOUNES@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/31 14:21:47 by yes-slim          #+#    #+#             */
-/*   Updated: 2023/08/10 21:32:53 by yes-slim         ###   ########.fr       */
+/*   Updated: 2023/08/11 14:19:48 by YOUNES           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	ft_putchar(int fd, char c, int *len)
+void	_putchar(int fd, char c, int *len)
 {
 	write(fd, &c, 1);
 	*len = *len + 1;
 }
 
-void	ft_putstr(int fd, char *str, int *len)
+void	_putstr(int fd, char *str, int *len)
 {
 	int	i;
 
@@ -27,7 +27,7 @@ void	ft_putstr(int fd, char *str, int *len)
 		str = "(null)";
 	while (str[i])
 	{
-		ft_putchar(fd, str[i], len);
+		_putchar(fd, str[i], len);
 		i++;
 	}
 }
@@ -47,10 +47,10 @@ int	_dprintf(int fd, const char *str, ...)
 		{
 			i++;
 			if (str[i] == 's')
-				ft_putstr(fd, va_arg(ap, char *), &len);
+				_putstr(fd, va_arg(ap, char *), &len);
 		}
 		else
-			ft_putchar(fd, str[i], &len);
+			_putchar(fd, str[i], &len);
 		i++;
 	}
 	va_end(ap);

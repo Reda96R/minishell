@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_exit.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+        */
+/*   By: YOUNES <YOUNES@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/14 14:40:40 by yes-slim          #+#    #+#             */
-/*   Updated: 2023/08/10 21:58:57 by yes-slim         ###   ########.fr       */
+/*   Updated: 2023/08/11 14:19:01 by YOUNES           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	check_numeriq(char *str)
 	i = 0;
 	while (str[i])
 	{
-		if (!ft_isdigit(str[i]))
+		if (!_isdigit(str[i]))
 		{
 			ft_builtins_error(5, str);
 			exit(255);
