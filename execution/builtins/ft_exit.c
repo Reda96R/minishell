@@ -6,7 +6,7 @@
 /*   By: YOUNES <YOUNES@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/14 14:40:40 by yes-slim          #+#    #+#             */
-/*   Updated: 2023/08/11 14:19:01 by YOUNES           ###   ########.fr       */
+/*   Updated: 2023/08/11 19:56:10 by YOUNES           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,10 @@ void	ft_exit(t_cmds *cmd)
 	if (cmd->str[2])
 	{
 		ft_builtins_error(6, NULL);
+		g_var.exit_status = 1;
 		return ;
-	}	
+	}
+	i = 0;
 	if (!cmd->str[1][i])
 	{
 		ft_builtins_error(5, cmd->str[i]);
