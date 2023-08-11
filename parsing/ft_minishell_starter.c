@@ -6,7 +6,7 @@
 /*   By: rerayyad <rerayyad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/02 18:58:02 by yes-slim          #+#    #+#             */
-/*   Updated: 2023/08/10 14:15:21 by rerayyad         ###   ########.fr       */
+/*   Updated: 2023/08/11 12:47:10 by rerayyad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 void	ft_shell_reset(t_data *data)
 {
-	// if (data->input)
-	// 	free(data->input);
-	// ft_cmd_cleaner(&data->cmds);
+	if (data->input)
+		free(data->input);
+	ft_cmd_cleaner(&data->cmds);
 	ft_env_var(data, NULL, 0);
 	ft_shell_starter(data);
 }

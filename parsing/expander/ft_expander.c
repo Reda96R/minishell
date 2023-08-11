@@ -6,7 +6,7 @@
 /*   By: rerayyad <rerayyad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 14:42:53 by rerayyad          #+#    #+#             */
-/*   Updated: 2023/08/11 02:48:15 by rerayyad         ###   ########.fr       */
+/*   Updated: 2023/08/11 21:26:14 by rerayyad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,8 @@ char	**ft_skipper(char **cmd)
 	j = 0;
 	while (cmd[i])
 	{
-		// printf("%d\n", cmd[i][j]);
-		if (cmd[i][j] != 0)
-		{
-			// printf("here\n");
+		if (*cmd[i])
 			j++;
-		}
 		i++;
 	}
 	str = (char **) malloc(sizeof (char *) * j + 1);
@@ -42,6 +38,8 @@ char	**ft_skipper(char **cmd)
 		i++;
 	}
 	str[j] = NULL;
+	// if (!*str)
+		// *str = ft_strdup("\0");
 	return (str);
 }
 

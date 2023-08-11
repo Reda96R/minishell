@@ -43,18 +43,22 @@
 - handle _ in parsing
 - env | grep "=" --------> rm quotes
 - $$VAR ----> should display command not found -----> (send empty string unsted of a NULL)
+- echo $?
+- segfault when ---> echo $? many times 
+- "" ---> should send '\0' and not null
+- env  -i ./minishell ------> protect env from unset
 
 =========================not fixed yet===================================
-- segfault when ---> echo $? many times 
+
 - wrong exit status
 - cat <"./test_files/file name with spaces"
 - ls > $HOME
 - bash -> exit +1 -> echo $? ----------> should display 1
-
-
-- "" ---> should send '\0' and not null
 - export c = "x" -----> should display export: `=': not a valid identifier 
 
+- check if ft_skipper required or not
+- ls | ls so many times
+-  
 
 
 
