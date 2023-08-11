@@ -6,7 +6,7 @@
 /*   By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 14:42:53 by rerayyad          #+#    #+#             */
-/*   Updated: 2023/08/11 20:10:49 by yes-slim         ###   ########.fr       */
+/*   Updated: 2023/08/11 21:11:46 by yes-slim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -147,5 +147,5 @@ char	**ft_expander(t_data *data, char **cmd, int n, int quote_protect)
 		}
 		ft_black_box(cmd[i++]);
 	}
-	return (cmd);
+	return (ft_skipper(cmd));
 }
