@@ -12,10 +12,14 @@
 
 #include "minishell.h"
 
+void	first_child(t_cmds *cmd, int *pp);
+void	mid_childs(t_cmds *cmd);
+int		last_child(t_cmds *cmd);
+
 void	execute(t_cmds *cmd)
 {
-	char *path;
-	
+	char	*path;
+
 	signal(SIGINT, SIG_DFL);
 	signal(SIGQUIT, SIG_DFL);
 	if (!is_builtin(cmd))
@@ -31,72 +35,6 @@ void	execute(t_cmds *cmd)
 		close(cmd->fd_out);
 	execve(path, cmd->str, g_var.data->env);
 	exit (127);
-}
-
-void    first_child(t_cmds *cmd, int *pp)
-{
-	pid_t	pid;
-	
-	cmd->fd_out = pp[1];
-    ft_check_files(cmd);
-	if (!cmd->str[0] || cmd->fd_in == -1 || cmd->fd_out == -1)
-		return ;
-	pid = fork();
-	if (pid == -1)
-		ft_error_exec(4, NULL, 0);
-	if (pid == 0)
-	{
-		close(pp[0]);
-		execute(cmd);
-	}
-	close(pp[1]);
-	if (dup2(pp[0], 0) == -1)
-		ft_error_exec(5, NULL, 0);
-	close(pp[0]);
-}
-
-void	mid_childs(t_cmds *cmd)
-{
-	pid_t	pid;
-	int		pp[2];
-
-	if (pipe(pp) == -1)
-		ft_error_exec(6, NULL, 0);
-    cmd->fd_out = pp[1];
-	ft_check_files(cmd);
-	if (!cmd->str[0] || cmd->fd_in == -1 || cmd->fd_out == -1)
-		return ;
-	pid = fork();
-	if (pid == -1)
-		ft_error_exec(4, NULL, 0);
-	if (pid == 0)
-	{
-		close(pp[0]);
-		execute(cmd);
-	}
-    close(cmd->fd_in);
-	if (dup2(pp[0], 0) == -1)
-		ft_error_exec(5, NULL, 0);
-	close(cmd->fd_out);
-}
-
-int	last_child(t_cmds *cmd)
-{
-	pid_t	pid;
-
-	ft_check_files(cmd);
-	if (!cmd->str[0] || cmd->fd_in == -1 || cmd->fd_out == -1)
-		return (-1);
-	pid = fork();
-	if (pid == -1)
-		ft_error_exec(4, NULL, 0);
-	if (pid == 0)
-		execute(cmd);
-	if (cmd->fd_in != 0)
-		close(cmd->fd_in);
-	if (cmd->fd_out != 1)
-		close(cmd->fd_out);
-	return (pid);
 }
 
 void	ft_wait(int pid)
@@ -116,7 +54,8 @@ void	ft_wait(int pid)
 		if (WTERMSIG(status) == 2)
 			g_var.exit_status = 130;
 	}
-	while (wait(NULL) != -1);
+	while (wait(NULL) != -1)
+		continue ;
 }
 
 void	multiple_cmds(t_data *init)
@@ -124,9 +63,9 @@ void	multiple_cmds(t_data *init)
 	int	pid;
 	int	pp[2];
 
-    if (pipe(pp) == -1)
+	if (pipe(pp) == -1)
 		ft_error_exec(6, NULL, 0);
-    first_child(init->cmds, pp);
+	first_child(init->cmds, pp);
 	init->cmds = init->cmds->next;
 	while (init->cmds->next)
 	{

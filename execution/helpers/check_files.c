@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_files.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: YOUNES <YOUNES@student.42.fr>              +#+  +:+       +#+        */
+/*   By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 10:59:29 by yes-slim          #+#    #+#             */
-/*   Updated: 2023/08/07 17:17:37 by YOUNES           ###   ########.fr       */
+/*   Updated: 2023/08/10 21:33:25 by yes-slim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 int	check_infile(t_mylxr *file)
 {
 	int	fd;
-	
-	fd = open(file->str, O_RDONLY); 
+
+	fd = open(file->str, O_RDONLY);
 	if (fd == -1)
 	{
 		if (access(file->str, F_OK) == -1)
@@ -43,7 +43,7 @@ int	check_outfile(t_mylxr *file)
 void	ft_check_files(t_cmds *cmd)
 {
 	t_mylxr	*tmp;
-	
+
 	tmp = cmd->redirections;
 	while (tmp)
 	{

@@ -6,7 +6,7 @@
 /*   By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/14 14:40:34 by yes-slim          #+#    #+#             */
-/*   Updated: 2023/08/07 11:18:46 by yes-slim         ###   ########.fr       */
+/*   Updated: 2023/08/10 21:22:17 by yes-slim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 int	check_for_n(char *str, int *n)
 {
-	int i;
-	
+	int	i;
+
 	i = 0;
 	if (str[i] != '-')
 		return (0);
@@ -34,7 +34,7 @@ int	check_for_n(char *str, int *n)
 
 void	ft_echo(t_cmds *init)
 {
-	int i;
+	int	i;
 	int	n;
 
 	i = 1;
