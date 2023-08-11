@@ -6,7 +6,7 @@
 /*   By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/14 14:40:41 by yes-slim          #+#    #+#             */
-/*   Updated: 2023/08/10 21:29:32 by yes-slim         ###   ########.fr       */
+/*   Updated: 2023/08/11 13:49:31 by yes-slim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,18 @@
 
 int		ft_check_export(char *str);
 void	_print(t_cmds *init);
-void	new_var(char **str);
-char	**get_keyvalue(char *ident, int *i);
-void	add_var(char *ident);
+void	add_var(const char *ident);
 
 void	ft_export(t_cmds *init)
 {
 	int	i;
 
-	i = 1;
 	if (!init->str[1])
 	{
 		_print(init);
 		return ;
 	}
+	i = 1;
 	while (init->str[i])
 	{
 		if (ft_check_export(init->str[i]))

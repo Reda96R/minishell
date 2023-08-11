@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_expander.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rerayyad <rerayyad@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 14:42:53 by rerayyad          #+#    #+#             */
-/*   Updated: 2023/08/11 02:42:35 by rerayyad         ###   ########.fr       */
+/*   Updated: 2023/08/11 10:22:48 by yes-slim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ char	**ft_skipper(char **cmd)
 		// printf("%d\n", cmd[i][j]);
 		if (cmd[i][j] != 0)
 		{
-			printf("here\n");
+			// printf("here\n");
 			j++;
 		}
 		i++;
