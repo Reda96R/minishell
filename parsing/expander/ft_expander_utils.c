@@ -6,7 +6,7 @@
 /*   By: rerayyad <rerayyad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/31 08:31:04 by rerayyad          #+#    #+#             */
-/*   Updated: 2023/08/08 10:38:41 by rerayyad         ###   ########.fr       */
+/*   Updated: 2023/08/11 00:48:18 by rerayyad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ int	ft_lenght_cal(char *str, int i)
 	int	j;
 
 	j = i + 1;
-	while (ft_isalnum(str[j]))
+	while (str[i] && (ft_isalnum(str[j]) || str[j] == '_'))
 		j++;
 	return (j);
 }

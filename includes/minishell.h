@@ -6,7 +6,7 @@
 /*   By: rerayyad <rerayyad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/31 12:11:17 by rerayyad          #+#    #+#             */
-/*   Updated: 2023/08/10 13:36:30 by rerayyad         ###   ########.fr       */
+/*   Updated: 2023/08/10 23:55:09 by rerayyad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #ifndef MINISHELL_H
@@ -110,7 +110,7 @@ void	ft_add_redirection(t_parser *parser, t_mylxr *tmp, int *node_id,
 			t_data *data);
 
 /*::: expanding :::*/
-char	**ft_expander(t_data *data, char **cmd, int n);
+char	**ft_expander(t_data *data, char **cmd, int n, int quote_protect);
 size_t	ft_dollar_s(char *str);
 char	*ft_gold_finder(t_data *data, char *str);
 int		ft_question_handler(char **str);
@@ -118,7 +118,7 @@ int		ft_digit_skipper(char *str, int n);
 int		ft_translator(int i, char *str, char **tmp, t_data *data);
 char	*ft_converter(char c, t_data *data);
 char	**ft_skipper(char **cmd);
-char	*ft_quote_handler(char *cmd, int *j);
+char	*ft_quote_handler(char *cmd, int *j, int quote_protect);
 char	*ft_single_quote(char *cmd, int *j, char r);
 char	*ft_double_quote(char *cmd, int *j, char r);
 

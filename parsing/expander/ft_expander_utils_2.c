@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_expander_utils_2.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rerayyad <rerayyad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 11:51:55 by rerayyad          #+#    #+#             */
-/*   Updated: 2023/08/09 14:16:38 by yes-slim         ###   ########.fr       */
+/*   Updated: 2023/08/11 02:37:27 by rerayyad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,14 +51,31 @@ char	*ft_double_quote(char *cmd, int *j, char r)
 			*j += 1;
 		}
 	}
+	if (cmd[*j] == r)
+		*j += 1;
 	return (cmd);
 }
 
-char	*ft_quote_handler(char *cmd, int *j)
+char	*ft_protect_quotes(char *cmd, int *j)
+{
+	while (cmd[*j])
+	{
+		if (cmd[*j] == '\'')
+			cmd[*j] = -1;
+		if (cmd[*j] == '\"')
+			cmd[*j] = -2;
+		*j += 1;
+	}
+	return (ft_gold_finder(g_var.data, cmd));
+}
+
+char	*ft_quote_handler(char *cmd, int *j, int quote_protect)
 {
 	char	r;
 
 	r = cmd[*j];
+	if (g_var.hd_expansion && quote_protect)
+		return (ft_protect_quotes(cmd, j));
 	if (r == '\'')
 		cmd = ft_single_quote(cmd, j, r);
 	else

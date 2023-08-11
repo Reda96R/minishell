@@ -3,15 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   execution.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rerayyad <rerayyad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/02 18:57:34 by yes-slim          #+#    #+#             */
-/*   Updated: 2023/08/10 09:51:45 by yes-slim         ###   ########.fr       */
+/*   Updated: 2023/08/11 02:28:31 by rerayyad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
-#include <stdio.h>
 
 int	is_builtin(t_cmds *init)
 {
@@ -44,7 +43,7 @@ void	ft_execution(t_data *init)
 		g_var.data->std_out = dup(1);
 		if (g_var.data->std_out == -1)
 			ft_error_exec(7, NULL, 0);
-		init->cmds->str = ft_expander(init, init->cmds->str, 2);
+		init->cmds->str = ft_expander(init, init->cmds->str, 2, 0);
 		if (!init->pipes)
 			one_cmd(init->cmds);
 		else

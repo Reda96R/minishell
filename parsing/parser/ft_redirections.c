@@ -6,7 +6,7 @@
 /*   By: rerayyad <rerayyad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/11 15:07:51 by rerayyad          #+#    #+#             */
-/*   Updated: 2023/08/10 14:05:40 by rerayyad         ###   ########.fr       */
+/*   Updated: 2023/08/10 23:57:57 by rerayyad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,8 @@ void	ft_normal_redirection(t_mylxr *tmp, t_data *data, t_mylxr **new)
 	}
 	cmd[1] = NULL;
 	ft_strlcpy(cmd[0], tmp->next->str, ft_strlen(tmp->next->str) + 1);
-	ft_new_node(new, tmp->token_id, ft_strdup(*ft_expander(data, cmd, 0)), 1);
+	ft_new_node(new, tmp->token_id,
+		ft_strdup(*ft_expander(data, cmd, 0, 0)), 1);
 	free(cmd[1]);
 	free(cmd);
 }
@@ -55,8 +56,6 @@ void	ft_add_redirection(t_parser *parser, t_mylxr *tmp,
 	}
 	if (!new)
 		ft_errors_buster(4, data);
-	// printf("%s\n", new->str);
-	// exit (0);
 	new->node_id = (*node_id)++;
 	ft_add_node(&parser->redirections, new);
 	ft_rm_node(&parser->mylexer, tmp->next->node_id);
