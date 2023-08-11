@@ -6,7 +6,7 @@
 /*   By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/21 07:31:45 by yes-slim          #+#    #+#             */
-/*   Updated: 2023/08/11 10:26:19 by yes-slim         ###   ########.fr       */
+/*   Updated: 2023/08/11 20:28:43 by yes-slim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ void	one_cmd(t_cmds *init)
 			ft_error_exec(5, NULL, -1);
 		execve(path, init->str, g_var.data->env);
 		perror("<?>: execve");
-		exit(0);
+		exit(127);
 	}
 	ft_wait_one(pid);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   _heredoc.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: YOUNES <YOUNES@student.42.fr>              +#+  +:+       +#+        */
+/*   By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 15:32:30 by YOUNES            #+#    #+#             */
-/*   Updated: 2023/08/11 14:25:23 by YOUNES           ###   ########.fr       */
+/*   Updated: 2023/08/11 20:12:41 by yes-slim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	ft_wait_hd(int pid)
 		g_var.exit_status = WEXITSTATUS(status);
 	if (WIFSIGNALED(status))
 		if (WTERMSIG(status) == 2)
-			g_var.exit_status = 130;
+			g_var.exit_status = 1;
 }
 
 char	*ft_heredoc_core(t_mylxr *del, char *str)

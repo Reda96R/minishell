@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   multiple_cmds.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rerayyad <rerayyad@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/31 18:36:23 by yes-slim          #+#    #+#             */
-/*   Updated: 2023/08/11 01:23:08 by rerayyad         ###   ########.fr       */
+/*   Updated: 2023/08/11 20:22:43 by yes-slim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,8 @@ void	execute(t_cmds *cmd)
 	if (cmd->fd_out != 1)
 		close(cmd->fd_out);
 	execve(path, cmd->str, g_var.data->env);
-	exit (127);
+		perror("<?>: execve");
+		exit(127);
 }
 
 void	ft_wait(int pid)
