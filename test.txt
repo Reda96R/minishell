@@ -52,12 +52,9 @@
 - $adsfdssfdfadsf$adsfadsf
 - cat <"./test_files/file name with spaces"
 - ls > $HOME
+- ls | ls so many times
 
 =========================not fixed yet===================================
 
 - wrong exit status
 - bash -> exit +1 -> echo $? ----------> should display 1
-- ls | ls so many times
-
-
-

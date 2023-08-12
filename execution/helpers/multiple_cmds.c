@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   multiple_cmds.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rerayyad <rerayyad@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/31 18:36:23 by yes-slim          #+#    #+#             */
-/*   Updated: 2023/08/12 18:09:33 by rerayyad         ###   ########.fr       */
+/*   Updated: 2023/08/12 19:13:23 by yes-slim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,7 @@ void	multiple_cmds(t_data *init)
 		{
 			dup2(g_var.data->std_in, 0);
 			ft_error_exec(6, NULL, 0);
+		}
 		mid_childs(init->cmds, pi);
 		init->cmds = init->cmds->next;
 	}
