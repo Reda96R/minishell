@@ -6,7 +6,7 @@
 /*   By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/14 14:40:41 by yes-slim          #+#    #+#             */
-/*   Updated: 2023/08/11 13:49:31 by yes-slim         ###   ########.fr       */
+/*   Updated: 2023/08/12 23:06:15 by yes-slim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	ft_export(t_cmds *init)
 		return ;
 	}
 	i = 1;
-	while (init->str[i])
+	while (g_var.data->vars && init->str[i])
 	{
 		if (ft_check_export(init->str[i]))
 			add_var(init->str[i]);
