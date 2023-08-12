@@ -20,6 +20,8 @@ void	execute(t_cmds *cmd)
 {
 	char	*path;
 
+	if (cmd->fd_in == -1 || cmd->fd_out == -1)
+		exit(1);
 	signal(SIGINT, SIG_DFL);
 	signal(SIGQUIT, SIG_DFL);
 	if (!is_builtin(cmd))
@@ -72,6 +74,8 @@ void	multiple_cmds(t_data *init)
 	while (init->cmds->next)
 	{
 		if (pipe(pi) == -1)
+		{
+			dup2(g_var.data->std_in, 0);
 			ft_error_exec(6, NULL, 0);
 		mid_childs(init->cmds, pi);
 		init->cmds = init->cmds->next;

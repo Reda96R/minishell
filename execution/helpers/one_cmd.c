@@ -6,7 +6,7 @@
 /*   By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/21 07:31:45 by yes-slim          #+#    #+#             */
-/*   Updated: 2023/08/11 20:28:43 by yes-slim         ###   ########.fr       */
+/*   Updated: 2023/08/12 14:57:13 by yes-slim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,8 @@ void	one_cmd(t_cmds *init)
 		ft_error_exec(4, NULL, 0);
 	if (pid == 0)
 	{
+		if (init->fd_in == -1 || init->fd_out == -1)
+			exit(1);
 		signal(SIGINT, SIG_DFL);
 		signal(SIGQUIT, SIG_DFL);
 		path = path_getter(init);
