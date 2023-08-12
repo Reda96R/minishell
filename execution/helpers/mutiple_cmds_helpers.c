@@ -6,7 +6,7 @@
 /*   By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 21:35:26 by yes-slim          #+#    #+#             */
-/*   Updated: 2023/08/11 21:08:23 by yes-slim         ###   ########.fr       */
+/*   Updated: 2023/08/12 12:39:13 by yes-slim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,13 @@ void	first_child(t_cmds *cmd, int *pp)
 	cmd->fd_out = pp[1];
 	ft_check_files(cmd);
 	if (!cmd->str[0] || cmd->fd_in == -1 || cmd->fd_out == -1)
+	{
+		close(pp[1]);
+		if (dup2(pp[0], 0) == -1)
+			ft_error_exec(5, NULL, 0);
+		close(pp[0]);
 		return ;
+	}
 	pid = fork();
 	if (pid == -1)
 		ft_error_exec(4, NULL, 0);
@@ -37,17 +43,20 @@ void	first_child(t_cmds *cmd, int *pp)
 	close(pp[0]);
 }
 
-void	mid_childs(t_cmds *cmd)
+void	mid_childs(t_cmds *cmd, int *pp)
 {
 	pid_t	pid;
-	int		pp[2];
 
-	if (pipe(pp) == -1)
-		ft_error_exec(6, NULL, 0);
 	cmd->fd_out = pp[1];
 	ft_check_files(cmd);
 	if (!cmd->str[0] || cmd->fd_in == -1 || cmd->fd_out == -1)
+	{
+		close(pp[1]);
+		if (dup2(pp[0], 0) == -1)
+			ft_error_exec(5, NULL, 0);
+		close(pp[0]);
 		return ;
+	}
 	pid = fork();
 	if (pid == -1)
 		ft_error_exec(4, NULL, 0);
@@ -68,7 +77,7 @@ int	last_child(t_cmds *cmd)
 
 	ft_check_files(cmd);
 	if (!cmd->str[0] || cmd->fd_in == -1 || cmd->fd_out == -1)
-		return (-1);
+		return (-1);	
 	pid = fork();
 	if (pid == -1)
 		ft_error_exec(4, NULL, 0);

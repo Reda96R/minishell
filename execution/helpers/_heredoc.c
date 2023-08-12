@@ -6,7 +6,7 @@
 /*   By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 15:32:30 by YOUNES            #+#    #+#             */
-/*   Updated: 2023/08/11 20:12:41 by yes-slim         ###   ########.fr       */
+/*   Updated: 2023/08/12 10:35:04 by yes-slim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ int	ft_heredoc(t_mylxr *del)
 	pid = fork();
 	if (pid == 0)
 	{	
+		dup2(g_var.data->std_in, 0);
 		signal(SIGQUIT, SIG_IGN);
 		signal(SIGINT, SIG_DFL);
 		while (1)
