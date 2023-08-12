@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_cd.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+        */
+/*   By: YOUNES <YOUNES@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/14 14:40:33 by yes-slim          #+#    #+#             */
-/*   Updated: 2023/08/10 21:21:52 by yes-slim         ###   ########.fr       */
+/*   Updated: 2023/08/11 14:18:30 by YOUNES           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	change_pwd(void)
 			free(var->value);
 			pwd = getcwd(NULL, 0);
 			if (!pwd)
-				var->value = ft_strdup(g_var.data->pwd);
+				var->value = _strdup(g_var.data->pwd);
 			else
 				var->value = pwd;
 		}

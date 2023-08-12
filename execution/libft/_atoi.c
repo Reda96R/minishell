@@ -6,7 +6,7 @@
 /*   By: YOUNES <YOUNES@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/15 12:51:10 by yes-slim          #+#    #+#             */
-/*   Updated: 2023/08/03 15:26:46 by YOUNES           ###   ########.fr       */
+/*   Updated: 2023/08/11 19:45:35 by YOUNES           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int	_atoi(const char *str)
 	{
 		res = (res * 10) + (str[i] - '0');
 		if (res > LONG_MAX)
-			return (ft_builtins_error(7, (char *)str), 2);
+			return (ft_builtins_error(7, (char *)str), 255);
 		i++;
 	}
 	return ((int)res * si);

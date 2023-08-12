@@ -6,7 +6,7 @@
 /*   By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 15:32:30 by YOUNES            #+#    #+#             */
-/*   Updated: 2023/08/10 23:53:23 by rerayyad         ###   ########.fr       */
+/*   Updated: 2023/08/12 10:35:04 by yes-slim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,11 @@ void	ft_wait_hd(int pid)
 	int	status;
 
 	waitpid(pid, &status, 0);
+	if (WIFEXITED(status))
+		g_var.exit_status = WEXITSTATUS(status);
 	if (WIFSIGNALED(status))
-	{
-		if (WTERMSIG(status) == 3)
-			g_var.exit_status = 131;
 		if (WTERMSIG(status) == 2)
-			g_var.exit_status = 130;
-	}
+			g_var.exit_status = 1;
 }
 
 char	*ft_heredoc_core(t_mylxr *del, char *str)
@@ -61,7 +59,8 @@ int	ft_heredoc(t_mylxr *del)
 	pid = fork();
 	if (pid == 0)
 	{	
-		signal(SIGQUIT, SIG_DFL);
+		dup2(g_var.data->std_in, 0);
+		signal(SIGQUIT, SIG_IGN);
 		signal(SIGINT, SIG_DFL);
 		while (1)
 		{

@@ -6,7 +6,7 @@
 /*   By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/26 17:27:00 by yes-slim          #+#    #+#             */
-/*   Updated: 2023/08/10 21:38:05 by yes-slim         ###   ########.fr       */
+/*   Updated: 2023/08/11 20:30:30 by yes-slim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@ char	*path_getter(t_cmds *init)
 {
 	char	*path;
 
+	if (!init->str[0][0])
+		ft_error_exec(2, init->str[0], -1);
 	if (init->str[0][0] == '/')
 	{
 		if (access(init->str[0], X_OK) == -1)

@@ -6,7 +6,7 @@
 /*   By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 21:28:18 by yes-slim          #+#    #+#             */
-/*   Updated: 2023/08/10 21:28:29 by yes-slim         ###   ########.fr       */
+/*   Updated: 2023/08/11 21:18:41 by yes-slim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ void	new_var(char **str)
 	prev->next = node;
 }
 
-char	**get_keyvalue(char *ident, int *i)
+char	**get_keyvalue(const char *ident, int *i)
 {
 	char	**str;
 	int		j;
@@ -87,18 +87,18 @@ char	**get_keyvalue(char *ident, int *i)
 			break ;
 		j++;
 	}
-	str[0] = ft_substr(ident, 0, j);
+	str[0] = _substr(ident, 0, j);
 	if (ident[j] == '+')
-		str[1] = ft_substr(ident, j + 2, ft_strlen(&ident[j + 1]));
+		str[1] = _substr(ident, j + 2, _strlen(&ident[j + 1]));
 	else if (ident[j] == '=')
-		str[1] = ft_substr(ident, j + 1, ft_strlen(&ident[j]));
+		str[1] = _substr(ident, j + 1, _strlen(&ident[j]));
 	if (ident[j] != '=' && ident[j] != '+')
 		str[1] = NULL;
 	*i = j;
 	return (str);
 }
 
-void	add_var(char *ident)
+void	add_var(const char *ident)
 {
 	t_vars	*tmp;
 	char	**str;

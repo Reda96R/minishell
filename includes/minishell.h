@@ -3,12 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rerayyad <rerayyad@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/31 12:11:17 by rerayyad          #+#    #+#             */
-/*   Updated: 2023/08/12 00:04:49 by rerayyad         ###   ########.fr       */
+/*   Created: 2023/08/12 10:19:13 by yes-slim          #+#    #+#             */
+/*   Updated: 2023/08/12 10:19:15 by yes-slim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #ifndef MINISHELL_H
 # define MINISHELL_H
 
@@ -146,6 +147,7 @@ char	*_strjoin(char *s1, char *s2);
 char	*_strdup(const char *src);
 size_t	_strlen(const char *str);
 int		_strcmp(char *s1, char *s2);
+char	*_substr(char const *str, unsigned int start, size_t len);
 
 /*::: Builtins :::*/
 void	ft_pwd(t_cmds *init);

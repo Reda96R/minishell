@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   multiple_cmds.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rerayyad <rerayyad@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/31 18:36:23 by yes-slim          #+#    #+#             */
-/*   Updated: 2023/08/11 01:23:08 by rerayyad         ###   ########.fr       */
+/*   Updated: 2023/08/12 12:39:01 by yes-slim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
 void	first_child(t_cmds *cmd, int *pp);
-void	mid_childs(t_cmds *cmd);
+void	mid_childs(t_cmds *cmd, int *pp);
 int		last_child(t_cmds *cmd);
 
 void	execute(t_cmds *cmd)
@@ -34,7 +34,8 @@ void	execute(t_cmds *cmd)
 	if (cmd->fd_out != 1)
 		close(cmd->fd_out);
 	execve(path, cmd->str, g_var.data->env);
-	exit (127);
+		perror("<?>: execve");
+		exit(127);
 }
 
 void	ft_wait(int pid)
@@ -62,6 +63,7 @@ void	multiple_cmds(t_data *init)
 {
 	int	pid;
 	int	pp[2];
+	int	pi[2];
 
 	if (pipe(pp) == -1)
 		ft_error_exec(6, NULL, 0);
@@ -69,8 +71,10 @@ void	multiple_cmds(t_data *init)
 	init->cmds = init->cmds->next;
 	while (init->cmds->next)
 	{
+		if (pipe(pi) == -1)
+			ft_error_exec(6, NULL, 0);
 		init->cmds->str = ft_expander(init, init->cmds->str, 2, 0);
-		mid_childs(init->cmds);
+		mid_childs(init->cmds, pi);
 		init->cmds = init->cmds->next;
 	}
 	init->cmds->str = ft_expander(init, init->cmds->str, 2, 0);
