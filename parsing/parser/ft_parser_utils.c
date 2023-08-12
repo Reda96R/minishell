@@ -6,7 +6,7 @@
 /*   By: rerayyad <rerayyad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/11 16:06:34 by rerayyad          #+#    #+#             */
-/*   Updated: 2023/08/10 19:23:26 by rerayyad         ###   ########.fr       */
+/*   Updated: 2023/08/12 16:10:09 by rerayyad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,16 @@ char	**ft_arr_dup(char **arr)
 	while (arr[len])
 		len++;
 	str = malloc(sizeof(char *) * (len + 1));
+	if (!str)
+		ft_errors_buster(4, g_var.data);
 	while (arr[++i])
+	{
 		str[i] = ft_strdup(arr[i]);
+		free(arr[i]);
+		arr[i] = NULL;
+	}
 	str[i] = NULL;
+	free(arr);
 	return (str);
 }
 
