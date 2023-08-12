@@ -6,7 +6,7 @@
 /*   By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/14 14:40:40 by yes-slim          #+#    #+#             */
-/*   Updated: 2023/08/12 15:29:39 by yes-slim         ###   ########.fr       */
+/*   Updated: 2023/08/12 19:42:54 by yes-slim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	check_numeriq(char *str)
 	i = 0;
 	while (str[i])
 	{
-		if (str[i] == '-' && str[i] == '+')
+		if (str[i] == '-' || str[i] == '+')
 			i++;
 		if (!_isdigit(str[i]) && str[i])
 		{

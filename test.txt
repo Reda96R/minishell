@@ -53,8 +53,8 @@
 - cat <"./test_files/file name with spaces"
 - ls > $HOME
 - ls | ls so many times
+- bash -> exit +1 -> echo $? ----------> should display 1
 
 =========================not fixed yet===================================
 
 - wrong exit status
-- bash -> exit +1 -> echo $? ----------> should display 1

@@ -6,7 +6,7 @@
 /*   By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/31 18:36:23 by yes-slim          #+#    #+#             */
-/*   Updated: 2023/08/12 19:13:23 by yes-slim         ###   ########.fr       */
+/*   Updated: 2023/08/12 20:23:42 by yes-slim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,8 @@ void	execute(t_cmds *cmd)
 	if (cmd->fd_out != 1)
 		close(cmd->fd_out);
 	execve(path, cmd->str, g_var.data->env);
-		perror("<?>: execve");
-		exit(127);
+	perror("<?>: execve");
+	exit(127);
 }
 
 void	ft_wait(int pid)
@@ -83,8 +83,4 @@ void	multiple_cmds(t_data *init)
 	}
 	pid = last_child(init->cmds);
 	ft_wait(pid);
-	if (dup2(g_var.data->std_in, 0) == -1)
-		ft_error_exec(5, NULL, 0);
-	if (dup2(g_var.data->std_out, 1) == -1)
-		ft_error_exec(5, NULL, 0);
 }
