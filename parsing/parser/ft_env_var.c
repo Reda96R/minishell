@@ -6,11 +6,11 @@
 /*   By: rerayyad <rerayyad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/22 15:07:32 by rerayyad          #+#    #+#             */
-/*   Updated: 2023/08/11 21:20:57 by rerayyad         ###   ########.fr       */
+/*   Updated: 2023/08/12 15:17:00 by rerayyad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "../../includes/minishell.h"
 
 char	*ft_path_finder(t_vars *vars)
 {
@@ -82,7 +82,7 @@ void	ft_fill_env(t_data *data)
 		if (tmp->value)
 		{
 			str = ft_strjoin(tmp->key, "=");
-			data->env[i] = ft_strdup(ft_strjoin(str, tmp->value));
+			data->env[i] = ft_strjoin(str, tmp->value);
 			free(str);
 			i++;
 		}

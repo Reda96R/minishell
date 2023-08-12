@@ -6,7 +6,7 @@
 /*   By: rerayyad <rerayyad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 12:25:18 by rerayyad          #+#    #+#             */
-/*   Updated: 2023/08/11 01:03:38 by rerayyad         ###   ########.fr       */
+/*   Updated: 2023/08/12 16:55:03 by rerayyad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,21 @@ void	ft_cmd_parser(t_parser *parser, t_cmds **cmd, t_data *data)
 	ft_new_cmd(parser, args, cmd, data);
 }
 
+void	ft_pre_expand(t_data *data)
+{
+	t_cmds	*tmp;
+	char	**str;
+
+	tmp = data->cmds;
+	while (tmp)
+	{
+		str = ft_expander(data, tmp->str, 2, 0);
+		free (tmp->str);
+		tmp->str = ft_arr_dup(str);
+		tmp = tmp->next;
+	}
+}
+
 void	ft_parser(t_data *data)
 {
 	t_parser	parser;
@@ -68,4 +83,5 @@ void	ft_parser(t_data *data)
 			ft_add_cmd(&data->cmds, cmd);
 		data->mylexer = parser.mylexer;
 	}
+	ft_pre_expand(data);
 }

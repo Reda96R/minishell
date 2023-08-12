@@ -6,11 +6,11 @@
 /*   By: rerayyad <rerayyad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/21 11:28:33 by rerayyad          #+#    #+#             */
-/*   Updated: 2023/08/11 15:46:17 by rerayyad         ###   ########.fr       */
+/*   Updated: 2023/08/12 15:15:25 by rerayyad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "../../includes/minishell.h"
 
 void	ft_paths_parser(t_data *data)
 {
@@ -30,8 +30,10 @@ void	ft_paths_parser(t_data *data)
 		last_char = &data->paths[i][ft_strlen(data->paths[i]) - 1];
 		if (ft_strncmp(last_char, "/", 1))
 		{
-			str = ft_strjoin(data->paths[i], "/");
-			data->paths[i] = str;
+			str = ft_strdup(data->paths[i]);
+			free (data->paths[i]);
+			data->paths[i] = ft_strjoin(data->paths[i], "/");
+			free(str);
 		}
 		i++;
 	}
@@ -64,8 +66,8 @@ int	ft_new_var(t_vars **new_n, int node_id, char *str)
 	*new_n = (t_vars *) malloc(sizeof (t_vars));
 	if (!new_n)
 		return (0);
-	(*new_n)->key = ft_strdup(ft_substr(str, 0, i));
-	(*new_n)->value = ft_strdup(ft_substr(str, i + 1, ft_strlen(str) - i));
+	(*new_n)->key = ft_substr(str, 0, i);
+	(*new_n)->value = ft_substr(str, i + 1, ft_strlen(str) - i);
 	(*new_n)->node_id = node_id;
 	(*new_n)->next = NULL;
 	(*new_n)->prev = NULL;
