@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_janitor.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rerayyad <rerayyad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 15:58:10 by rerayyad          #+#    #+#             */
-/*   Updated: 2023/08/10 21:43:12 by yes-slim         ###   ########.fr       */
+/*   Updated: 2023/08/11 12:50:00 by rerayyad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,9 +72,9 @@ void	ft_cmd_cleaner(t_cmds **cmds)
 		tmp = (*cmds)->next;
 		redirections = (*cmds)->redirections;
 		ft_lxr_cleaner(&redirections);
-	// if ((*cmds)->str)
-	// 		ft_arr_free((*cmds)->str);
-	// 	free((*cmds)->str);
+		// if ((*cmds)->str)
+		// 	ft_arr_free((*cmds)->str);
+		free((*cmds)->str);
 		*cmds = tmp;
 	}
 	*cmds = NULL;

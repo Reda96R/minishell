@@ -6,7 +6,11 @@
 /*   By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 14:42:53 by rerayyad          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2023/08/11 21:11:46 by yes-slim         ###   ########.fr       */
+=======
+/*   Updated: 2023/08/12 01:52:53 by rerayyad         ###   ########.fr       */
+>>>>>>> origin/main
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,14 +24,20 @@ char	**ft_skipper(char **cmd)
 
 	i = 0;
 	j = 0;
+	// while (cmd[i])
+	// 	printf("%s\n", cmd[i++]);
+	// exit (0);
 	while (cmd[i])
 	{
+<<<<<<< HEAD
 		// printf("%d\n", cmd[i][j]);
 		if (cmd[i][j] != 0)
 		{
 			// printf("here\n");
+=======
+		if (cmd[i][0] != -4)
+>>>>>>> origin/main
 			j++;
-		}
 		i++;
 	}
 	str = (char **) malloc(sizeof (char *) * j + 1);
@@ -37,11 +47,15 @@ char	**ft_skipper(char **cmd)
 	j = 0;
 	while (cmd[i])
 	{
-		if (*cmd[i])
+		if (cmd[i][0] != -4)
 			str[j++] = cmd[i];
 		i++;
 	}
 	str[j] = NULL;
+	// i = 0;
+	// while (str[i])
+	// 	printf("%s\n", str[i++]);
+	// exit(0);
 	return (str);
 }
 
@@ -109,6 +123,18 @@ char	*ft_black_box(char *str)
 	return (str);
 }
 
+char	*ft_empty(void)
+{
+	char	*str;
+
+	str = (char *) malloc(sizeof(char) * 2);
+	if (!str)
+		ft_errors_buster(4, g_var.data);
+	str[0] = -4;
+	str[1] = '\0';
+	return (str);
+}
+
 char	**ft_expander(t_data *data, char **cmd, int n, int quote_protect)
 {
 	char	*str;
@@ -136,7 +162,10 @@ char	**ft_expander(t_data *data, char **cmd, int n, int quote_protect)
 					if (!i && !str[0] && !cmd[i + 1] && n)
 						ft_shell_reset(data);
 					free(cmd[i]);
-					cmd[i] = str;
+					if (!ft_strlen(str))
+						cmd[i] = ft_empty();
+					else
+						cmd[i] = str;
 					if (cmd[i][j] != '\''
 						&& cmd[i][j] != '\"') // check if it can be removed
 						j++;
