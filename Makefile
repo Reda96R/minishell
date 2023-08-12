@@ -3,17 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-<<<<<<< HEAD
-#    By: YOUNES <YOUNES@student.42.fr>              +#+  +:+       +#+         #
+#    By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/06/24 13:54:21 by yes-slim          #+#    #+#              #
-#    Updated: 2023/08/11 19:44:42 by YOUNES           ###   ########.fr        #
-=======
-#    By: rerayyad <rerayyad@student.42.fr>          +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/06/24 13:54:21 by yes-slim          #+#    #+#              #
-#    Updated: 2023/08/11 15:28:17 by rerayyad         ###   ########.fr        #
->>>>>>> origin/main
+#    Created: 2023/08/12 10:18:48 by yes-slim          #+#    #+#              #
+#    Updated: 2023/08/12 10:18:51 by yes-slim         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 

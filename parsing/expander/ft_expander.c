@@ -5,12 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/19 14:42:53 by rerayyad          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2023/08/11 21:11:46 by yes-slim         ###   ########.fr       */
-=======
-/*   Updated: 2023/08/12 01:52:53 by rerayyad         ###   ########.fr       */
->>>>>>> origin/main
+/*   Created: 2023/08/12 10:19:55 by yes-slim          #+#    #+#             */
+/*   Updated: 2023/08/12 10:20:21 by yes-slim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,14 +25,7 @@ char	**ft_skipper(char **cmd)
 	// exit (0);
 	while (cmd[i])
 	{
-<<<<<<< HEAD
-		// printf("%d\n", cmd[i][j]);
-		if (cmd[i][j] != 0)
-		{
-			// printf("here\n");
-=======
 		if (cmd[i][0] != -4)
->>>>>>> origin/main
 			j++;
 		i++;
 	}
