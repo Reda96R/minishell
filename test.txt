@@ -47,18 +47,17 @@
 - segfault when ---> echo $? many times 
 - "" ---> should send '\0' and not null
 - env  -i ./minishell ------> protect env from unset
+- export c = "x" -----> should display export: `=': not a valid identifier 
+- exit "" ---> should exit after displaying the error
+- $adsfdssfdfadsf$adsfadsf
+- cat <"./test_files/file name with spaces"
+- ls > $HOME
 
 =========================not fixed yet===================================
 
 - wrong exit status
-- cat <"./test_files/file name with spaces"
-- ls > $HOME
 - bash -> exit +1 -> echo $? ----------> should display 1
-- export c = "x" -----> should display export: `=': not a valid identifier 
-
 - ls | ls so many times
-- $adsfdssfdfadsf$adsfadsf
-- exit "" ---> should exit after displaying the error
 
 
 

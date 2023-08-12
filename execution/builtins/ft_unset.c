@@ -6,7 +6,7 @@
 /*   By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/14 14:40:45 by yes-slim          #+#    #+#             */
-/*   Updated: 2023/08/10 21:30:12 by yes-slim         ###   ########.fr       */
+/*   Updated: 2023/08/12 15:34:13 by yes-slim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,10 @@ void	del_var(char *str)
 	{
 		if (!_strcmp(tmp->key, str))
 		{
-			tmp->prev->next = tmp->next;
+			if (!tmp->prev)
+				g_var.data->vars = tmp->next;
+			else
+				tmp->prev->next = tmp->next;
 			ft_free(tmp);
 		}
 		tmp = tmp->next;
