@@ -56,9 +56,9 @@
 - bash -> exit +1 -> echo $? ----------> should display 1
 - export c = "x" -----> should display export: `=': not a valid identifier 
 
-- check if ft_skipper required or not
 - ls | ls so many times
--  
+- $adsfdssfdfadsf$adsfadsf
+- exit "" ---> should exit after displaying the error
 
 
 
