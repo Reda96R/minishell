@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rerayyad <rerayyad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/12 10:19:13 by yes-slim          #+#    #+#             */
-/*   Updated: 2023/08/12 10:19:15 by yes-slim         ###   ########.fr       */
+/*   Updated: 2023/08/12 16:55:31 by rerayyad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,6 +101,7 @@ void	ft_rm_node(t_mylxr **mylexer, int id);
 void	ft_parser(t_data *data);
 void	ft_parser_prep(t_data *data, t_parser *parser);
 void	ft_cmd_parser(t_parser *parser, t_cmds **cmd, t_data *data);
+char	**ft_arr_dup(char **arr);
 void	ft_new_cmd(t_parser *parser, char **str, t_cmds **cmd, t_data *data);
 void	ft_add_cmd(t_cmds **cmds, t_cmds *cmd);
 char	**ft_args_allocator(t_mylxr *mylexer, int *args_size);

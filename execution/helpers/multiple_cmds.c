@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   multiple_cmds.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rerayyad <rerayyad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/31 18:36:23 by yes-slim          #+#    #+#             */
-/*   Updated: 2023/08/12 12:39:01 by yes-slim         ###   ########.fr       */
+/*   Updated: 2023/08/12 18:09:33 by rerayyad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,11 +73,9 @@ void	multiple_cmds(t_data *init)
 	{
 		if (pipe(pi) == -1)
 			ft_error_exec(6, NULL, 0);
-		init->cmds->str = ft_expander(init, init->cmds->str, 2, 0);
 		mid_childs(init->cmds, pi);
 		init->cmds = init->cmds->next;
 	}
-	init->cmds->str = ft_expander(init, init->cmds->str, 2, 0);
 	pid = last_child(init->cmds);
 	ft_wait(pid);
 	if (dup2(g_var.data->std_in, 0) == -1)
