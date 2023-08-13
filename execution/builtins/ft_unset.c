@@ -6,7 +6,7 @@
 /*   By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/14 14:40:45 by yes-slim          #+#    #+#             */
-/*   Updated: 2023/08/13 12:06:54 by yes-slim         ###   ########.fr       */
+/*   Updated: 2023/08/13 16:49:14 by yes-slim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,12 +66,6 @@ void	ft_unset(t_cmds *init)
 
 	i = 1;
 	while (init->str[i])
-	{
-		if (ft_check_unset(init->str[i]))
-			del_var(init->str[i]);
-		else
-			ft_builtins_error(9, init->str[i]);
-		i++;
-	}
+		del_var(init->str[i++]);
 	g_var.exit_status = 0;
 }
