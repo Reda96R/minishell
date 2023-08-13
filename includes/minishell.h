@@ -6,7 +6,7 @@
 /*   By: rerayyad <rerayyad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/12 10:19:13 by yes-slim          #+#    #+#             */
-/*   Updated: 2023/08/13 09:15:37 by rerayyad         ###   ########.fr       */
+/*   Updated: 2023/08/13 09:24:34 by rerayyad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,7 @@ void	ft_builtins_error(int id, char *str);
 void	ft_shell_starter(t_data *data);
 int		ft_token_scanner(t_data *data);
 void	ft_shell_reset(t_data *data);
+void	ft_free_redierctions(t_mylxr *redirections);
 
 /*::: env_vars :::*/
 int		ft_env_var(t_data *data, char **env, int n);
@@ -89,7 +90,6 @@ int		ft_quotes_matcher(char *input, int i, int quote, int *quote_count);
 int		ft_quote_skiper(char *str, int quote, int i);
 char	*ft_rm_quote(char *str, char c, int n);
 int		ft_check(t_data *data, int i, int *j, int r);
-
 
 /*::: tokens :::*/
 int		ft_token_parser(t_data *data, int *node_id, int id);

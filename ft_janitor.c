@@ -3,24 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_janitor.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rerayyad <rerayyad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 15:58:10 by rerayyad          #+#    #+#             */
-/*   Updated: 2023/08/13 08:26:57 by yes-slim         ###   ########.fr       */
+/*   Updated: 2023/08/13 09:23:48 by rerayyad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/minishell.h"
 #include "includes/mylib.h"
 #include "includes/structs.h"
-
-// void  ft_data_prep(t_data *data)
-// {
-//   data->mylexer = NULL;
-//   data->cmds = NULL;
-//   data->mylexer = NULL;
-//   ft_env_setter(data, data->vars, 0);
-// }
 
 void	ft_errors_buster(int id, t_data *data)
 {
@@ -74,8 +66,6 @@ void	ft_cmd_cleaner(t_cmds **cmds)
 		tmp = (*cmds)->next;
 		redirections = (*cmds)->redirections;
 		ft_lxr_cleaner(&redirections);
-		// if ((*cmds)->str)
-		// 	ft_arr_free((*cmds)->str);
 		free((*cmds)->str);
 		*cmds = tmp;
 	}
@@ -108,35 +98,4 @@ void	ft_free_redierctions(t_mylxr *redirections)
 	}
 	free(tmp);
 	tmp = NULL;
-}
-
-void	ft_decontamination(t_data *data, int n)
-{
-	t_cmds	*tmp;
-
-	(void) n;
-	if (data->paths)
-		ft_arr_free(data->paths);
-	if (data->env)
-		ft_arr_free(data->env);
-	if (data->pwd)
-	{
-		free(data->pwd);
-		data->pwd = NULL;
-	}
-	if (data->old_pwd)
-	{
-		free(data->old_pwd);
-		data->old_pwd = NULL;
-	}
-	tmp = data->cmds;
-	while (tmp)
-	{
-		ft_arr_free(tmp->str);
-		if (tmp->redirections)
-			ft_free_redierctions(tmp->redirections);
-		free (tmp);
-		tmp = tmp->next;
-	}
-	free(tmp);
 }

@@ -6,7 +6,7 @@
 #    By: rerayyad <rerayyad@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/12 10:18:48 by yes-slim          #+#    #+#              #
-#    Updated: 2023/08/13 09:09:14 by rerayyad         ###   ########.fr        #
+#    Updated: 2023/08/13 09:23:09 by rerayyad         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -49,7 +49,7 @@ EXEC		= execution \
 			  
 Exec_SRCS   = $(addsuffix .c, $(addprefix execution/, $(EXEC)))
 #====================================================================#
-OBJ     	= $(Exec_SRCS:.c=.o) $(Pars_SRCS:.c=.o) ft_janitor.o ft_exec_janitor.o
+OBJ     	= $(Exec_SRCS:.c=.o) $(Pars_SRCS:.c=.o) ft_janitor.o ft_exec_janitor.o ft_janitor_utils.o
 #=========================compile=============================#
 %.o     : %.c
 		 @echo $(grey)$(italic)"	~Compiling $<"$(reset)
