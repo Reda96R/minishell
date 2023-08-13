@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rerayyad <rerayyad@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/12 10:19:13 by yes-slim          #+#    #+#             */
-/*   Updated: 2023/08/13 00:50:41 by rerayyad         ###   ########.fr       */
+/*   Updated: 2023/08/13 03:01:56 by yes-slim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -138,7 +138,7 @@ int		_dprintf(int fd, const char *str, ...);
 int		ft_heredoc(t_mylxr *del);
 
 /*::: readline :::*/
-void 	rl_replace_line (const char *text, int clear_undo);
+void	rl_replace_line(const char *text, int clear_undo);
 
 /*::: Libfts :::*/
 int		_isdigit(int c);
@@ -157,7 +157,7 @@ void	ft_exit(t_cmds *cmd);
 void	ft_env(t_cmds *init);
 void	ft_echo(t_cmds *init);
 int		ft_cd(t_cmds *init);
-void    ft_export(t_cmds *init);
+void	ft_export(t_cmds *init);
 void	ft_unset(t_cmds *init);
 
 #endif

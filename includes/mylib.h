@@ -6,12 +6,12 @@
 /*   By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/20 15:49:24 by rerayyad          #+#    #+#             */
-/*   Updated: 2023/08/13 02:51:15 by yes-slim         ###   ########.fr       */
+/*   Updated: 2023/08/13 03:04:55 by yes-slim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFT_H
-# define LIBFT_H
+#ifndef MYLIB_H
+# define MYLIB_H
 
 # include <unistd.h>
 # include <stdlib.h>
@@ -51,7 +51,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len);
 int		ft_toupper(int c);
 int		ft_tolower(int c);
 char	*ft_itoa(int n);
-int   	ft_isspace(int c);
-void   	ft_arr_free(char **arr);
+int		ft_isspace(int c);
+void	ft_arr_free(char **arr);
 
 #endif

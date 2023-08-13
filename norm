@@ -1,0 +1,5 @@
+minishell.c: OK!
+ft_exec_janitor.c: OK!
+ft_janitor.c: Error!
+Error: WRONG_SCOPE_COMMENT  (line:  77, col:   9):	Comment is invalid in this scope
+Error: WRONG_SCOPE_COMMENT  (line:  78, col:   9):	Comment is invalid in this scope
