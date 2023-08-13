@@ -6,7 +6,7 @@
 /*   By: rerayyad <rerayyad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 12:29:26 by rerayyad          #+#    #+#             */
-/*   Updated: 2023/07/20 15:35:54 by rerayyad         ###   ########.fr       */
+/*   Updated: 2023/08/13 02:10:52 by rerayyad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,4 +20,5 @@ void	ft_arr_free(char **arr)
 	while (arr[i])
 		free(arr[i++]);
 	free(arr);
+	arr = NULL;
 }
