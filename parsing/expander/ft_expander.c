@@ -6,7 +6,7 @@
 /*   By: rerayyad <rerayyad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/12 10:19:55 by yes-slim          #+#    #+#             */
-/*   Updated: 2023/08/12 16:39:02 by rerayyad         ###   ########.fr       */
+/*   Updated: 2023/08/12 23:30:46 by rerayyad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,6 @@ char	**ft_skipper(char **cmd)
 
 	i = 0;
 	j = 0;
-	// while (cmd[i])
-	// 	printf("%s\n", cmd[i++]);
-	// exit (0);
 	while (cmd[i])
 	{
 		if (cmd[i][0] != -4)
@@ -41,10 +38,6 @@ char	**ft_skipper(char **cmd)
 		i++;
 	}
 	str[j] = NULL;
-	// i = 0;
-	// while (str[i])
-	// 	printf("%s\n", str[i++]);
-	// exit(0);
 	return (str);
 }
 

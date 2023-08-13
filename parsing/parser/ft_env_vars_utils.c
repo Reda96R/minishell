@@ -6,7 +6,7 @@
 /*   By: rerayyad <rerayyad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/21 11:28:33 by rerayyad          #+#    #+#             */
-/*   Updated: 2023/08/12 15:15:25 by rerayyad         ###   ########.fr       */
+/*   Updated: 2023/08/13 01:57:19 by rerayyad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	ft_paths_parser(t_data *data)
 		{
 			str = ft_strdup(data->paths[i]);
 			free (data->paths[i]);
-			data->paths[i] = ft_strjoin(data->paths[i], "/");
+			data->paths[i] = ft_strjoin(str, "/");
 			free(str);
 		}
 		i++;

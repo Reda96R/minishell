@@ -6,7 +6,7 @@
 /*   By: rerayyad <rerayyad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/22 15:07:32 by rerayyad          #+#    #+#             */
-/*   Updated: 2023/08/12 15:17:00 by rerayyad         ###   ########.fr       */
+/*   Updated: 2023/08/13 02:20:39 by rerayyad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,7 +107,7 @@ int	ft_env_var(t_data *data, char **env, int n)
 		tmp = tmp->next;
 	data->env = (char **) malloc(sizeof (char *) * (tmp->node_id + 2));
 	if (!data->env)
-		return (0);
+		ft_errors_buster(4, data);
 	ft_paths_parser(data);
 	ft_pwd_finder(data->vars, data);
 	ft_fill_env(data);
