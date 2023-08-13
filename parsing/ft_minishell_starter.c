@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_minishell_starter.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rerayyad <rerayyad@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/02 18:58:02 by yes-slim          #+#    #+#             */
-/*   Updated: 2023/08/13 04:43:56 by rerayyad         ###   ########.fr       */
+/*   Updated: 2023/08/13 10:39:23 by yes-slim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ void	ft_shell_reset(t_data *data)
 		free(data->input);
 	data->input = NULL;
 	ft_decontamination(data, 0);
+	data->cmds = NULL;
 	ft_env_var(data, NULL, 0);
 	ft_shell_starter(data);
 }

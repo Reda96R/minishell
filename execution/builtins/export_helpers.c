@@ -6,7 +6,7 @@
 /*   By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 21:28:18 by yes-slim          #+#    #+#             */
-/*   Updated: 2023/08/13 05:06:53 by yes-slim         ###   ########.fr       */
+/*   Updated: 2023/08/13 12:16:16 by yes-slim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ int	ft_check_export(char *str)
 	i = 0;
 	if (!_isalpha(str[i]) && str[i] != '_')
 		return (0);
+	printf("%c\n", str[i]);
 	i++;
 	while (str[i] && str[i] != '=')
 	{

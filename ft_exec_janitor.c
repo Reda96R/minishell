@@ -6,7 +6,7 @@
 /*   By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 21:42:27 by yes-slim          #+#    #+#             */
-/*   Updated: 2023/08/12 21:37:51 by yes-slim         ###   ########.fr       */
+/*   Updated: 2023/08/13 12:10:43 by yes-slim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ void	ft_builtins_error(int id, char *str)
 		_dprintf(2, "<?>: export: `%s': not a valid identifier\n", str);
 	else if (id == 9)
 		_dprintf(2, "<?>: unset: `%s': not a valid identifier\n", str);
+	g_var.exit_status = 1;
 	g_var.data->color = 0;
 }
 
