@@ -6,7 +6,7 @@
 /*   By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/14 14:40:38 by yes-slim          #+#    #+#             */
-/*   Updated: 2023/08/10 21:22:30 by yes-slim         ###   ########.fr       */
+/*   Updated: 2023/08/13 08:55:18 by yes-slim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,12 @@ void	ft_env(t_cmds *init)
 		return ;
 	}
 	i = 0;
-	while (g_var.data->env[i])
-	{
-		_dprintf(init->fd_out, "%s\n", g_var.data->env[i]);
-		i++;
+	if (g_var.data->env)
+	{	
+		while (g_var.data->env[i])
+		{
+			_dprintf(init->fd_out, "%s\n", g_var.data->env[i]);
+			i++;
+		}
 	}
 }

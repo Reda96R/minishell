@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   multiple_cmds.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rerayyad <rerayyad@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/31 18:36:23 by yes-slim          #+#    #+#             */
-/*   Updated: 2023/08/13 06:52:57 by rerayyad         ###   ########.fr       */
+/*   Updated: 2023/08/13 08:25:10 by yes-slim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,9 +63,9 @@ void	ft_wait(int pid)
 
 void	multiple_cmds(t_data *init)
 {
-	int	pid;
-	int	pp[2];
-	int	pi[2];
+	int		pid;
+	int		pp[2];
+	int		pi[2];
 	t_cmds	*tmp;
 
 	if (pipe(pp) == -1)
