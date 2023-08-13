@@ -6,7 +6,7 @@
 /*   By: rerayyad <rerayyad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/12 10:19:13 by yes-slim          #+#    #+#             */
-/*   Updated: 2023/08/13 00:50:41 by rerayyad         ###   ########.fr       */
+/*   Updated: 2023/08/13 03:11:22 by rerayyad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,6 +121,7 @@ int		ft_digit_skipper(char *str, int n);
 int		ft_translator(int i, char *str, char **tmp, t_data *data);
 char	*ft_converter(char c, t_data *data);
 char	**ft_skipper(char **cmd);
+char	*ft_black_box(char *str);
 char	*ft_quote_handler(char *cmd, int *j, int quote_protect);
 char	*ft_single_quote(char *cmd, int *j, char r);
 char	*ft_double_quote(char *cmd, int *j, char r);

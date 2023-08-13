@@ -6,7 +6,7 @@
 /*   By: rerayyad <rerayyad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/12 10:19:55 by yes-slim          #+#    #+#             */
-/*   Updated: 2023/08/12 23:30:46 by rerayyad         ###   ########.fr       */
+/*   Updated: 2023/08/13 03:16:33 by rerayyad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,27 +84,6 @@ char	*ft_gold_finder(t_data *data, char *str)
 	return (tmp0);
 }
 
-char	*ft_black_box(char *str)
-{
-	int	i;
-
-	i = 0;
-	ft_rm_quote(str, '\'', 1);
-	ft_rm_quote(str, '\"', 1);
-	ft_rm_quote(str, '$', 1);
-	while (str[i])
-	{
-		if (str[i] == -1)
-			str[i] = '\'';
-		else if (str[i] == -2)
-			str[i] = '\"';
-		else if (str[i] == -3)
-			str[i] = '$';
-		i++;
-	}
-	return (str);
-}
-
 char	*ft_empty(void)
 {
 	char	*str;
@@ -149,7 +128,7 @@ char	**ft_expander(t_data *data, char **cmd, int n, int quote_protect)
 					else
 						cmd[i] = str;
 					if (cmd[i][j] != '\''
-						&& cmd[i][j] != '\"') // check if it can be removed
+						&& cmd[i][j] != '\"') // ch	eck if it can be removed
 						j++;
 				}
 			}

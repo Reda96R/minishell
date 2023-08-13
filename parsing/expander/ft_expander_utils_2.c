@@ -6,7 +6,7 @@
 /*   By: rerayyad <rerayyad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 11:51:55 by rerayyad          #+#    #+#             */
-/*   Updated: 2023/08/11 02:37:27 by rerayyad         ###   ########.fr       */
+/*   Updated: 2023/08/13 03:10:34 by rerayyad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,4 +96,25 @@ char	*ft_quote_handler(char *cmd, int *j, int quote_protect)
 		}
 	}
 	return (cmd);
+}
+
+char	*ft_black_box(char *str)
+{
+	int	i;
+
+	i = 0;
+	ft_rm_quote(str, '\'', 1);
+	ft_rm_quote(str, '\"', 1);
+	ft_rm_quote(str, '$', 1);
+	while (str[i])
+	{
+		if (str[i] == -1)
+			str[i] = '\'';
+		else if (str[i] == -2)
+			str[i] = '\"';
+		else if (str[i] == -3)
+			str[i] = '$';
+		i++;
+	}
+	return (str);
 }

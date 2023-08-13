@@ -6,7 +6,7 @@
 /*   By: rerayyad <rerayyad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/02 18:58:02 by yes-slim          #+#    #+#             */
-/*   Updated: 2023/08/13 02:56:00 by rerayyad         ###   ########.fr       */
+/*   Updated: 2023/08/13 03:32:40 by rerayyad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,14 @@ void	ft_shell_reset(t_data *data)
 
 void	ft_prompt(t_data *data)
 {
+	char	*str;
+
 	if (!data->color)
-		data->input = ft_strtrim(readline(READLINE_MSG_R), " ");
+		str = readline(READLINE_MSG_R);
 	else
-		data->input = ft_strtrim(readline(READLINE_MSG_G), " ");
+		str = readline(READLINE_MSG_G);
+	data->input = ft_strtrim(str, " ");
+	free (str);
 	g_var.sig = 0;
 	if (!data->input)
 	{

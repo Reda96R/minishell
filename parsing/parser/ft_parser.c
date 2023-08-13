@@ -6,7 +6,7 @@
 /*   By: rerayyad <rerayyad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 12:25:18 by rerayyad          #+#    #+#             */
-/*   Updated: 2023/08/13 01:33:14 by rerayyad         ###   ########.fr       */
+/*   Updated: 2023/08/13 03:06:40 by rerayyad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,8 +75,6 @@ void	ft_parser(t_data *data)
 			ft_rm_node(&data->mylexer, data->mylexer->node_id);
 		ft_parser_prep(data, &parser);
 		ft_cmd_parser(&parser, &cmd, data);
-		// if (!cmd)
-			// ft_error
 		if (!data->cmds)
 			data->cmds = cmd;
 		else
