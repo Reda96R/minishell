@@ -6,7 +6,7 @@
 /*   By: rerayyad <rerayyad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 15:58:10 by rerayyad          #+#    #+#             */
-/*   Updated: 2023/08/13 04:45:29 by rerayyad         ###   ########.fr       */
+/*   Updated: 2023/08/13 05:42:35 by rerayyad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,6 +94,22 @@ t_mylxr	*ft_node_clear(t_mylxr **node)
 	return (NULL);
 }
 
+void	ft_free_redierctions(t_mylxr *redirections)
+{
+	t_mylxr	*tmp;
+
+	tmp = redirections;
+	while (tmp)
+	{
+		free(tmp->str);
+		tmp->str = NULL;
+		free(tmp);
+		tmp = tmp->next;
+	}
+	free(tmp);
+	tmp = NULL;
+}
+
 void	ft_decontamination(t_data *data, int n)
 {
 	t_cmds	*tmp;
@@ -117,6 +133,8 @@ void	ft_decontamination(t_data *data, int n)
 	while (tmp)
 	{
 		ft_arr_free(tmp->str);
+		if (tmp->redirections)
+			ft_free_redierctions(tmp->redirections);
 		free (tmp);
 		tmp = tmp->next;
 	}

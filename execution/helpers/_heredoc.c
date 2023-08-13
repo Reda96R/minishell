@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   _heredoc.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rerayyad <rerayyad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 15:32:30 by YOUNES            #+#    #+#             */
-/*   Updated: 2023/08/12 21:03:18 by yes-slim         ###   ########.fr       */
+/*   Updated: 2023/08/13 06:32:31 by rerayyad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "../../includes/minishell.h"
 
 void	ft_wait_hd(int pid)
 {
@@ -38,6 +38,7 @@ char	*ft_heredoc_core(t_mylxr *del, char *str)
 		tmp[0] = ft_strdup(str);
 		if (!tmp[0])
 		{
+			free (str);
 			free(tmp);
 			ft_errors_buster(4, g_var.data);
 		}
@@ -45,6 +46,7 @@ char	*ft_heredoc_core(t_mylxr *del, char *str)
 		tmp = ft_expander(g_var.data, tmp, 0, 1);
 		free(str);
 		str = tmp[0];
+		free(tmp);
 	}
 	return (str);
 }
@@ -62,7 +64,9 @@ void	ft_child(int *pp, char *str, t_mylxr *del)
 			printf("\n");
 			exit(0);
 		}
-		_dprintf(pp[1], "%s\n", ft_heredoc_core(del, str));
+		str = ft_heredoc_core(del, str);
+		_dprintf(pp[1], "%s\n", str);
+		free(str);
 	}
 }
 

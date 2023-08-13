@@ -6,7 +6,7 @@
 /*   By: rerayyad <rerayyad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/11 15:07:51 by rerayyad          #+#    #+#             */
-/*   Updated: 2023/08/10 23:57:57 by rerayyad         ###   ########.fr       */
+/*   Updated: 2023/08/13 06:05:18 by rerayyad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 void	ft_normal_redirection(t_mylxr *tmp, t_data *data, t_mylxr **new)
 {
 	char	**cmd;
+	char	**tmp0;
 
 	*new = NULL;
 	cmd = (char **)malloc (sizeof(char *) * 2);
@@ -29,8 +30,9 @@ void	ft_normal_redirection(t_mylxr *tmp, t_data *data, t_mylxr **new)
 	}
 	cmd[1] = NULL;
 	ft_strlcpy(cmd[0], tmp->next->str, ft_strlen(tmp->next->str) + 1);
-	ft_new_node(new, tmp->token_id,
-		ft_strdup(*ft_expander(data, cmd, 0, 0)), 1);
+	tmp0 = ft_expander(data, cmd, 0, 0);
+	ft_new_node(new, tmp->token_id, *tmp0, 1);
+	ft_arr_free(tmp0);
 	free(cmd[1]);
 	free(cmd);
 }
@@ -39,6 +41,7 @@ void	ft_add_redirection(t_parser *parser, t_mylxr *tmp,
 		int *node_id, t_data *data)
 {
 	t_mylxr	*new;
+	char	*str;
 
 	new = NULL;
 	if (!tmp->next->str)
@@ -52,7 +55,9 @@ void	ft_add_redirection(t_parser *parser, t_mylxr *tmp,
 			g_var.hd_expansion = 0;
 			ft_rm_quote(tmp->next->str, tmp->next->str[0], 1);
 		}
-		ft_new_node(&new, tmp->token_id, ft_strdup(tmp->next->str), 0);
+		str = ft_strdup(tmp->next->str);
+		ft_new_node(&new, tmp->token_id, str, 0);
+		free(str);
 	}
 	if (!new)
 		ft_errors_buster(4, data);

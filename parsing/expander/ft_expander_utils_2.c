@@ -6,7 +6,7 @@
 /*   By: rerayyad <rerayyad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 11:51:55 by rerayyad          #+#    #+#             */
-/*   Updated: 2023/08/13 03:10:34 by rerayyad         ###   ########.fr       */
+/*   Updated: 2023/08/13 06:01:53 by rerayyad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ char	*ft_quote_handler(char *cmd, int *j, int quote_protect)
 	else
 	{
 		*j += 1;
-		if (ft_dollar_s(ft_substr(cmd, *j, ft_strlen(cmd))) && cmd[*j] != r)
+		if (ft_dollar_s(cmd + (*j)) && cmd[*j] != r)
 			cmd = ft_double_quote(cmd, j, r);
 		else
 		{
