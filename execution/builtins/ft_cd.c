@@ -6,7 +6,7 @@
 /*   By: rerayyad <rerayyad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/14 14:40:33 by yes-slim          #+#    #+#             */
-/*   Updated: 2023/08/13 06:58:48 by rerayyad         ###   ########.fr       */
+/*   Updated: 2023/08/13 07:21:03 by yes-slim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,11 @@ void	change_pwd(void)
 			if (!pwd)
 				var->value = _strdup(g_var.data->pwd);
 			else
+			{
 				var->value = _strdup(pwd);
+				free(pwd);
+			}
+			
 		}
 		var = var->next;
 	}
@@ -60,6 +64,7 @@ int	check_fail(void)
 		ft_builtins_error(1, NULL);
 		return (0);
 	}
+	free(check);
 	return (1);
 }
 
@@ -68,13 +73,12 @@ char	*get_home(t_data *data)
 	char	*home;
 	t_vars	*var;
 
-	home = malloc(sizeof(char *));
 	var = data->vars;
 	while (var)
 	{
 		if (!_strcmp(var->key, "HOME"))
 		{
-			home = var->value;
+			home = _strdup(var->value);
 			return (home);
 		}
 		var = var->next;
@@ -90,9 +94,13 @@ int	ft_cd(t_cmds *init)
 	if (!init->str[1] || !_strcmp(init->str[1], "~"))
 	{
 		if (!chdir(home))
+		{
+			free(home);
 			return (change_pwd(), change_oldpwd(g_var.data->pwd), 0);
+		}
 		return (ft_builtins_error(2, NULL), 0);
 	}
+	free(home);
 	if (_strcmp(init->str[1], "."))
 	{
 		if (!chdir(init->str[1]))
