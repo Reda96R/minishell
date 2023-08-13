@@ -6,7 +6,7 @@
 /*   By: rerayyad <rerayyad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 15:58:10 by rerayyad          #+#    #+#             */
-/*   Updated: 2023/08/13 02:20:21 by rerayyad         ###   ########.fr       */
+/*   Updated: 2023/08/13 02:49:25 by rerayyad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,8 +103,10 @@ void	ft_decontamination(t_data *data, int n)
 		ft_arr_free(data->paths);
 	if (data->env)
 		ft_arr_free(data->env);
-	free(data->pwd);
-	free(data->old_pwd);
+	if (data->pwd)
+		free(data->pwd);
+	if (data->old_pwd)
+		free(data->old_pwd);
 	tmp = data->cmds;
 	while (tmp)
 	{
