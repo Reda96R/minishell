@@ -6,12 +6,14 @@
 /*   By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 15:58:02 by rerayyad          #+#    #+#             */
-/*   Updated: 2023/08/13 10:40:19 by yes-slim         ###   ########.fr       */
+/*   Updated: 2023/08/13 13:38:13 by rerayyad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/minishell.h"
 #include "includes/structs.h"
+
+t_glbl	g_var;
 
 int	main(int ac, char *av[], char *env[])
 {
