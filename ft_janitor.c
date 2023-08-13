@@ -6,7 +6,7 @@
 /*   By: rerayyad <rerayyad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 15:58:10 by rerayyad          #+#    #+#             */
-/*   Updated: 2023/08/13 05:42:35 by rerayyad         ###   ########.fr       */
+/*   Updated: 2023/08/13 06:41:26 by rerayyad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -138,4 +138,5 @@ void	ft_decontamination(t_data *data, int n)
 		free (tmp);
 		tmp = tmp->next;
 	}
+	free(tmp);
 }

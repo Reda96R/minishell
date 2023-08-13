@@ -6,7 +6,7 @@
 /*   By: rerayyad <rerayyad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 12:25:18 by rerayyad          #+#    #+#             */
-/*   Updated: 2023/08/13 03:06:40 by rerayyad         ###   ########.fr       */
+/*   Updated: 2023/08/13 08:01:11 by rerayyad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,6 @@ void	ft_pre_expand(t_data *data)
 	while (tmp)
 	{
 		str = ft_expander(data, tmp->str, 2, 0);
-		free (tmp->str);
 		tmp->str = str;
 		tmp = tmp->next;
 	}
