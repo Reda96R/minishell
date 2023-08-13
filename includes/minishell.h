@@ -6,7 +6,7 @@
 /*   By: rerayyad <rerayyad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/12 10:19:13 by yes-slim          #+#    #+#             */
-/*   Updated: 2023/08/13 03:36:48 by rerayyad         ###   ########.fr       */
+/*   Updated: 2023/08/13 09:15:37 by rerayyad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ typedef struct s_data
 }	t_data;
 
 void	ft_decontamination(t_data *data, int n);
+
 /*::: janitor :::*/
 void	ft_errors_buster(int id, t_data *data);
 t_mylxr	*ft_node_clear(t_mylxr **node);
@@ -87,6 +88,8 @@ int		ft_quotes_counter(char *input);
 int		ft_quotes_matcher(char *input, int i, int quote, int *quote_count);
 int		ft_quote_skiper(char *str, int quote, int i);
 char	*ft_rm_quote(char *str, char c, int n);
+int		ft_check(t_data *data, int i, int *j, int r);
+
 
 /*::: tokens :::*/
 int		ft_token_parser(t_data *data, int *node_id, int id);
@@ -114,6 +117,9 @@ void	ft_add_redirection(t_parser *parser, t_mylxr *tmp, int *node_id,
 
 /*::: expanding :::*/
 char	**ft_expander(t_data *data, char **cmd, int n, int quote_protect);
+char	*ft_normal_expand(char **cmd, int n, int *j, int i);
+char	*ft_empty(void);
+int		ft_spotter(char **cmd);
 size_t	ft_dollar_s(char *str);
 char	*ft_gold_finder(t_data *data, char *str);
 int		ft_question_handler(char **str);

@@ -6,11 +6,20 @@
 /*   By: rerayyad <rerayyad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/07 12:18:09 by rerayyad          #+#    #+#             */
-/*   Updated: 2023/08/05 15:27:40 by rerayyad         ###   ########.fr       */
+/*   Updated: 2023/08/13 08:54:45 by rerayyad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
+
+int	ft_check(t_data *data, int i, int *j, int r)
+{
+	if ((ft_token_identifier(data, (*j + i))
+			|| ft_isspace(data->input[*j + i])) && !r)
+		return (1);
+	*j += 1;
+	return (0);
+}
 
 char	*ft_rm_quote(char *str, char c, int n)
 {

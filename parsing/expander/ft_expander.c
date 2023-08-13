@@ -6,7 +6,7 @@
 /*   By: rerayyad <rerayyad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/12 10:19:55 by yes-slim          #+#    #+#             */
-/*   Updated: 2023/08/13 07:55:08 by rerayyad         ###   ########.fr       */
+/*   Updated: 2023/08/13 09:16:36 by rerayyad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,7 @@ char	**ft_skipper(char **cmd)
 	int		i;
 	int		j;
 
-	i = 0;
-	j = 0;
-	while (cmd[i])
-	{
-		if (cmd[i][0] != -4)
-			j++;
-		i++;
-	}
+	j = ft_spotter(cmd);
 	str = (char **) malloc(sizeof (char *) * j + 1);
 	if (!str)
 		ft_errors_buster(4, g_var.data);
@@ -101,11 +94,11 @@ char	*ft_empty(void)
 
 char	**ft_expander(t_data *data, char **cmd, int n, int quote_protect)
 {
-	char	*str;
 	int		i;
 	int		j;
 
 	i = 0;
+	(void)data;
 	j = 0;
 	while (cmd[i])
 	{
@@ -116,27 +109,7 @@ char	**ft_expander(t_data *data, char **cmd, int n, int quote_protect)
 				cmd[i] = ft_quote_handler(cmd[i], &j, quote_protect);
 			else if (cmd[i][j] == '$' && cmd[i][j + 1] != '\''
 					&& cmd[i][j + 1] != '\"')
-			{
-				if (!ft_isalnum(cmd[i][j + 1]) && cmd[i][j + 1] != '_' &&
-					cmd[i][j + 1] != '?')
-					cmd[i][j++] = -3;
-				else
-				{
-					str = ft_gold_finder(data, cmd[i]);
-					if (!i && !str[0] && !cmd[i + 1] && n)
-						ft_shell_reset(data);
-					free(cmd[i]);
-					if (!ft_strlen(str))
-					{
-						free(str);
-						cmd[i] = ft_empty();
-					}
-					else
-						cmd[i] = str;
-					if (cmd[i] && cmd[i][j] != '\'' && cmd[i][j] != '\"') // ch	eck if it can be removed
-						j++;
-				}
-			}
+				cmd[i] = ft_normal_expand(cmd, n, &j, i);
 			else
 				j++;
 		}

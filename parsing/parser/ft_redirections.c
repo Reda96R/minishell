@@ -6,7 +6,7 @@
 /*   By: rerayyad <rerayyad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/11 15:07:51 by rerayyad          #+#    #+#             */
-/*   Updated: 2023/08/13 08:21:52 by rerayyad         ###   ########.fr       */
+/*   Updated: 2023/08/13 08:31:34 by rerayyad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	ft_normal_redirection(t_mylxr *tmp, t_data *data, t_mylxr **new)
 }
 
 void	ft_add_redirection(t_parser *parser, t_mylxr *tmp,
-		int *node_id, t_data *data)
+	int *node_id, t_data *data)
 {
 	t_mylxr	*new;
 	char	*str;
@@ -50,13 +50,10 @@ void	ft_add_redirection(t_parser *parser, t_mylxr *tmp,
 		ft_normal_redirection(tmp, data, &new);
 	else
 	{
+		g_var.hd_expansion = !(tmp->next->str[0] == '\''
+				|| tmp->next->str[0] == '\"');
 		if (tmp->next->str[0] == '\'' || tmp->next->str[0] == '\"')
-		{
-			g_var.hd_expansion = 0;
 			ft_rm_quote(tmp->next->str, tmp->next->str[0], 1);
-		}
-		else
-			g_var.hd_expansion = 1;
 		str = ft_strdup(tmp->next->str);
 		ft_new_node(&new, tmp->token_id, str, 0);
 		free(str);
