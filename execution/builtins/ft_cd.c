@@ -6,7 +6,7 @@
 /*   By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/14 14:40:33 by yes-slim          #+#    #+#             */
-/*   Updated: 2023/08/13 02:42:17 by yes-slim         ###   ########.fr       */
+/*   Updated: 2023/08/13 03:29:20 by yes-slim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	change_pwd(void)
 			if (!pwd)
 				var->value = _strdup(g_var.data->pwd);
 			else
-				var->value = pwd;
+				var->value = _strdup(pwd);
 		}
 		var = var->next;
 	}
@@ -43,7 +43,7 @@ void	change_oldpwd(char *old_pwd)
 		if (!_strcmp(var->key, "OLDPWD"))
 		{
 			free(var->value);
-			var->value = old_pwd;
+			var->value = _strdup(old_pwd);
 		}
 		var = var->next;
 	}

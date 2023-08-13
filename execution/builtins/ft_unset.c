@@ -6,7 +6,7 @@
 /*   By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/14 14:40:45 by yes-slim          #+#    #+#             */
-/*   Updated: 2023/08/12 22:01:35 by yes-slim         ###   ########.fr       */
+/*   Updated: 2023/08/13 03:25:21 by yes-slim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 
 void	ft_free(t_vars *init)
 {
-	free(init->key);
+	if (init->key)
+		free(init->key);
 	if (init->value)
 		free(init->value);
 	free(init);
