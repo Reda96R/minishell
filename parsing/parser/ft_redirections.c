@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_redirections.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rerayyad <rerayyad@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/11 15:07:51 by rerayyad          #+#    #+#             */
-/*   Updated: 2023/08/13 08:31:34 by rerayyad         ###   ########.fr       */
+/*   Updated: 2023/08/13 09:38:40 by yes-slim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,6 @@ void	ft_normal_redirection(t_mylxr *tmp, t_data *data, t_mylxr **new)
 	ft_new_node(new, tmp->token_id, *tmp0, 1);
 	ft_arr_free(tmp0);
 	free(cmd[1]);
-	free(cmd);
 }
 
 void	ft_add_redirection(t_parser *parser, t_mylxr *tmp,
