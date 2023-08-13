@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_janitor.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rerayyad <rerayyad@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 15:58:10 by rerayyad          #+#    #+#             */
-/*   Updated: 2023/08/13 02:49:25 by rerayyad         ###   ########.fr       */
+/*   Updated: 2023/08/13 03:29:38 by yes-slim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,10 +103,10 @@ void	ft_decontamination(t_data *data, int n)
 		ft_arr_free(data->paths);
 	if (data->env)
 		ft_arr_free(data->env);
-	if (data->pwd)
-		free(data->pwd);
-	if (data->old_pwd)
-		free(data->old_pwd);
+	// if (data->pwd)
+	// 	free(data->pwd);
+	// if (data->old_pwd)
+	// 	free(data->old_pwd);
 	tmp = data->cmds;
 	while (tmp)
 	{

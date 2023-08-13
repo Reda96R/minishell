@@ -6,7 +6,7 @@
 /*   By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 21:28:18 by yes-slim          #+#    #+#             */
-/*   Updated: 2023/08/11 21:18:41 by yes-slim         ###   ########.fr       */
+/*   Updated: 2023/08/13 03:31:30 by yes-slim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,7 +115,10 @@ void	add_var(const char *ident)
 				if (ident[j] == '+')
 					tmp->value = _strjoin(tmp->value, str[1]);
 				else
+				{
+					free(tmp->value);
 					tmp->value = str[1];
+				}
 			}
 			return ;
 		}
