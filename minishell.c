@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rerayyad <rerayyad@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 15:58:02 by rerayyad          #+#    #+#             */
 /*   Updated: 2023/08/13 02:24:03 by rerayyad         ###   ########.fr       */
@@ -26,6 +26,12 @@ int	main(int ac, char *av[], char *env[])
 	g_var.data = &data;
 	g_var.sig = 1;
 	g_var.hd_expansion = 1;
+	g_var.data->std_in = dup(0);
+	if (g_var.data->std_in == -1)
+		ft_error_exec(7, NULL, 0);
+	g_var.data->std_out = dup(1);
+	if (g_var.data->std_out == -1)
+		ft_error_exec(7, NULL, 0);
 	ft_shell_starter(&data);
 	return (1);
 }

@@ -6,7 +6,7 @@
 /*   By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 15:32:30 by YOUNES            #+#    #+#             */
-/*   Updated: 2023/08/12 10:35:04 by yes-slim         ###   ########.fr       */
+/*   Updated: 2023/08/12 21:03:18 by yes-slim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,23 @@ char	*ft_heredoc_core(t_mylxr *del, char *str)
 	return (str);
 }
 
+void	ft_child(int *pp, char *str, t_mylxr *del)
+{
+	dup2(g_var.data->std_in, 0);
+	signal(SIGQUIT, SIG_IGN);
+	signal(SIGINT, SIG_DFL);
+	while (1)
+	{
+		str = readline("> ");
+		if (!str)
+		{
+			printf("\n");
+			exit(0);
+		}
+		_dprintf(pp[1], "%s\n", ft_heredoc_core(del, str));
+	}
+}
+
 int	ft_heredoc(t_mylxr *del)
 {
 	int		pp[2];
@@ -56,23 +73,10 @@ int	ft_heredoc(t_mylxr *del)
 	pid_t	pid;
 
 	pipe(pp);
+	str = NULL;
 	pid = fork();
 	if (pid == 0)
-	{	
-		dup2(g_var.data->std_in, 0);
-		signal(SIGQUIT, SIG_IGN);
-		signal(SIGINT, SIG_DFL);
-		while (1)
-		{
-			str = readline("> ");
-			if (!str)
-			{
-				printf("\n");
-				exit(0);
-			}
-			_dprintf(pp[1], "%s\n", ft_heredoc_core(del, str));
-		}
-	}
+		ft_child(pp, str, del);
 	ft_wait_hd(pid);
 	close(pp[1]);
 	return (pp[0]);

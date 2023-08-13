@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execution.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rerayyad <rerayyad@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/02 18:57:34 by yes-slim          #+#    #+#             */
-/*   Updated: 2023/08/12 18:09:45 by rerayyad         ###   ########.fr       */
+/*   Updated: 2023/08/12 20:09:44 by yes-slim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,15 +37,13 @@ void	ft_execution(t_data *init)
 {
 	if (init->cmds)
 	{
-		g_var.data->std_in = dup(0);
-		if (g_var.data->std_in == -1)
-			ft_error_exec(7, NULL, 0);
-		g_var.data->std_out = dup(1);
-		if (g_var.data->std_out == -1)
-			ft_error_exec(7, NULL, 0);
 		if (!init->pipes)
 			one_cmd(init->cmds);
 		else
 			multiple_cmds(init);
+		if (dup2(g_var.data->std_in, 0) == -1)
+			ft_error_exec(5, NULL, 0);
+		if (dup2(g_var.data->std_out, 1) == -1)
+			ft_error_exec(5, NULL, 0);
 	}
 }

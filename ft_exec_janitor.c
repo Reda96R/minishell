@@ -6,7 +6,7 @@
 /*   By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 21:42:27 by yes-slim          #+#    #+#             */
-/*   Updated: 2023/08/10 21:56:35 by yes-slim         ###   ########.fr       */
+/*   Updated: 2023/08/12 21:37:51 by yes-slim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ void	ft_error_exec(int id, char *str, int i)
 		_dprintf(2, "<?>: malloc failed: Resource temporarily unavailable\n");
 	g_var.data->color = 0;
 	if (i == -1)
-		exit(1);
+		exit(127);
 	if (i == 0)
 		ft_shell_reset(g_var.data);
 	if (i == 2)

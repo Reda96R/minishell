@@ -19,7 +19,7 @@ int	check_numeriq(char *str)
 	i = 0;
 	while (str[i])
 	{
-		if (str[i] == '-' && str[i] == '+')
+		if (str[i] == '-' || str[i] == '+')
 			i++;
 		if (!_isdigit(str[i]) && str[i])
 		{

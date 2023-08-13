@@ -27,16 +27,16 @@
 - echo "'$VAR'" ----> it should expand the var = 'VAR' 
 - true_cmd | false_cmd -----> program exits
 - ls|ls
-- error with herdoc -----> segfault when delemiter is not given
+- e(only the first flag works) ---> both should work
+- ls | ls < dgh
+- exit -9223372036854775807
+- wc - ---------> program crashes
+- ls > $FAKE_VAR ----> ambiguorror with herdoc -----> segfault when delemiter is not given
 - echo -n l
 - exit 1 a ----> should display too many args
 - ctrl + \ ------> should stop cat
 - echo "test" > file0
-- cmd -flag1 -flag2  (only the first flag works) ---> both should work
-- ls | ls < dgh
-- exit -9223372036854775807
-- wc - ---------> program crashes
-- ls > $FAKE_VAR ----> ambiguous redirect
+- cmd -flag1 -flag2  us redirect
 - cd not working
 - if herdoc expand is on quotes rules are ignored
 - echo ''"'$HOME'"'' ------------------> check expand single quotes
@@ -52,12 +52,9 @@
 - $adsfdssfdfadsf$adsfadsf
 - cat <"./test_files/file name with spaces"
 - ls > $HOME
+- ls | ls so many times
+- bash -> exit +1 -> echo $? ----------> should display 1
 
 =========================not fixed yet===================================
 
 - wrong exit status
-- bash -> exit +1 -> echo $? ----------> should display 1
-- ls | ls so many times
-
-
-

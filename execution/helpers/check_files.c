@@ -6,7 +6,7 @@
 /*   By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 10:59:29 by yes-slim          #+#    #+#             */
-/*   Updated: 2023/08/12 14:58:15 by yes-slim         ###   ########.fr       */
+/*   Updated: 2023/08/12 21:39:58 by yes-slim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,10 @@ void	ft_check_files(t_cmds *cmd)
 	tmp = cmd->redirections;
 	while (tmp)
 	{
+		if (cmd->fd_in != 0)
+			close(cmd->fd_in);
+		if (cmd->fd_out != 1)
+			close(cmd->fd_out);
 		if (tmp->token_id == GREATER || tmp->token_id == D_GREATER)
 			cmd->fd_out = check_outfile(tmp);
 		else if (tmp->token_id == LESS)
