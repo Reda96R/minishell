@@ -6,7 +6,7 @@
 #    By: rerayyad <rerayyad@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/12 10:18:48 by yes-slim          #+#    #+#              #
-#    Updated: 2023/08/13 07:59:08 by rerayyad         ###   ########.fr        #
+#    Updated: 2023/08/13 09:09:14 by rerayyad         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,7 @@ NAME    	= minishell
 DEL     	= rm -rf
 #=================parsing_files=======================================#
 STRT 		= ft_minishell_starter
-EXP 		= ft_expander ft_expander_utils ft_expander_utils_2
+EXP 		= ft_expander ft_expander_utils ft_expander_utils_2 ft_expander_utils_3
 LXR 		= ft_quotes ft_tokens_scanner ft_lxr_utils
 PAR         = ft_env_var ft_env_vars_utils ft_parser ft_parser_utils ft_redirections
 libft_pars  = parsing/mylib/mylib.a

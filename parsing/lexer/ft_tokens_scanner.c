@@ -6,7 +6,7 @@
 /*   By: rerayyad <rerayyad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 06:38:46 by rerayyad          #+#    #+#             */
-/*   Updated: 2023/08/13 05:52:23 by rerayyad         ###   ########.fr       */
+/*   Updated: 2023/08/13 08:54:38 by rerayyad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,12 +65,8 @@ int	ft_words_parser(t_data *data, int *node_id, int i)
 		if ((data->input[i + j] == '\'' || data->input[i + j] == '\"') && !r)
 			j = ft_true_word(data, i, r, j);
 		else
-		{
-			if ((ft_token_identifier(data, i + j)
-					|| ft_isspace(data->input[i + j])) && !r)
+			if (ft_check(data, i, &j, r))
 				break ;
-			j++;
-		}
 	}
 	tmp = ft_substr(data->input, i, j);
 	if (!ft_new_node(&new, 0, tmp, 0) || !new)
