@@ -6,7 +6,7 @@
 /*   By: rerayyad <rerayyad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/12 10:19:13 by yes-slim          #+#    #+#             */
-/*   Updated: 2023/08/13 09:24:34 by rerayyad         ###   ########.fr       */
+/*   Updated: 2023/08/13 13:38:32 by rerayyad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ typedef struct s_glbl
 	int				hd_expansion;
 }	t_glbl;
 
-t_glbl	g_var;
+extern	t_glbl	g_var;
 /*------------------------------------------------*/
 typedef struct s_data
 {
