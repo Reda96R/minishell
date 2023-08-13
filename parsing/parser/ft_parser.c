@@ -6,7 +6,7 @@
 /*   By: rerayyad <rerayyad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 12:25:18 by rerayyad          #+#    #+#             */
-/*   Updated: 2023/08/12 16:55:03 by rerayyad         ###   ########.fr       */
+/*   Updated: 2023/08/13 01:33:14 by rerayyad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ void	ft_pre_expand(t_data *data)
 	{
 		str = ft_expander(data, tmp->str, 2, 0);
 		free (tmp->str);
-		tmp->str = ft_arr_dup(str);
+		tmp->str = str;
 		tmp = tmp->next;
 	}
 }

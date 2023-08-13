@@ -6,11 +6,13 @@
 /*   By: rerayyad <rerayyad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 15:58:10 by rerayyad          #+#    #+#             */
-/*   Updated: 2023/08/11 12:50:00 by rerayyad         ###   ########.fr       */
+/*   Updated: 2023/08/13 02:20:21 by rerayyad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/minishell.h"
+#include "includes/mylib.h"
+#include "includes/structs.h"
 
 // void  ft_data_prep(t_data *data)
 // {
@@ -90,4 +92,24 @@ t_mylxr	*ft_node_clear(t_mylxr **node)
 	free(*node);
 	*node = NULL;
 	return (NULL);
+}
+
+void	ft_decontamination(t_data *data, int n)
+{
+	t_cmds	*tmp;
+
+	(void) n;
+	if (data->paths)
+		ft_arr_free(data->paths);
+	if (data->env)
+		ft_arr_free(data->env);
+	free(data->pwd);
+	free(data->old_pwd);
+	tmp = data->cmds;
+	while (tmp)
+	{
+		ft_arr_free(tmp->str);
+		free (tmp);
+		tmp = tmp->next;
+	}
 }
