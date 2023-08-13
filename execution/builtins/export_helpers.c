@@ -6,11 +6,14 @@
 /*   By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 21:28:18 by yes-slim          #+#    #+#             */
-/*   Updated: 2023/08/13 03:31:30 by yes-slim         ###   ########.fr       */
+/*   Updated: 2023/08/13 05:06:53 by yes-slim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
+void	_free(char **arr);
+void	ft_add(t_vars *tmp, char id, char **str);
 
 int	ft_check_export(char *str)
 {
@@ -66,8 +69,10 @@ void	new_var(char **str)
 	node = malloc(sizeof(t_vars));
 	if (!node)
 		ft_error_exec(8, NULL, 0);
-	node->key = str[0];
-	node->value = str[1];
+	if (str[0])
+		node->key = _strdup(str[0]);
+	if (str[1])
+		node->value = _strdup(str[1]);
 	node->node_id = id;
 	node->next = NULL;
 	node->prev = prev;
@@ -111,18 +116,12 @@ void	add_var(const char *ident)
 		if (!_strcmp(tmp->key, str[0]))
 		{
 			if (str[1])
-			{
-				if (ident[j] == '+')
-					tmp->value = _strjoin(tmp->value, str[1]);
-				else
-				{
-					free(tmp->value);
-					tmp->value = str[1];
-				}
-			}
+				ft_add(tmp, ident[j], str);
+			_free(str);
 			return ;
 		}
 		tmp = tmp->next;
 	}
 	new_var(str);
+	_free(str);
 }

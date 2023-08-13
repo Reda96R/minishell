@@ -6,7 +6,7 @@
 /*   By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/26 17:27:00 by yes-slim          #+#    #+#             */
-/*   Updated: 2023/08/11 20:30:30 by yes-slim         ###   ########.fr       */
+/*   Updated: 2023/08/13 04:35:38 by yes-slim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ char	*get_path(char *str, char **path)
 			i++;
 		else
 			return (cmd);
-		free(cmd);
 	}
 	return (NULL);
 }

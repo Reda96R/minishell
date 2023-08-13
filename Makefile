@@ -3,7 +3,7 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: rerayyad <rerayyad@student.42.fr>          +#+  +:+       +#+         #
+#    By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/12 10:18:48 by yes-slim          #+#    #+#              #
 #    Updated: 2023/08/13 04:36:18 by rerayyad         ###   ########.fr        #
