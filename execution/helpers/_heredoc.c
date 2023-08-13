@@ -6,11 +6,12 @@
 /*   By: rerayyad <rerayyad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 15:32:30 by YOUNES            #+#    #+#             */
-/*   Updated: 2023/08/13 06:32:31 by rerayyad         ###   ########.fr       */
+/*   Updated: 2023/08/13 08:19:48 by rerayyad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
+#include <stdlib.h>
 
 void	ft_wait_hd(int pid)
 {
@@ -36,14 +37,20 @@ char	*ft_heredoc_core(t_mylxr *del, char *str)
 		if (!tmp)
 			ft_errors_buster(4, g_var.data);
 		tmp[0] = ft_strdup(str);
-		if (!tmp[0])
-		{
-			free (str);
-			free(tmp);
-			ft_errors_buster(4, g_var.data);
-		}
+		// if (!tmp[0])
+		// {
+		// 	free (str);
+		// 	free(tmp);
+		// 	ft_errors_buster(4, g_var.data);
+		// }
 		tmp[1] = NULL;
 		tmp = ft_expander(g_var.data, tmp, 0, 1);
+		if (!tmp[0])
+		{
+			free(tmp);
+			free(str);
+			return (ft_strdup("\0"));
+		}
 		free(str);
 		str = tmp[0];
 		free(tmp);

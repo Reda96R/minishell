@@ -6,7 +6,7 @@
 /*   By: rerayyad <rerayyad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/12 10:19:55 by yes-slim          #+#    #+#             */
-/*   Updated: 2023/08/13 03:59:41 by rerayyad         ###   ########.fr       */
+/*   Updated: 2023/08/13 07:55:08 by rerayyad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ char	**ft_skipper(char **cmd)
 		i++;
 	}
 	str[j] = NULL;
+	free(cmd);
 	return (str);
 }
 
@@ -132,8 +133,7 @@ char	**ft_expander(t_data *data, char **cmd, int n, int quote_protect)
 					}
 					else
 						cmd[i] = str;
-					if (cmd[i][j] != '\''
-						&& cmd[i][j] != '\"') // ch	eck if it can be removed
+					if (cmd[i] && cmd[i][j] != '\'' && cmd[i][j] != '\"') // ch	eck if it can be removed
 						j++;
 				}
 			}
