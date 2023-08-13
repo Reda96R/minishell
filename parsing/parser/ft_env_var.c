@@ -6,7 +6,7 @@
 /*   By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/22 15:07:32 by rerayyad          #+#    #+#             */
-/*   Updated: 2023/08/13 07:05:18 by yes-slim         ###   ########.fr       */
+/*   Updated: 2023/08/13 08:27:58 by yes-slim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,17 +39,21 @@ void	ft_pwd_finder(t_vars *vars, t_data *data)
 	while (tmp)
 	{
 		if (!ft_strncmp((const char *)tmp->key, "PWD", 3))
+		{
 			if (tmp->value)
 			{
-				free(data->pwd);	
+				free(data->pwd);
 				data->pwd = ft_strdup(tmp->value);
 			}
+		}
 		if (!ft_strncmp(tmp->key, "OLDPWD", 6))
+		{
 			if (tmp->value)
 			{
 				free(data->old_pwd);
 				data->old_pwd = ft_strdup(tmp->value);
 			}
+		}
 		tmp = tmp->next;
 	}
 }

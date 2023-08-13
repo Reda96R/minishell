@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_cd.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rerayyad <rerayyad@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/14 14:40:33 by yes-slim          #+#    #+#             */
-/*   Updated: 2023/08/13 07:21:03 by yes-slim         ###   ########.fr       */
+/*   Updated: 2023/08/13 08:24:45 by yes-slim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ void	change_pwd(void)
 				var->value = _strdup(pwd);
 				free(pwd);
 			}
-			
 		}
 		var = var->next;
 	}
