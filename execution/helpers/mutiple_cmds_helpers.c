@@ -6,7 +6,7 @@
 /*   By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 21:35:26 by yes-slim          #+#    #+#             */
-/*   Updated: 2023/08/12 22:13:53 by yes-slim         ###   ########.fr       */
+/*   Updated: 2023/08/14 17:18:17 by yes-slim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ void	mid_childs(t_cmds *cmd, int *pp)
 int	last_child(t_cmds *cmd)
 {
 	pid_t	pid;
-
+	
 	ft_check_files(cmd);
 	if (!cmd->str[0] || cmd->fd_in == -1 || cmd->fd_out == -1)
 	{

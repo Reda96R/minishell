@@ -6,7 +6,7 @@
 /*   By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/20 18:33:55 by yes-slim          #+#    #+#             */
-/*   Updated: 2023/08/13 03:08:00 by yes-slim         ###   ########.fr       */
+/*   Updated: 2023/08/14 16:56:24 by yes-slim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ typedef struct s_cmds
 	char			*herdoc_name;
 	t_mylxr			*redirections;
 	int				redirections_count;
+	int				hd_id;
 	int				fd_in;
 	int				fd_out;
 	struct s_cmds	*next;

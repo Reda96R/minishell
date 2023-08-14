@@ -6,7 +6,7 @@
 /*   By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/02 18:57:34 by yes-slim          #+#    #+#             */
-/*   Updated: 2023/08/12 20:09:44 by yes-slim         ###   ########.fr       */
+/*   Updated: 2023/08/14 17:12:29 by yes-slim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ int	is_builtin(t_cmds *init)
 		return (ft_exit(init), 0);
 	return (1);
 }
+
+
 
 void	ft_execution(t_data *init)
 {

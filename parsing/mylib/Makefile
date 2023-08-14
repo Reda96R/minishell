@@ -6,7 +6,7 @@
 #    By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/20 16:00:51 by rerayyad          #+#    #+#              #
-#    Updated: 2023/07/20 18:33:46 by yes-slim         ###   ########.fr        #
+#    Updated: 2023/08/14 14:55:37 by yes-slim         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,7 @@ all: $(NAME)
 
 %.o: %.c
 	@echo $(grey)$(italic)"	~Compiling $<"$(reset)
-	@cc $(CFLAGS) -c $<
+	@gcc-11 $(CFLAGS) -c $<
 	@$(AR) $(NAME) $@
 
 $(NAME): $(OBJS)

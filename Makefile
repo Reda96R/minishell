@@ -6,7 +6,7 @@
 #    By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/12 10:18:48 by yes-slim          #+#    #+#              #
-#    Updated: 2023/08/13 17:34:37 by yes-slim         ###   ########.fr        #
+#    Updated: 2023/08/14 16:48:49 by yes-slim         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -53,7 +53,7 @@ OBJ     	= $(Exec_SRCS:.c=.o) $(Pars_SRCS:.c=.o) ft_janitor.o ft_exec_janitor.o 
 #=========================compile=============================#
 %.o     : %.c
 		 @echo $(grey)$(italic)"	~Compiling $<"$(reset)
-		 @cc $(CFLAGS) $< -o $@ 
+		 @gcc-11 $(CFLAGS) $< -o $@ 
 #==========================rules==============================#
 all     : os $(NAME)
 
@@ -61,7 +61,7 @@ $(NAME) : $(OBJ) minishell.c
 		 @stty -echoctl
 		 @ar -rc minishell.a $(OBJ)
 		 @make -s -C parsing/mylib
-		 @cc $(SANITIZ) minishell.c minishell.a $(libft_pars) $(HEADER) -o $(NAME) $(READLINE)
+		 @gcc-11 $(SANITIZ) minishell.c minishell.a $(libft_pars) $(HEADER) -o $(NAME) $(READLINE)
 		 @echo $(green)$(bold)":::$(NAME) is ready:::"$(reset)
 
 clean  :

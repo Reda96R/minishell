@@ -6,7 +6,7 @@
 /*   By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 10:59:29 by yes-slim          #+#    #+#             */
-/*   Updated: 2023/08/12 21:39:58 by yes-slim         ###   ########.fr       */
+/*   Updated: 2023/08/14 17:06:15 by yes-slim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,11 @@ void	ft_check_files(t_cmds *cmd)
 	t_mylxr	*tmp;
 
 	tmp = cmd->redirections;
+	// printf("%d %d\n", cmd->fd_in, cmd->fd_out);
 	while (tmp)
 	{
+		if (cmd->fd_in == -1 || cmd->fd_out == -1)
+			return ;
 		if (cmd->fd_in != 0)
 			close(cmd->fd_in);
 		if (cmd->fd_out != 1)
@@ -59,4 +62,5 @@ void	ft_check_files(t_cmds *cmd)
 			cmd->fd_in = ft_heredoc(tmp);
 		tmp = tmp->next;
 	}
+	// printf("%d %d\n", cmd->fd_in, cmd->fd_out);
 }
