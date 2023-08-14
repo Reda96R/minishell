@@ -74,7 +74,8 @@ void	ft_rm_node(t_mylxr **mylexer, int id)
 
 int	ft_pipe_identifier(t_data *data, int i)
 {
-	if (ft_token_identifier(data, i + 1) != PIPE && data->input[i + 1])
+	if (ft_token_identifier(data, i + 1) != PIPE && data->input[i + 1]
+		&& data->mylexer->token_id != PIPE)
 	{
 		data->pipes++;
 		return (PIPE);
