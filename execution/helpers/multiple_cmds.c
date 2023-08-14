@@ -6,7 +6,7 @@
 /*   By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/31 18:36:23 by yes-slim          #+#    #+#             */
-/*   Updated: 2023/08/14 19:54:07 by yes-slim         ###   ########.fr       */
+/*   Updated: 2023/08/14 21:45:56 by yes-slim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void	ft_wait(int pid)
 
 	waitpid(pid, &status, 0);
 	if (WIFEXITED(status))
-		g_var.exit_status = WEXITSTATUS(status);
+		g_var.exit_status = (status);
 	if (WIFSIGNALED(status))
 	{
 		if (WTERMSIG(status) == 3)

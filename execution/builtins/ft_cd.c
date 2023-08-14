@@ -6,7 +6,7 @@
 /*   By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/14 14:40:33 by yes-slim          #+#    #+#             */
-/*   Updated: 2023/08/14 20:44:00 by yes-slim         ###   ########.fr       */
+/*   Updated: 2023/08/14 21:58:15 by yes-slim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,9 +89,9 @@ int	ft_cd(t_cmds *init)
 {
 	char	*home;
 
-	home = get_home(g_var.data);
 	if (!init->str[1] || !_strcmp(init->str[1], "~"))
 	{
+		home = get_home(g_var.data);
 		if (!chdir(home))
 		{
 			free(home);
@@ -100,7 +100,6 @@ int	ft_cd(t_cmds *init)
 		}
 		return (ft_builtins_error(2, NULL), 0);
 	}
-	free(home);
 	if (_strcmp(init->str[1], "."))
 	{
 		if (!chdir(init->str[1]))
