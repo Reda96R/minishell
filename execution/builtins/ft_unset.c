@@ -6,7 +6,7 @@
 /*   By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/14 14:40:45 by yes-slim          #+#    #+#             */
-/*   Updated: 2023/08/13 16:49:14 by yes-slim         ###   ########.fr       */
+/*   Updated: 2023/08/14 23:26:45 by yes-slim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,42 +21,34 @@ void	ft_free(t_vars *init)
 	free(init);
 }
 
-int	ft_check_unset(char *str)
-{
-	int	i;
-
-	i = 0;
-	if (!_isalpha(str[i]) && str[i] != '_')
-		return (0);
-	i++;
-	while (str[i])
-	{
-		if (!_isalnum(str[i]) && str[i] != '_')
-			return (0);
-		i++;
-	}
-	return (1);
-}
-
 void	del_var(char *str)
 {
 	t_vars	*tmp;
+	t_vars	*ftmp;
 
 	tmp = g_var.data->vars;
 	while (tmp)
 	{
-		if (!_strcmp(tmp->key, str))
+		if (!_strcmp(str, tmp->key))
 		{
 			if (!tmp->prev)
 			{
 				g_var.data->vars = tmp->next;
 				g_var.data->vars->prev = NULL;
 			}
+			else if (!tmp->next)
+				tmp->prev->next = NULL;
 			else
+			{
 				tmp->prev->next = tmp->next;
-			ft_free(tmp);
+				tmp->next->prev = tmp->prev;
+			}
+			ftmp = tmp;
+			tmp = tmp->next;
+			ft_free(ftmp);
 		}
-		tmp = tmp->next;
+		else
+			tmp = tmp->next;
 	}
 }
 
