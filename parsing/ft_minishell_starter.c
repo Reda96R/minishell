@@ -49,6 +49,8 @@ void	ft_shell_starter(t_data *data)
 	{
 		signals();
 		ft_prompt(data);
+		if (!*data->input)
+			ft_shell_reset(data);
 		if (ft_quotes_counter(data->input))
 		{
 			data->color = 1;

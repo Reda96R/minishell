@@ -28,7 +28,7 @@ all: $(NAME)
 
 %.o: %.c
 	@echo $(grey)$(italic)"	~Compiling $<"$(reset)
-	@cc $(CFLAGS) -c $<
+	@gcc-11 $(CFLAGS) -c $<
 	@$(AR) $(NAME) $@
 
 $(NAME): $(OBJS)

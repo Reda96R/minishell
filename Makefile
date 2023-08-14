@@ -21,7 +21,7 @@ READLINE 	= -lreadline -lncurses
 endif
 #========================variables============================#
 HEADER  	= -I includes $(RL_HEADER)
-SANITIZ		= -fsanitize=address -g3
+SANITIZ		= #-fsanitize=address -g3
 CFLAGS 		= -Wall -Werror -Wextra $(HEADER) -c 
 NAME    	= minishell
 DEL     	= rm -rf
@@ -53,7 +53,7 @@ OBJ     	= $(Exec_SRCS:.c=.o) $(Pars_SRCS:.c=.o) ft_janitor.o ft_exec_janitor.o 
 #=========================compile=============================#
 %.o     : %.c
 		 @echo $(grey)$(italic)"	~Compiling $<"$(reset)
-		 @cc $(CFLAGS) $< -o $@ 
+		 @gcc-11 $(CFLAGS) $< -o $@ 
 #==========================rules==============================#
 all     : os $(NAME)
 
@@ -61,7 +61,7 @@ $(NAME) : $(OBJ) minishell.c
 		 @stty -echoctl
 		 @ar -rc minishell.a $(OBJ)
 		 @make -s -C parsing/mylib
-		 @cc $(SANITIZ) minishell.c minishell.a $(libft_pars) $(HEADER) -o $(NAME) $(READLINE)
+		 @gcc-11 $(SANITIZ) minishell.c minishell.a $(libft_pars) $(HEADER) -o $(NAME) $(READLINE)
 		 @echo $(green)$(bold)":::$(NAME) is ready:::"$(reset)
 
 clean  :
