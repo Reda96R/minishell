@@ -74,7 +74,7 @@ void	mid_childs(t_cmds *cmd, int *pp)
 int	last_child(t_cmds *cmd)
 {
 	pid_t	pid;
-	
+
 	ft_check_files(cmd);
 	if (!cmd->str[0] || cmd->fd_in == -1 || cmd->fd_out == -1)
 	{

@@ -17,15 +17,20 @@ char	*get_path(char *str, char **path)
 	char	*cmd;
 	int		i;
 
+	cmd = NULL;
 	i = 0;
 	while (path[i])
 	{
+		if (cmd)
+			free(cmd);
 		cmd = ft_strjoin(path[i], str);
 		if (access(cmd, X_OK) == -1)
 			i++;
 		else
 			return (cmd);
 	}
+	if (cmd)
+		free(cmd);
 	return (NULL);
 }
 
