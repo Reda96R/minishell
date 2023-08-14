@@ -19,7 +19,7 @@ char	*ft_path_finder(t_vars *vars)
 	path = NULL;
 	while (vars)
 	{
-		if (!ft_strncmp(vars->key, "PATH", 4))
+		if (vars->key && !ft_strncmp(vars->key, "PATH", 4))
 		{
 			path = ft_substr(vars->value, 0, ft_strlen(vars->value));
 			break ;
@@ -38,7 +38,7 @@ void	ft_pwd_finder(t_vars *vars, t_data *data)
 	tmp = vars;
 	while (tmp)
 	{
-		if (!ft_strncmp((const char *)tmp->key, "PWD", 3))
+		if (tmp->key && !ft_strncmp((const char *)tmp->key, "PWD", 3))
 		{
 			if (tmp->value)
 			{
@@ -46,7 +46,7 @@ void	ft_pwd_finder(t_vars *vars, t_data *data)
 				data->pwd = ft_strdup(tmp->value);
 			}
 		}
-		if (!ft_strncmp(tmp->key, "OLDPWD", 6))
+		if (tmp->key && !ft_strncmp(tmp->key, "OLDPWD", 6))
 		{
 			if (tmp->value)
 			{
