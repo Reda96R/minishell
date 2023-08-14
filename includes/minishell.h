@@ -37,7 +37,7 @@ typedef struct s_glbl
 	int				hd_expansion;
 }	t_glbl;
 
-extern	t_glbl	g_var;
+extern t_glbl	g_var;
 /*------------------------------------------------*/
 typedef struct s_data
 {

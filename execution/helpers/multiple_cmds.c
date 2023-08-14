@@ -36,6 +36,8 @@ void	execute(t_cmds *cmd)
 	if (cmd->fd_out != 1)
 		close(cmd->fd_out);
 	execve(path, cmd->str, g_var.data->env);
+	if (path)
+		free (path);
 	perror("<?>: execve");
 	exit(127);
 }

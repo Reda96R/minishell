@@ -26,6 +26,9 @@ int	ft_token_parser(t_data *data, int *node_id, int id)
 	t_mylxr	*new;
 
 	new = NULL;
+	if (id == PIPE && data->mylexer->next)
+		if (data->mylexer->next->token_id == PIPE)
+			ft_errors_buster(3, data);
 	if (!ft_new_node(&new, id, NULL, 0) || !new)
 		return (-1);
 	new->node_id = (*node_id)++;
