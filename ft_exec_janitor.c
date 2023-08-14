@@ -6,11 +6,12 @@
 /*   By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 21:42:27 by yes-slim          #+#    #+#             */
-/*   Updated: 2023/08/13 16:32:32 by yes-slim         ###   ########.fr       */
+/*   Updated: 2023/08/14 19:36:13 by yes-slim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+#include <errno.h>
 
 void	ft_builtins_error(int id, char *str)
 {
@@ -60,6 +61,7 @@ void	ft_error_exec(int id, char *str, int i)
 	else if (id == 8)
 		_dprintf(2, "<?>: malloc failed: Resource temporarily unavailable\n");
 	g_var.data->color = 0;
+	printf("%s\n", strerror(errno));
 	if (i == -1)
 		exit(127);
 	if (i == 0)

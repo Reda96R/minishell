@@ -6,7 +6,7 @@
 /*   By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 10:59:29 by yes-slim          #+#    #+#             */
-/*   Updated: 2023/08/14 18:24:51 by yes-slim         ###   ########.fr       */
+/*   Updated: 2023/08/14 19:58:48 by yes-slim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,17 +50,21 @@ void	ft_check_files(t_cmds *cmd)
 	{
 		if (cmd->fd_in == -1 || cmd->fd_out == -1)
 			return ;
-		if (cmd->fd_in != 0)
-			close(cmd->fd_in);
-		if (cmd->fd_out != 1)
-			close(cmd->fd_out);
 		if (tmp->token_id == GREATER || tmp->token_id == D_GREATER)
+		{
+			if (cmd->fd_out != 1)
+				close(cmd->fd_out);
 			cmd->fd_out = check_outfile(tmp);
+		}
 		else if (tmp->token_id == LESS)
 		{
 			fd = check_infile(tmp);
 			if (tmp->node_id > cmd->hd_id)
+			{	
+				if (cmd->fd_in != 0)
+					close(cmd->fd_in);
 				cmd->fd_in = fd;
+			}
 		}
 		tmp = tmp->next;
 	}
