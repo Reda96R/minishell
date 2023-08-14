@@ -6,7 +6,7 @@
 /*   By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/14 14:40:33 by yes-slim          #+#    #+#             */
-/*   Updated: 2023/08/13 16:40:54 by yes-slim         ###   ########.fr       */
+/*   Updated: 2023/08/14 20:44:00 by yes-slim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,7 @@ int	ft_cd(t_cmds *init)
 		{
 			free(home);
 			g_var.exit_status = 0;
-			return (change_pwd(), change_oldpwd(g_var.data->pwd), 0);
+			return (change_oldpwd(g_var.data->pwd), change_pwd(), 0);
 		}
 		return (ft_builtins_error(2, NULL), 0);
 	}
