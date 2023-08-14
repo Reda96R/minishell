@@ -6,7 +6,7 @@
 /*   By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 21:28:18 by yes-slim          #+#    #+#             */
-/*   Updated: 2023/08/13 14:52:36 by yes-slim         ###   ########.fr       */
+/*   Updated: 2023/08/14 19:27:57 by yes-slim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,7 @@ void	new_var(char **str)
 		ft_error_exec(8, NULL, 0);
 	if (str[0])
 		node->key = _strdup(str[0]);
+	node->value = NULL;
 	if (str[1])
 		node->value = _strdup(str[1]);
 	node->node_id = id;
@@ -85,6 +86,8 @@ char	**get_keyvalue(const char *ident, int *i)
 	int		j;
 
 	str = malloc(2 * sizeof(char *));
+	if (!str)
+		ft_errors_buster(4, g_var.data);
 	j = 0;
 	while (ident[j] && ident[j] != '=')
 	{

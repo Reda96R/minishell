@@ -6,7 +6,7 @@
 /*   By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 10:59:29 by yes-slim          #+#    #+#             */
-/*   Updated: 2023/08/14 17:06:15 by yes-slim         ###   ########.fr       */
+/*   Updated: 2023/08/14 18:24:51 by yes-slim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,9 +43,9 @@ int	check_outfile(t_mylxr *file)
 void	ft_check_files(t_cmds *cmd)
 {
 	t_mylxr	*tmp;
+	int		fd;
 
 	tmp = cmd->redirections;
-	// printf("%d %d\n", cmd->fd_in, cmd->fd_out);
 	while (tmp)
 	{
 		if (cmd->fd_in == -1 || cmd->fd_out == -1)
@@ -57,10 +57,11 @@ void	ft_check_files(t_cmds *cmd)
 		if (tmp->token_id == GREATER || tmp->token_id == D_GREATER)
 			cmd->fd_out = check_outfile(tmp);
 		else if (tmp->token_id == LESS)
-			cmd->fd_in = check_infile(tmp);
-		else if (tmp->token_id == D_LESS)
-			cmd->fd_in = ft_heredoc(tmp);
+		{
+			fd = check_infile(tmp);
+			if (tmp->node_id > cmd->hd_id)
+				cmd->fd_in = fd;
+		}
 		tmp = tmp->next;
 	}
-	// printf("%d %d\n", cmd->fd_in, cmd->fd_out);
 }
