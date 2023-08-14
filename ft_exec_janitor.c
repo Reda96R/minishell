@@ -61,7 +61,7 @@ void	ft_error_exec(int id, char *str, int i)
 	else if (id == 8)
 		_dprintf(2, "<?>: malloc failed: Resource temporarily unavailable\n");
 	g_var.data->color = 0;
-	printf("%s\n", strerror(errno));
+	// printf("%s\n", strerror(errno));
 	if (i == -1)
 		exit(127);
 	if (i == 0)
