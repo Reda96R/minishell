@@ -6,7 +6,7 @@
 /*   By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 15:32:30 by YOUNES            #+#    #+#             */
-/*   Updated: 2023/08/13 08:25:55 by yes-slim         ###   ########.fr       */
+/*   Updated: 2023/08/14 18:42:24 by yes-slim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,5 +84,6 @@ int	ft_heredoc(t_mylxr *del)
 		ft_child(pp, str, del);
 	ft_wait_hd(pid);
 	close(pp[1]);
+	printf("%d\n", pp[0]);
 	return (pp[0]);
 }

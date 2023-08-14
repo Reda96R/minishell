@@ -6,7 +6,7 @@
 /*   By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/31 18:36:23 by yes-slim          #+#    #+#             */
-/*   Updated: 2023/08/13 08:25:10 by yes-slim         ###   ########.fr       */
+/*   Updated: 2023/08/14 18:49:19 by yes-slim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,10 +63,10 @@ void	ft_wait(int pid)
 
 void	multiple_cmds(t_data *init)
 {
+	t_cmds	*tmp;
 	int		pid;
 	int		pp[2];
 	int		pi[2];
-	t_cmds	*tmp;
 
 	if (pipe(pp) == -1)
 		ft_error_exec(6, NULL, 0);

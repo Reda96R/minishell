@@ -6,7 +6,7 @@
 /*   By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/02 18:57:34 by yes-slim          #+#    #+#             */
-/*   Updated: 2023/08/12 20:09:44 by yes-slim         ###   ########.fr       */
+/*   Updated: 2023/08/14 18:44:12 by yes-slim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,10 +33,33 @@ int	is_builtin(t_cmds *init)
 	return (1);
 }
 
+void	_heredoc(t_data *init)
+{
+	t_cmds	*cmd;
+	t_mylxr	*red;
+
+	cmd = init->cmds;
+	while (cmd)
+	{
+		red = cmd->redirections;
+		while (red)
+		{
+			if (red->token_id == D_LESS)
+			{
+				cmd->fd_in = ft_heredoc(red);
+				cmd->hd_id = red->node_id;
+			}
+			red = red->next;
+		}
+		cmd = cmd->next;
+	}
+}
+
 void	ft_execution(t_data *init)
 {
 	if (init->cmds)
 	{
+		_heredoc(init);
 		if (!init->pipes)
 			one_cmd(init->cmds);
 		else
