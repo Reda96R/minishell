@@ -19,7 +19,7 @@ char	**ft_skipper(char **cmd)
 	int		j;
 
 	j = ft_spotter(cmd);
-	str = (char **) malloc(sizeof (char *) * j + 1);
+	str = (char **) malloc(sizeof (char *) * (j + 1));
 	if (!str)
 		ft_errors_buster(4, g_var.data);
 	i = 0;
@@ -77,6 +77,7 @@ char	*ft_gold_finder(t_data *data, char *str)
 			free (tmp1);
 		}
 	}
+	// free (str);
 	return (tmp0);
 }
 
@@ -115,5 +116,6 @@ char	**ft_expander(t_data *data, char **cmd, int n, int quote_protect)
 		}
 		ft_black_box(cmd[i++]);
 	}
+	// exit (0);
 	return (ft_skipper(cmd));
 }

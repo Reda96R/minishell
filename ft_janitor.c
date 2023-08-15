@@ -87,15 +87,18 @@ t_mylxr	*ft_node_clear(t_mylxr **node)
 void	ft_free_redierctions(t_mylxr *redirections)
 {
 	t_mylxr	*tmp;
+	t_mylxr	*tmp0;
 
 	tmp = redirections;
-	while (tmp)
+	tmp0 = redirections;
+	while (tmp0)
 	{
 		free(tmp->str);
 		tmp->str = NULL;
+		tmp0 = tmp0->next;
 		free(tmp);
-		tmp = tmp->next;
+		tmp = tmp0;
 	}
-	free(tmp);
+	// free(tmp);
 	tmp = NULL;
 }

@@ -14,46 +14,67 @@
 
 char	*ft_single_quote(char *cmd, int *j, char r)
 {
+	char	*tmp;
+
 	*j += 1;
-	while (cmd[*j] && cmd[*j] != r)
+	tmp = ft_strdup(cmd);
+	if (!tmp)
+		ft_errors_buster(4, g_var.data);
+	if (cmd)
+		free (cmd);
+	while (tmp[*j] && tmp[*j] != r)
 	{
-		if (cmd[*j] == '\"')
-				cmd[*j] = -2;
-		else if (cmd[*j] == '$')
-				cmd[*j] = -3;
+		if (tmp[*j] == '\"')
+			tmp[*j] = -2;
+		else if (tmp[*j] == '$')
+			tmp[*j] = -3;
 		*j += 1;
 	}
-	if (cmd[*j] == r)
-			*j += 1;
-	return (cmd);
+	if (tmp[*j] == r)
+		*j += 1;
+	return (tmp);
 }
 
 char	*ft_double_quote(char *cmd, int *j, char r)
 {
-	while (cmd[*j] && cmd[*j] != r)
+	char	*tmp;
+	char	*str;
+
+	tmp = ft_strdup(cmd);
+	if (!tmp)
+		ft_errors_buster(4, g_var.data);
+	if (cmd)
+		free(cmd);
+	while (tmp[*j] && tmp[*j] != r)
 	{
-		if (cmd[*j] == '$')
+		if (tmp[*j] == '$')
 		{
-			if (cmd[*j + 1] == '\"' || cmd[*j + 1] == '\''
-				|| !ft_isalnum(cmd[*j + 1]))
+			if (tmp[*j + 1] == '\"' || tmp[*j + 1] == '\''
+				|| !ft_isalnum(tmp[*j + 1]))
 			{
-				cmd[*j] = -3;
+				tmp[*j] = -3;
 				*j += 1;
 			}
-			else if (cmd[*j + 1] != '\'' && cmd[*j + 1] != '\"'
-				&& cmd[*j + 1] != '$')
-				cmd = ft_gold_finder(g_var.data, cmd);
+			else if (tmp[*j + 1] != '\'' && tmp[*j + 1] != '\"'
+				&& tmp[*j + 1] != '$')
+			{
+				str = ft_gold_finder(g_var.data, tmp);
+				if (tmp)
+					free(tmp);
+				tmp = ft_strdup(str);
+				free(str);
+			}
 		}
 		else
 		{
-			if (cmd[*j] == '\'')
-				cmd[*j] = -1;
+			if (tmp[*j] == '\'')
+				tmp[*j] = -1;
 			*j += 1;
 		}
 	}
-	if (cmd[*j] == r)
+	if (tmp[*j] == r)
 		*j += 1;
-	return (cmd);
+	return (tmp);
 }
 
 char	*ft_protect_quotes(char *cmd, int *j)
@@ -72,30 +93,36 @@ char	*ft_protect_quotes(char *cmd, int *j)
 char	*ft_quote_handler(char *cmd, int *j, int quote_protect)
 {
 	char	r;
+	char	*str;
 
-	r = cmd[*j];
+	str = ft_strdup(cmd);
+	if (!str)
+		ft_errors_buster(4, g_var.data);
+	if (cmd)
+		free(cmd);
+	r = str[*j];
 	if (g_var.hd_expansion && quote_protect)
-		return (ft_protect_quotes(cmd, j));
+		return (ft_protect_quotes(str, j));
 	if (r == '\'')
-		cmd = ft_single_quote(cmd, j, r);
+		str = ft_single_quote(str, j, r);
 	else
 	{
 		*j += 1;
-		if (ft_dollar_s(cmd + (*j)) && cmd[*j] != r)
-			cmd = ft_double_quote(cmd, j, r);
+		if (ft_dollar_s(str + (*j)) && str[*j] != r)
+			str = ft_double_quote(str, j, r);
 		else
 		{
-			while (cmd[*j] && cmd[*j] != r)
+			while (str[*j] && str[*j] != r)
 			{
-				if (cmd[*j] == '\'')
-					cmd[*j] = -1;
+				if (str[*j] == '\'')
+					str[*j] = -1;
 				*j += 1;
 			}
-			if (cmd[*j] == r)
+			if (str[*j] == r)
 				*j += 1;
 		}
 	}
-	return (cmd);
+	return (str);
 }
 
 char	*ft_black_box(char *str)
