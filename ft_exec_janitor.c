@@ -6,12 +6,24 @@
 /*   By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 21:42:27 by yes-slim          #+#    #+#             */
-/*   Updated: 2023/08/15 17:59:57 by yes-slim         ###   ########.fr       */
+/*   Updated: 2023/08/15 23:33:36 by yes-slim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 #include <errno.h>
+
+void	ft_builtins_error_2(int id, char *str)
+{
+	if (id == 7)
+		_dprintf(2, "<?>: exit: %s: numeric argument required\n", str);
+	else if (id == 8)
+		_dprintf(2, "<?>: export: `%s': not a valid identifier\n", str);
+	else if (id == 9)
+		_dprintf(2, "<?>: unset: `%s': not a valid identifier\n", str);
+	else if (id == 10)
+		_dprintf(2, "<?>: cd: too many arguments\n");
+}
 
 void	ft_builtins_error(int id, char *str)
 {
@@ -31,12 +43,7 @@ void	ft_builtins_error(int id, char *str)
 		_dprintf(2, "exit\n<?>: exit: %s: numeric argument required\n", str);
 	else if (id == 6)
 		_dprintf(2, "exit\n<?>: exit: too many arguments\n");
-	else if (id == 7)
-		_dprintf(2, "<?>: exit: %s: numeric argument required\n", str);
-	else if (id == 8)
-		_dprintf(2, "<?>: export: `%s': not a valid identifier\n", str);
-	else if (id == 9)
-		_dprintf(2, "<?>: unset: `%s': not a valid identifier\n", str);
+	ft_builtins_error_2(id, str);
 	g_var.exit_status = 1;
 	g_var.data->color = 0;
 }

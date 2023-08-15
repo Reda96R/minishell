@@ -6,110 +6,42 @@
 /*   By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/14 14:40:33 by yes-slim          #+#    #+#             */
-/*   Updated: 2023/08/15 17:36:25 by yes-slim         ###   ########.fr       */
+/*   Updated: 2023/08/15 23:31:20 by yes-slim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	change_pwd(void)
-{
-	t_vars	*var;
-	char	*pwd;
-
-	var = g_var.data->vars;
-	while (var)
-	{
-		if (!_strcmp(var->key, "PWD"))
-		{
-			free(var->value);
-			pwd = getcwd(NULL, 0);
-			if (!pwd)
-				var->value = _strdup(g_var.data->pwd);
-			else
-			{
-				var->value = _strdup(pwd);
-				free(pwd);
-			}
-		}
-		var = var->next;
-	}
-}
-
-void	change_oldpwd(char *old_pwd)
-{
-	t_vars	*var;
-
-	var = g_var.data->vars;
-	while (var)
-	{
-		if (!_strcmp(var->key, "OLDPWD"))
-		{
-			free(var->value);
-			var->value = _strdup(old_pwd);
-		}
-		var = var->next;
-	}
-}
-
-int	check_fail(void)
-{
-	char	*check;
-
-	check = getcwd(NULL, 0);
-	if (!check)
-	{
-		free(check);
-		ft_builtins_error(1, NULL);
-		return (0);
-	}
-	free(check);
-	return (1);
-}
-
-char	*get_home(t_data *data)
-{
-	char	*home;
-	t_vars	*var;
-
-	var = data->vars;
-	while (var)
-	{
-		if (!_strcmp(var->key, "HOME"))
-		{
-			home = _strdup(var->value);
-			return (home);
-		}
-		var = var->next;
-	}
-	return (NULL);
-}
+void	change_pwd(void);
+void	change_oldpwd(char *old_pwd);
+int		check_fail(void);
+char	*get_home(t_data *data);
+void	ft_cdhome(void);
 
 int	ft_cd(t_cmds *init)
 {
-	char	*home;
+	int	i;
 
+	i = 0;
+	while (init->str[i])
+		i++;
+	if (i > 2)
+		return (ft_builtins_error(10, NULL), 0);
 	if (!init->str[1] || !_strcmp(init->str[1], "~"))
+		ft_cdhome();
+	if (init->str[1])
 	{
-		home = get_home(g_var.data);
-		if (!chdir(home))
+		if (_strcmp(init->str[1], "."))
 		{
-			g_var.exit_status = 0;
-			free(home);
-			return (change_oldpwd(g_var.data->pwd), change_pwd(), 0);
+			if (!chdir(init->str[1]))
+			{	
+				change_pwd();
+				change_oldpwd(g_var.data->pwd);
+			}
+			else
+				return (ft_builtins_error(3, init->str[1]), 0);
 		}
-		return (ft_builtins_error(2, NULL), 0);
+		check_fail();
 	}
-	if (_strcmp(init->str[1], "."))
-	{
-		if (!chdir(init->str[1]))
-		{	
-			change_pwd();
-			change_oldpwd(g_var.data->pwd);
-		}
-		else
-			return (ft_builtins_error(3, init->str[1]), 0);
-	}
-	check_fail();
 	return (g_var.exit_status = 0, 0);
 }
