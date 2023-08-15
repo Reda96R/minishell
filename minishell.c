@@ -38,6 +38,6 @@ int	main(int ac, char *av[], char *env[])
 	g_var.data->std_out = dup(1);
 	if (g_var.data->std_out == -1)
 		ft_error_exec(7, NULL, 0);
-	ft_shell_starter(&data);
+	ft_shell_starter(&data, 0);
 	return (1);
 }
