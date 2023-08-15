@@ -29,6 +29,7 @@ void	ft_free_pwd(t_data *data)
 void	ft_decontamination(t_data *data, int n)
 {
 	t_cmds	*tmp;
+	t_cmds	*tmp0;
 
 	(void) n;
 	if (data->paths)
@@ -37,14 +38,16 @@ void	ft_decontamination(t_data *data, int n)
 		ft_arr_free(data->env);
 	ft_free_pwd(data);
 	tmp = data->cmds;
-	while (tmp)
+	tmp0 = data->cmds;
+	while (tmp0)
 	{
 		if (tmp->str)
 			ft_arr_free(tmp->str);
 		if (tmp->redirections)
 			ft_free_redierctions(tmp->redirections);
-		if (tmp)
-			free (tmp);
-		tmp = tmp->next;
+		tmp0 = tmp0->next;
+		free (tmp);
+		tmp = tmp0;
 	}
+	free(tmp);
 }
