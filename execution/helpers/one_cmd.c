@@ -6,7 +6,7 @@
 /*   By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/21 07:31:45 by yes-slim          #+#    #+#             */
-/*   Updated: 2023/08/14 22:51:02 by yes-slim         ###   ########.fr       */
+/*   Updated: 2023/08/15 08:57:33 by yes-slim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,15 +20,9 @@ void	ft_wait_one(int pid)
 	if (WIFEXITED(status))
 		g_var.exit_status = WEXITSTATUS(status);
 	if (WIFSIGNALED(status))
-	{
-		if (WTERMSIG(status) == 3)
-		{
-			g_var.exit_status = 131;
-			printf("Quit: 3\n");
-		}
-		if (WTERMSIG(status) == 2)
-			g_var.exit_status = 130;
-	}
+		g_var.exit_status = 128 + WTERMSIG(status);
+	if (g_var.exit_status == 131)
+		printf("Quit\n");
 }
 
 void	ft_execute_cmd(t_cmds *init)
