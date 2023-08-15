@@ -56,3 +56,37 @@ int	ft_spotter(char **cmd)
 	}
 	return (j);
 }
+
+char	*ft_dollar_in_quotes(char *tmp, int *j)
+{
+	char	*str;
+
+	if (tmp[*j + 1] == '\"' || tmp[*j + 1] == '\''
+		|| !ft_isalnum(tmp[*j + 1]))
+	{
+		tmp[*j] = -3;
+		*j += 1;
+	}
+	else if (tmp[*j + 1] != '\'' && tmp[*j + 1] != '\"'
+		&& tmp[*j + 1] != '$')
+	{
+		str = ft_gold_finder(g_var.data, tmp);
+		free(tmp);
+		tmp = ft_strdup(str);
+		free(str);
+	}
+	return (tmp);
+}
+
+char	*ft_quote_hider(char *str, int *j, int r)
+{
+	while (str[*j] && str[*j] != r)
+	{
+		if (str[*j] == '\'')
+			str[*j] = -1;
+		*j += 1;
+	}
+	if (str[*j] == r)
+		*j += 1;
+	return (str);
+}

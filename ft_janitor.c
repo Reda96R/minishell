@@ -99,6 +99,5 @@ void	ft_free_redierctions(t_mylxr *redirections)
 		free(tmp);
 		tmp = tmp0;
 	}
-	// free(tmp);
 	tmp = NULL;
 }

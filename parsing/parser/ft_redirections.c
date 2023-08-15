@@ -33,8 +33,6 @@ void	ft_normal_redirection(t_mylxr *tmp, t_data *data, t_mylxr **new)
 	tmp0 = ft_expander(data, cmd, 0, 0);
 	ft_new_node(new, tmp->token_id, *tmp0, 1);
 	ft_arr_free(tmp0);
-	// if (cmd[0])
-		// free(cmd[0]);
 }
 
 void	ft_add_redirection(t_parser *parser, t_mylxr *tmp,

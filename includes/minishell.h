@@ -131,6 +131,8 @@ char	*ft_black_box(char *str);
 char	*ft_quote_handler(char *cmd, int *j, int quote_protect);
 char	*ft_single_quote(char *cmd, int *j, char r);
 char	*ft_double_quote(char *cmd, int *j, char r);
+char	*ft_dollar_in_quotes(char *tmp, int *j);
+char	*ft_quote_hider(char *str, int *j, int r);
 
 /* -------------------Execution-----------------------*/
 /*::: Helpers :::*/

@@ -38,7 +38,6 @@ char	*ft_single_quote(char *cmd, int *j, char r)
 char	*ft_double_quote(char *cmd, int *j, char r)
 {
 	char	*tmp;
-	char	*str;
 
 	tmp = ft_strdup(cmd);
 	if (!tmp)
@@ -48,23 +47,7 @@ char	*ft_double_quote(char *cmd, int *j, char r)
 	while (tmp[*j] && tmp[*j] != r)
 	{
 		if (tmp[*j] == '$')
-		{
-			if (tmp[*j + 1] == '\"' || tmp[*j + 1] == '\''
-				|| !ft_isalnum(tmp[*j + 1]))
-			{
-				tmp[*j] = -3;
-				*j += 1;
-			}
-			else if (tmp[*j + 1] != '\'' && tmp[*j + 1] != '\"'
-				&& tmp[*j + 1] != '$')
-			{
-				str = ft_gold_finder(g_var.data, tmp);
-				if (tmp)
-					free(tmp);
-				tmp = ft_strdup(str);
-				free(str);
-			}
-		}
+			tmp = ft_dollar_in_quotes(tmp, j);
 		else
 		{
 			if (tmp[*j] == '\'')
@@ -111,16 +94,7 @@ char	*ft_quote_handler(char *cmd, int *j, int quote_protect)
 		if (ft_dollar_s(str + (*j)) && str[*j] != r)
 			str = ft_double_quote(str, j, r);
 		else
-		{
-			while (str[*j] && str[*j] != r)
-			{
-				if (str[*j] == '\'')
-					str[*j] = -1;
-				*j += 1;
-			}
-			if (str[*j] == r)
-				*j += 1;
-		}
+			str = ft_quote_hider(str, j, r);
 	}
 	return (str);
 }

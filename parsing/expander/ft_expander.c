@@ -77,7 +77,6 @@ char	*ft_gold_finder(t_data *data, char *str)
 			free (tmp1);
 		}
 	}
-	// free (str);
 	return (tmp0);
 }
 
@@ -116,6 +115,5 @@ char	**ft_expander(t_data *data, char **cmd, int n, int quote_protect)
 		}
 		ft_black_box(cmd[i++]);
 	}
-	// exit (0);
 	return (ft_skipper(cmd));
 }
