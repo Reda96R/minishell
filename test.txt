@@ -57,3 +57,5 @@
 - wrong exit status
 
 =========================not fixed yet===================================
+
+echo ""HEecho "HELLOW WORLD" > f >> v ---------> sgeV in ft_quotes_counter parsing/lexer/ft_quotes.c:83 

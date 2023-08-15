@@ -6,7 +6,7 @@
 #    By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/12 10:18:48 by yes-slim          #+#    #+#              #
-#    Updated: 2023/08/15 13:18:32 by yes-slim         ###   ########.fr        #
+#    Updated: 2023/08/15 23:54:40 by yes-slim         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,7 @@ READLINE 	= -lreadline -lncurses
 endif
 #========================variables============================#
 HEADER  	= -I includes $(RL_HEADER)
-SANITIZ		= #-fsanitize=address
+SANITIZ		= -fsanitize=address
 CFLAGS 		= -Wall -Werror -Wextra -g3 $(SANITIZ) $(HEADER) -c 
 NAME    	= minishell
 DEL     	= rm -rf
@@ -40,7 +40,7 @@ Pars_SRCS   = $(addsuffix .c, $(addprefix parsing/, $(PARS)))
 
 #=================execution_files=======================================#
 LIBFT   	= _strdup _strlen _atoi _isdigit _isalpha _isalnum _strjoin _strcmp _substr
-BUILTIN 	= ft_pwd ft_exit ft_env ft_echo ft_cd ft_export ft_unset export_helpers
+BUILTIN 	= ft_pwd ft_exit ft_env ft_echo ft_cd ft_export ft_unset export_helpers cd_helpers
 HELPERS 	= signals path_getter one_cmd check_files _dprintf multiple_cmds _heredoc mutiple_cmds_helpers
 EXEC		= execution \
 			  $(addprefix builtins/, $(BUILTIN)) \
@@ -81,12 +81,12 @@ re 	  : fclean all
 .PHONY	: all clean fclean re
 #===========================OS================================#
 os : 
-	@echo $(purple) "███╗   ███╗██╗███╗   ██╗██╗███████╗██╗  ██╗███████╗██╗     ██╗     " $(reset)
-	@echo $(purple) "████╗ ████║██║████╗  ██║██║██╔════╝██║  ██║██╔════╝██║     ██║     " $(reset)
-	@echo $(purple) "██╔████╔██║██║██╔██╗ ██║██║███████╗███████║█████╗  ██║     ██║     " $(reset)
-	@echo $(purple) "██║╚██╔╝██║██║██║╚██╗██║██║╚════██║██╔══██║██╔══╝  ██║     ██║     " $(reset)
-	@echo $(purple) "██║ ╚═╝ ██║██║██║ ╚████║██║███████║██║  ██║███████╗███████╗███████╗" $(reset)
-	@echo $(purple) "╚═╝     ╚═╝╚═╝╚═╝  ╚═══╝╚═╝╚══════╝╚═╝  ╚═╝╚══════╝╚══════╝╚══════╝" $(reset)
+	@echo $(grey) "███╗   ███╗██╗███╗   ██╗██╗███████╗██╗  ██╗███████╗██╗     ██╗     " $(reset)
+	@echo $(grey) "████╗ ████║██║████╗  ██║██║██╔════╝██║  ██║██╔════╝██║     ██║     " $(reset)
+	@echo $(grey) "██╔████╔██║██║██╔██╗ ██║██║███████╗███████║█████╗  ██║     ██║     " $(reset)
+	@echo $(grey) "██║╚██╔╝██║██║██║╚██╗██║██║╚════██║██╔══██║██╔══╝  ██║     ██║     " $(reset)
+	@echo $(grey) "██║ ╚═╝ ██║██║██║ ╚████║██║███████║██║  ██║███████╗███████╗███████╗" $(reset)
+	@echo $(grey) "╚═╝     ╚═╝╚═╝╚═╝  ╚═══╝╚═╝╚══════╝╚═╝  ╚═╝╚══════╝╚══════╝╚══════╝" $(reset)
 	@echo $(cyan) "                                                               for $(OS)" $(reset)
 
 #===========================colors============================#
