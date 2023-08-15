@@ -6,7 +6,7 @@
 /*   By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/02 18:58:02 by yes-slim          #+#    #+#             */
-/*   Updated: 2023/08/15 12:18:12 by yes-slim         ###   ########.fr       */
+/*   Updated: 2023/08/15 17:08:32 by yes-slim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	ft_prompt(t_data *data)
 		str = readline(READLINE_MSG_R);
 	else
 		str = readline(READLINE_MSG_G);
-	data->input = ft_strtrim(str, " ");
+	data->input = ft_strtrim(str, " \t\r\f\v\n");
 	free (str);
 	g_var.sig = 0;
 	if (!data->input)

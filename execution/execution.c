@@ -6,7 +6,7 @@
 /*   By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/02 18:57:34 by yes-slim          #+#    #+#             */
-/*   Updated: 2023/08/14 18:44:12 by yes-slim         ###   ########.fr       */
+/*   Updated: 2023/08/15 17:00:58 by yes-slim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,8 @@ void	_heredoc(t_data *init)
 		{
 			if (red->token_id == D_LESS)
 			{
+				if (cmd->fd_in != 0)
+					close(cmd->fd_in);
 				cmd->fd_in = ft_heredoc(red);
 				cmd->hd_id = red->node_id;
 			}
@@ -60,7 +62,7 @@ void	ft_execution(t_data *init)
 	if (init->cmds)
 	{
 		_heredoc(init);
-		if (!init->pipes)
+		if (!init->cmds->next)
 			one_cmd(init->cmds);
 		else
 			multiple_cmds(init);
