@@ -6,7 +6,7 @@
 #    By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/12 10:18:48 by yes-slim          #+#    #+#              #
-#    Updated: 2023/08/14 22:40:41 by yes-slim         ###   ########.fr        #
+#    Updated: 2023/08/15 13:18:32 by yes-slim         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,8 +21,8 @@ READLINE 	= -lreadline -lncurses
 endif
 #========================variables============================#
 HEADER  	= -I includes $(RL_HEADER)
-SANITIZ		= #-fsanitize=address -g3
-CFLAGS 		= -Wall -Werror -Wextra -g3 $(HEADER) -c 
+SANITIZ		= #-fsanitize=address
+CFLAGS 		= -Wall -Werror -Wextra -g3 $(SANITIZ) $(HEADER) -c 
 NAME    	= minishell
 DEL     	= rm -rf
 #=================parsing_files=======================================#
@@ -81,12 +81,14 @@ re 	  : fclean all
 .PHONY	: all clean fclean re
 #===========================OS================================#
 os : 
-	@echo $(yellow) "            _____         _____         ______        ____________" $(reset)
-	@echo $(yellow) "_______ ___ ___(_)_______ ___(_)___________  /_ _____ ___  /___  /" $(reset)
-	@echo $(yellow) "__  __ \__ \__  / __  __ \__  / __  ___/__  __ \_  _ \__  / __  /" $(reset)
-	@echo $(yellow) "_  / / / / /_  /  _  / / /_  /  _(__  ) _  / / //  __/_  /  _  /" $(reset)
-	@echo $(yellow) "/_/ /_/ /_/ /_/   /_/ /_/ /_/   /____/  /_/ /_/ \___/ /_/   /_/" $(reset)
-	@echo $(green) "                                                               for $(OS)" $(reset)
+	@echo $(purple) "███╗   ███╗██╗███╗   ██╗██╗███████╗██╗  ██╗███████╗██╗     ██╗     " $(reset)
+	@echo $(purple) "████╗ ████║██║████╗  ██║██║██╔════╝██║  ██║██╔════╝██║     ██║     " $(reset)
+	@echo $(purple) "██╔████╔██║██║██╔██╗ ██║██║███████╗███████║█████╗  ██║     ██║     " $(reset)
+	@echo $(purple) "██║╚██╔╝██║██║██║╚██╗██║██║╚════██║██╔══██║██╔══╝  ██║     ██║     " $(reset)
+	@echo $(purple) "██║ ╚═╝ ██║██║██║ ╚████║██║███████║██║  ██║███████╗███████╗███████╗" $(reset)
+	@echo $(purple) "╚═╝     ╚═╝╚═╝╚═╝  ╚═══╝╚═╝╚══════╝╚═╝  ╚═╝╚══════╝╚══════╝╚══════╝" $(reset)
+	@echo $(cyan) "                                                               for $(OS)" $(reset)
+
 #===========================colors============================#
 black  		= "\033[0;30m"
 red    		= "\033[0;31m"

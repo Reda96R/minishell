@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_exit.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rerayyad <rerayyad@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/14 14:40:40 by yes-slim          #+#    #+#             */
-/*   Updated: 2023/08/13 00:54:04 by rerayyad         ###   ########.fr       */
+/*   Updated: 2023/08/15 08:48:29 by yes-slim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	ft_exit(t_cmds *cmd)
 
 	i = 1;
 	if (!cmd->str[1])
-		exit(0);
+		exit(g_var.exit_status);
 	if (!check_numeriq(cmd->str[i++]))
 		return ;
 	if (cmd->str[2])
