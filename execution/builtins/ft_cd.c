@@ -6,7 +6,7 @@
 /*   By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/14 14:40:33 by yes-slim          #+#    #+#             */
-/*   Updated: 2023/08/14 21:58:15 by yes-slim         ###   ########.fr       */
+/*   Updated: 2023/08/15 17:36:25 by yes-slim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,8 +94,8 @@ int	ft_cd(t_cmds *init)
 		home = get_home(g_var.data);
 		if (!chdir(home))
 		{
-			free(home);
 			g_var.exit_status = 0;
+			free(home);
 			return (change_oldpwd(g_var.data->pwd), change_pwd(), 0);
 		}
 		return (ft_builtins_error(2, NULL), 0);
@@ -111,6 +111,5 @@ int	ft_cd(t_cmds *init)
 			return (ft_builtins_error(3, init->str[1]), 0);
 	}
 	check_fail();
-	g_var.exit_status = 0;
-	return (0);
+	return (g_var.exit_status = 0, 0);
 }

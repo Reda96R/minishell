@@ -6,7 +6,7 @@
 /*   By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 10:59:29 by yes-slim          #+#    #+#             */
-/*   Updated: 2023/08/15 15:03:43 by yes-slim         ###   ########.fr       */
+/*   Updated: 2023/08/15 17:55:48 by yes-slim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,13 @@ int	check_outfile(t_mylxr *file)
 	return (fd);
 }
 
+void	ft_out(t_cmds *cmd, t_mylxr *tmp)
+{
+	if (cmd->fd_out != 1)
+		close(cmd->fd_out);
+	cmd->fd_out = check_outfile(tmp);
+}
+
 void	ft_check_files(t_cmds *cmd)
 {
 	t_mylxr	*tmp;
@@ -51,11 +58,7 @@ void	ft_check_files(t_cmds *cmd)
 		if (cmd->fd_in == -1 || cmd->fd_out == -1)
 			return ;
 		if (tmp->token_id == GREATER || tmp->token_id == D_GREATER)
-		{
-			if (cmd->fd_out != 1)
-				close(cmd->fd_out);
-			cmd->fd_out = check_outfile(tmp);
-		}
+			ft_out(cmd, tmp);
 		else if (tmp->token_id == LESS)
 		{
 			fd = check_infile(tmp);
