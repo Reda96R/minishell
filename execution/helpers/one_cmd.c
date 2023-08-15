@@ -6,7 +6,7 @@
 /*   By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/21 07:31:45 by yes-slim          #+#    #+#             */
-/*   Updated: 2023/08/15 15:03:55 by yes-slim         ###   ########.fr       */
+/*   Updated: 2023/08/15 17:52:20 by yes-slim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,9 @@ void	ft_execute_cmd(t_cmds *init)
 	signal(SIGQUIT, SIG_DFL);
 	path = path_getter(init);
 	if (dup2(init->fd_in, 0) == -1)
-			ft_error_exec(5, NULL, -1);
+		ft_error_exec(5, NULL, -1);
 	if (dup2(init->fd_out, 1) == -1)
-			ft_error_exec(5, NULL, -1);
+		ft_error_exec(5, NULL, -1);
 	execve(path, init->str, g_var.data->env);
 	perror("<?>: execve");
 	exit(127);

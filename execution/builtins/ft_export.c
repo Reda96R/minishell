@@ -6,7 +6,7 @@
 /*   By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/14 14:40:41 by yes-slim          #+#    #+#             */
-/*   Updated: 2023/08/13 16:40:08 by yes-slim         ###   ########.fr       */
+/*   Updated: 2023/08/15 17:34:37 by yes-slim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	_free(char **arr)
 void	ft_add(t_vars *tmp, char id, char **str)
 {
 	if (id == '+')
-	tmp->value = _strjoin(tmp->value, str[1]);
+		tmp->value = _strjoin(tmp->value, str[1]);
 	else
 	{
 		free(tmp->value);

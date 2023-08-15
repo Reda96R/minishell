@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_expander_utils_2.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rerayyad <rerayyad@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 11:51:55 by rerayyad          #+#    #+#             */
-/*   Updated: 2023/08/13 07:33:59 by rerayyad         ###   ########.fr       */
+/*   Updated: 2023/08/15 17:58:54 by yes-slim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,13 @@ char	*ft_single_quote(char *cmd, int *j, char r)
 	while (cmd[*j] && cmd[*j] != r)
 	{
 		if (cmd[*j] == '\"')
-				cmd[*j] = -2;
+			cmd[*j] = -2;
 		else if (cmd[*j] == '$')
-				cmd[*j] = -3;
+			cmd[*j] = -3;
 		*j += 1;
 	}
 	if (cmd[*j] == r)
-			*j += 1;
+		*j += 1;
 	return (cmd);
 }
 

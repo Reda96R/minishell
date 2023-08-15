@@ -6,7 +6,7 @@
 /*   By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/12 10:19:13 by yes-slim          #+#    #+#             */
-/*   Updated: 2023/08/13 17:02:08 by yes-slim         ###   ########.fr       */
+/*   Updated: 2023/08/15 17:49:59 by yes-slim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -162,7 +162,7 @@ char	*_substr(char const *str, unsigned int start, size_t len);
 void	ft_pwd(t_cmds *init);
 void	ft_exit(t_cmds *cmd);
 void	ft_env(t_cmds *init);
-void	ft_echo(t_cmds *init);
+int		ft_echo(t_cmds *init);
 int		ft_cd(t_cmds *init);
 void	ft_export(t_cmds *init);
 void	ft_unset(t_cmds *init);
