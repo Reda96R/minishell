@@ -21,11 +21,12 @@ int	main(int ac, char *av[], char *env[])
 
 	if (ac > 1 || av[1])
 		ft_errors_buster(1, &data);
-	data.env = NULL;
 	data.pwd = NULL;
 	data.old_pwd = NULL;
 	data.paths = NULL;
 	data.cmds = NULL;
+	data.env = NULL;
+	data.vars = NULL;
 	if (!ft_env_var(&data, env, 1))
 		return (0);
 	data.color = 1;
