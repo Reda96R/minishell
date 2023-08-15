@@ -6,7 +6,7 @@
 /*   By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/31 08:31:04 by rerayyad          #+#    #+#             */
-/*   Updated: 2023/08/15 17:39:06 by yes-slim         ###   ########.fr       */
+/*   Updated: 2023/08/16 00:38:59 by yes-slim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int	ft_question_handler(char **str)
 {
 	if (*str)
 		free (*str);
-	*str = ft_itoa((int)g_var.exit_status);
+	*str = ft_itoa(g_var.exit_status);
 	return (ft_strlen(*str) + 1);
 }
 
