@@ -20,7 +20,7 @@ void	ft_shell_reset(t_data *data)
 	ft_decontamination(data, 0);
 	data->cmds = NULL;
 	ft_env_var(data, NULL, 0);
-	ft_shell_starter(data);
+	ft_shell_starter(data, 0);
 }
 
 void	ft_prompt(t_data *data)
@@ -43,7 +43,7 @@ void	ft_prompt(t_data *data)
 		add_history(data->input);
 }
 
-void	ft_shell_starter(t_data *data)
+void	ft_shell_starter(t_data *data, int t)
 {
 	while (1)
 	{
@@ -54,7 +54,8 @@ void	ft_shell_starter(t_data *data)
 		if (ft_quotes_counter(data->input))
 		{
 			data->color = 1;
-			if (ft_token_scanner(data) > 0)
+			t = ft_token_scanner(data);
+			if (t > 0)
 			{
 				data->color = 1;
 				ft_parser(data);
@@ -62,7 +63,7 @@ void	ft_shell_starter(t_data *data)
 				g_var.sig = 1;
 				ft_shell_reset(data);
 			}
-			else if (ft_token_scanner(data) == -1)
+			else if (t == -1)
 				ft_errors_buster(3, data);
 		}
 		else

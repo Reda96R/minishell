@@ -26,9 +26,6 @@ int	ft_token_parser(t_data *data, int *node_id, int id)
 	t_mylxr	*new;
 
 	new = NULL;
-	if (id == PIPE && data->mylexer->next)
-		if (data->mylexer->next->token_id == PIPE)
-			ft_errors_buster(3, data);
 	if (!ft_new_node(&new, id, NULL, 0) || !new)
 		return (-1);
 	new->node_id = (*node_id)++;
@@ -89,11 +86,11 @@ int	ft_token_scanner(t_data *data)
 	int	node_id;
 
 	i = 0;
-	j = 0;
 	node_id = 0;
 	data->pipes = 0;
 	while (data->input[i])
 	{
+		j = 0;
 		while (data->input[i] && ft_isspace(data->input[i]))
 			i++;
 		id = ft_token_identifier(data, i);

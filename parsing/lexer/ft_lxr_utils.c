@@ -74,13 +74,24 @@ void	ft_rm_node(t_mylxr **mylexer, int id)
 
 int	ft_pipe_identifier(t_data *data, int i)
 {
-	if (ft_token_identifier(data, i + 1) != PIPE && data->input[i + 1]
-		&& data->mylexer->token_id != PIPE)
+	i++;
+	while (data->input[i])
 	{
-		data->pipes++;
-		return (PIPE);
+		if (ft_isspace(data->input[i]))
+			i++;
+		if (data->input[i] != '|')
+			return (PIPE);
+		else
+			return (-1);
 	}
 	return (-1);
+	// if (ft_token_identifier(data, i + 1) != PIPE && data->input[i + 1]
+	// 	&& data->mylexer->token_id != PIPE)
+	// {
+	// 	data->pipes++;
+	// 	return (PIPE);
+	// }
+	// return (-1);
 }
 
 int	ft_redirection_identifier(t_data *data, int i)

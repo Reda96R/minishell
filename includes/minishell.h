@@ -68,7 +68,7 @@ void	ft_builtins_error(int id, char *str);
 
 /* -------------------Parsing-----------------------*/
 /*::: core functions :::*/
-void	ft_shell_starter(t_data *data);
+void	ft_shell_starter(t_data *data, int t);
 int		ft_token_scanner(t_data *data);
 void	ft_shell_reset(t_data *data);
 void	ft_free_redierctions(t_mylxr *redirections);
