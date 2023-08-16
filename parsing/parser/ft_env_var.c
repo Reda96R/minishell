@@ -104,18 +104,21 @@ void	ft_fill_env(t_data *data)
 int	ft_env_var(t_data *data, char **env, int n)
 {
 	t_vars	*tmp;
+	int		i;
 
-	if (n)
-	{
+	if (n && *env)
 		if (!ft_env_setter(data, env, n))
 			return (0);
-	}
 	tmp = data->vars;
 	if (!tmp)
 		return (1);
-	while (tmp->next)
+	i = 0;
+	while (tmp)
+	{
+		i++;
 		tmp = tmp->next;
-	data->env = (char **) malloc(sizeof (char *) * (tmp->node_id + 2));
+	}
+	data->env = (char **) malloc(sizeof (char *) * (i + 1));
 	if (!data->env)
 		ft_errors_buster(4, data);
 	ft_paths_parser(data);

@@ -19,6 +19,8 @@ char	*get_path(char *str, char **path)
 
 	cmd = NULL;
 	i = 0;
+	if (!path)
+		return (NULL);
 	while (path[i])
 	{
 		if (cmd)

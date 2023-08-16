@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
+#include <stdio.h>
 
 char	*ft_converter(char c, t_data *data)
 {
@@ -39,8 +40,8 @@ int	ft_question_handler(char **str)
 {
 	if (*str)
 		free (*str);
-	*str = ft_itoa(g_var.exit_status);
-	return (ft_strlen(*str) + 1);
+	*str = ft_itoa((int)g_var.exit_status);
+	return (2);
 }
 
 int	ft_lenght_cal(char *str, int i)
