@@ -6,7 +6,7 @@
 /*   By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/14 14:40:40 by yes-slim          #+#    #+#             */
-/*   Updated: 2023/08/15 08:48:29 by yes-slim         ###   ########.fr       */
+/*   Updated: 2023/08/16 12:19:29 by yes-slim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	check_numeriq(char *str)
 		if (!_isdigit(str[i]) && str[i])
 		{
 			ft_builtins_error(5, str);
-			exit(255);
+			exit(2);
 		}
 		i++;
 	}
@@ -50,7 +50,7 @@ void	ft_exit(t_cmds *cmd)
 	if (!cmd->str[1][i])
 	{
 		ft_builtins_error(5, cmd->str[i]);
-		exit(255);
+		exit(2);
 	}
 	else
 	{
