@@ -46,16 +46,13 @@ char	*ft_rm_quote(char *str, char c, int n)
 
 int	ft_quote_skiper(char *str, int quote, int i)
 {
-	int	j;
-
-	j = 0;
-	if (str[i + j] == quote)
+	if (str[i] == quote)
 	{
-		while (str[i + j] && str[i + j] != quote)
-			j++;
-		j++;
+		while (str[i] && str[i] != quote)
+			i++;
+		i++;
 	}
-	return (j);
+	return (i);
 }
 
 int	ft_quotes_matcher(char *input, int i, int quote, int *quote_count)
