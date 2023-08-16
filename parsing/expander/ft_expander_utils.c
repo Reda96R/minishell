@@ -38,9 +38,14 @@ int	ft_digit_skipper(char *str, int n)
 
 int	ft_question_handler(char **str)
 {
-	if (*str)
-		free (*str);
-	*str = ft_itoa((int)g_var.exit_status);
+	char	*tmp;
+	char	*tmp0;
+
+	tmp = ft_itoa((int)g_var.exit_status);
+	tmp0 = ft_strjoin(*str, tmp);
+	free (tmp);
+	free (*str);
+	*str = tmp0;
 	return (2);
 }
 

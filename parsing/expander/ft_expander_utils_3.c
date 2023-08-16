@@ -61,8 +61,8 @@ char	*ft_dollar_in_quotes(char *tmp, int *j)
 {
 	char	*str;
 
-	if (tmp[*j + 1] == '\"' || tmp[*j + 1] == '\''
-		|| !ft_isalnum(tmp[*j + 1]))
+	if (tmp[*j + 1] != '?' && ((tmp[*j + 1] == '\"' || tmp[*j + 1] == '\''
+		|| !ft_isalnum(tmp[*j + 1]))))
 	{
 		tmp[*j] = -3;
 		*j += 1;
