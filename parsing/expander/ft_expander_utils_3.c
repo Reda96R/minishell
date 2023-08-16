@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_expander_utils_3.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rerayyad <rerayyad@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/13 09:07:50 by rerayyad          #+#    #+#             */
-/*   Updated: 2023/08/13 09:16:53 by rerayyad         ###   ########.fr       */
+/*   Updated: 2023/08/16 12:50:39 by yes-slim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,8 +61,8 @@ char	*ft_dollar_in_quotes(char *tmp, int *j)
 {
 	char	*str;
 
-	if (tmp[*j + 1] == '\"' || tmp[*j + 1] == '\''
-		|| !ft_isalnum(tmp[*j + 1]))
+	if (tmp[*j + 1] != '?' && ((tmp[*j + 1] == '\"' || tmp[*j + 1] == '\''
+				|| !ft_isalnum(tmp[*j + 1]))))
 	{
 		tmp[*j] = -3;
 		*j += 1;

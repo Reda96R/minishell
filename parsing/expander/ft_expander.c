@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
+#include <stdio.h>
 
 char	**ft_skipper(char **cmd)
 {
@@ -70,7 +71,7 @@ char	*ft_gold_finder(t_data *data, char *str)
 			i += ft_translator(i, str, &tmp0, data);
 		else
 		{
-			tmp1 = ft_converter(str[i++], data);
+			tmp1 = ft_converter(str, str[i], data, &i);
 			tmp2 = ft_strjoin(tmp0, tmp1);
 			free (tmp0);
 			tmp0 = tmp2;

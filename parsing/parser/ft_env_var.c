@@ -6,7 +6,7 @@
 /*   By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/22 15:07:32 by rerayyad          #+#    #+#             */
-/*   Updated: 2023/08/15 22:46:58 by yes-slim         ###   ########.fr       */
+/*   Updated: 2023/08/16 12:45:11 by yes-slim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ char	*ft_path_finder(t_vars *vars)
 	path = NULL;
 	while (vars)
 	{
-		if (vars->key && !ft_strncmp(vars->key, "PATH", 4))
+		if (vars->key && !_strcmp(vars->key, "PATH"))
 		{
 			path = ft_substr(vars->value, 0, ft_strlen(vars->value));
 			break ;
@@ -38,7 +38,7 @@ void	ft_pwd_finder(t_vars *vars, t_data *data)
 	tmp = vars;
 	while (tmp)
 	{
-		if (tmp->key && !ft_strncmp((const char *)tmp->key, "PWD", 3))
+		if (tmp->key && !_strcmp(tmp->key, "PWD"))
 		{
 			if (tmp->value)
 			{
@@ -46,7 +46,7 @@ void	ft_pwd_finder(t_vars *vars, t_data *data)
 				data->pwd = ft_strdup(tmp->value);
 			}
 		}
-		if (tmp->key && !ft_strncmp(tmp->key, "OLDPWD", 6))
+		if (tmp->key && !_strcmp(tmp->key, "OLDPWD"))
 		{
 			if (tmp->value)
 			{

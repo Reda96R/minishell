@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   _atoi.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: YOUNES <YOUNES@student.42.fr>              +#+  +:+       +#+        */
+/*   By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/15 12:51:10 by yes-slim          #+#    #+#             */
-/*   Updated: 2023/08/11 19:45:35 by YOUNES           ###   ########.fr       */
+/*   Updated: 2023/08/16 12:22:49 by yes-slim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int	_atoi(const char *str)
 	{
 		res = (res * 10) + (str[i] - '0');
 		if (res > LONG_MAX)
-			return (ft_builtins_error(7, (char *)str), 255);
+			return (ft_builtins_error(7, (char *)str), 2);
 		i++;
 	}
 	return ((int)res * si);
