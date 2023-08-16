@@ -127,7 +127,7 @@ char	*ft_gold_finder(t_data *data, char *str);
 int		ft_question_handler(char **str);
 int		ft_digit_skipper(char *str, int n);
 int		ft_translator(int i, char *str, char **tmp, t_data *data);
-char	*ft_converter(char c, t_data *data);
+char	*ft_converter(char *cmd, char c, t_data *data, int *i);
 char	**ft_skipper(char **cmd);
 char	*ft_black_box(char *str);
 char	*ft_quote_handler(char *cmd, int *j, int quote_protect);

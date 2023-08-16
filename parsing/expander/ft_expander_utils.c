@@ -13,15 +13,28 @@
 #include "../../includes/minishell.h"
 #include <stdio.h>
 
-char	*ft_converter(char c, t_data *data)
+char	*ft_converter(char *cmd, char c, t_data *data, int *i)
 {
 	char	*str;
+	int		l;
 
+	l = *i;
+	if (c == '\'')
+	{
+		l++;
+		while (cmd[l] && cmd[l] != '\'')
+			l++;
+		str = ft_substr(cmd, *i, l);
+		*i = l;
+		*i += 1;
+		return (str);
+	}
 	str = (char *) malloc(sizeof (char) * 2);
 	if (!str)
 		ft_errors_buster(4, data);
 	str[0] = c;
 	str[1] = '\0';
+	*i += 1;
 	return (str);
 }
 
