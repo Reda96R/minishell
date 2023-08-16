@@ -6,7 +6,7 @@
 /*   By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/12 10:19:13 by yes-slim          #+#    #+#             */
-/*   Updated: 2023/08/15 17:49:59 by yes-slim         ###   ########.fr       */
+/*   Updated: 2023/08/16 00:20:30 by yes-slim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@
 # include <strings.h>
 # include <limits.h>
 # include <stdarg.h>
+# include <dirent.h>
+# include <sys/types.h>
 # include <sys/wait.h>
 # include <fcntl.h>
 # include "mylib.h"

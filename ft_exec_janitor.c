@@ -6,7 +6,7 @@
 /*   By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 21:42:27 by yes-slim          #+#    #+#             */
-/*   Updated: 2023/08/15 23:33:36 by yes-slim         ###   ########.fr       */
+/*   Updated: 2023/08/16 00:29:51 by yes-slim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,9 +48,8 @@ void	ft_builtins_error(int id, char *str)
 	g_var.data->color = 0;
 }
 
-void	ft_error_exec(int id, char *str, int i)
+void	ft_error_exec_2(int id, char *str)
 {
-	_dprintf(2, "\033[0;31m");
 	if (id == 1)
 		_dprintf(2, "<?>: %s: No such file of directory\n", str);
 	else if (id == 2)
@@ -67,6 +66,14 @@ void	ft_error_exec(int id, char *str, int i)
 		_dprintf(2, "<?>: dup failed: Resource temporarily unavailable\n");
 	else if (id == 8)
 		_dprintf(2, "<?>: malloc failed: Resource temporarily unavailable\n");
+	if (id == 9)
+		_dprintf(2, "<?>: %s: is directory\n", str);
+}
+
+void	ft_error_exec(int id, char *str, int i)
+{
+	_dprintf(2, "\033[0;31m");
+	ft_error_exec_2(id, str);
 	g_var.data->color = 0;
 	if (i == -1)
 		exit(127);

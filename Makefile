@@ -6,7 +6,7 @@
 #    By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/12 10:18:48 by yes-slim          #+#    #+#              #
-#    Updated: 2023/08/15 23:54:40 by yes-slim         ###   ########.fr        #
+#    Updated: 2023/08/16 00:31:35 by yes-slim         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,7 @@ READLINE 	= -lreadline -lncurses
 endif
 #========================variables============================#
 HEADER  	= -I includes $(RL_HEADER)
-SANITIZ		= -fsanitize=address -g
+SANITIZ		= #-fsanitize=address
 CFLAGS 		= -Wall -Werror -Wextra -g3 $(SANITIZ) $(HEADER) -c 
 NAME    	= minishell
 DEL     	= rm -rf
@@ -87,7 +87,7 @@ os :
 	@echo $(grey) "██║╚██╔╝██║██║██║╚██╗██║██║╚════██║██╔══██║██╔══╝  ██║     ██║     " $(reset)
 	@echo $(grey) "██║ ╚═╝ ██║██║██║ ╚████║██║███████║██║  ██║███████╗███████╗███████╗" $(reset)
 	@echo $(grey) "╚═╝     ╚═╝╚═╝╚═╝  ╚═══╝╚═╝╚══════╝╚═╝  ╚═╝╚══════╝╚══════╝╚══════╝" $(reset)
-	@echo $(cyan) "                                                               for $(OS)" $(reset)
+	@echo $(yellow) "                                                               for $(OS)" $(reset)
 
 #===========================colors============================#
 black  		= "\033[0;30m"
