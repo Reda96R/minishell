@@ -6,7 +6,7 @@
 /*   By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 15:32:30 by YOUNES            #+#    #+#             */
-/*   Updated: 2023/08/14 19:40:08 by yes-slim         ###   ########.fr       */
+/*   Updated: 2023/08/16 12:07:53 by yes-slim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,10 +61,7 @@ void	ft_child(int *pp, char *str, t_mylxr *del)
 	{
 		str = readline("> ");
 		if (!str)
-		{
-			printf("\n");
 			exit(0);
-		}
 		str = ft_heredoc_core(del, str);
 		_dprintf(pp[1], "%s\n", str);
 		free(str);
