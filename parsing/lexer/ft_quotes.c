@@ -62,13 +62,16 @@ int	ft_quotes_matcher(char *input, int i, int quote, int *quote_count)
 {
 	int	j;
 
-	j = i + 1;
 	*quote_count += 1;
+	j = i + 1;
 	while (input[j] && input[j] != quote)
 		j++;
 	if (input[j] == quote)
+	{
 		*quote_count += 1;
-	return (j - i);
+		j++;
+	}
+	return (j);
 }
 
 int	ft_quotes_counter(char *input)
@@ -83,10 +86,11 @@ int	ft_quotes_counter(char *input)
 	while (input[i])
 	{
 		if (input[i] == '\'')
-			i += ft_quotes_matcher(input, i, '\'', &single_quotes);
-		if (input[i] == '\"')
-			i += ft_quotes_matcher(input, i, '\"', &double_quotes);
-		i++;
+			i = ft_quotes_matcher(input, i, '\'', &single_quotes);
+		else if (input[i] == '\"')
+			i = ft_quotes_matcher(input, i, '\"', &double_quotes);
+		else if (input[i] && input[i] != '\'' && input[i] != '\"')
+			i++;
 	}
 	return ((single_quotes % 2 == 0) && (double_quotes % 2 == 0));
 }
