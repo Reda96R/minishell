@@ -37,16 +37,16 @@ int	ft_token_parser(t_data *data, int *node_id, int id)
 
 int	ft_true_word(t_data *data, int i, int r, int j)
 {
-	r += ft_quote_skiper(data->input, '\"', i + j);
-	r += ft_quote_skiper(data->input, '\'', i + j);
+	r = ft_quote_skiper(data->input, '\"', i + j);
+	r = ft_quote_skiper(data->input, '\'', i + j);
 	if (r)
-		j += r;
-	while (data->input[i + j] && r)
-	{
-		if (data->input[i + j] == '\'' || data->input[i + j] == '\"')
-			r = 0;
-		j++;
-	}
+		j = r;
+	// while (data->input[i + j] && r)
+	// {
+	// 	if (data->input[i + j] == '\'' || data->input[i + j] == '\"')
+	// 		r = 0;
+	// 	j++;
+	// }
 	return (j);
 }
 

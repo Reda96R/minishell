@@ -48,6 +48,7 @@ int	ft_quote_skiper(char *str, int quote, int i)
 {
 	if (str[i] == quote)
 	{
+		i++;
 		while (str[i] && str[i] != quote)
 			i++;
 		i++;

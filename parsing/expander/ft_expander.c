@@ -66,8 +66,8 @@ char	*ft_gold_finder(t_data *data, char *str)
 		i += ft_digit_skipper(str, i);
 		if (str[i] == '$' && str[i + 1] == '?')
 			i += ft_question_handler(&tmp0);
-		else if (str[i] == '$' && (ft_isalnum(str[i + 1])
-				|| ft_isspace(str[i + 1])) && !ft_isspace(str[i + 1]))
+		else if (str[i] == '$' && (ft_isalnum(str[i + 1]) || str[i + 1] == '_')
+			&& !ft_isspace(str[i + 1]))
 			i += ft_translator(i, str, &tmp0, data);
 		else
 		{
