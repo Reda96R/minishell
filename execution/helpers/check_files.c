@@ -6,7 +6,7 @@
 /*   By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 10:59:29 by yes-slim          #+#    #+#             */
-/*   Updated: 2023/08/17 14:39:07 by yes-slim         ###   ########.fr       */
+/*   Updated: 2023/08/17 14:57:36 by yes-slim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	ft_check_dir(char *str);
 int	check_infile(t_mylxr *file)
 {
 	int	fd;
-	
+
 	fd = open(file->str, O_RDONLY);
 	if (fd == -1)
 	{
