@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
+#include <readline/readline.h>
 
 void	ft_shell_reset(t_data *data)
 {
@@ -27,10 +28,7 @@ void	ft_prompt(t_data *data)
 {
 	char	*str;
 
-	if (!data->color)
-		str = readline(READLINE_MSG_R);
-	else
-		str = readline(READLINE_MSG_G);
+	str = readline("<?> ");
 	data->input = ft_strtrim(str, " \t\r\f\v\n");
 	free (str);
 	g_var.sig = 0;

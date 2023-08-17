@@ -26,14 +26,15 @@ void	ft_errors_buster(int id, t_data *data)
 	else if (id == 2)
 		_dprintf(2, "ERROR: unmatched quotes\n");
 	else if (id == 3)
-		_dprintf(2, "syntax error near unexpected token\n");
+		_dprintf(2, "Syntax error near unexpected token\n");
 	else if (id == 4)
-		_dprintf(2, "memory error: unable to allocate memory\n");
+		_dprintf(2, "Memory error: unable to allocate memory\n");
 	else if (id == 5)
 		_dprintf(2, "ERROR: unset: not enough arguments\n");
 	else if (id == 6)
 		_dprintf(2, "ERROR: ambiguous redirect\n");
 	g_var.data->color = 0;
+	_dprintf(2, "\033[0m");
 	ft_shell_reset(data);
 }
 
