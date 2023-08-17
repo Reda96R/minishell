@@ -6,7 +6,7 @@
 /*   By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 15:32:30 by YOUNES            #+#    #+#             */
-/*   Updated: 2023/08/16 12:15:43 by yes-slim         ###   ########.fr       */
+/*   Updated: 2023/08/17 14:31:30 by yes-slim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,7 @@ void	ft_wait_hd(int pid)
 	if (WIFEXITED(status))
 		g_var.exit_status = WEXITSTATUS(status);
 	if (WIFSIGNALED(status))
-		if (WTERMSIG(status) == 2)
-			g_var.exit_status = 1;
+		g_var.exit_status = 128 + WTERMSIG(status);
 }
 
 char	*ft_heredoc_core(t_mylxr *del, char *str)
