@@ -6,16 +6,18 @@
 /*   By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 10:59:29 by yes-slim          #+#    #+#             */
-/*   Updated: 2023/08/15 17:55:48 by yes-slim         ###   ########.fr       */
+/*   Updated: 2023/08/17 14:39:07 by yes-slim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
+int	ft_check_dir(char *str);
+
 int	check_infile(t_mylxr *file)
 {
 	int	fd;
-
+	
 	fd = open(file->str, O_RDONLY);
 	if (fd == -1)
 	{
@@ -31,6 +33,16 @@ int	check_outfile(t_mylxr *file)
 {
 	int	fd;
 
+	if (!file->str[0])
+	{
+		ft_error_exec(1, file->str, 2);
+		return (-1);
+	}
+	if (!ft_check_dir(file->str))
+	{
+		ft_error_exec(9, file->str, 2);
+		return (-1);
+	}
 	if (file->token_id == GREATER)
 		fd = open(file->str, O_CREAT | O_TRUNC | O_WRONLY, 0666);
 	if (file->token_id == D_GREATER)
