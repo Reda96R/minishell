@@ -12,6 +12,22 @@
 
 #include "minishell.h"
 
+char	*ft_all_quotes_hider(char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i])
+	{
+		if (str[i] == '\'')
+			str[i] = -1;
+		else if (str[i] == '\"')
+			str[i] = -2;
+		i++;
+	}
+	return (str);
+}
+
 char	*ft_normal_expand(char **cmd, int n, int *j, int i)
 {
 	char	*str;
@@ -24,7 +40,7 @@ char	*ft_normal_expand(char **cmd, int n, int *j, int i)
 	}
 	else
 	{
-		str = ft_gold_finder(g_var.data, cmd[i]);
+		str = ft_all_quotes_hider(ft_gold_finder(g_var.data, cmd[i]));
 		if (!i && !str[0] && !cmd[i + 1] && n)
 			ft_shell_reset(g_var.data);
 		free(cmd[i]);

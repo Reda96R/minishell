@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
-#include <stdio.h>
 
 char	**ft_skipper(char **cmd)
 {
@@ -110,7 +109,9 @@ char	**ft_expander(t_data *data, char **cmd, int n, int quote_protect)
 				cmd[i] = ft_quote_handler(cmd[i], &j, quote_protect);
 			else if (cmd[i][j] == '$' && cmd[i][j + 1] != '\''
 					&& cmd[i][j + 1] != '\"')
+			{
 				cmd[i] = ft_normal_expand(cmd, n, &j, i);
+			}
 			else
 				j++;
 		}
