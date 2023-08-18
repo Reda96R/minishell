@@ -92,6 +92,7 @@ int		ft_quotes_matcher(char *input, int i, int quote, int *quote_count);
 int		ft_quote_skiper(char *str, int quote, int i);
 char	*ft_rm_quote(char *str, char c, int n);
 int		ft_check(t_data *data, int i, int *j, int r);
+char	*ft_all_quotes_hider(char *str);
 
 /*::: tokens :::*/
 int		ft_token_parser(t_data *data, int *node_id, int id);
