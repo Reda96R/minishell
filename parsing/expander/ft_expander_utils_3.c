@@ -12,6 +12,22 @@
 
 #include "minishell.h"
 
+char	*ft_all_quotes_hider(char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i])
+	{
+		if (str[i] == '\'')
+			str[i] = -1;
+		else if (str[i] == '\"')
+			str[i] = -2;
+		i++;
+	}
+	return (str);
+}
+
 char	*ft_normal_expand(char **cmd, int n, int *j, int i)
 {
 	char	*str;
@@ -62,7 +78,7 @@ char	*ft_dollar_in_quotes(char *tmp, int *j)
 	char	*str;
 
 	if (tmp[*j + 1] != '?' && ((tmp[*j + 1] == '\"' || tmp[*j + 1] == '\''
-				|| !ft_isalnum(tmp[*j + 1]))))
+				|| (!ft_isalnum(tmp[*j + 1]) && tmp[*j + 1] != '_'))))
 	{
 		tmp[*j] = -3;
 		*j += 1;
