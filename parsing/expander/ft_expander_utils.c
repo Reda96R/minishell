@@ -87,7 +87,6 @@ int	ft_translator(int i, char *str, char **tmp, t_data *data)
 			&& ft_lenght_cal(str, i) - i == (int)ft_strlen(var->key) + 1)
 		{
 			tmp0 = ft_strdup(var->value);
-			tmp0 = ft_all_quotes_hider(tmp0);
 			tmp1 = ft_strjoin(*tmp, tmp0);
 			free (*tmp);
 			*tmp = tmp1;
