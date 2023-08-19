@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_tokens_scanner.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rerayyad <rerayyad@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yes-slim <yes-slim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 06:38:46 by rerayyad          #+#    #+#             */
-/*   Updated: 2023/08/13 08:54:38 by rerayyad         ###   ########.fr       */
+/*   Updated: 2023/08/18 20:40:05 by yes-slim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,12 +41,12 @@ int	ft_true_word(t_data *data, int i, int r, int j)
 	r = ft_quote_skiper(data->input, '\'', i + j);
 	if (r)
 		j = r;
-	// while (data->input[i + j] && r)
-	// {
-	// 	if (data->input[i + j] == '\'' || data->input[i + j] == '\"')
-	// 		r = 0;
-	// 	j++;
-	// }
+	while (data->input[i + j] && r)
+	{
+		if (data->input[i + j] == '\'' || data->input[i + j] == '\"')
+			r = 0;
+		j++;
+	}
 	return (j);
 }
 
